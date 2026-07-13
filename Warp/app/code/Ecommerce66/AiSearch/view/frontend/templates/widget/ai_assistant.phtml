@@ -1,0 +1,110 @@
+<?php
+/**
+ * Copyright © Ecommerce66. All rights reserved.
+ *
+ * @var \Ecommerce66\AiSearch\Block\Widget\AiAssistant $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$widgetId = $block->getWidgetId();
+$widgetConfig = [
+    'aiQueryUrl' => $block->getAiQueryUrl(),
+    'productListUrl' => $block->getProductListUrl(),
+    'recommendationsUrl' => $block->getRecommendationsUrl(),
+    'showRecommendations' => $block->shouldShowRecommendations(),
+    'widgetTitle' => $block->getTitle(),
+    'placeholderText' => $block->getPlaceholderText(),
+    'relatedExamples' => $block->getRelatedExamples(),
+    'customEndpoint' => $block->getCustomEndpoint()
+];
+
+$mageInitData = json_encode([
+    'Ecommerce66_AiSearch/js/widget/ai-assistant' => $widgetConfig
+], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+
+if ($mageInitData === false) {
+    $mageInitData = '{}';
+}
+?>
+<div id="<?= $escaper->escapeHtmlAttr($widgetId) ?>" class="ai-widget-container" data-mage-init='<?= $escaper->escapeHtmlAttr($mageInitData) ?>'>
+    
+    <div class="ai-product-widget">
+        <?php if ($block->getTitle()): ?>
+            <div class="widget-title"><?= $escaper->escapeHtml($block->getTitle()) ?></div>
+        <?php endif; ?>
+
+        <form class="ai-search-form" id="ai-form-<?= $escaper->escapeHtmlAttr($widgetId) ?>">
+            <div class="field field-search">
+                <label for="ai-prompt-<?= $escaper->escapeHtmlAttr($widgetId) ?>" class="label">
+                    <span><?= $escaper->escapeHtml(__('What are you looking for?')) ?></span>
+                </label>
+                <div class="control">
+                    <div class="prompt-wrapper">
+                        <input
+                            type="search"
+                            id="ai-prompt-<?= $escaper->escapeHtmlAttr($widgetId) ?>"
+                            name="prompt"
+                            class="input-text ai-prompt prompt-input"
+                            placeholder="<?= $escaper->escapeHtmlAttr($block->getPlaceholderText()) ?>"
+                            autocomplete="off"
+                        />
+                        <span class="prompt-divider" aria-hidden="true"></span>
+                        <button type="submit" class="action primary prompt-submit" aria-label="<?= $escaper->escapeHtmlAttr(__('Search')) ?>">
+                            <span class="prompt-submit-label">
+                                <span class="prompt-submit-text" data-role="prompt-label"><?= $escaper->escapeHtml(__('Search')) ?></span>
+                                <span class="prompt-submit-spinner" data-role="prompt-spinner" aria-hidden="true"></span>
+                            </span>
+                        </button>
+                        <span class="prompt-glow" aria-hidden="true"></span>
+                    </div>
+                    <div class="prompt-examples" data-role="examples-wrapper" style="display: none;" aria-hidden="true">
+                        <span class="examples-label"><?= $escaper->escapeHtml(__('Try:')) ?></span>
+                        <span class="examples-text" data-role="examples-text" aria-live="polite"></span>
+                    </div>
+                    <div class="history-inline" data-role="history-wrapper" style="display: none;" aria-hidden="true">
+                        <span class="history-label"><?= $escaper->escapeHtml(__('Recent searches')) ?></span>
+                        <div class="history-list" data-role="history-list" aria-live="polite"></div>
+                        <button type="button" class="history-clear" data-role="history-clear">
+                            <span><?= $escaper->escapeHtml(__('Clear history')) ?></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="actions secondary-actions">
+                <button type="button" class="action secondary ai-clear" style="display: none;">
+                    <span><?= $escaper->escapeHtml(__('Clear')) ?></span>
+                </button>
+            </div>
+        </form>
+
+        <div class="loading-indicator" style="display: none;">
+            <span class="loader"></span>
+            <span><?= $escaper->escapeHtml(__('Processing your request...')) ?></span>
+        </div>
+
+        <div class="ai-message" style="display: none;" role="alert"></div>
+
+        <div class="ai-results-area">
+            <div class="product-results" style="display: none;" aria-live="polite">
+                <div class="results-header">
+                    <h3 class="results-title"><?= $escaper->escapeHtml(__('Recommended Products')) ?></h3>
+                    <div class="results-meta" data-role="results-meta" aria-hidden="true"></div>
+                </div>
+                <div class="results-content" data-role="results-container"></div>
+            </div>
+
+            <?php if ($block->shouldShowRecommendations()): ?>
+                <div class="recommendation-results" data-role="recommendations-wrapper" style="display: none;" aria-live="polite">
+                    <div class="recommendation-header">
+                        <h3 class="recommendation-title" data-role="recommendations-title">
+                            <?= $escaper->escapeHtml(__('You might also like')) ?>
+                        </h3>
+                        <div class="recommendation-meta" data-role="recommendations-meta" aria-hidden="true"></div>
+                    </div>
+                    <div class="recommendation-content" data-role="recommendations-container"></div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+</div>

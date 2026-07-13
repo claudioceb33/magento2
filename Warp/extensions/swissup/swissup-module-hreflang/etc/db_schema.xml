@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="swissup_hreflang_cms" resource="default" engine="innodb" comment="CMS pages relations">
+        <column xsi:type="smallint" name="page_id" unsigned="false" nullable="false" identity="false" comment="Page ID"/>
+        <column xsi:type="smallint" name="hreflang_page_id" unsigned="false" nullable="false" identity="false" comment="Hreflang Page ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="page_id"/>
+            <column name="hreflang_page_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SWISSUP_HREFLANG_CMS_PAGE_ID_CMS_PAGE_PAGE_ID" table="swissup_hreflang_cms" column="page_id" referenceTable="cms_page" referenceColumn="page_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="SWISSUP_HREFLANG_CMS_HREFLANG_PAGE_ID_CMS_PAGE_PAGE_ID" table="swissup_hreflang_cms" column="hreflang_page_id" referenceTable="cms_page" referenceColumn="page_id" onDelete="CASCADE"/>
+    </table>
+    <table name="swissup_hreflang_category" resource="default" engine="innodb" comment="Catalog categories relations">
+        <column xsi:type="int" name="category_id" unsigned="true" nullable="false" identity="false" comment="Category ID"/>
+        <column xsi:type="int" name="hreflang_category_id" unsigned="true" nullable="false" identity="false" comment="Hreflang Category ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="category_id"/>
+            <column name="hreflang_category_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SWISSUP_HREFLANG_CATEGORY_CATEGORY_ID_CATALOG_CATEGORY_ENTITY_ENTITY_ID" table="swissup_hreflang_category" column="category_id" referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="SWISSUP_HREFLANG_CATEGORY_HREFLANG_CATEGORY_ID_CATALOG_CATEGORY_ENTITY_ENTITY_ID" table="swissup_hreflang_category" column="hreflang_category_id" referenceTable="catalog_category_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

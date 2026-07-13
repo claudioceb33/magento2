@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_SeoTemplates::template_index"
+            title="Metadata Templates"
+            module="Swissup_SeoTemplates"
+            sortOrder="1320"
+            parent="Swissup_SeoCore::seocore"
+            action="seotemplates/template/index"
+            resource="Swissup_SeoTemplates::template_index"/>
+    </menu>
+</config>

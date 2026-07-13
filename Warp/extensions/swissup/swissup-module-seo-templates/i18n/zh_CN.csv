@@ -1,0 +1,35 @@
+"Generate metadata",生成元数据
+"Don't add any conditions if template is applied to all products.",如果模板应用于所有产品，则不要添加任何条件。
+"Entity Id","实体 ID"
+"Generated at",生成于
+"Generation log",生成日志
+"Generate Metadata",生成元数据
+"Complete at %1","在 %1 完成"
+"%1: items processed - %2","%1： 已处理的项目 - %2"
+"Start at %1","从 %1 开始"
+"You've deleted template.",您已删除模板。
+"We can't find template to delete.",找不到要删除的模板。
+"Template with ID %1 no longer exists.","ID %1 的模板不再存在。"
+"Metadata Templates",元数据模板
+"Edit ""%1""","编辑""%1"""
+"Create template",创建模板
+"A total of %1 template(s) have been deleted.","总共已删除 %1 模板。"
+"A total of %1 template(s) have updated status.","共有 %1 模板已更新状态。"
+"New Template",新模板
+"This template no longer exists.",此模板不再存在。
+"You saved the template.",保存了模板。
+"Something went wrong while saving the template.",保存模板时出现问题。
+"Category Attribute",类别属性
+"Category ID","类别 ID"
+"All entities",所有实体
+"There is generated metadata for %1.","生成 %1 的元数据。"
+Generated,生成
+"Value is read only",值是只读的
+"Force to use generated metadata",强制使用生成的元数据
+"Start Time",开始时间
+"Records to process per job",每个作业要处理的记录
+"Metadata Template Information",元数据模板信息
+"Generate metadata from templates",从模板生成元数据
+"Are you sure you want to delete selected templates?",是否确实要删除选定的模板？
+"Template for",模板
+"Data Type",数据类型

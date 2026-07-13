@@ -1,0 +1,50 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+$collection      = $this->getCollection();
+$total           = $collection->count();
+$blockId         = rand().time();
+$tabId           = 'formbuilder'.$blockId;
+$widgetClass    = $this->getConfig('prefix_class');
+$widgetTitle    = $this->getConfig('title');
+$gridPagination = $this->getConfig('grid_pagination');
+?>
+<div id="<?= $tabId; ?>" class="formbuilder-messages <?= $widgetClass; ?>">
+    <div class="row lof-formbuilder">
+        <?php if ($widgetTitle) { ?>
+            <div class="block-title content-heading">
+                <?php if ($widgetTitle) { ?><h2 class="title"><?= $widgetTitle ?></h2><?php } ?>
+            </div>
+            <?php } ?>
+            <div class="formbuilder-container">
+                <?php if ($total) { ?>
+                    <ul>
+                        <?php foreach ($collection as $message) { ?>
+                            <li><?= $message->getMessage() ?></li>
+                            <?php } ?>
+                        </ul>
+                        <?php } ?>
+                    </div>
+                    <?php if ($gridPagination) { ?>
+                        <?= $this->getPagerHtml(); ?>
+                        <?php } ?>
+                    </div>
+                </div>

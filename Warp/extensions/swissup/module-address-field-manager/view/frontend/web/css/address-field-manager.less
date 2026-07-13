@@ -1,0 +1,25 @@
+//
+// Generate styles, that will hide hidden fields
+// ______________________________________________
+
+@fields: company, street, city, telephone, fax;
+
+.afm-hidden- {
+    .hide-hidden-fields(@iterator: 1) when(@iterator <= length(@fields)) {
+        @field: extract(@fields, @iterator);
+        &@{field} {
+            .field.@{field} {
+                display: none;
+            }
+        }
+        .hide-hidden-fields((@iterator + 1));
+    }
+    .hide-hidden-fields();
+}
+
+// fix fieldset width on address edit page in Magento 2.1.x
+@media (min-width: 768px) {
+    .swissup-address-fields-container .fieldset {
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="swissup_seotemplates_category" view_id="swissup_seotemplates_index_category" class="Swissup\SeoTemplates\Model\Indexer\Category">
+        <title translate="true">SEO Metadata - categories</title>
+        <description translate="true">Generate metadata for categories based on SEO templates.</description>
+    </indexer>
+    <indexer id="swissup_seotemplates_product" view_id="swissup_seotemplates_index_product" class="Swissup\SeoTemplates\Model\Indexer\Product">
+        <title translate="true">SEO Metadata - products</title>
+        <description translate="true">Generate metadata for products based on SEO templates.</description>
+    </indexer>
+</config>

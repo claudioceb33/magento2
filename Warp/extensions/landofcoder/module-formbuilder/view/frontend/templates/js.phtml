@@ -1,0 +1,269 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+
+$helperData       = $this->helper(Data::class);
+$captchaPublicKey = $helperData->getConfig('googleapi/publickey');
+?>
+<script type="text/javascript">
+require([
+    'jquery',
+    'Magento_Customer/js/customer-data'
+], function ($, customerData) {
+    'use strict';
+    const getCustomerInfo = function () {
+        const customer = customerData.get('customer');
+
+        return customer();
+    };
+
+    const isLoggedIn = function (customerInfo) {
+        customerInfo = customerInfo || getCustomerInfo();
+
+        return customerInfo && customerInfo.firstname;
+    };
+});
+
+require([
+    'jquery',
+    'Lof_Formbuilder/js/jquery-uploader/jquery.dm-uploader.min'
+    ], function($){
+
+      function ui_add_log(message, color, field_id)
+      {
+        if($('#formbuilder-debug-template') && $('#formbuilder-debug-template').length > 0) {
+          var d = new Date();
+
+          var dateString = (('0' + d.getHours())).slice(-2) + ':' +
+            (('0' + d.getMinutes())).slice(-2) + ':' +
+            (('0' + d.getSeconds())).slice(-2);
+
+          color = (typeof color === 'undefined' ? 'muted' : color);
+
+          var template = $('#formbuilder-debug-template').text();
+          template = template.replace('%%date%%', dateString);
+          template = template.replace('%%message%%', message);
+          template = template.replace('%%color%%', color);
+
+          $('#'+field_id+'debug').find('li.empty').fadeOut();
+          $('#'+field_id+'debug').prepend(template);
+        } else {
+          console.log("\n"+color+": "+message);
+        }
+      }
+
+      function ui_multi_add_file(id, file, field_id, field_name, field_class)
+      {
+        if($('#files-template') && $('#files-template').length > 0) {
+          var template = $('#files-template').text();
+
+          template = template.replace('%%filename%%', file.name);
+          template = template.replace('%%filename%%', file.name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldname%%', field_name);
+          template = template.replace('%%fieldid%%', id);
+          template = template.replace('%%fieldid%%', id);
+          template = template.replace('%%fieldid%%', id);
+          template = template.replace('%%fieldclass%%', field_class);
+          template = template.replace('%%fieldclass%%', field_class);
+          template = template.replace('%%fileurl%%', file.name);
+
+          template = $(template);
+          template.prop('id', 'uploaderFile' + id);
+          template.data('file-id', id);
+
+          $('#files-'+field_id).find('li.empty').fadeOut();
+          $('#files-'+field_id).prepend(template);
+
+
+        }
+      }
+
+      function ui_multi_update_file_status(id, status, message)
+      {
+        $('#uploaderFile' + id).find('span').html(message).prop('class', 'status text-' + status);
+      }
+
+      function ui_multi_update_file_progress(id, percent, color, active)
+      {
+        color = (typeof color === 'undefined' ? false : color);
+        active = (typeof active === 'undefined' ? true : active);
+
+        var bar = $('#uploaderFile' + id).find('div.progress-bar');
+
+        bar.width(percent + '%').attr('aria-valuenow', percent);
+        bar.toggleClass('progress-bar-striped progress-bar-animated', active);
+
+        if (percent === 0){
+          bar.html('');
+        } else {
+          bar.html(percent + '%');
+        }
+
+        if (color !== false){
+          bar.removeClass('bg-success bg-info bg-warning bg-danger');
+          bar.addClass('bg-' + color);
+        }
+      }
+
+      function initDmUploader(field_selector) {
+         var _backendUrl = $(field_selector).data("backend");
+         var _fieldId = $(field_selector).data("fieldid");
+         var _maxFileSize = $(field_selector).data("maxsize");
+         var _fieldName = $(field_selector).data("fieldname");
+         var _fieldClass = $(field_selector).data("fieldclass");
+         var _extFilter = $(field_selector).data("filetype");
+         var _limitfiles = $(field_selector).data("limitfiles");
+
+         if(typeof(_extFilter) === 'undefined' || _extFilter == null || _extFilter == ""){
+            _extFilter = null;
+         } else {
+            _extFilter = _extFilter.split(",");
+         }
+         if(typeof(_limitfiles) === 'undefined' || _limitfiles == null || _limitfiles == ""){
+            _limitfiles = 1;
+         } else {
+            _limitfiles = parseInt(_limitfiles);
+         }
+
+         $("#"+_fieldId+'Zone').dmUploader({
+          url: _backendUrl,
+          maxFileSize: _maxFileSize,
+          extFilter: _extFilter,
+          onDragEnter: function(){
+            this.addClass('active');
+          },
+          onDragLeave: function(){
+            this.removeClass('active');
+          },
+          onInit: function(){
+          },
+          onComplete: function(){
+          },
+          onNewFile: function(id, file){
+            if(_limitfiles <= $('#files-'+_fieldId).find(".media-added-file").length){
+              return false;
+            }
+            ui_multi_add_file(id, file, _fieldId, _fieldName, _fieldClass);
+          },
+          onBeforeUpload: function(id){
+            jQuery('.formbuilder-loading').addClass('ajax-loading');
+            ui_multi_update_file_status(id, 'uploading', _formbuilder_label_uploading);
+            ui_multi_update_file_progress(id, 0, '', true);
+          },
+          onUploadCanceled: function(id) {
+            ui_multi_update_file_status(id, 'warning', _formbuilder_label_cancelled);
+            ui_multi_update_file_progress(id, 0, 'warning', false);
+          },
+          onUploadProgress: function(id, percent){
+            ui_multi_update_file_progress(id, percent);
+          },
+          onUploadSuccess: function(id, data){
+            var field_url_id = _fieldName+"_"+id+"_url";
+            var field_isimage_id = _fieldName+"_"+id+"_isimage";
+            var field_path_id = _fieldName+"_"+id+"_path";
+            var field_filesize_id = _fieldName+"_"+id+"_filesize";
+            if($("#"+field_url_id).length > 0) {
+              $("#"+field_url_id).val(data.fileurl);
+            }
+            if($("#"+field_path_id).length > 0) {
+              $("#"+field_path_id).val(data.path);
+            }
+            if($("#"+field_isimage_id).length > 0) {
+              $("#"+field_isimage_id).val(data.isimage);
+            }
+            if($("#"+field_filesize_id).length > 0) {
+              $("#"+field_filesize_id).val(data.filesize);
+            }
+            jQuery('.formbuilder-loading').removeClass('ajax-loading');
+            ui_multi_update_file_status(id, 'success', _formbuilder_label_success);
+            ui_multi_update_file_progress(id, 100, 'success', false);
+            if($("#"+_fieldId).length > 0) {
+                $("#"+_fieldId).removeClass('required-entry');
+                if(!$("#"+_fieldId).hasClass('required-entry-old')) {
+                    $("#"+_fieldId).addClass('required-entry-old');
+                }
+
+            }
+          },
+          onUploadError: function(id, xhr, status, message){
+            ui_multi_update_file_status(id, 'danger', message);
+            ui_multi_update_file_progress(id, 0, 'danger', false);
+          },
+          onFallbackMode: function(){
+            ui_add_log(_formbuilder_label_error1, 'danger', _fieldId);
+          },
+          onFileSizeError: function(file){
+            var filesizeErrorLabel = _formbuilder_label_error2;
+            filesizeErrorLabel = filesizeErrorLabel.replace('%%filename%%',file.name);
+            ui_add_log(filesizeErrorLabel, 'danger', _fieldId);
+          },
+          onFileExtError: function(file) {
+            var fileextErrorLabel = _formbuilder_label_error3;
+            fileextErrorLabel = fileextErrorLabel.replace('%%filename%%',file.name);
+            ui_add_log(fileextErrorLabel, 'danger', _fieldId);
+            console
+          }
+        });
+      }
+       if($(".fbd-files-uploader").length > 0){
+          $(".fbd-files-uploader").each(function(){
+            initDmUploader(this);
+          })
+       }
+  })
+</script>
+<!-- File item template -->
+<script type="text/javascript">
+  var _formbuilder_label_uploading = "<?= $block->escapeHtml(__("Uploading..."));?>";
+  var _formbuilder_label_cancelled = "<?=$block->escapeHtml(__("Canceled by User"));?>";
+  var _formbuilder_label_success = "<?= $block->escapeHtml(__("Upload Complete"));?>";
+  var _formbuilder_label_error1 = "<?= $block->escapeHtml(__("'Plugin cant be used here, running Fallback callback'"));?>";
+  var _formbuilder_label_error2 = "<?= $block->escapeHtml(__("File \'%%filename%%\' cannot be added: size excess limit"));?>";
+  var _formbuilder_label_error3 = "<?= $block->escapeHtml(__("File \'%%filename%%\' wrong file type."));?>";
+</script>
+<script type="text/html" id="files-template">
+  <li class="media media-added-file">
+    <div class="media-body mb-1">
+      <p class="mb-2">
+        <strong>%%filename%%</strong> <?= __("- Status:");?> <span class="text-muted"><?= __("Waiting");?></span>
+        <input type="hidden" class="%%fieldclass%%" name="%%fieldname%%[]" value="%%filename%%"/>
+        <input type="hidden" name="%%fieldname%%_fileurl[]" id="%%fieldname%%_%%fieldid%%_url" value=""/>
+        <input type="hidden" name="%%fieldname%%_isimage[]" id="%%fieldname%%_%%fieldid%%_isimage" value=""/>
+        <input type="hidden" name="%%fieldname%%_filesize[]" id="%%fieldname%%_%%fieldid%%_filesize" value=""/>
+      </p>
+      <div class="progress mb-2">
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"
+          role="progressbar"
+          style="width: 0%"
+          aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        </div>
+      </div>
+      <hr class="mt-1 mb-1" />
+    </div>
+  </li>
+</script>

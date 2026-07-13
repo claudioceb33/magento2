@@ -1,0 +1,27 @@
+"Advanced Properties","Advanced Properties"
+"Links with `nofollow` in Layered Navigation","Links with `nofollow` in Layered Navigation"
+"4 and up","4 and up"
+"3 and up","3 and up"
+"2 and up","2 and up"
+"1 and up","1 and up"
+any,any
+"In URL body","In URL body"
+"As request parameter","As request parameter"
+"Infinite recursion call or category tree is too deep.","Infinite recursion call or category tree is too deep."
+In,In
+Out,Out
+"SEO URLs","SEO URLs"
+"Manage In-URL Attribute Label","Manage In-URL Attribute Label"
+"Use this section to set attribute labels for URLs in layered navigation.","Use this section to set attribute labels for URLs in layered navigation."
+"Manage In-URL Option Label for Attribute","Manage In-URL Option Label for Attribute"
+"Use this section to set attribute values for URLs in layered navigation.","Use this section to set attribute values for URLs in layered navigation."
+Option,Option
+"Sending attribute values as package.","Sending attribute values as package."
+"Use separator for filters","Use separator for filters"
+"Separator string","Separator string"
+"Search controller name in URLs","Search controller name in URLs"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name."
+"Place search term","Place search term"
+"CMS Pages","CMS Pages"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","Redirect to site homepage when visitor tries to access respective CMS page with direct link"
+"In-URL label","In-URL label"

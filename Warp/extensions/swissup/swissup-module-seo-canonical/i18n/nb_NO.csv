@@ -1,0 +1,8 @@
+"Canonical URLs","Kanoniske nettadresser"
+"Enable canonical URL for category","Aktiver kanonisk URL for kategori"
+"Enable canonical URL for product","Aktiver kanonisk URL for produkt"
+"Use parent product for canonical","Bruk overordnet produkt for kanonisk"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","Når nåværende produkt er en del av et annet produkt (konfigurerbart, gruppert eller bunt), blir overordnede nettadresse brukt som kanoniske for nåværende produkt."
+"Allowed parent types","Tillatte foreldretyper"
+"CMS Pages",CMS-sider
+"Enable canonical URL for CMS pages","Aktiver kanonisk URL for CMS-sider"

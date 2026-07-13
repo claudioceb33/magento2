@@ -1,0 +1,145 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helper           = $this->helper(Fields::class);
+$helperData       = $this->helper(Data::class);
+$form             = $block->getForm();
+$formData        = $this->getData('form_data');
+$field            = $this->getData('field_data');
+$fieldType       = $field['field_type'];
+$label            = $block->filterMessage($field['label']);
+$inlineCss        = $field['inline_css'] ?? '';
+$cssClass   = isset($field['css_class']) ? ($block->escapeHtmlAttr($field['css_class']).' ') : '';
+$options          = $field['field_options'];
+$required         = $field['required'];
+$cid              = $helperData->getFieldId($field);
+$fieldName       = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$availableFields = $helper->getAvailableFields();
+$html             = '';
+$fieldValidate   = $availableFields[$fieldType] ?? '';
+$validates        = $fieldValidate;
+$fieldHelp       = isset($options['description']) ? $block->filterMessage($options['description']) : '';
+if ($fieldValidate && is_array($fieldValidate)) {
+    $validates = implode(" ", $fieldValidate);
+}
+$width        = $field['width'] ?? '550';
+$height       = $field['height'] ?? '400';
+$radius       = isset($field['radius']) ? (float)$field['radius'] : 300;
+$default_lat  = isset($field['default_lat']) ? (float)$field['default_lat'] : 21.0199438;
+$default_long = isset($field['default_long']) ? (float)$field['default_long'] : 105.81731119999995;
+$address      = $field['address'] ?? $formData[$fieldName];
+$frameWorkCss   = '';
+if (isset($field['frame_work_css'])) {
+    $frameWorkCss   = $field['frame_work_css'];
+}
+if ($frameWorkCss == 'foundation') {
+    $medium = 'columns medium-';
+} else {
+    $medium = 'col-sm-';
+}
+$showLocationLabel = true;
+$captchaPublicKey = $helperData->getConfig('googleapi/publickey');
+$showLocation     = $field['show_location'] ?? 0;
+$showRadius       = isset($field['show_radius']) ? (int)$field['show_radius'] : 0;
+$showMap          = $field['show_map'] ?? 0;
+$location_label   = $field['location_label'] ?? "";
+$width            = str_replace("px", "", $width) . "px";
+$height           = str_replace("px", "", $height) . "px";
+
+if (!$showRadius) {
+    $radius = 0;
+}
+if (empty($location_label)) {
+    $showLocationLabel = false;
+}
+?>
+<div class="subtemplate-wrapper <?= $cssClass; ?>" style="<?= $inlineCss ?>">
+    <label for="<?= $fieldId; ?>" class="<?= (1 == $required) ? 'required' : ''; ?>"><?= $label; ?><?= (1 == $required) ? '<em>*</em>' : '';?></label>
+    <div class="row">
+        <div <?php if (!$showLocation) { ?>style="display:none"<?php } ?> class="form-group <?= $medium; ?>6">
+            <div class="row">
+                <?php if ($showLocationLabel): ?><label class="<?= $medium; ?>2 control-label"><?= $block->escapeHtml($location_label); ?></label><?php endif; ?>
+                <div class="<?= $medium; ?>10"><input type="text" class="form-control" name="<?= $fieldName; ?>" id="<?= $fieldId."-address"; ?>"  value="<?= $address; ?>"/></div>
+            </div>
+        </div>
+        <div <?php if (!$showRadius) { ?>style="display:none"<?php } ?> class="form-group <?= $medium; ?>6">
+            <div class="row">
+                <label class="<?= $medium; ?>2 control-label"><?= $block->escapeHtml(__("Radius:")); ?></label>
+                <div class="<?= $medium; ?>10"><input type="text" class="form-control" name="<?= $fieldName."_radius"; ?>" id="<?= $fieldId."-radius"; ?>" value="<?= ($formData && isset($formData[$fieldName."_radius"])) ? $formData[$fieldName."_radius"] : $radius; ?>"/></div>
+            </div>
+        </div>
+    </div>
+    <div id="<?= $fieldId; ?>" <?= !$showMap ? 'class="hidden"' : '';?> style="width: <?= $width; ?>; height: <?= $height; ?>;margin-top:20px"></div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="m-t-small">
+        <input name="<?= $fieldName."_lat"; ?>" id="<?= $fieldId."-lat"; ?>" value="<?= ($formData && isset($formData[$fieldName."_lat"])) ? $formData[$fieldName."_lat"] : $default_lat; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_long"; ?>" id="<?= $fieldId."-long"; ?>" value="<?= ($formData && isset($formData[$fieldName."_long"])) ? $formData[$fieldName."_long"] : $default_long; ?>" class="input-text" type="hidden"/>
+
+        <input name="<?= $fieldName."_addressLine1"; ?>" id="<?= $fieldId."-addressLine1"; ?>" value="<?= ($formData && isset($formData[$fieldName."_addressLine1"])) ? $formData[$fieldName."_addressLine1"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_addressLine2"; ?>" id="<?= $fieldId."-addressLine2"; ?>" value="<?= ($formData && isset($formData[$fieldName."_addressLine2"])) ? $formData[$fieldName."_addressLine2"] : ""; ?>" class="input-text" type="hidden"/>
+
+        <input name="<?= $fieldName."_street"; ?>" id="<?= $fieldId."-street"; ?>" value="<?= ($formData && isset($formData[$fieldName."_street"])) ? $formData[$fieldName."_street"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_streetNumber"; ?>" id="<?= $fieldId."-streetNumber"; ?>" value="<?= ($formData && isset($formData[$fieldName."_streetNumber"])) ? $formData[$fieldName."_streetNumber"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_district"; ?>" id="<?= $fieldId."-district"; ?>" value="<?= ($formData && isset($formData[$fieldName."_district"])) ? $formData[$fieldName."_district"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_city"; ?>" id="<?= $fieldId."-city"; ?>" value="<?= ($formData && isset($formData[$fieldName."_city"])) ? $formData[$fieldName."_city"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_state"; ?>" id="<?= $fieldId."-state"; ?>" value="<?= ($formData && isset($formData[$fieldName."_state"])) ? $formData[$fieldName."_state"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_stateOrProvince"; ?>" id="<?= $fieldId."-stateOrProvince"; ?>" value="<?= ($formData && isset($formData[$fieldName."_stateOrProvince"])) ? $formData[$fieldName."_stateOrProvince"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_country"; ?>" id="<?= $fieldId."-country"; ?>" value="<?= ($formData && isset($formData[$fieldName."_country"])) ? $formData[$fieldName."_country"] : ""; ?>" class="input-text" type="hidden"/>
+        <input name="<?= $fieldName."_postcode"; ?>" id="<?= $fieldId."-postcode"; ?>" value="<?= ($formData && isset($formData[$fieldName."_postcode"])) ? $formData[$fieldName."_postcode"] : ""; ?>" class="input-text" type="hidden"/>
+    </div>
+    <div class="clearfix"></div>
+    <!-- <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=<?= $captchaPublicKey ?>"></script> -->
+    <script type="text/javascript">
+        require([
+            'jquery',
+            'Lof_Formbuilder/js/locationpicker/locationpicker'
+            ], function(){
+                jQuery('#<?= $fieldId; ?>').locationpicker({
+                    location: {latitude: <?= $default_lat; ?>, longitude: <?= $default_long; ?>},
+                    radius: <?= $radius; ?>,
+                    inputBinding: {
+                        latitudeInput: jQuery('#<?= $fieldId; ?>-lat'),
+                        longitudeInput: jQuery('#<?= $fieldId; ?>-long'),
+                        radiusInput: jQuery('#<?= $fieldId; ?>-radius'),
+                        locationNameInput: jQuery('#<?= $fieldId; ?>-address'),
+                        addressLine1Input: jQuery('#<?= $fieldId; ?>-addressLine1'),
+                        addressLine2Input: jQuery('#<?= $fieldId; ?>-addressLine2'),
+                        streetNameInput: jQuery('#<?= $fieldId; ?>-street'),
+                        districtInput: jQuery('#<?= $fieldId; ?>-district'),
+                        streetNumberInput: jQuery('#<?= $fieldId; ?>-streetNumber'),
+                        cityInput: jQuery('#<?= $fieldId; ?>-city'),
+                        stateInput: jQuery('#<?= $fieldId; ?>-state'),
+                        stateOrProvinceInput: jQuery('#<?= $fieldId; ?>-stateOrProvince'),
+                        countryInput: jQuery('#<?= $fieldId; ?>-country'),
+                        postcodeInput: jQuery('#<?= $fieldId; ?>-postcode'),
+                    },
+                    enableAutocomplete: true
+                });
+            });
+        </script>
+        <?php if ($fieldHelp) : ?>
+        <span class="help-block"><?= $fieldHelp; ?></span>
+        <?php endif; ?>
+</div>

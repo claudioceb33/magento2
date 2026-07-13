@@ -1,0 +1,54 @@
+<?php
+/** @var $block \Ecommerce66\Core\Block\Adminhtml\System\Config\CategoryTree */
+?>
+<input type="hidden" name="<?= $block->escapeHtml($block->getFieldName()) ?>" value="" />
+<div class="category-checkbox-tree">
+    <?= /** @noEscape */ $block->renderTree($block->getRootId(), $block->escapeHtml($block->getCheckboxName()), $block->getSelected(), true) ?>
+</div>
+<script>
+    require(["jquery"], function($) {
+        $(document).on("click", ".category-toggle", function(e) {
+            e.preventDefault();
+            var $toggle = $(this);
+            var $children = $toggle.closest("li").children("ul");
+            $children.slideToggle(100);
+            $toggle.toggleClass("expanded");
+        });
+    });
+</script>
+<style>
+    .category-checkbox-tree ul {
+        list-style:none;
+    }
+    .category-checkbox-tree ul.child {
+        display:none;
+        padding-top: 5px;
+        margin-left:23px;
+        padding-left:0;
+    }
+    .category-checkbox-tree .node {
+        position:relative;
+        display:inline-block;
+        margin-right:7px;
+        width:14px;
+        height:14px;
+    }
+    .category-checkbox-tree .node.category-toggle {
+        text-decoration: none;
+        margin-right:5px;
+        border:1px solid #ccc;
+        letter-spacing: 0px;
+        text-align:center;
+        line-height:13px;
+        font-size:12px;
+        top:-1px;
+    }
+    .category-checkbox-tree label {
+        width: calc(100% - 30px);
+        display: inline-block;
+        padding-left: 2px;
+    }
+    .category-checkbox-tree label:has(>input[type="checkbox"]:checked) {
+        background-color: #ddeeff;
+    }
+</style>

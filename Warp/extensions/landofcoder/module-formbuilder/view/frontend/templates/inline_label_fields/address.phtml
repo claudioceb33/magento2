@@ -1,0 +1,288 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helper     = $this->helper(Fields::class);
+$helperData = $this->helper(Data::class);
+$form       = $block->getForm();
+$formData  = $this->getData('form_data');
+$field      = $this->getData('field_data');
+$fieldType = $field['field_type'];
+$label      = $block->filterMessage($field['label']);
+$options    = $field['field_options'];
+$required   = $field['required'];
+$frameWorkCss   = '';
+if (isset($field['frame_work_css'])) {
+    $frameWorkCss      = $field['frame_work_css'];
+}
+$showAddress     = $field['show_address'] ?? 1;
+$showCity        = $field['show_city'] ?? 1;
+$showState       = $field['show_state'] ?? 1;
+$showZipcode     = $field['show_zipcode'] ?? 1;
+$showCountry     = $field['show_country'] ?? 1;
+$addressPlaceholder     = $field['address_placeholder'] ?? '';
+$cityPlaceholder     = $field['city_placeholder'] ?? '';
+$statePlaceholder     = $field['state_placeholder'] ?? '';
+$zipcodePlaceholder     = $field['zipcode_placeholder'] ?? '';
+$countryPlaceholder     = $field['country_placeholder'] ?? '';
+$cid         = $helperData->getFieldId($field);
+$fieldName       = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$availableFields = $helper->getAvailableFields();
+$fieldValidate   = $availableFields[$fieldType] ?? '';
+$validates        = $fieldValidate;
+$fieldHelp       = isset($options['description']) ? $block->filterMessage($options['description']) : '';
+$inlineCss        = $field['inline_css'] ?? '';
+
+if ($fieldValidate && is_array($fieldValidate)) {
+    $validates = implode(" ", $fieldValidate);
+}
+$scopeHelper = $this->helper(\Magento\Directory\Helper\Data::class);
+$countries = $scopeHelper->getCountryCollection()->toOptionArray(false);
+
+$onchange = '';
+if ($showCountry == 1 && $showState == 1) {
+    $onchange = 'onChange="getState(this.value);"';
+}
+$colorLabel          = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$colorText           = isset($options['color_text']) ? 'color:'.$options['color_text'].';' : '';
+$colorDescription    = isset($options['color_description']) ? 'color:'.$options['color_description'].';' : '';
+$backgroundColor     = isset($options['background_color']) ? 'background-color:'.$options['background_color'].';' : '';
+$fontSize            = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle           = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight          = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+$style = $fontSize . $fontStyle . $fontWeight . $colorLabel;
+
+$labelCol = 12;
+if (isset($field['fieldcol']) && $field['fieldcol']) {
+    if ((int)$field['fieldcol'] < 12) {
+        $labelCol = 12 - (int)$field['fieldcol'];
+    }
+}
+if ($frameWorkCss != 'foundation') {
+    ?>
+    <div class="subtemplate-wrapper" style="<?= $inlineCss ?>">
+        <div class="row">
+            <?php if ($label && $label != '') { ?>
+            <div class="input-box-label <?= 'col-sm-'.$labelCol; ?>">
+                <label for="<?= $fieldId; ?>" class="<?= (1 == $required) ? 'required' : ''; ?>" style="<?= $style ?>"><?= __($label); ?><?= (1 == $required) ? '<em>*</em>' : '';?></label>
+            </div>
+            <?php } ?>
+            <div class="input-box <?= isset($field['fieldcol']) ? 'col-sm-'.$field['fieldcol'] : 'col-sm-12'; ?>">
+                <input type="hidden" name="<?= $fieldName; ?>" value="<?= ($formData && $formData[$fieldName]) ? $formData[$fieldName] : ''; ?>" id="<?= $fieldId; ?>"/>
+
+                <?php if ($showAddress == 1): ?>
+                    <div class="row">
+                        <div class="input-line col-sm-12">
+                            <div class="street">
+                                <input type="text" name="<?= $fieldName.'_street'; ?>" id="<?= $fieldId.'_street';?>" class="input-text <?= (1 == $required) ? 'required-entry' : ''; ?>" value="<?= ($formData && isset($formData[$fieldName.'_street'])) ? $formData[$fieldName.'_street'] : ''; ?>"<?php if ($addressPlaceholder) { ?> placeholder="<?= $addressPlaceholder; ?>"<?php } ?>/>
+                                <label for="<?= $fieldId.'_street'; ?>"><?=$block->escapeHtml($block->escapeHtml(__('Address'))); ?></label>
+                            </div>
+                        </div>
+
+                    </div>
+                <?php endif; ?>
+
+
+                <?php if ($showCity == 1 || $showState == 1): ?>
+                    <div class="row">
+                        <div class="input-line">
+                            <?php if ($showCity == 1): ?>
+                                <div class="city col-sm-6">
+                                    <input type="text" name="<?= $fieldName.'_city';?>" id="<?= $fieldId.'_city';?>" class="input-text" value="<?= ($formData && isset($formData[$fieldName.'_city'])) ? $formData[$fieldName.'_city'] : ''; ?>"<?php if ($cityPlaceholder) { ?> placeholder="<?= $cityPlaceholder; ?>"<?php } ?>/>
+                                    <label for="<?= $fieldId.'_city'; ?>"><?= $block->escapeHtml($block->escapeHtml(__('City'))); ?></label>
+                                </div>
+                            <?php endif; ?>
+                            <?php if ($showState == 1): ?>
+                                <div class="state col-sm-6" id="<?= 'state_'.$fieldId;?>">
+                                    <input type="text" name="<?= $fieldName.'_state';?>" id="<?= $fieldId.'_state';?>" class="input-text validate-state" value="<?= ($formData && isset($formData[$fieldName.'_state'])) ? $formData[$fieldName.'_state'] : ''; ?>"<?php if ($statePlaceholder) { ?> placeholder="<?= $statePlaceholder; ?>"<?php } ?>/>
+                                    <label for="<?= $fieldId.'_state'; ?>"><?= $block->escapeHtml(__('State / Province / Region'));?></label>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($showZipcode == 1 || $showCountry == 1): ?>
+                    <div class="row">
+                        <div class="input-line">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <?php if ($showZipcode == 1): ?>
+                                        <div class="zipcode col-sm-6">
+                                            <input type="text" name="<?= $fieldName.'_zipcode'; ?>" id="<?= $fieldId.'_zipcode';?>" class="input-text validate-zip-international" value="<?= ($formData && isset($formData[$fieldName.'_zipcode'])) ? $formData[$fieldName.'_zipcode'] : ''; ?>"<?php if ($zipcodePlaceholder) { ?> placeholder="<?= $zipcodePlaceholder; ?>"<?php } ?>/>
+                                            <label for="<?= $fieldId.'_zipcode'; ?>"><?=$block->escapeHtml(__('Zipcode')); ?></label>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if ($showCountry == 1): ?>
+                                        <div class="country col-sm-6">
+                                            <?php if (count($countries) > 0) { ?>
+                                            <select name="<?= $fieldName.'_country'; ?>" id="<?= $fieldId.'_country'; ?>" class="<?= (1 == $required) ? 'required-entry' : ''; ?>" <?= $onchange; ?>>
+                                                <option value=""><?= $block->escapeHtml(__('-- Please Select --')); ?></option>
+                                                <?php foreach ($countries as $_country) {  ?>
+                                                <option value="<?= $_country['label']; ?>" <?= ($formData && isset($formData[$fieldName.'_country'])) ? ' selected="selected"' : ''; ?>><?= $_country['label']; ?></option>
+                                                <?php } ?>
+                                            </select>
+                                            <?php } else { ?>
+                                            <input type="text" name="<?= $fieldName.'_country'; ?>" value="<?= ($formData && isset($formData[$fieldName.'_country'])) ? $formData[$fieldName.'_country'] : ''; ?>" id="<?= $fieldId.'_country';?>" class="input-text"<?php if ($countryPlaceholder) { ?> placeholder="<?= $countryPlaceholder; ?>"<?php } ?>/>
+                                            <?php }
+                                            ?>
+                                            <label for="<?= $fieldId.'_country';?>"><?= $block->escapeHtml(__('Country')); ?></label>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($fieldHelp) { ?>
+                <span class="help-block"><?= $fieldHelp ?></span>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    <?php } else { ?>
+    <div class="subtemplate-wrapper" style="<?= $inlineCss ?>">
+            <div class="row">
+                <?php if ($label && $label != '') { ?>
+                <div class="input-box-label columns <?= 'medium-'.$labelCol; ?>">
+                    <label for="<?= $fieldId; ?>" class="<?= (1 == $required) ? 'required' : ''; ?>" style="<?= $style ?>"><?= __($label); ?><?= (1 == $required) ? '<em>*</em>' : '';?>
+                </div>
+                <?php } ?>
+                <div class="input-box columns <?= isset($field['fieldcol']) ? 'medium-'.$field['fieldcol'] : 'medium-12'; ?>">
+                    <input type="hidden" name="<?= $fieldName; ?>" value="<?= ($formData && $formData[$fieldName]) ? $formData[$fieldName] : ''; ?>" id="<?= $fieldId; ?>"/>
+
+                    <?php if ($showAddress == 1): ?>
+                        <div class="row">
+                            <div class="input-line columns medium-12">
+                                <div class="street">
+                                    <label for="<?= $fieldName.'_street'; ?>">
+                                        <input type="text" name="<?= $fieldName.'_street'; ?>" id="<?= $fieldId.'_street';?>" class="input-text <?= (1 == $required) ? 'required-entry' : ''; ?>" value="<?= ($formData && isset($formData[$fieldName.'_street'])) ? $formData[$fieldName.'_street'] : ''; ?>"/>
+                                        <?=$block->escapeHtml(__('Address')); ?>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="input-line columns medium-12">
+                                <div class="street">
+                                    <label for="<?= $fieldId.'_street2'; ?>">
+                                        <input type="text" name="<?= $fieldName.'_street2'; ?>" id="<?= $fieldId.'_street2';?>" class="input-text <?= (1 == $required) ? 'required-entry' : ''; ?>" value="<?= ($formData && isset($formData[$fieldName.'_street2'])) ? $formData[$fieldName.'_street2'] : ''; ?>"/>
+                                        <?= $block->escapeHtml(__('Address 2')); ?>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                    <?php endif; ?>
+
+
+                    <?php if ($showCity == 1 || $showState == 1): ?>
+                        <div class="row">
+                            <div class="input-line">
+                                <?php if ($showCity == 1): ?>
+                                    <div class="city columns medium-6">
+                                        <label for="<?= $fieldId.'_city'; ?>">
+                                            <input type="text" name="<?= $fieldName.'_city';?>" id="<?= $fieldId.'_city';?>" class="input-text" value="<?= ($formData && isset($formData[$fieldName.'_city'])) ? $formData[$fieldName.'_city'] : ''; ?>"/>
+                                            <?= $block->escapeHtml(__('City')); ?>
+                                        </label>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($showState == 1): ?>
+                                    <div class="state columns medium-6" id="<?= 'state_'.$fieldId;?>">
+                                        <label for="<?= $fieldId.'_state'; ?>">
+                                            <input type="text" name="<?= $fieldName.'_state';?>" id="<?= $fieldId.'_state';?>" class="input-text validate-state" value="<?= ($formData && isset($formData[$fieldName.'_state'])) ? $formData[$fieldName.'_state'] : ''; ?>"/>
+                                            <?= $block->escapeHtml(__('State / Province / Region'));?>
+                                        </label>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($showZipcode == 1 || $showCountry == 1): ?>
+                        <div class="row">
+                            <div class="input-line">
+                                <div class="columns medium-12">
+                                    <div class="row">
+                                        <?php if ($showZipcode == 1): ?>
+                                            <div class="zipcode columns medium-6">
+                                                <label for="<?= $fieldId.'_zipcode'; ?>">
+                                                    <input type="text" name="<?= $fieldName.'_zipcode'; ?>" id="<?= $fieldId.'_zipcode';?>" class="input-text validate-zip-international" value="<?= ($formData && isset($formData[$fieldName.'_zipcode'])) ? $formData[$fieldName.'_zipcode'] : ''; ?>"/>
+                                                    <?= $block->escapeHtml(__('Zipcode')); ?>
+                                                </label>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php if ($showCountry == 1): ?>
+                                            <div class="country columns medium-6">
+                                                <?php if (count($countries) > 0) { ?>
+                                                <select name="<?= $fieldName.'_country'; ?>" id="<?= $fieldId.'_country'; ?>" class="<?= (1 == $required) ? 'required-entry' : ''; ?>" <?= $onchange; ?>>
+                                                    <option value=""><?= $block->escapeHtml(__('-- Please Select --')); ?></option>
+                                                    <?php foreach ($countries as $_country) {  ?>
+                                                    <option value="<?= $_country['label']; ?>" <?= ($formData && isset($formData[$fieldName.'_country'])) ? ' selected="selected"' : ''; ?>><?= $_country['label']; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                                <?php } else { ?>
+                                                <label for="<?= $fieldId.'_country';?>">
+                                                    <input type="text" name="<?= $fieldName.'_country'; ?>" value="<?= ($formData && isset($formData[$fieldName.'_country'])) ? $formData[$fieldName.'_country'] : ''; ?>" id="<?= $fieldId.'_country';?>" class="input-text"/>
+                                                    <?php }
+                                                ?>
+                                                    <?= $block->escapeHtml(__('Country')); ?>
+                                                </label>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($fieldHelp) { ?>
+                    <span class="help-block"><?= $fieldHelp ?></span>
+                    <?php } ?>
+                </div>
+            </div>
+        </label>
+    </div>
+
+    <?php } ?>
+    <?php if ($showCountry == 1 && $showState == 1) { ?>
+    <script type="text/javascript">
+        function getState(val) {
+            const ajaxurl = '<?= $block->escapeUrl($this->getUrl('formbuilder/form/state')); ?>';
+            jQuery('.formbuilder-loading').addClass('ajax-loading');
+            jQuery.ajax({
+                type: "POST",
+                url: ajaxurl,
+                dataType: 'json',
+                data:'country_id='+val+'&field_name=<?= $fieldId.'_state';?>',
+                success: function(data){
+                    jQuery("#<?= 'state_'.$fieldId;?>").html(data);
+                    jQuery('.formbuilder-loading').removeClass('ajax-loading');
+                }
+            });
+        }
+    </script>
+    <?php } ?>

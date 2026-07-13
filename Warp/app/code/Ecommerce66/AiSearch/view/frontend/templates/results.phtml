@@ -1,0 +1,80 @@
+<?php
+$items = $block->getAiItems();
+$msg   = $block->getMessage();
+$total = $block->getAiTotal();
+$ms    = $block->getAiTimeMs();
+$sugs  = $block->getAiSuggestions();
+?>
+<div class="e66-aisearch-results">
+    <h2><?= $block->escapeHtml($block->getTitle()) ?></h2>
+
+    <?php if ($total || $ms): ?>
+        <div class="e66-ai-meta">
+            <?php if ($total): ?><span><?= $block->escapeHtml(__('Total: %1', $total)) ?></span><?php endif; ?>
+            <?php if ($ms): ?><span style="margin-left:10px;"><?= $block->escapeHtml(__('Time: %1 ms', $ms)) ?></span><?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($sugs): ?>
+        <div class="e66-ai-suggestions" style="margin:6px 0;">
+            <strong><?= $block->escapeHtml(__('Related suggestions:')) ?></strong>
+            <?php foreach ($sugs as $sg): ?>
+                <a href="<?= $block->escapeUrl($block->getUrl('catalogsearch/result', ['q' => $sg])) ?>"
+                   style="margin-right:6px;">
+                    <?= $block->escapeHtml($sg) ?>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+
+    <?php if ($msg): ?>
+        <div class="message message-error"><?= $block->escapeHtml($msg) ?></div>
+    <?php endif; ?>
+
+    <?php if (!empty($items)): ?>
+        <ol class="products list items product-items e66-ai-items" style="margin-top: 10px;">
+            <?php foreach ($items as $i => $row): ?>
+                <?php
+                // Mapeo exacto del contrato
+                $title = (string)($row['title'] ?? '');
+                $sku   = (string)($row['sku'] ?? '');
+                $id    = (string)($row['id'] ?? '');
+                $brand = (string)($row['brand'] ?? '');
+                $desc  = (string)($row['description'] ?? '');
+                $sim   = $row['similarity_percent'] ?? null;
+
+                // URL rápida y segura: redirigimos a la página de resultados con la misma query + sku
+                $url = $block->getUrl('catalogsearch/result', ['q' => $title !== '' ? $title : $sku]);
+                ?>
+                <li class="item product product-item">
+                    <div class="product-item-info">
+                        <div class="product details product-item-details">
+                            <strong class="product name product-item-name">
+                                <a class="product-item-link" href="<?= $block->escapeUrl($url) ?>">
+                                    <?= $block->escapeHtml($title ?: $sku) ?>
+                                </a>
+                            </strong>
+                            <div class="e66-ai-excerpt">
+                                <?php if ($brand !== ''): ?>
+                                    <small><?= $block->escapeHtml(__('Brand: %1', $brand)) ?></small>
+                                <?php endif; ?>
+                                <?php if ($sim !== null): ?>
+                                    <small style="margin-left:10px;">
+                                        <?= $block->escapeHtml(__('Match: %1%%', (int)$sim)) ?>
+                                    </small>
+                                <?php endif; ?>
+                            </div>
+                            <?php if ($desc !== ''): ?>
+                                <div class="product description" style="margin-top:4px;">
+                                    <span><?= $block->escapeHtml($desc) ?></span>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    <?php else: ?>
+        <div class="message message-notice"><?= $block->escapeHtml(__('No AI results.')) ?></div>
+    <?php endif; ?>
+</div>

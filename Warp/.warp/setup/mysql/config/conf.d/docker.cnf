@@ -1,0 +1,5 @@
+[mysqld]
+skip-host-cache
+skip-name-resolve
+datadir = /var/lib/mysql
+secure-file-priv = ""

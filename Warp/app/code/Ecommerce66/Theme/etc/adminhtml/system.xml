@@ -1,0 +1,56 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="theme66" translate="label" sortOrder="999" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Settings</label>
+            <tab>e66</tab>
+            <resource>Ecommerce66_Theme::config</resource>
+            <group id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header Settings</label>
+                <field id="nav_sticky" type="select" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sticky navigation</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="nav_type" type="select" translate="label" sortOrder="105" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Navigation type</label>
+                    <comment/>
+                    <source_model>Ecommerce66\Theme\Model\Config\Source\NavType</source_model>
+                </field>
+                <field id="nav_vertical_label" type="text" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Opener button label</label>
+                    <comment>Empty for no label.</comment>
+                    <depends>
+                        <field id="theme66/header/nav_type">vertical</field>
+                    </depends>
+                </field>
+                <field id="nav_vertical_links" translate="label" sortOrder="115" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Navigation links</label>
+                    <frontend_model>Ecommerce66\Theme\Block\Adminhtml\Form\Field\NavigationLinks</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <depends>
+                        <field id="theme66/header/nav_type">vertical</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="product_item" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Items</label>
+                <field id="shipping_labels" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipping labels in product box</label>
+                    <frontend_model>Ecommerce66\Theme\Block\Adminhtml\Form\Field\AmountLabels</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>Product price >= min amount</comment>
+                    <config_path>theme66/settings/shipping_labels</config_path>
+                </field>
+                <field id="payment_labels" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Payment labels in product box</label>
+                    <frontend_model>Ecommerce66\Theme\Block\Adminhtml\Form\Field\AmountLabels</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>Product price >= min amount</comment>
+                    <config_path>theme66/settings/payment_labels</config_path>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

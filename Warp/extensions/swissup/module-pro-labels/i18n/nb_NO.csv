@@ -1,0 +1,76 @@
+"Product Labels",Produktetiketter
+"Add New Label","Legg til ny etikett"
+"Save Label","Lagre etikett"
+"Delete Label","Slett etikett"
+"Edit Label '%1'","Rediger etikett %1"
+"New Label","Ny etikett"
+Settings,Innstillinger
+Position,Posisjon
+Top-Left,"Øverst til venstre"
+Top-Center,Topp-sentrum
+Top-Right,"Øverst til høyre"
+Middle-Left,Midt-venstre
+Middle-Center,Midt-sentrum
+Middle-Right,Midt-Høyre
+Bottom-Left,"Nederst til venstre"
+Bottom-Center,Nederst-sentrum
+Bottom-Right,"Nederst til høyre"
+Content,Innhold
+"Label Text",Etiketttekst
+"Custom Css Label","Egendefinert css-etikett"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Css Stil bare. Eksempel: farge: #fff; tekst-skygge: 0 1px 0 rgba (0,0,0,0.3); bredde: 60px; høyde: 60px;bakgrunn:#ff7800; grenseradius:50%;"
+"Label Custom Url","Egendefinert url-adresse for etikett"
+"Round Method","Runde metode"
+Math,Matematikk
+Ceil,"Ceil (andre betydninger)"
+Floor,Gulvet
+"Round Value","Rund verdi"
+"Labels Gallery","Etiketter Galleri"
+"Label Image",Etikettbilde
+"Category Label","Kategori Etikett"
+"Conditions (don't add conditions if label is applied to all products)","Betingelser (ikke legg til betingelser hvis etiketten brukes på alle produkter)"
+"Indexed Products","Indekserte produkter"
+"Attribute Set",Attributtsett
+"Product Label",Produktetikett
+"Label Gallery",Etikettgalleri
+"We couldn't find any labels","Vi kunne ikke finne deg fort nok."
+"Labels have been applied.","Etiketter er brukt."
+"Label has been applied.","Etiketten er brukt."
+"Label was deleted.","Etiketten ble slettet."
+"Can't find a label to delete.","Finner ikke en etikett å slette."
+"Label was disabled.","Etiketten ble deaktivert."
+"Can't find a label to disable.","Finner ikke en etikett å deaktivere."
+ProLabels,ProEtiketter
+"Manage Labels","Behandle etiketter"
+"This label no longer exists.","Denne etiketten finnes ikke lenger."
+"Edit Label","Rediger etikett"
+"Label was enabled.","Etiketten ble aktivert."
+"Can't find a label to enable.","Finner ikke en etikett som skal aktiveres."
+"Label has been saved.","Etiketten er lagret."
+"Something went wrong while saving the label.","Noe gikk galt mens du lagrer etiketten."
+"up to ","opptil "
+Edit,Redigere
+"All Store Views","Alle butikkvisninger"
+"Click here or drag and drop to add images.","Klikk her eller dra og slipp for å legge til bilder."
+Swissup,"Swissup (andre er i usa)"
+"jQuery Selector For Base Image Wrapper","jQuery-velger for basisbildewrapper"
+"jQuery Selector For Content Labels Container","jQuery velger for innholdsetiketter beholder"
+"On Sale","På salg"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","SALG etiketter er den kostnadseffektive måten å markere butikksalg og tiltrekke besøkende oppmerksomhet. De vises på rabatterte og on-sale produkter. Ved hjelp av på salgsetiketter får du kundene oppmerksomhet til kampanjeelementene."
+"Product Page",Produktside
+Image,Bildet
+"Custom Label","Egendefinert etikett"
+"Category Page",Kategori-side
+"Is New","Er ny"
+"New Labels are used for the presentation of new items at your store.","Nye etiketter brukes til presentasjon av nye elementer i butikken."
+"In Stock","På lager"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","I Lager etiketter brukes til å vise lave lagerelementer. Ved hjelp av på lager og ut av lager etiketter, fokuserer du kundenes oppmerksomhet på begrenset tilgjengelighet av produkter."
+"Display if Stock is lower then","Vis om Lager er lavere,"
+"Out Of Stock",Utsolgt
+"Apply Labels","Bruke etiketter"
+"Product Image",Produktbilde
+"Product Position",Produktposisjon
+"Product Text",Produkttekst
+"Category Image","Kategori Bilde"
+"Category Position","Kategori Posisjon"
+"Category Text","Kategori Tekst"

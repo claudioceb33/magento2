@@ -1,0 +1,8 @@
+"Looks like Magento went into infinit loop... Product ID - %1. Image - %2","נראה שמדנטו נכנס. לinfinit לולאה מזהה מוצר-%1. תמונה-%2"
+"Misc. string in path of resized image","מחרוזת שונות בנתיב של תמונה שגודלה השתנה"
+"Use clear parameters for product images","שימוש בפרמטרים ברורים עבור תמונות מוצר"
+"Image Name","שם תמונה"
+"Product image template","תבנית תמונת מוצר"
+"Magento codes all resize parameters of image into hash string. Adds this hash to resized image path. With option below you can enable clear parameters presentation. Instead of ""ea013e3e574bd4924b1531f962e2c015"" you will get ""240x300"".","מחנטו קודי את כל הפרמטרים של גודל התמונה לתוך מחרוזת hash. הוספת קוד hash זה לנתיב תמונה שגודלו. באמצעות האפשרות שלהלן, באפשרותך לאפשר מצגת פרמטרים ברורים. במקום ""ea013e3e574bd4924b1531f962e2c015"" תקבל ""240x300""."
+"Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code=""attr_code""}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template.","Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code=""attr_code""}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template."
+"None of settings affects original images. Everything can be turned off easy and reverted to default Magento behaviour.","אף אחת מההגדרות אינה משפיעה על התמונות המקוריות. ניתן לכבות הכל בקלות ולהחזירה להתנהגות ברירת המחדל של המנטו."

@@ -1,0 +1,21 @@
+<?php
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ *
+ * @var \Magento\Catalog\Block\Product\View $block
+ */
+?>
+<?php if (!empty($block->getJsLayout())):?>
+    <?php $jsLayout = \Laminas\Json\Json::decode($block->getJsLayout(),true);?>
+    <?php foreach ($jsLayout as $layout):?>
+        <?php if (isset($layout['type']) && 'template' === $layout['type'] && isset($layout['data'])):?>
+            <?= $block->getLayout()->createBlock($layout['data']['type'])
+                      ->setDisplayType($layout['data']['name'])
+                      ->setTemplate($layout['data']['template'])->toHtml();?>
+        <?php else:?>
+            <div><?= /* @noEscape */ $layout['description']; ?></div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -1,0 +1,31 @@
+<?php
+/**
+ * @var $block \Ecommerce66\Brands\Block\Brand\Details
+ */
+$category = $block->getCurrentCategory();
+if (is_object($category)):
+    $brand = $block->getBrandByCategoryId($category->getId());
+    if ($brand->getId() && (bool)(int)$brand->getActive()):
+        $brandImg = $brand->getImage();
+        $brandMobImg = $brand->getMobileImage();
+        $brandDesc = $brand->getDescription();
+        if (!empty($brandImg) || !empty($brandMobImg) || !empty($brandDesc)):
+            ?>
+            <div class="brand-details brand-<?= /* @noEscape */ str_replace(' ', '-', strtolower($brand->getName())) ?>">
+                <div class="brand-image">
+                    <?php if (!empty($brandImg)): ?>
+                        <img class="desktop" src="<?= /* @noEscape */ $block->getMediaUrl() . $brandImg ?>" />
+                    <?php endif; ?>
+                    <?php if (!empty($brandMobImg)): ?>
+                        <img class="mobile" src="<?= /* @noEscape */ $block->getMediaUrl() . $brandMobImg ?>" />
+                    <?php endif; ?>
+                </div>
+                <?php if (!empty($brandDesc)): ?>
+                    <div class="brand-content">
+                        <?= /* @noEscape  */ $block->renderCms($brandDesc) ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

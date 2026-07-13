@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<fieldset name="general">
+		<field name="is_brand">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="required" xsi:type="boolean">false</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+					<item name="sortOrder" xsi:type="number">333</item>
+					<item name="label" xsi:type="string" translate="true">Is Brand</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="number">1</item>
+                        <item name="false" xsi:type="number">0</item>
+                    </item>
+				</item>
+			</argument>
+		</field>
+		<field name="related_brand">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Ecommerce66\Brands\Model\Category\Attribute\Source\RelatedBrand</item>
+				<item name="config" xsi:type="array">
+					<item name="required" xsi:type="boolean">false</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">false</item>
+					</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+					<item name="sortOrder" xsi:type="number">334</item>
+					<item name="dataType" xsi:type="string">string</item>
+					<item name="formElement" xsi:type="string">select</item>
+					<item name="label" xsi:type="string" translate="true">Related Brand</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+</form>

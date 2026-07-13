@@ -1,0 +1,52 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="brands" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Brands</label>
+            <tab>e66</tab>
+            <resource>Ecommerce66_Brands::config</resource>
+            <group id="settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Brands Settings</label>
+                <field id="show_slider_in_cms" type="select" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show slider in homepage</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_slider_in_plp" type="select" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show slider in product listing</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_slider_in_pdp" type="select" translate="label" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show slider in product view</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_slider_in_cart" type="select" translate="label" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show slider in cart page</label>
+                    <comment/>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_in_slider" type="multiselect" translate="label" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Active brands in slider</label>
+                    <comment>Select the brands to be shown above website footer.</comment>
+                    <source_model>Ecommerce66\Brands\Model\System\Attribute\Source\ActiveBrand</source_model>
+                </field>
+                <field id="slider_link_type" type="select" translate="label" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider link target</label>
+                    <comment>Choose between the brand landing page and a category page.</comment>
+                    <source_model>Ecommerce66\Brands\Model\System\Attribute\Source\LinkType</source_model>
+                </field>
+                <field id="slider_link_category" type="select" translate="label" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider link to category</label>
+                    <comment>See more target path.</comment>
+                    <source_model>Ecommerce66\Brands\Model\Category\Attribute\Source\EnabledLevel1</source_model>
+                    <depends>
+                        <field id="brands/settings/slider_link_type">category</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

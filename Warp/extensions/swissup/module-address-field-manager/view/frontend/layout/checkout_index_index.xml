@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Swissup\AddressFieldManager\Block\Init" name="afm.address-renderer">
+                <arguments>
+                    <argument name="mutable" xsi:type="boolean">true</argument>
+                    <argument name="selectors" xsi:type="array">
+                        <item name="0" xsi:type="string">.shipping-address-item</item>
+                        <item name="1" xsi:type="string">.shipping-information-content</item>
+                        <item name="2" xsi:type="string">.billing-address-details</item>
+                        <item name="3" xsi:type="string">.field-select-billing select</item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
+

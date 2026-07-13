@@ -1,0 +1,8 @@
+"Canonical URLs",正規URL
+"Enable canonical URL for category",カテゴリの正規URLを有効にする
+"Enable canonical URL for product",製品の正規URLを有効にする
+"Use parent product for canonical",正規の親製品を使用
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.",現在の製品が他の製品（構成可能、グループ化、またはバンドル）の一部である場合、親URLが現在の製品の正規として使用されます。
+"Allowed parent types",許可された親タイプ
+"CMS Pages",CMSページ
+"Enable canonical URL for CMS pages",CMSページの正規URLを有効にする

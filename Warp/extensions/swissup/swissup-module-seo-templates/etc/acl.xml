@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Swissup_Core::swissup">
+                    <resource id="Swissup_SeoCore::seocore">
+                        <resource id="Swissup_SeoTemplates::template_index" title="Metadata Templates" sortOrder="1321">
+                            <resource id="Swissup_SeoTemplates::template_save" title="Create/Edit Template" sortOrder="10" />
+                            <resource id="Swissup_SeoTemplates::template_delete" title="Delete Template" sortOrder="20" />
+                            <resource id="Swissup_SeoTemplates::template_generate" title="Generate Metadata" sortOrder="30" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Swissup_SeoCore::config">
+                                <resource id="Swissup_SeoTemplates::seotemplates_config" title="Metadata Templates" sortOrder="1321" />
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

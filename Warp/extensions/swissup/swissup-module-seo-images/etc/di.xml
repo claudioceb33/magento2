@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\SeoImages\Model\ResourceModel\Index">
+        <arguments>
+            <argument name="batchSize" xsi:type="number">200</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\View\Asset\Image">
+        <arguments>
+            <argument name="encryptor" xsi:type="object">Swissup\SeoImages\Model\Encryptor</argument>
+        </arguments>
+        <plugin name="seoImages" type="Swissup\SeoImages\Plugin\Model\View\Asset\Image" sortOrder="10" />
+    </type>
+    <type name="Magento\MediaStorage\Service\ImageResize">
+        <arguments>
+            <argument name="imageConfig" xsi:type="object">Swissup\SeoImages\Model\Product\Media\Config</argument>
+        </arguments>
+    </type>
+    <type name="Magento\MediaStorage\Service\ImageResize">
+        <plugin name="seoImages" type="Swissup\SeoImages\Plugin\Service\ImageResize" sortOrder="10" disabled="false" />
+    </type>
+</config>

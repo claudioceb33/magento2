@@ -1,0 +1,17 @@
+{
+    "name": "swissup/module-hreflang-import-export",
+    "description": "Manage hreflang links with Magento Import/Export",
+    "type": "magento2-module",
+    "version": "1.0.1",
+    "license": ["OSL-3.0"],
+    "require": {
+        "magento/module-import-export": ">=100.0",
+        "swissup/module-hreflang": "^1.6.1"
+    },
+    "autoload": {
+        "files": [ "registration.php" ],
+        "psr-4": {
+            "Swissup\\HreflangImportExport\\": ""
+        }
+    }
+}

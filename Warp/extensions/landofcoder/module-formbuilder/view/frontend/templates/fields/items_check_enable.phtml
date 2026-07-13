@@ -1,0 +1,63 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+/**
+ * Form Builder extension
+ *
+ * @category   Lof
+ * @package    Lof_Formbuilder
+ * @author     Landofcoder Dev Team <landofcoder@gmail.com>
+ */
+/* @var $this Items
+ *
+ */
+
+use Lof\Formbuilder\Block\Email\Items;
+
+?>
+<div style="border:1px solid #E0E0E0; padding:15px; background:#F9F9F9;">
+<table cellspacing="0" cellpadding="0" border="0" width="100%">
+    <?php $i = 0;
+foreach ($this->getCustomFormData() as $item): ?>
+        <?php if (isset($item['show_in_email']) && $item['show_in_email']) {
+            $i++;?>
+        <tr <?= (0 == $i % 2) ? ' style="background-color:#f2f2f2";' : '';?>>
+        <td width="30%" style="padding: 10px;">
+            <strong><?= $item['label']; ?></strong>
+        </td>
+        <td style="padding: 10px;">
+            <?php if (isset($item['image'])): ?>
+                <?= $item['image']; ?>
+        <?php endif; ?>
+            <?= $item['value']; ?></td>
+        </tr>
+        <?php } ?>
+    <?php endforeach ?>
+    <tr <?= (0 != count($this->getCustomFormData()) % 2) ? ' style="background-color:#f2f2f2";' : '';?>>
+         <td width="30%" style="padding: 10px;">
+            <strong><?=$block->escapeHtml(__('Submitted At')); ?></strong>
+        </td>
+        <td style="padding: 10px;">
+            <?= $block->formatDate($block->getCreationTime(), \IntlDateFormatter::MEDIUM); ?>
+        </td>
+    </tr>
+</table>
+</div>

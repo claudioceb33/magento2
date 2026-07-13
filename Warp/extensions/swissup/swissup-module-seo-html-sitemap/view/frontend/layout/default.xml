@@ -1,0 +1,15 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current"
+                ifconfig="seohtmlsitemap/general/enabled"
+                name="sitemap-link-footer">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Site Map</argument>
+                    <argument name="path" xsi:type="string">sitemap</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

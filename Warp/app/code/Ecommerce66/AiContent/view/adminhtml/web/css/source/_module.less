@@ -1,0 +1,205 @@
+// Import inline editor styles
+@import '_ai-content-inline.less';
+
+// AI Content Generator Buttons
+// Contemporary styling for AI generation buttons
+
+.ai-generate-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin: 10px 0;
+    
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    
+    // AI icon before text
+    &:before {
+        content: '✨';
+        font-size: 16px;
+        display: inline-block;
+        animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    // Hover state
+    &:hover {
+        background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        transform: translateY(-2px);
+    }
+    
+    // Active/pressed state
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+    }
+    
+    // Loading state
+    &.loading {
+        position: relative;
+        pointer-events: none;
+        opacity: 0.8;
+        
+        &:before {
+            content: '⏳';
+            animation: rotating 1s linear infinite;
+        }
+    }
+    
+    // Disabled state
+    &:disabled,
+    &[disabled] {
+        background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+        cursor: not-allowed;
+        opacity: 0.6;
+        box-shadow: none;
+        
+        &:hover {
+            transform: none;
+        }
+    }
+    
+    // Focus state for accessibility
+    &:focus {
+        outline: 2px solid #667eea;
+        outline-offset: 2px;
+    }
+}
+
+// Short description button variant (different color)
+.ai-generate-button-short-description {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 2px 8px rgba(240, 147, 251, 0.3);
+    
+    &:hover {
+        background: linear-gradient(135deg, #e082ea 0%, #e4465b 100%);
+        box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+    }
+    
+    &:active {
+        box-shadow: 0 2px 6px rgba(240, 147, 251, 0.3);
+    }
+}
+
+// Success feedback animation
+.ai-generate-success {
+    animation: successPulse 0.6s ease-out;
+}
+
+// Animations
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes successPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .ai-generate-button {
+        padding: 6px 12px;
+        font-size: 12px;
+        
+        &:before {
+            font-size: 14px;
+        }
+    }
+}
+
+// Integration with Magento admin fieldsets
+.admin__fieldset {
+    .ai-generate-button {
+        margin-top: 8px;
+        margin-bottom: 4px;
+    }
+}
+
+// For buttons in field-tooltip containers
+.field-tooltip {
+    .ai-generate-button {
+        margin-left: 8px;
+    }
+}
+
+// PageBuilder Preview Styles
+.ai-content-preview {
+    min-height: 100px;
+    padding: 20px;
+    border: 2px dashed #667eea;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        border-color: #764ba2;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+    }
+    
+    &.ai-has-content {
+        border-style: solid;
+        border-color: #22c55e;
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(34, 197, 94, 0.02) 100%);
+    }
+    
+    .ai-preview-icon {
+        flex-shrink: 0;
+        opacity: 0.7;
+    }
+    
+    .ai-preview-content {
+        flex: 1;
+        
+        .ai-preview-text {
+            color: #1f2937;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .ai-preview-placeholder {
+            color: #6b7280;
+            font-size: 13px;
+            font-style: italic;
+        }
+    }
+}

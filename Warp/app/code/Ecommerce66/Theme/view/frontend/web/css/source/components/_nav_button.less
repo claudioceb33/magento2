@@ -1,0 +1,86 @@
+
+.navigation.nav-button {
+    .categories {
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        font-weight: 600;
+        padding: 10px;
+        box-sizing: border-box;
+        text-decoration: none;
+        margin-right: 15px;
+        i {
+            margin-right: 7px;
+        }
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+    &.visible .categories{
+        background: #676667 !important;
+    }
+    .menu-link {
+        padding: 0 20px;
+    }
+    @media (min-width: 769px) {
+        background-color: #ffffff;
+        &> ul.list-wrapper {
+            display: none;
+        }
+        &.visible > ul.list-wrapper {
+            display: block;
+        }
+        ul.list-wrapper {
+            position: absolute;
+            background: transparent;
+            box-sizing: border-box;
+            //box-shadow: 1px 1px 5px #cccccc ;
+            min-height: 300px;
+            width: 100%;
+            li.level0 {
+                width: 100%;
+                position: initial;
+                background-color: #fff;
+                a.level-top {
+                    width: 33%;
+                    line-height: 37.4px;
+                    box-sizing: border-box;
+                }
+                &.active {
+                    a,
+                    a.level-top {
+                        border: none;
+                    }
+                }
+                .ui-menu-icon:after:hover {
+                    content: '\e608';
+                }
+                ul.level0 {
+                    top: 0 !important;
+                    left: 33% !important;
+                    box-shadow: none;
+                    border: none;
+                    width: 33%;
+                    min-height: 300px;
+                }
+                li.level1 {
+                    width: 100%;
+                    position: initial !important;
+                    ul.submenu {
+                        width: 100% !important;
+                        right: 0;
+                        top: 0 !important;
+                        left: 100% !important;
+                        min-height: 300px;
+                        box-shadow: none;
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

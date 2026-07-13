@@ -1,0 +1,99 @@
+<?php
+/** @var $block \Ecommerce66\Widgets\Block\Widget\Popup */
+
+?>
+<style>
+        .bg-overlay{
+            background-color: <?= /* @noEscape */ (!$block->getData('popup-overlaycolor')) ? '#00000070' : $block->getData('popup-overlaycolor') ?>;
+        }
+        .pop-up-block > div{
+            padding-top: <?= /* @noEscape */ ($block->getData('closeButton') == '1') ? '35px !important' : '0 !important' ?>;
+        }
+</style>
+
+<div class="popup-widget-66 bg-overlay" id="<?= /* @noEscape */ $block->getData('block_id'); ?>">
+    <div class="pop-up-block <?=  /* @noEscape */ $block->getData('animationType'); ?>"
+         style="background: <?= /* @noEscape */ (!$block->getData('popup-bgcolor')) ? '#FFFFFF' : $block->getData('popup-bgcolor'); ?>"
+    >
+        <span class="popup-close"
+            style="display: <?= /* @noEscape */ ($block->getData('closeButton') == '1') ? 'block' : 'none'; ?>">
+            <i class="fas fa-times"></i>
+        </span>
+        <?= /* @noEscape */ $block->getBlockContent();?>
+    </div>
+</div>
+
+<script>
+    require(['jquery'],function($){
+        $(document).ready(function () {
+            var timePopup = '<?= /* @noEscape */ (!$block->getData('timePopup')) ? 'perLoad' : $block->getData('timePopup')?>'
+            var popUpId = '<?= /* @noEscape */ $block->getData('block_id'); ?>'
+
+            function checkTimeShowPopup(popUpId, milisecondsPeriod) {
+                if (!localStorage.getItem('popLastTime-' + popUpId)) {
+                    var currentDate = new Date();
+                    localStorage.removeItem('popState-' + popUpId);
+                    localStorage.setItem('popLastTime-' + popUpId, currentDate.getTime());
+                    setTimeout(() => {
+                        $('#' + popUpId).addClass('active');
+                    }, <?= /* @noEscape */ (!$block->getData('animation-delay')) ? 1000 : $block->getData('animation-delay')?>);
+                } else {
+                    var lastDate = parseInt(localStorage.getItem('popLastTime-' + popUpId));
+                    currentDate = new Date();
+                    datesDiff = currentDate - lastDate;
+
+                    if (datesDiff >= milisecondsPeriod) {
+                        localStorage.removeItem('popState-' + popUpId);
+                        localStorage.setItem('popLastTime-' + popUpId, currentDate.getTime());
+
+                        setTimeout(() => {
+                            $('#' + popUpId).addClass('active');
+                        }, <?= /* @noEscape */ (!$block->getData('animation-delay')) ? 1000 : $block->getData('animation-delay')?>);
+                    }
+                }
+            }
+
+            function appearPopup(perTime, popUpId){
+                switch (perTime) {
+                    case 'perLoad':{
+                        localStorage.removeItem('popState-' + popUpId);
+                        localStorage.removeItem('popLastTime-' + popUpId);
+                        setTimeout(() => {
+                            $('#' + popUpId).addClass('active');
+                        }, <?= /* @noEscape */ (!$block->getData('animation-delay')) ? 1000 : $block->getData('animation-delay')?>);
+                        break;
+                    }
+                    case 'perDay':{
+                        checkTimeShowPopup(popUpId, 24 * 60 * 60 * 1000);
+                        break;
+                    }
+                    case 'perWeek':{
+                        checkTimeShowPopup(popUpId, 7 * 24 * 60 * 60 * 1000);
+                        break;
+                    }
+                    case 'justOnce':{
+                        if(localStorage.getItem('popState-' + popUpId) != 'shown'){
+                            setTimeout(() => {
+                                $('#' + popUpId).addClass('active');
+                            }, <?= /* @noEscape */ (!$block->getData('animation-delay')) ? 1000 : $block->getData('animation-delay')?>);
+                            localStorage.setItem('popState-' + popUpId,'shown');
+                        }
+                        break;
+                    }
+                }  
+            }
+
+            $('.bg-overlay').on('click',function(){
+                $(this).removeClass('active');
+            })
+            $('.pop-up-block .popup-close').on('click', function(){
+                $('.bg-overlay').removeClass('active');
+            })
+            $('.pop-up-block').on('click', function(e){
+                e.stopPropagation();
+            })
+            appearPopup(timePopup, popUpId);
+                  
+        })
+    });
+</script>

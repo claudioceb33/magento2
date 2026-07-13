@@ -1,0 +1,34 @@
+{
+    "swissup_seoimages": {
+        "column": {
+            "file_key": true,
+            "original_file": true,
+            "target_file": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "swissup_seoimages_params": {
+        "column": {
+            "params_id": true,
+            "params": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "swissup_seoimages_index": {
+        "column": {
+            "id": true,
+            "entity_id": true,
+            "file": true
+        },
+        "index": {
+            "SWISSUP_SEOIMAGES_INDEX_FILE": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

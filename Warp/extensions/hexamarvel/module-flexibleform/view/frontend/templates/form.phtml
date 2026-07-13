@@ -1,0 +1,315 @@
+<?php
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+
+?>
+<div class="hexaform-container">
+    <?php if ($block->formTopContent()): ?>
+        <fieldset class="fieldset">
+            <?= /*noEscape*/ $block->formTopContent() ?>
+        </fieldset>
+    <?php endif; ?>
+    <form class="form" action="<?= /*@noEscape*/ $block->getFormUrl() ;?>" method="post" enctype="multipart/form-data"  data-hasrequired="* Required Fields" data-mage-init='{"validation":{}}'>
+        <?php if ($block->getDefaultFieldsetFields()->getSize()):?>
+            <fieldset class="fieldset">
+                <?php foreach ($block->getDefaultFieldsetFields() as $defaultField): ?>
+                    <div class="field <?= /*@noEscape*/ $defaultField->getFieldClass(); ?> <?= /*@noEscape*/ ($defaultField->getIsRequired()) ? 'required' : ''; ?> layout-<?= /*@noEscape*/ $defaultField->getLayout(); ?>">
+                        <?php if ($defaultField->getFieldType() != 'terms' && $defaultField->getFieldType() != 'hidden'): ?>
+                            <label class="label" for="field_id_<?= /**/ $defaultField->getId();?>">
+                                <span><?= /*@noEscape*/ $defaultField->getTitle(); ?></span>
+                            </label>
+                            <?php if ($defaultField->getTooltip()): ?>
+                                <div class="tooltip-parent">
+                                    <div class="field-tooltip toggle">
+                                        <span class="field-tooltip-action action-help"
+                                              data-bind="mageInit: {'dropdown':{'activeClass': '_active'}}"
+                                              data-toggle="dropdown"
+                                              aria-haspopup="true"
+                                              aria-expanded="false">
+                                        </span>
+                                        <div class="field-tooltip-content" data-target="dropdown" aria-hidden="true">
+                                            <?= /*@noescape*/ $defaultField->getTooltip(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif;?>
+                        <?php endif; ?>
+                        <div class="control">
+                            <?= /*@noEscape*/ $block->getFieldHtml($defaultField); ?>
+
+                            <?php if ($defaultField->getFieldNote()): ?>
+                                <p class="field-note"><?= /*@noEscape*/ $defaultField->getFieldNote(); ?></p>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </fieldset>
+        <?php endif; ?>
+
+        <?php foreach ($block->getFieldSet() as $key => $fieldset): ?>
+            <fieldset class="fieldset <?= /*@noEscape*/ $fieldset->getClass(); ?>">
+                <legend class="legend"><span><?= /*noEscape*/ $fieldset->getTitle(); ?></span></legend>
+                    <?php if ($fieldset->getDescription()): ?>
+                        <div class="fieldset-description">
+                            <p><?= /*noEscape*/ $fieldset->getDescription(); ?></p>
+                        </div>
+                    <?php endif; ?>
+                    <?php foreach ($block->getFieldsetField($fieldset->getId()) as $fields): ?>
+                        <div class="field <?= /*@noEscape*/ $fields->getFieldClass(); ?> <?= /*@noEscape*/ ($fields->getIsRequired()) ? 'required' : ''; ?> layout-<?= /*@noEscape*/ $fields->getLayout(); ?>">
+                            <?php if ($fields->getFieldType() != 'terms' && $fields->getFieldType() != 'hidden'): ?>
+                                <label class="label" for="field_id_<?= /**/ $fields->getId();?>">
+                                    <span><?= /*@noEscape*/ $fields->getTitle(); ?></span>
+                                </label>
+                                <?php if ($fields->getTooltip()): ?>
+                                    <div class="tooltip-parent">
+                                        <div class="field-tooltip toggle">
+                                            <span class="field-tooltip-action action-help"
+                                                  data-bind="mageInit: {'dropdown':{'activeClass': '_active'}}"
+                                                  data-toggle="dropdown"
+                                                  aria-haspopup="true"
+                                                  aria-expanded="false">
+                                            </span>
+                                            <div class="field-tooltip-content" data-target="dropdown" aria-hidden="true">
+                                                <?= /*@noescape*/ $fields->getTooltip(); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endif;?>
+                            <?php endif;?>
+
+                            <div class="control">
+                                <?= /*@noEscape*/ $block->getFieldHtml($fields); ?>
+
+                                <?php if ($fields->getFieldNote()): ?>
+                                    <p class="field-note"><?= /*@noEscape*/ $fields->getFieldNote(); ?></p>
+                                <?php endif;?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+            </fieldset>
+        <?php endforeach;?>
+
+        <?php if ($block->isCaptchaEnabled()):?>
+            <?php $captchaType = $this->helper(\Hexamarvel\FlexibleForm\Helper\Data::class)->getConfig('hexaform/captcha_option/captcha_type'); ?>
+            <?php if ($captchaType == 'magento'): ?>
+                <?php echo $block->getChildHtml('form.additional.info'); ?>
+            <?php else: ?>
+                <?php $siteKey = $this->helper(\Hexamarvel\FlexibleForm\Helper\Data::class)->getConfig('hexaform/captcha_option/site_key'); ?>
+                <div class="g-recaptcha" data-sitekey="<?= /*@noEscape*/ $siteKey; ?>"></div>
+            <?php endif;?>
+        <?php endif;?>
+
+        <?php if ($block->buttonCanDisplay()): ?>
+            <div class="actions-toolbar">
+                <input type="hidden" name="form_id" id="form_id" value="<?= /*noEscape*/ $block->getForm()->getId(); ?>">
+                <div class="primary">
+                    <button type="submit" title="Submit" class="action save primary">
+                        <span><?= /*@noEscape*/ $block->getSubmitButton() ?></span>
+                    </button>
+                </div>
+            </div>
+        <?php endif; ?>
+
+    </form>
+    <?php if ($block->formBottomContent()): ?>
+        <fieldset class="fieldset">
+            <?= /*noEscape*/ $block->formBottomContent() ?>
+        </fieldset>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+    require(['jquery', 'mage/translate', 'mage/calendar'], function ($, $t) {
+        $('.datepicker').datepicker({
+            dateFormat: '<?= /*@noEscape*/ $block->getDateFormat(); ?>',
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            currentText: $t('Go Today'),
+            closeText: $t('Close'),
+            showWeek: true
+        });
+        $('.timepicker').datetimepicker({
+            timeFormat: 'HH:mm:ss',
+            showsDate: false,
+            showsTime: true,
+            timeOnly: true
+        });
+        $('.datetimepicker').datetimepicker({
+            dateFormat: '<?= /*@noEscape*/ $block->getDateFormat(); ?>',
+            timeFormat: 'HH:mm:ss',
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            currentText: $t('Go Today'),
+            closeText: $t('Close'),
+            showsTime: true,
+            showWeek: true
+        });
+
+    });
+</script>
+<script type="text/x-magento-init">
+    {
+        ".country": {
+            "regionUpdater": {
+                "optionalRegionAllowed": <?= /* @noEscape */ 'true' ?>,
+                "regionListId": ".region_select",
+                "regionInputId": ".region_input",
+                "postcodeId": "#zip",
+                "form": "#form-validate",
+                "regionJson": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getRegionJson() ?>,
+                "defaultRegion": "",
+                "countriesWithOptionalZip": <?= /* @noEscape */ $this->helper(\Magento\Directory\Helper\Data::class)->getCountriesWithOptionalZip(true) ?>
+            }
+        }
+    }
+</script>
+
+<script>
+    <?php $googleApiKey = $this->helper(\Hexamarvel\FlexibleForm\Helper\Data::class)->getConfig('hexaform/general/map_key'); ?>
+    window.valuesConfig = '<?= /* @noEscape */  $this->helper(\Hexamarvel\FlexibleForm\Helper\Data::class)->getConfig('hexaform/general/map_key');?>';
+</script>
+<?php if ($googleApiKey): ?>
+    <script type="text/javascript">
+        require([
+        'jquery',
+        'uiComponent',
+        'Hexamarvel_FlexibleForm/js/google_maps_loader'
+        ], function (
+            $,
+            Component,
+            GoogleMapsLoader
+        ) {
+
+            var componentForm = {
+                subpremise: 'short_name',
+                street_number: 'short_name',
+                route: 'long_name',
+                locality: 'long_name',
+                administrative_area_level_1: 'short_name',
+                country: 'short_name',
+                postal_code: 'short_name',
+                postal_code_suffix: 'short_name',
+                postal_town: 'short_name',
+                sublocality_level_1: 'short_name'
+            };
+
+            var lookupElement = {
+                street_number: 'street_1',
+                route: 'street_2',
+                locality: 'city',
+                administrative_area_level_1: 'region',
+                country: 'country_id',
+                postal_code: 'postcode'
+            };
+
+            var googleMapError = false;
+            window.gm_authFailure = function() {
+                googleMapError = true;
+            };
+
+
+            GoogleMapsLoader.done(function () {
+
+                var geocoder = new google.maps.Geocoder();
+                setTimeout(function () {
+                    if(!googleMapError) {
+                         var street = $("input[title|='Address']");
+                        street.each(function () {
+                            var element = this;
+                            var countryCode = '<?= /* @noEscape */ $this->helper(\Hexamarvel\FlexibleForm\Helper\Data::class)->getConfig('general/country/default'); ?>';
+
+                            
+
+                            autocomplete = new google.maps.places.Autocomplete(
+                                /** @type {!HTMLInputElement} */(this), {
+                                    types: ['geocode'],
+                                    componentRestrictions: {country: countryCode}
+                            });
+                            autocomplete.addListener('place_changed', fillInAddress);
+
+                        });                   
+                    }
+                }, 3000);
+
+            }).fail(function () {
+                console.error("ERROR: Google maps library failed to load");
+            });
+
+            var fillInAddress = function () {
+                var place = autocomplete.getPlace();
+                console.log(place);
+
+                var street = [];
+                var region  = '';
+                var streetNumber = '';
+                var city = '';
+                var postcode = '';
+                var postcodeSuffix = '';
+
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (componentForm[addressType]) {
+                        var value = place.address_components[i][componentForm[addressType]];
+                        if (addressType == 'subpremise') {
+                            streetNumber = value + '/';
+                        } else if (addressType == 'street_number') {
+                            streetNumber = streetNumber + value;
+                        } else if (addressType == 'route') {
+                            street[1] = value;
+                        } else if (addressType == 'administrative_area_level_1') {
+                            region = value;
+                        } else if (addressType == 'sublocality_level_1') {
+                            city = value;
+                        } else if (addressType == 'postal_town') {
+                            city = value;
+                        } else if (addressType == 'locality' && city == '') {
+                            city = value;
+                        } else if (addressType == 'postal_code') {
+                            postcode = value;
+                            var thisDomID = "input[title|='Postcode']";
+                            $(thisDomID).val(postcode + postcodeSuffix);
+                            $(thisDomID).trigger('change');
+                        }
+                    }
+                }
+
+                if (street.length > 0) {
+                    street[0] = streetNumber;
+                    var streetString = street.join(' ');
+                    $("input[title|='Address']").val(streetString);
+                    $("input[title|='Address']").trigger('change');
+                    if (city) {
+                        $("input[title|='Address']").val(streetString + ', ' + city);
+                        $("input[title|='Address']").trigger('change');
+                    }
+                } else if (city) {
+                    $("input[title|='Address']").val(city);
+                    $("input[title|='Address']").trigger('change');
+                }
+
+                if (region != '') {
+                    var regionDomId = "select[title|='State']";
+                    var regionInputId = "input[title|='State']";
+                    if ($(regionDomId)) {
+                        //search for and select region using text
+                        $(regionDomId +' option')
+                            .filter(function () {
+                                return $.trim($(this).text()) == region;
+                            })
+                            .attr('selected',true);
+                        $(regionDomId).trigger('change');
+                    } 
+                    if ($(regionInputId)) {
+                        $(regionInputId).val(region);
+                        $(regionInputId).trigger('change');
+                    }                
+                }
+
+            }
+        });
+    </script>
+<?php endif; ?>

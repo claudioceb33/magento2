@@ -1,0 +1,32 @@
+"Go to Home Page",ホームページへ
+"No structured data",構造化データなし
+"Microdata (implemented by Magento)",マイクロデータ(マジェントが実装)
+JSON-LD,JSON-LD
+"Product not found.",製品が見つかりません。
+"Rich Snippets","リッチ スニペット"
+"Product Page structured data format",製品ページの構造化データ形式
+"Minify structured data",構造化データの縮小
+Breadcrumbs,パン粉
+"Product Structured Data",製品構造化データ
+"Settings in this section works only with structured data format JSON-LD.","このセクションの設定は、構造化データ形式の JSON-LD でのみ機能します。"
+"Product Brand Attribute",製品ブランド属性
+"When 'None' selected - brand is disabled in structured data.","[なし] を選択した場合は、構造化データでブランドが無効になります。"
+"Product Condition Attribute",製品条件属性
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","すべての属性の種類は""ドロップダウン""です。[なし] を選択した場合は、製品の条件が常に新しい状態になります。"
+"New Option",新しいオプション
+"Value from Admin label of attribute option. Leave empty to ignore.",属性オプションの管理ラベルからの値。無視するには空のままにします。
+"Used Option",使用済みオプション
+"Damaged Option",破損したオプション
+"Refurbished Option",改装済みのオプション
+Organization,組織
+"Organization Name",組織名
+Street,通り
+Locality,地域
+Region,地域
+"Postal code",郵便番号
+Url,Url
+"Social Links",ソーシャルリンク
+"Site Name",サイト名
+"Site Url","サイト URL"
+"Price Valid Until",価格の有効期間
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","価格が利用できなくなる日付（<a href=""https://en.wikipedia.org/wiki/ISO_8601""> ISO 8601 </a>日付形式）。 特別価格なしですべての製品に適用されます。 特別価格に有効期限がある場合、それが使用されます。<br /> <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties""> Googleガイド</a>を確認してください >詳細については、"

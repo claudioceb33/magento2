@@ -1,0 +1,8 @@
+<div class="field date <?= $block->escapeHtmlAttr($block->getAdditionalClasses()) ?>">
+    <label class="label" for="<?= $block->getHtmlId() ?>">
+        <span><?= $block->escapeHtml($block->getLabel()) ?></span>
+    </label>
+    <div class="control">
+        <?= $block->getDateField()->toHtml() ?>
+    </div>
+</div>

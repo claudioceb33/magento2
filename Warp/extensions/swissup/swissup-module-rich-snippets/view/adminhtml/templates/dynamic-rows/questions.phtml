@@ -1,0 +1,66 @@
+<?php
+    $htmlId = uniqid('ui-component-');
+?>
+<style type="text/css">
+    #<?= $htmlId ?> {
+        margin-left: -3rem;
+        padding-left: 3rem;
+        position: relative;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows .data-row {
+        display: grid;
+        grid-template: 'question actions'
+                       'answer   actions' / auto 3rem;
+        padding: 0 0 1rem;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows td.col-question {
+        grid-area: question;
+        padding: 1rem 1rem .5rem;
+        width: auto !important;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows td.col-question textarea {
+        min-height: auto;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows td.col-answer {
+        grid-area: answer;
+        padding: .5rem 1rem 1rem;
+        width: auto !important;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows td.col-answer textarea {
+        min-height: auto;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows td.data-grid-actions-cell {
+        grid-area: actions;
+        padding: 1rem 0;
+        width: auto !important;
+    }
+    #<?= $htmlId ?> .admin__dynamic-rows._dragged textarea {
+        pointer-events: none;
+    }
+</style>
+
+<div id="<?= $htmlId ?>" class="admin__field-control control">
+<!-- ko scope: '<?= $block->getScopeName() ?>' -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+</div>
+
+<script type="text/javascript">
+    require([
+        'Magento_Ui/js/lib/view/utils/async',
+        'Magento_Ui/js/core/app'
+    ], function ($, app) {
+        app(<?= $block->getJsLayout() ?>);
+        $.async({
+            selector: '#<?= $htmlId ?>'
+        }, (el) => {
+            try {
+                $(el).applyBindings();
+            } catch (error) {
+              // It has to be an error about multiple binding.
+              // We can ignore it.
+            }
+        });
+    });
+</script>
+

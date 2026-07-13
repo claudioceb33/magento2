@@ -1,0 +1,29 @@
+<?php
+    $seodataBuilder = $block->getSeodataBuilder();
+    $entity = $block->getCurrentEntity();
+?>
+<fieldset class="admin__fieldset">
+<?php if ($storeList = $this->getStoreViewsList()): ?>
+    <div class="admin__field-complex">
+        <div class="admin__field-complex-content">
+            <?= __('There is generated metadata for %1.', $storeList) ?>
+        </div>
+    </div>
+<?php endif ?>
+<?php foreach ($block->getAvailableDataNames() as $id => $name): ?>
+    <?php
+        $storeId = null;
+        $value = $seodataBuilder->getValidatedByKey($block->getDataNameCode($id), $entity, $storeId);
+    ?>
+    <div class="admin__field">
+        <label class="admin__field-label">
+            <span data-config-scope="<?= !is_null($storeId) ? $block->getStoreViewLabel($storeId) : $block->getStoreViewLabel(); ?>"><?= __('Generated') . ' ' . $name; ?></span>
+        </label>
+        <div class="admin__field-control">
+            <div class="admin__control-text" title="<?= __('Value is read only')?>">
+                <?= $value ?: '&nbsp;' ?>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
+</fieldset>

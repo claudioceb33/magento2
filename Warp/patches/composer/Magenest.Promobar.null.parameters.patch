@@ -1,0 +1,10 @@
+--- a/extensions/magenest/module-promobar/Block/Adminhtml/Widget/DateRenderer.php
++++ b/extensions/magenest/module-promobar/Block/Adminhtml/Widget/DateRenderer.php
+@@ -38,6 +38,6 @@ class DateRenderer extends Template implements FormElementRenderer
+     public function getWidgetParameters()
+     {
+         $data = $this->_coreRegistry->registry('current_widget_instance');
+-        return json_decode($data['widget_parameters'], true);
++        return $data['widget_parameters']?json_decode($data['widget_parameters'], true):'';
+     }
+ }

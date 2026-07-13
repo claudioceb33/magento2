@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+ -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">hexaform_field_form.hexaform_field_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Form Information</item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Hexamarvel\FlexibleForm\Block\Adminhtml\FieldSet\Buttons\BackButton" />
+            <button name="delete" class="Hexamarvel\FlexibleForm\Block\Adminhtml\Field\Buttons\DeleteButton" />
+            <button name="save" class="Hexamarvel\FlexibleForm\Block\Adminhtml\FieldSet\Buttons\SaveButton" />
+            <button name="save_and_continue" class="Hexamarvel\FlexibleForm\Block\Adminhtml\FieldSet\Buttons\SaveAndContinueButton" />
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>hexaform_field_form.hexaform_field_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="hexaform_field_form_data_source" component="Magento_Ui/js/form/provider" >
+        <settings>
+            <submitUrl path="*/field/save"/>
+        </settings>
+        <dataProvider class="Hexamarvel\FlexibleForm\Ui\DataProvider\FieldProvider" name="hexaform_field_form_data_source">
+            <settings>
+                <primaryFieldName>id</primaryFieldName>
+                <requestFieldName>field_id</requestFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="field_configuration">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Field Configuration</item>
+            </item>
+        </argument>
+        <field name="id" formElement="hidden">
+            <settings>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        <field name="form_id" formElement="hidden">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="class" xsi:type="string">Hexamarvel\FlexibleForm\Ui\Component\Form\Element\FormIdValue</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                </item>
+            </argument>
+        </field>
+        <field name="is_active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="source" xsi:type="string">is_active</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="label" xsi:type="string" translate="true">Enabled</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">1</item>
+                </item>
+            </argument>
+        </field>
+        <field name="title" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">field</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Title</label>
+                <dataScope>title</dataScope>
+            </settings>
+        </field>
+        <field name="field_type">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Hexamarvel\FlexibleForm\Ui\Component\Form\Element\FieldType</item>
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Hexamarvel_FlexibleForm/js/ui/form/element/field-type</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Field Type</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">field</item>
+                    <item name="dataScope" xsi:type="string">field_type</item>
+                </item>
+            </argument>
+        </field>
+        <field name="option_values" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">fields</item>
+                    <item name="notice" xsi:type="string" translate="true">Enter new line for multiple options, Please don't use special characters.</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Field Option Values</label>
+                <dataScope>option_values</dataScope>
+            </settings>
+        </field>
+        <field name="terms_options" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">fields</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Terms And Condition Label</label>
+                <dataScope>option_values</dataScope>
+            </settings>
+        </field>
+        <field name="placeholder" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">fields</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Placeholder</label>
+                <dataScope>placeholder</dataScope>
+            </settings>
+        </field>
+        <field name="placeholder" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">fields</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Placeholder</label>
+                <dataScope>placeholder</dataScope>
+            </settings>
+        </field>
+        <field name="fieldset">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Hexamarvel\FlexibleForm\Ui\Component\Form\Element\FieldSet</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Fieldset</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">field</item>
+                    <item name="dataScope" xsi:type="string">fieldset</item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="field_note" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">field</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Field Note</label>
+                <dataScope>field_note</dataScope>
+            </settings>
+        </field>
+        <field name="is_required">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="source" xsi:type="string">is_required</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="label" xsi:type="string" translate="true">Required</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="layout">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Hexamarvel\FlexibleForm\Ui\Component\Form\Element\FormLayout</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Form Layout</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">field</item>
+                    <item name="dataScope" xsi:type="string">layout</item>
+                    <item name="default" xsi:type="string">0</item>
+                </item>
+            </argument>
+        </field>
+        <field name="position" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">field</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Position</label>
+                <dataScope>position</dataScope>
+            </settings>
+        </field>
+        <field name="tooltip" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">field</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Tooltip</label>
+                <dataScope>tooltip</dataScope>
+            </settings>
+        </field>
+        <field name="field_class" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">field</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Field Class</label>
+                <dataScope>field_class</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>

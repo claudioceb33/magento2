@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hexamarvel_FlexibleForm::main"
+            title="Hexamarvel Form Builder"
+            module="Hexamarvel_FlexibleForm"
+            resource="Hexamarvel_FlexibleForm::main"
+            parent="Magento_Backend::content"
+            sortOrder="999" />
+        <add id="Hexamarvel_FlexibleForm::view_form"
+            title="Forms"
+            module="Hexamarvel_FlexibleForm"
+            action="hexaform/form/index"
+            resource="Hexamarvel_FlexibleForm::view_form"
+            parent="Hexamarvel_FlexibleForm::main"
+            sortOrder="10" />
+        <add id="Hexamarvel_FlexibleForm::form_config"
+            title="Configuration"
+            module="Hexamarvel_FlexibleForm"
+            action="adminhtml/system_config/edit/section/hexaform"
+            resource="Hexamarvel_FlexibleForm::config"
+            parent="Hexamarvel_FlexibleForm::main"
+            sortOrder="30" />
+    </menu>
+</config>

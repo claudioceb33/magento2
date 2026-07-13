@@ -1,0 +1,32 @@
+"Go to Home Page",转到主页
+"No structured data",无结构化数据
+"Microdata (implemented by Magento)",微数据（由马根托实施）
+JSON-LD,JSON-LD
+"Product not found.",未找到产品。
+"Rich Snippets",富代码段
+"Product Page structured data format",产品页面结构化数据格式
+"Minify structured data",最小化结构化数据
+Breadcrumbs,"面包 屑"
+"Product Structured Data",产品结构化数据
+"Settings in this section works only with structured data format JSON-LD.","本节中的设置仅适用于结构化数据格式 JSON-LD。"
+"Product Brand Attribute",产品品牌属性
+"When 'None' selected - brand is disabled in structured data.","选择""无""时 - 在结构化数据中禁用品牌。"
+"Product Condition Attribute",产品条件属性
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","所有属性都键入""下拉""。选择""无""时 - 产品条件始终是新的。"
+"New Option",新选项
+"Value from Admin label of attribute option. Leave empty to ignore.",属性选项的管理员标签中的值。留空以忽略。
+"Used Option",已使用选项
+"Damaged Option",已损坏选项
+"Refurbished Option",翻新选项
+Organization,组织
+"Organization Name",组织名称
+Street,街
+Locality,地区
+Region,地区
+"Postal code",邮政编码
+Url,Url
+"Social Links",社交链接
+"Site Name",站点名称
+"Site Url","站点 Url"
+"Price Valid Until",价格有效期至
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","日期（<a href=""https://en.wikipedia.org/wiki/ISO_8601""> ISO 8601 </a>日期格式）之后的价格将不再可用。 适用于所有产品，无特殊价格。 特价到期后，将使用该特价。<br />检查<a href=""https://developers.google.com/search/docs/data-types/product#offer_properties""> Google指南</a>了解更多。"

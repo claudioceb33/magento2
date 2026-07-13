@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="swissup_seodata">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string">SEO Suite</item>
+                <item name="sortOrder" xsi:type="number">990</item>
+            </item>
+        </argument>
+
+        <container name="hreflang_data">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Hreflang links</item>
+                    <item name="componentType" xsi:type="string">container</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/components/group</item>
+                    <item name="formElement" xsi:type="string">container</item>
+                </item>
+            </argument>
+
+            <field name="hreflang_links">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Swissup\Hreflang\Model\Config\Source\CmsIdentifier</item>
+                    <item name="config" xsi:type="array">
+                        <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                        <item name="componentType" xsi:type="string">field</item>
+                        <item name="sortOrder" xsi:type="number">100</item>
+                        <item name="dataType" xsi:type="string">string</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="label" xsi:type="string" />
+                        <item name="chipsEnabled" xsi:type="boolean">true</item>
+                        <item name="filterOptions" xsi:type="boolean">true</item>
+                        <item name="disableLabel" xsi:type="boolean">true</item>
+                        <item name="levelsVisibility" xsi:type="string">0</item>
+                        <item name="notice" xsi:type="string">CMS page that are translations of current page.</item>
+                    </item>
+                </argument>
+            </field>
+
+        </container>
+
+    </fieldset>
+</form>

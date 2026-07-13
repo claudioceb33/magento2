@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_Formbuilder
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<lofformbuilder>
+			<general_settings>
+				<enable>1</enable>
+				<route>formbuilder</route>
+				<dateformat>d/m/y</dateformat>
+				<captcha_publickey>6LcS9x0TAAAAAI37rHG-tDVs4dXB1mA-Hh7WBZgq</captcha_publickey>
+				<captcha_privatekey>6LcS9x0TAAAAAMHqUvORdm8D-i3KScq_2UL-YiPv</captcha_privatekey>
+				<enable_blacklist>0</enable_blacklist>
+				<enable_debug>0</enable_debug>
+			</general_settings>
+			<email_settings>
+				<send_thanks_email>0</send_thanks_email>
+				<sender_email_identity>general</sender_email_identity>
+				<thanks_email_all>0</thanks_email_all>
+				<subscription_all>0</subscription_all>
+				<show_all_fields>1</show_all_fields>
+				<reply_email_template>lofformbuilder_email_settings_reply_email_template</reply_email_template>
+			</email_settings>
+			<field_templates>
+				<address><![CDATA[{{if street}}{{var street}}<br />{{/if}}{{if street2}}{{var street2}}<br />{{/if}}{{if city}}{{var city}},  {{/if}}{{if region}}{{var region}}, {{/if}}{{if postcode}}{{var postcode}}{{/if}}<br/>{{var country}}]]></address>
+			</field_templates>
+			<googleapi>
+				<publickey>AIzaSyDRVUZdOrZ1HuJFaFkDtmby0E93eJLykIk</publickey>
+				<show_address_in_map>1</show_address_in_map>
+			</googleapi>
+			<message_setting>
+                <enabled_view>1</enabled_view>
+				<enabled_barcode>1</enabled_barcode>
+				<require_login_access_scan>1</require_login_access_scan>
+				<save_barcode_image>1</save_barcode_image>
+                <enabled_qrcode>1</enabled_qrcode>
+				<guest_view>0</guest_view>
+				<check_logged_customer>1</check_logged_customer>
+                <use_longcode>0</use_longcode>
+                <secret_key>LOF</secret_key>
+                <chunks>1</chunks>
+                <letters>9</letters>
+                <separate_text>-</separate_text>
+            </message_setting>
+		</lofformbuilder>
+	</default>
+</config>

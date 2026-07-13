@@ -1,0 +1,8 @@
+"Canonical URLs","כתובות אתרים קנוניות"
+"Enable canonical URL for category","אפשר כתובת אתר קנונית לקטגוריה"
+"Enable canonical URL for product","אפשר כתובת אתר קנונית למוצר"
+"Use parent product for canonical","השתמש במוצר האב לקנונית"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","כאשר המוצר הנוכחי הוא חלק ממוצר אחר (הניתן להגדרה, מקובץ או צרור), כתובת האתר של ההורה תשמש כקנונית למוצר הנוכחי."
+"Allowed parent types","סוגי הורים מורשים"
+"CMS Pages","דפי CMS"
+"Enable canonical URL for CMS pages","אפשר כתובת אתר קנונית לדפי CMS"

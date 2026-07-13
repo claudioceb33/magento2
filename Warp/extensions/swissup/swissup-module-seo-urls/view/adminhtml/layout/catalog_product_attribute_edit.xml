@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="attribute_edit_tabs">
+            <container label="SEO URLs" name="swissup_seo_urls">
+                <block class="Swissup\SeoUrls\Block\Adminhtml\Attribute\Labels" name="seo_urls.labels" as="labels"/>
+                <block class="Swissup\SeoUrls\Block\Adminhtml\Attribute\Options" name="seo_urls.options" as="options"/>
+                <block class="Swissup\SeoUrls\Block\Adminhtml\Attribute\Advanced" name="seo_urls.advanced" as="advanced"/>
+            </container>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * @var $block \Magento\Sales\Block\Order\Totals
+ * @see \Magento\Sales\Block\Order\Totals
+ */
+
+$viewModel = $block->getData('viewmodel_custom_discount');
+$isEnabled = $viewModel->getIsEnabled();
+?>
+<?php foreach ($block->getTotals() as $_code => $_total) : ?>
+    <?php if ($isEnabled): ?>
+        <?php if ($_total->getBlockName()) : ?>
+            <?= $block->getChildHtml($_total->getBlockName(), false) ?>
+        <?php elseif($_total->getCode() != 'discount'): ?>
+            <tr class="<?= $block->escapeHtmlAttr($_code) ?>">
+                <th <?= /* @noEscape */ $block->getLabelProperties() ?> scope="row">
+                    <?php if ($_total->getStrong()) : ?>
+                        <strong><?= $block->escapeHtml($_total->getLabel()) ?></strong>
+                    <?php else : ?>
+                        <?= $block->escapeHtml($_total->getLabel()) ?>
+                    <?php endif ?>
+                </th>
+                <td <?= /* @noEscape */ $block->getValueProperties() ?> data-th="<?= $block->escapeHtmlAttr($_total->getLabel()) ?>">
+                    <?php if ($_total->getStrong()) : ?>
+                        <strong><?= /* @noEscape */ $block->formatValue($_total) ?></strong>
+                    <?php else : ?>
+                        <?= /* @noEscape */ $block->formatValue($_total) ?>
+                    <?php endif?>
+                </td>
+            </tr>
+        <?php else: ?>
+            <?php if ($_total->getSegments()) :
+                foreach ($_total->getSegments()->getData() as $segment) :
+                    ?>
+                    <tr class="col-<?= $block->escapeHtmlAttr($_code) ?>">
+                        <td <?= /* @noEscape */ $block->getLabelProperties() ?> class="label">
+                            <?= $block->escapeHtml($segment->getLabel()) ?>
+                        </td>
+                        <td <?= /* @noEscape */ $block->getValueProperties() ?>>
+                            <span><?= /* @noEscape */ $block->formatValue($segment) ?></span>
+                        </td>
+                    </tr>
+                <?php
+                endforeach;
+            endif; ?>
+        <?php endif; ?>
+    <?php else: ?>
+        <?php if ($_total->getBlockName()) : ?>
+            <?= $block->getChildHtml($_total->getBlockName(), false) ?>
+        <?php else: ?>
+            <tr class="<?= $block->escapeHtmlAttr($_code) ?>">
+                <th <?= /* @noEscape */ $block->getLabelProperties() ?> scope="row">
+                    <?php if ($_total->getStrong()) : ?>
+                        <strong><?= $block->escapeHtml($_total->getLabel()) ?></strong>
+                    <?php else : ?>
+                        <?= $block->escapeHtml($_total->getLabel()) ?>
+                    <?php endif ?>
+                </th>
+                <td <?= /* @noEscape */ $block->getValueProperties() ?> data-th="<?= $block->escapeHtmlAttr($_total->getLabel()) ?>">
+                    <?php if ($_total->getStrong()) : ?>
+                        <strong><?= /* @noEscape */ $block->formatValue($_total) ?></strong>
+                    <?php else : ?>
+                        <?= /* @noEscape */ $block->formatValue($_total) ?>
+                    <?php endif?>
+                </td>
+            </tr>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endforeach?>

@@ -1,0 +1,45 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+$field             = $this->getData('field_data');
+$fieldType        = $field['field_type'];
+$label             = $block->filterMessage($field['label']);
+$options           = $field['field_options'];
+
+$colorLabel       = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$colorText        = isset($options['color_text']) ? 'color:'.$options['color_text'].';' : '';
+$colorDescription = isset($options['color_description']) ? 'color:'.$options['color_description'].';' : '';
+$backgroundColor  = isset($options['background_color']) ? 'background-color:'.$options['background_color'].';' : '';
+
+$fontSize         = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle        = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight       = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+$inlineCss         = $field['inline_css'] ?? '';
+?>
+<div class="subtemplate-wrapper" style="<?= $inlineCss ?>">
+    <div class="field-section-break" style="<?= $backgroundColor; ?>">
+        <div class="sm-section-break" style="<?= $colorText.$fontSize.$fontStyle.$fontWeight; ?>">
+            <?php if ($label != '') { ?>
+            <span><?= $label; ?></span>
+            <?php } ?>
+        </div>
+    </div>
+</div>

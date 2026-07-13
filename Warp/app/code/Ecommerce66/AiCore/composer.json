@@ -1,0 +1,17 @@
+{
+    "name": "ecommerce66/module-aicore",
+    "description": "Ecommerce66 AiCore - AI-assisted integration (ElasticSuite-friendly).",
+    "type": "magento2-module",
+    "require": {
+        "php": "^8.1",
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ecommerce66\\AiCore\\": ""
+        }
+    }
+}

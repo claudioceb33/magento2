@@ -1,0 +1,42 @@
+<?php
+if (!$block->canShow()):
+    return;
+endif;
+
+$id = $block->getNameInLayout();
+
+?>
+
+<fieldset id="<?= $id ?>-container"
+    style="display: none"
+    data-destination="<?= $block->escapeHtmlAttr($block->getDestination()) ?>"
+    class="fieldset abs-add-clearfix <?= $id ?>-container">
+    <?php foreach ($block->getFields() as $field): ?>
+        <?= $field->toHtml(); ?>
+    <?php endforeach ?>
+</fieldset>
+
+<script data-breeze>
+    require([
+        'jquery',
+        'underscore',
+        'domReady!'
+    ], function ($, _) {
+        var fields = $('#<?= $id ?>-container'),
+            container = $(fields.data('destination')),
+            method = 'append';
+
+        if (container.length) {
+            if (container.length > 1) {
+                container = container.last();
+                method = 'after';
+            }
+
+            container[method](fields);
+        }
+
+        if (fields.closest('form').length) {
+            fields.css('display', '');
+        }
+    });
+</script>

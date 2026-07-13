@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_SeoHtmlSitemap::link_index"
+            title="Sitemap Links"
+            module="Swissup_SeoHtmlSitemap"
+            sortOrder="1936"
+            parent="Swissup_SeoCore::seocore"
+            action="seohtmlsitemap/link/index"
+            resource="Swissup_SeoHtmlSitemap::link_index"/>
+    </menu>
+</config>

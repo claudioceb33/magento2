@@ -1,0 +1,26 @@
+<!--
+/**
+ * Button to open AI Generator Modal
+ */
+-->
+<div class="admin__field admin__field-option" data-bind="css: additionalClasses">
+    <div class="admin__field-control">
+        <button type="button"
+                class="action-secondary"
+                data-bind="
+                    click: action,
+                    attr: {
+                        title: hintText,
+                        disabled: disabled
+                    },
+                    css: buttonClasses"
+                style="padding: 8px 16px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 500;">
+            <span data-bind="text: buttonLabel"></span>
+        </button>
+        <!-- ko if: hintText -->
+        <div class="admin__field-note" style="margin-top: 8px; color: #666; font-size: 12px;">
+            <span data-bind="text: hintText"></span>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/export.xsd">
+    <entity name="swissup_hreflang_catalog_categories"
+        label="Hreflang - Catalog Categories"
+        model="Swissup\HreflangImportExport\Model\Export\CatalogCategory"
+        entityAttributeFilterType="swissup_hreflang_catalog_categories" />
+    <entity name="swissup_hreflang_cms_pages"
+        label="Hreflang - CMS Pages"
+        model="Swissup\HreflangImportExport\Model\Export\CmsPage"
+        entityAttributeFilterType="swissup_hreflang_cms_pages" />
+    <fileFormat name="csv" label="CSV" model="Magento\ImportExport\Model\Export\Adapter\Csv" />
+</config>

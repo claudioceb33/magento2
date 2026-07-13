@@ -1,0 +1,201 @@
+<?php
+/** @var $block \Ecommerce66\Widgets\Block\Widget\Countdown */
+/** @var \Magento\Framework\Escaper $escaper */
+
+$hideProducts = (bool)(int)$block->getData('hide_products') ? 'true' : 'false';
+$paddingTop = (int)$block->getData('dkt_top');
+$paddingBtm = (int)$block->getData('dkt_btm');
+$paddingTopMob = $block->getData('mob_top') ? (int)$block->getData('mob_top') : $paddingTop;
+$paddingBtmMob = $block->getData('mob_btm') ? (int)$block->getData('mob_btm') : $paddingBtm;
+$roe = !empty($imageMobile) ? 2 : 1;
+?>
+
+<div class="event-countdown"
+     data-image-desktop="<?= /* @noEscape */ $block->getDataImage('desktop_image') ?>"
+     data-image-mobile="<?= /* @noEscape */ $block->getDataImage('mobile_image') ?>"
+     style="color: <?= /* @noEscape */ $block->getData('text_color') ?> !important;
+         text-shadow: 2px 2px 7px <?= /* @noEscape */ $block->getData('shadow_color') ?>;
+         background-color: <?= /* @noEscape */ $block->getData('background_color') ?>;">
+
+    <div class="row <?= /* @noEscape */$block->getData('clock_position') ?>">
+
+        <h2 class="title"><?= /* @noEscape */$block->getData('title') ?></h2>
+
+        <h3 class="sub title"
+            data-start="<?= /* @noEscape */$block->getData('start_subtitle') ?>"
+            data-end="<?= /* @noEscape */$block->getData('end_subtitle') ?>"
+            data-fin="<?= /* @noEscape */$block->getData('finished_subtitle') ?>"></h3>
+
+        <div id="clockdiv" class="clock-wrapper"
+             data-start-date="<?= /* @noEscape */$block->getData('event_from') ?>"
+             data-start-hour="<?= /* @noEscape */$block->getData('event_from_hour') ?>"
+             data-end-date="<?= /* @noEscape */$block->getData('event_to') ?>"
+             data-end-hour="<?= /* @noEscape */$block->getData('event_to_hour') ?>">
+            <div class="time">
+                <span class="days"></span>
+                <span class="smalltext"><?= /* @noEscape */ __('Días') ?></span>
+            </div>
+            <div class="time">
+                <span class="hours"></span>
+                <span class="smalltext"><?= /* @noEscape */ __('Horas') ?></span>
+            </div>
+            <div class="time">
+                <span class="minutes"></span>
+                <span class="smalltext"><?= /* @noEscape */ __('Minutos') ?></span>
+            </div>
+            <div class="time">
+                <span class="seconds"></span>
+                <span class="smalltext"><?= /* @noEscape */ __('Segundos') ?></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script >
+    require([
+        'jquery'
+    ], function($) {
+        var hideProducts = <?= /* @noEscape */ $hideProducts ?>;
+        var $productBlocks = $('#layered-filter-block,.toolbar-products,.products-grid,.products-list');
+
+        /*
+         * Use this to initialize:
+         *   var deadline = new Date("Mon May 13 2022");
+         *   initializeClock('clockdiv', deadline);
+         */
+
+        var startString = "<?= /* @noEscape */ $block->getData('event_from') ?>T<?=  /* @noEscape */ $block->getData('event_from_hour') ?>:00:00";
+        var endString = "<?= /* @noEscape */ $block->getData('event_to') ?>T<?= /* @noEscape */ $block->getData('event_to_hour') ?>:00:00";
+
+        var dateStart = new Date(startString);
+        var dateEnd = new Date(endString);
+        var now = new Date();
+
+        var $event = $('.event-countdown');
+        var countdownDate;
+        var diffTimeStart = dateStart.getTime() - now.getTime();
+        var diffTimeEnd = dateEnd.getTime() - now.getTime();
+        if(diffTimeStart > 0){
+            //Time to event start date
+            countdownDate = startString;
+            $event.removeClass('end').addClass('start');
+            $event.find('.sub.title').text($event.find('.sub.title').attr('data-start'));
+            eventStart(countdownDate);
+            if (hideProducts) {
+                $productBlocks.hide();
+            }
+        }else if(diffTimeEnd > 0){
+            //Time to event end date
+            countdownDate = endString;
+            $event.removeClass('start').addClass('end');
+            $event.find('.sub.title').text($event.find('.sub.title').attr('data-end'));
+            eventStart(countdownDate);
+        }else{
+            $event.find('.sub.title').text($event.find('.sub.title').attr('data-fin'));
+            $('#clockdiv').css('visibility', 'hidden');
+            if (hideProducts) {
+                $productBlocks.hide();
+            }
+        }
+
+        function eventStart(countdownDate){
+            //var deadline = new Date("Mon Jun 15 2020");
+            var deadline = new Date(countdownDate);
+            initializeClock('clockdiv', deadline);
+        }
+
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var seconds = Math.floor((t / 1000) % 60);
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var daysSpan = clock.querySelector('.days');
+            var hoursSpan = clock.querySelector('.hours');
+            var minutesSpan = clock.querySelector('.minutes');
+            var secondsSpan = clock.querySelector('.seconds');
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+                secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                    window.location.reload();
+                }
+            }
+
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        /**
+         * Behaviour
+         */
+        changeImages();
+
+        $(window).on('resize', function(){
+            changeImages();
+        });
+
+        function changeImages(){
+            var imgage = ($(window).width() > 799) ?
+                $event.attr('data-image-desktop') : $event.attr('data-image-mobile');
+            $event.css('background-image', 'url(' + imgage + ')');
+        }
+    });
+</script>
+
+<style type="text/css">
+    .event-countdown{
+        padding-top: <?=  /* @noEscape */ $paddingTop; ?>vw;
+        padding-bottom: <?= /* @noEscape */  $paddingBtm; ?>vw;
+    }
+    .clock-wrapper {
+        justify-content: <?= /* @noEscape */ $block->getData('clock_position') ?>;
+    }
+    #clockdiv .time span:first-child {
+        font-weight: <?= /* @noEscape */ $block->getData('clock_weight') ?>;
+    }
+    @media only screen and (max-width: 1024px) {
+        .event-countdown{
+            padding-top: <?= (int)($paddingTop * 0.75); ?>vw;
+            padding-bottom: <?=  (int)($paddingBtm * 0.75); ?>vw;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .event-countdown{
+            padding-top: <?=  (int)($paddingTopMob); ?>vw;
+            padding-bottom: <?= (int)($paddingBtmMob); ?>vw;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .event-countdown{
+            /*padding-top: <?= (int)($paddingTopMob * 0.30 * $roe); ?>vw;
+        padding-bottom: <?=  (int)($paddingBtmMob * 0.30 * $roe); ?>vw;*/
+        }
+    }
+    @media only screen and (max-width: 375px) {
+        .event-countdown{
+            /*padding-top: <?= (int)($paddingTopMob * 0.25 * $roe); ?>vw;
+        padding-bottom: <?=  (int)($paddingBtmMob * 0.25 * $roe); ?>vw;*/
+        }
+    }
+
+</style>
+

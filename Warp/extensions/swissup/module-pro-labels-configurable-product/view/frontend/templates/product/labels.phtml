@@ -1,0 +1,60 @@
+<?php
+    $initialConfig = [
+        'imageLabelsTarget' => $block->getBaseImageWrapConfig(),
+        'imageLabelsWrap' => true,
+        'imageLabelsRenderAsync' => true,
+        'contentLabelsTarget' => $block->getContentWrapConfig()
+    ];
+
+    $optionsBlock = $block->getLayout()->getBlock('product.info.options.swatches') ?:
+        $block->getLayout()->getBlock('product.info.options.configurable');
+
+    $superProduct = $block->getCurrentProduct();
+    $childProducts = $optionsBlock ?
+        $optionsBlock->getAllowProducts() :
+        $superProduct->getTypeInstance()->getUsedProducts($superProduct);
+    // Preload manual labels to reduce number of DB queries
+    $block->preloadLabels(array_merge([$superProduct], $childProducts));
+
+    $superlabels = $block->getProductLabels($superProduct);
+    $superOptions = [];
+    if ($superlabels->getLabelsData()) {
+        $superOptions = [
+            'labelsData' => $superlabels->getLabelsData(),
+            'predefinedVars' => $superlabels->getPredefinedVariables()
+        ] + $initialConfig;
+    }
+
+    $labels = [];
+    if ($superOptions) {
+        $labels = [$superProduct->getId() => $superOptions];
+    }
+
+    foreach ($childProducts as $product) {
+        $childLabels = $block->getProductLabels($product);
+        if ($childLabels->getLabelsData()) {
+            $labels[$product->getId()] = [
+                'labelsData' => $childLabels->getLabelsData(),
+                'predefinedVars' => $childLabels->getPredefinedVariables()
+            ] + $initialConfig;
+        }
+    }
+
+    if (!$labels) {
+        return;
+    }
+
+    $helper = $this->helper('Swissup\ProLabels\Helper\Catalog');
+?>
+<script type="text/x-magento-init">
+{
+    ".column.main": {
+        "Swissup_ProLabelsConfigurableProduct/js/prolabels": <?= /* @escapeNotVerified */ $helper->jsonEncode([
+            'swatchOptions' => '[data-role=swatch-options]',
+            'configurableOptions' => '#product_addtocart_form .field.configurable',
+            'superProduct' => $superProduct->getId(),
+            'labels' => $labels
+        ]) ?>
+    }
+}
+</script>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2020 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+/** @block \Hexamarvel\FlexibleForm\Block\Email\FormFields */
+?>
+<?php $formItems = $block->getFormdata();?>
+<table class="email-items">
+    <?php foreach ($formValues as $key => $value):?>
+        <?php if(!empty($value)):?>
+        	<?php if(is_array($value)):?>
+                <?php $value = implode(',', $value);?>
+            <?php endif; ?>
+            <?php $fieldTitle = $block->getFieldTitle($key);?>
+            <?php if(!empty($fieldTitle)):?>
+	            <tr>
+	                <td><?= /*@noEscape*/ $fieldTitle; ?></td>
+	                <td><?= /*@noEscape*/ $value; ?></td>
+	            </tr>
+	        <?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach;?>
+</table>

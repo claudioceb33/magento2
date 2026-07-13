@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block \Ecommerce66\Brands\Block\Brand\Product
+ */
+$product = $block->getCurrentProduct();
+if (is_object($product)):
+    $brand = $block->getBrandByProduct($product);
+    if ($brand->getId() && (bool)(int)$brand->getProductActive()):
+        ?>
+    <div class="brand-details brand-<?= /* @noEscape */ str_replace(' ', '-', strtolower($brand->getName())) ?>">
+        <div class="brand-image" style="background-color: <?= /* @noEscape */ $brand->getProductBannerBkg() ?>;">
+            <?php if (!empty($brand->getProductBannerImg())): ?>
+            <a href="<?= /* @noEscape */ $block->getBaseUrl() . $brand->getProductBannerUrl() ?>">
+                <img class="desktop" src="<?= /* @noEscape */ $block->getMediaUrl() . $brand->getProductBannerImg() ?>" />
+            </a>
+            <?php endif; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>

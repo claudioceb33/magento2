@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_seopager>
+            <general>
+                <show_view_all>0</show_view_all>
+                <strategy>3</strategy>
+                <strategy_no_view_all>3</strategy_no_view_all>
+            </general>
+            <page_title>
+                <template>{{title}} | Page {{currentPage}} of {{lastPage}}</template>
+            </page_title>
+        </swissup_seopager>
+    </default>
+</config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="swissup_seodata">
+        <container name="swissup_seodata_category">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">990</item>
+                </item>
+            </argument>
+            <htmlContent name="block_metadata_category">
+                <argument name="block" xsi:type="object">Swissup\SeoTemplates\Block\Adminhtml\Metadata\Category</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

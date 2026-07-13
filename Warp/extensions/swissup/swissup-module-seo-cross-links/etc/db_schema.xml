@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="swissup_seocrosslinks_link" resource="default" engine="innodb" comment="swissup_seocrosslinks_link">
+    <column xsi:type="int" name="link_id" padding="11" unsigned="false" nullable="false" identity="true" comment="Link ID"/>
+    <column xsi:type="text" name="keyword" nullable="false" comment="Keyword"/>
+    <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+    <column xsi:type="smallint" name="url_destination" padding="6" unsigned="false" nullable="true" identity="false" default="0" comment="URL Destination"/>
+    <column xsi:type="int" name="url_entity_id" padding="11" unsigned="false" nullable="true" identity="false" comment="URL Entity ID"/>
+    <column xsi:type="varchar" name="url_path" nullable="true" length="255" comment="URL Path"/>
+    <column xsi:type="smallint" name="replacement_count" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Replacement Count"/>
+    <column xsi:type="smallint" name="search_in" padding="6" unsigned="false" nullable="false" identity="false" comment="Search in"/>
+    <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Is Link Active"/>
+    <column xsi:type="text" name="class" nullable="false" comment="Style"/>
+    <column xsi:type="text" name="target_attr" nullable="false" comment="Target Attribute"/>
+    <column xsi:type="text" name="extra_attributes" nullable="true" comment="Extra Product Attribute"/>
+    <column xsi:type="int" name="tooltip" nullable="false" comment="Show Tooltip"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="link_id"/>
+    </constraint>
+  </table>
+  <table name="swissup_seocrosslinks_link_store" resource="default" engine="innodb" comment="swissup_seocrosslinks_link_store">
+    <column xsi:type="int" name="link_id" padding="11" unsigned="false" nullable="false" identity="false" comment="Link ID"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="link_id"/>
+      <column name="store_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_BC0D1605F5780CC02DA59A68DF19D393" table="swissup_seocrosslinks_link_store" column="link_id" referenceTable="swissup_seocrosslinks_link" referenceColumn="link_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_SEOCROSSLINKS_LINK_STORE_STORE_ID_STORE_STORE_ID" table="swissup_seocrosslinks_link_store" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    <index referenceId="SWISSUP_SEOCROSSLINKS_LINK_STORE_STORE_ID" indexType="btree">
+      <column name="store_id"/>
+    </index>
+  </table>
+</schema>

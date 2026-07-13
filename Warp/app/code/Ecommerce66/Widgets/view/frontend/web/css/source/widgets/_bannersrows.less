@@ -1,0 +1,25 @@
+&.banner-full-width {
+    position: relative;
+    display: block !important;
+    .item.row-1{
+        width: 100vw !important;
+        margin-left:  ~"calc(-50vw + 50% - 8px)";
+        position: relative;
+        height: auto;
+        padding: 0px !important;
+        a img{
+            width: 100%;
+        }
+    }
+}
+&.zoom-hover{
+    .item.row-1{
+        overflow: hidden;
+        img {
+            transition: transform .5s ease;
+        }
+        &:hover img {
+            transform: scale(1.1);
+        }
+    }
+}

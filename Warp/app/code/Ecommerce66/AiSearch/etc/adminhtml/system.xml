@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ecommerce66_ai" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <tab>e66</tab>
+            <resource>Ecommerce66_AiSearch::config</resource>
+
+            <group id="search" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Search Settings</label>
+
+                <field id="endpoint_search" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint - Search</label>
+                    <comment>Relative to AiCore Base URL. Example: /rest/v1/search</comment>
+                </field>
+
+                <field id="search_items" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max AI Results</label>
+                    <source_model>Ecommerce66\AiSearch\Model\Config\Source\Items</source_model>
+                    <comment>Max item result for autocomplete search.</comment>
+                </field>
+
+                <field id="search_type" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Search Type</label>
+                    <source_model>Ecommerce66\AiSearch\Model\Config\Source\SearchType</source_model>
+                    <comment>
+                        <![CDATA[ Options for search autocomplete ::
+                        Magento: only Magento results; Fallback ai: Magento then AI if empty;
+                        Hybrid: mixed, Magento first then AI; AI only: only AI results.
+                        ]]>
+                    </comment>
+                </field>
+
+                <field id="result_block" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CatalogSearch block result</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Block in catalogsearch result page.</comment>
+                </field>
+
+                <field id="slider_elements_desk" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Desktop Items to show</label>
+                    <source_model>Ecommerce66\Widgets\Model\Config\Source\Columns</source_model>
+                    <comment>Amount of visible columns, result can have from 1 to 10 items.</comment>
+                </field>
+
+                <field id="slider_elements_tablet" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tablet Items to show</label>
+                    <source_model>Ecommerce66\Widgets\Model\Config\Source\Columns</source_model>
+                    <comment>Amount of visible columns, result can have from 1 to 10 items.</comment>
+                </field>
+
+                <field id="slider_elements_mobile" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mobile Items to show</label>
+                    <source_model>Ecommerce66\Widgets\Model\Config\Source\Columns</source_model>
+                    <comment>Amount of visible columns, result can have from 1 to 10 items.</comment>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>

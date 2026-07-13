@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="Demo66_Swatches_product_block" type="Demo66\Swatches\Plugin\Product\View\Type\ConfigurablePlugin" sortOrder="1" />
+    </type>
+     <type name="Magento\Catalog\Block\Product\Image">
+        <plugin name="swissup_prolabels_product_image" disabled="true" />
+    </type>
+    <preference for="Swissup\ProLabels\Helper\Catalog" type="Demo66\Swatches\Helper\Catalog" />
+    <preference for="Swissup\ProLabels\Model\LabelsProvider" type="Demo66\Swatches\Plugin\Model\LabelsProvider" />
+</config>

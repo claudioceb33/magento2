@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_AddressFieldManager::index"
+            title="Address Fields Manager"
+            module="Swissup_AddressFieldManager"
+            sortOrder="124"
+            parent="Swissup_FieldManager::fieldmanager"
+            action="address_field_manager/index"
+            resource="Swissup_AddressFieldManager::index"
+        />
+    </menu>
+</config>

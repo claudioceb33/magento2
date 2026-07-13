@@ -1,0 +1,13 @@
+<?php
+    /* Add "VIEW ALL" button */
+    $helper = $this->helper('Swissup\SeoPager\Helper\Data');
+?>
+<?php if ($helper->canShowViewAllLink()): ?>
+    <li class="item">
+        <?php $text = $block->getLinkLabel() ?: ''; ?>
+        <a class="page view-all" href="<?= /* @escapeNotVerified */ $helper->getViewAllPageUrl() ?>">
+            <span class="label"><?= /* @escapeNotVerified */ __('Page') ?></span>
+            <span><?= /* @escapeNotVerified */ $text ? $text : __('View all') ?></span>
+        </a>
+    </li>
+<?php endif;?>

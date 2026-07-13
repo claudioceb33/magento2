@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="brand" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Brand</label>
+        <field id="attribute" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Brand Attribute</label>
+            <comment>When 'None' selected - brand is disabled in structured data.</comment>
+            <source_model>Swissup\RichSnippets\Model\Config\Source\ProductAttributes</source_model>
+        </field>
+    </group>
+</include>

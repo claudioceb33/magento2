@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $block \Ecommerce66\Brands\Block\Landing
+ */
+$brand = $block->getBrand();
+if ($brand->getId()):
+    ?>
+<div class="brand-landing brand-details">
+    <div class="brand-image">
+        <?php if (!empty($brand->getLandingImage())): ?>
+            <img class="desktop" src="<?= /* @noEscape  */ $block->getMediaUrl() . $brand->getLandingImage() ?>" />
+        <?php endif; ?>
+        <?php if (!empty($brand->getLandingMobileImage())): ?>
+            <img class="mobile" src="<?= /* @noEscape  */ $block->getMediaUrl() . $brand->getLandingMobileImage() ?>" />
+        <?php endif; ?>
+    </div>
+    <div class="brand-content">
+        <?= /* @noEscape  */ $block->renderCms($brand->getLandingContent()) ?>
+    </div>
+</div>
+<?php endif; ?>

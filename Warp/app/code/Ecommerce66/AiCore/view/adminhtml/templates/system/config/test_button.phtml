@@ -1,0 +1,62 @@
+<?php
+/** @var \Ecommerce66\AiCore\Block\Adminhtml\System\Config\TestButton $block */
+$ajaxUrl   = $block->getData('ajax_url');
+$buttonId  = $block->getData('html_id') . '_button';
+$label     = $block->escapeHtml($block->getData('button_label') ?? __('Test Connection'));
+?>
+<div id="<?= /* @noEscape */ $block->getData('html_id') ?>_container">
+    <button type="button"
+            id="<?= /* @noEscape */ $buttonId ?>"
+            class="action-default scalable">
+        <span><?= /** @noEscape */ $label ?></span>
+    </button>
+    <span id="<?= /* @noEscape */ $buttonId ?>_result"
+          style="margin-left:10px; font-weight:600;"></span>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "#<?= /* @noEscape */ $buttonId ?>": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "e66AiTestConnection": {
+                    "component": "Magento_Ui/js/form/element/abstract",
+                    "initialize": "true"
+                }
+            }
+        }
+    }
+}
+</script>
+
+<script>
+    require([
+        'jquery',
+        'mage/url',
+        'mage/translate'
+    ], function ($, urlBuilder) {
+        var $btn = $('#<?= /* @noEscape */ $buttonId ?>');
+        var $res = $('#<?= /* @noEscape */ $buttonId ?>_result');
+        var ajaxUrl = '<?= /* @noEscape */ $ajaxUrl ?>';
+        $btn.on('click', function () {
+            $res.text('<?= $block->escapeJs(__('Testing...')) ?>');
+            $.ajax({
+                url: ajaxUrl,
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    form_key: window.FORM_KEY
+                    // Opcional: se podrían pasar scope/scope_id si querés probar en website/store
+                }
+            }).done(function (resp) {
+                if (resp && resp.success) {
+                    $res.css('color', 'green').text('<?= $block->escapeJs(__('Success')) ?>: ' + (resp.message || 'OK'));
+                } else {
+                    $res.css('color', 'red').text('<?= $block->escapeJs(__('Failed')) ?>: ' + (resp && resp.message ? resp.message : 'Unknown error'));
+                }
+            }).fail(function (xhr) {
+                $res.css('color', 'red').text('<?= $block->escapeJs(__('Failed')) ?>: ' + (xhr && xhr.responseText ? xhr.responseText : 'HTTP error'));
+            });
+        });
+    });
+</script>

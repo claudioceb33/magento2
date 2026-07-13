@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="on_sale" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>"On Sale" Label</label>
+        <comment>SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.</comment>
+
+        <include path="Swissup_ProLabels::system/_common.xml" />
+
+        <include path="Swissup_ProLabels::system/on_sale/product.xml" />
+        <include path="Swissup_ProLabels::system/on_sale/category.xml" />
+
+    </group>
+</include>

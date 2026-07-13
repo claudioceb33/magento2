@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!-- Configuration for AI Related Products under Ecommerce66 -> AI Core -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ecommerce66_ai" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Ecommerce66 AI Core</label>
+            <group id="ai_related" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Related Products</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable AI Related Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="default_limit" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Limit</label>
+                    <validate>validate-number</validate>
+                    <comment>Default number of related products to request from AI</comment>
+                </field>
+                <field id="cache_ttl" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cache lifetime (minutes)</label>
+                    <validate>validate-number</validate>
+                    <comment>How long to cache AI results per SKU (in minutes)</comment>
+                </field>
+                <field id="cron_enable" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Cron Generation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>When enabled, the cron job will generate related products in background.</comment>
+                </field>
+                <field id="cron_batch_size" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cron Batch Size</label>
+                    <validate>validate-number</validate>
+                    <comment>Number of products to process per cron run (default 50).</comment>
+                </field>
+                <field id="enable_info_log" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable info logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If disabled, informational logs (info level) from the AI Related generator will not be written. Useful to reduce noise.</comment>
+                </field>
+                <field id="generate_all_enable" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Generate-All Command</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable the monthly "generate all" process via CLI/cron.</comment>
+                </field>
+                <field id="generate_all_batch" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Generate-All Batch Size</label>
+                    <validate>validate-number</validate>
+                    <comment>Batch size used internally by the generate-all loop (default 100). Can be overridden with --batch CLI option.</comment>
+                </field>
+                <field id="generate_all_throttle_seconds" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Generate-All Throttle (seconds)</label>
+                    <validate>validate-digits validate-zero-or-greater</validate>
+                    <comment>Pause between batches to avoid API rate limits. Set to 0 to disable throttling (default: 1).</comment>
+                    <depends>
+                        <field id="generate_all_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

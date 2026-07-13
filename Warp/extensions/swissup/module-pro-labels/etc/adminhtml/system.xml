@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="prolabels" translate="label" type="text" sortOrder="1668" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>ProLabels</label>
+            <tab>swissup</tab>
+            <resource>Swissup_ProLabels::config_prolabels</resource>
+
+            <include path="Swissup_ProLabels::system/on_sale.xml" />
+            <include path="Swissup_ProLabels::system/is_new.xml" />
+            <include path="Swissup_ProLabels::system/in_stock.xml" />
+            <include path="Swissup_ProLabels::system/out_stock.xml" />
+
+            <include path="Swissup_ProLabels::system/output.xml" />
+
+        </section>
+    </system>
+</config>

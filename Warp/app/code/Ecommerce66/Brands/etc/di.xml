@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Ecommerce66\Brands\Api\BrandDetailsRepositoryInterface" type="Ecommerce66\Brands\Model\BrandDetailsRepository"/>
+	<preference for="Ecommerce66\Brands\Api\Data\BrandDetailsInterface" type="Ecommerce66\Brands\Model\BrandDetails"/>
+	<preference for="Ecommerce66\Brands\Api\Data\BrandDetailsSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Ecommerce66\Brands\Model\ResourceModel\BrandDetails\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">ecommerce66_brands_brand_details</argument>
+			<argument name="resourceModel" xsi:type="string">Ecommerce66\Brands\Model\ResourceModel\BrandDetails\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="ecommerce66_brands_brand_details_listing_data_source" xsi:type="string">Ecommerce66\Brands\Model\ResourceModel\BrandDetails\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

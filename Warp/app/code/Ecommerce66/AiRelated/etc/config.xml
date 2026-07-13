@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ecommerce66_ai>
+            <ai_related>
+                <enable>1</enable>
+                <default_limit>10</default_limit>
+                <cache_ttl>1440</cache_ttl>
+                <cron_enable>0</cron_enable>
+                <cron_batch_size>50</cron_batch_size>
+                <enable_info_log>1</enable_info_log>
+                <generate_all_enable>1</generate_all_enable>
+                <generate_all_batch>100</generate_all_batch>
+                <generate_all_throttle_seconds>1</generate_all_throttle_seconds>
+            </ai_related>
+        </ecommerce66_ai>
+    </default>
+</config>

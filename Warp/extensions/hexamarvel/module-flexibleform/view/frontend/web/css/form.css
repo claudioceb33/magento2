@@ -1,0 +1,97 @@
+.fieldset {
+  letter-spacing: 0px;
+}
+form .fieldset {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.fieldset > legend {
+  width: calc(100% - 20px) !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+.layout-2column-left,
+.layout-2column-right {
+  width: calc(50% - 22px);
+  display: inline-block;
+  padding: 0px 10px;
+  vertical-align: top;
+}
+.layout-1column,
+.fieldset-description {
+  padding: 0px 10px;
+}
+.hexaform-container form {
+  margin-bottom: 30px;
+}
+.tooltip-parent {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0px 3px;
+}
+.field-tooltip {
+  position: relative !important;
+  top: 0px !important;
+}
+.field-tooltip .field-tooltip-content {
+  max-width: 360px;
+  min-width: 210px;
+  left: -9px;
+  top: 29px;
+  border: 1px solid #bbb;
+  line-height: 1.4;
+  padding: 12px 16px;
+}
+.tooltip-parent .field-tooltip-content::after,
+.tooltip-parent .field-tooltip-content::before {
+    border: solid transparent;
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 0;
+    bottom: 100%;
+}
+.tooltip-parent .field-tooltip-content::before {
+    border-width: 6px;
+    border-color: transparent;
+    top: unset;
+}
+.tooltip-parent .field-tooltip-content::after {
+    border-bottom-color: #fff;
+    left: 15px;
+    margin-left: -3px;
+    top: unset;
+}
+.tooltip-parent .field-tooltip-content::before {
+    border-bottom-color: #bbb;
+    left: 15px;
+    margin-left: -6px;
+}
+.tooltip-parent .field-tooltip-content::after,
+.tooltip-parent .field-tooltip-content::before {
+    bottom: 100%;
+}
+.field-tooltip .field-tooltip-action::before {
+  font-size: 17px;
+}
+.field-note {
+  font-size: 12px;
+ }
+ .fieldset-description {
+    margin-bottom: 20px;
+ }
+ .fieldset > .field .note {
+    display: block !important;
+  }
+
+@media only screen and (max-width: 767px) {
+  .layout-2column-left,
+  .layout-2column-right {
+    width: calc(100% - 20px) !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .field-tooltip .field-tooltip-content {
+    max-width: 240px;
+  }
+}

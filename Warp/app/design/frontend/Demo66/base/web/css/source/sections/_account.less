@@ -1,0 +1,336 @@
+.page-main {
+    padding-bottom: 40px;
+    padding-top: 20px;
+}
+
+h1.page-title {
+    text-align: left;
+    @media (max-width: 768px){
+        margin-bottom: 20px;
+    }
+}
+
+&.sales-order-view h1.page-title {
+    margin-bottom: 15px;
+}
+
+.page-title-wrapper .order-date {
+    margin: 0 0 15px !important;
+}
+
+.sidebar-main {
+    padding-right: 0;
+    width: calc(33.33% - 15px);
+}
+
+.column.main {
+    padding-left: 15px;
+    width: calc(66.66% + 15px);
+
+    @media (max-width: 768px){
+        padding-left: 0;
+    }
+}
+
+.block-collapsible-nav .item a {
+    color: @demo66_black;
+    background: transparent;
+
+    &:hover {
+        color: @demo66_accent;
+    }
+}
+
+.block-collapsible-nav .title strong {
+    font-size: 16px;
+}
+
+.block-collapsible-nav .item.current a,
+.block-collapsible-nav .item.current > strong {
+    border-color: @demo66_accent;
+}
+
+&.customer-account-index .box-newsletter {
+    display: none;
+}
+
+button.action.primary {
+    font-size: 16px !important;
+    height: 42px;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 20px;
+}
+
+.block .block-title {
+    margin: 0 0 2rem;
+    padding: 0 0 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: 300;
+    line-height: 1.2;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #c6c6c6;
+
+    strong {
+        font-size: 22px;
+        font-weight: 300;
+    }
+}
+
+h4.page-title {
+    margin-bottom: 20px;
+}
+
+.order-status {
+    @media (min-width: 769px){
+        margin-top: -4px;
+    }
+}
+
+.sidebar.sidebar-additional,
+.customer-addresses-toolbar.toolbar.bottom {
+    display: none;
+}
+
+.block-collapsible-nav {
+    position: initial;
+
+    .title {
+        border: 0 !important;
+        background: @demo66_offwhite;
+    }
+
+    .content {
+        background: #ececec;
+        padding: 15px 0;
+        border-color: #ddd;
+        
+        @media (max-width: 768px){
+            border-top: 1px solid #ddd;
+        }
+    }
+}
+
+address {
+    color: @demo66_black;
+}
+
+.table-wrapper.additional-addresses {
+    overflow: initial !important;
+}
+
+.table-additional-addresses-items th,
+.table-additional-addresses-items tr {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    @media (min-width: 640px){
+        padding: 10px !important;
+    }
+
+    a {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+.table-additional-addresses-items .col.zip {
+    @media (min-width: 640px){
+        text-align: center;
+    }
+}
+
+.table-additional-addresses-items .col.actions:before {
+    display: none !important;
+}
+
+&.customer-address-index .table-wrapper {
+    border: 0 !important
+}
+
+@media (max-width: 768px){
+    .page-main {
+        padding-top: 20px;
+    }
+
+    .column.main {
+        order: 2;
+    }
+}
+
+.field.choice:has(#assistance_allowed_checkbox){
+    display: none;
+}
+
+.fieldset:has(.field.choice.set.billing) {
+    padding-bottom: calc(74px - 2rem) !important;
+}
+
+#block-collapsible-nav{
+    .nav.items{
+        display: flex;
+        flex-direction: column;
+
+        .nav.item:has(a[href*="cards"]),
+        .nav.item:has(a[href*="newsletter"]),
+        .nav.item:has(a[href*="formbuilder"]),
+        .nav.item:has(.delimiter){
+            display: none;
+        }
+    }
+}
+
+&.sales-order-view .table-order-items {
+    .col.price .price {
+        font-size: 14px;
+        color: @demo66_black;
+    }
+
+    .col.subtotal .price {
+        font-size: 14px;
+        font-weight: 700;
+        color: @demo66_black;
+    }
+
+    .grand_total strong {
+        font-size: 16px;
+        font-weight: 700;
+    }
+}
+
+.data.table .col.actions .action.delete {
+    &:hover {
+        color: @demo66_accent;
+    }
+}
+
+.order-links {
+
+    .item strong,
+    .item a {
+        padding: 0 10px;
+        line-height: 40px;
+        border-bottom: 0;
+        color: @demo66_black;
+    }
+    
+    .item strong {
+        font-weight: 700;
+    }
+    
+    .item a:hover {
+        color: @demo66_accent;
+    }
+}
+
+.order-details-items {
+    margin-top: 0px;
+    padding: 0;
+
+    .product-item-name {
+        font-size: 16px;
+        margin: 0;
+    }
+    .actions-toolbar {
+        padding: 10px 10px 0 10px;
+    }
+    .order-title {
+        padding: 10px;
+    }
+    .action.track {
+        margin-left: 10px;
+    }
+}
+
+
+.table-order-items td,
+.table-order-items th {
+    @media (min-width: 640px){
+        padding: 10px !important;
+    }
+
+    font-size: 14px;
+    line-height: 22px;
+
+    a {
+        font-size: 14px;
+        line-height: 22px;
+    }
+}
+
+&:not(.sales-order-view) .table-order-items td,
+&:not(.sales-order-view) .table-order-items th{
+    @media (max-width: 639px){
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.table-order-items th {
+    font-weight: 600;
+}
+
+.order-details-items.ordered .order-title {
+    display: none;
+}
+
+.order-details-items .table-wrapper:not(:last-child){
+    margin-bottom: 0;
+    border: 0;
+}
+
+.table-wrapper .table:not(.totals):not(.cart):not(.table-comparison) > tbody > tr td[data-th]:before, .table-wrapper .table:not(.totals):not(.cart):not(.table-comparison) > tbody > tr th[data-th]:before {
+    padding-right: 5px;
+}
+
+.payment-method dt {
+    background: transparent;
+}
+
+.block-order-details-view .block-content {
+    display: flex;
+    flex-flow: wrap;
+    gap: 0 15px;
+
+    &:before, &:after {
+        display: none !important;
+    }
+
+    .box {
+        @media (min-width: 769px){
+            width: ~'calc((100% - 15px)/ 2)' !important;
+        }
+
+        width: 100% !important;
+    }
+}
+
+.table-additional-addresses-items th {
+    font-weight: 600;
+}
+
+.table-additional-addresses-items td {
+
+    @media (max-width: 768px) and (min-width: 640px){
+        > a.edit:after {
+            display: none !important;
+        }
+    }
+
+    @media (max-width: 639px){
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.table-wrapper.orders-history,
+.table-wrapper.orders-recent {
+    border: 0;
+}
+
+.pager {
+    .toolbar-amount,
+    .limiter {
+        display: none;
+    }
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+ -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="hexamarvel_flexibleform" resource="default" engine="innodb" comment="Hexamarvel Flexible Form Table">
+	    <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true"
+                comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Flexible Form Title"/>
+        <column xsi:type="varchar" name="url_key" nullable="false" length="255" comment="Flexible Form Url Key"/>
+        <column xsi:type="varchar" name="store" nullable="false" length="255" comment="Store"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Is Form Active"/>
+        <column xsi:type="mediumtext" name="top_content" nullable="true" comment="Form Top Content"/>
+        <column xsi:type="mediumtext" name="bottom_content" nullable="true" comment="Form Bottom Content"/>
+        <column xsi:type="mediumtext" name="success_message" nullable="true" comment="Form Success Message"/>
+        <column xsi:type="mediumtext" name="failure_message" nullable="true" comment="Form Failure Message"/>
+        <column xsi:type="varchar" name="submit_button" nullable="false" length="255" comment="Submit Button Text"/>
+        <column xsi:type="mediumtext" name="redirect_url" nullable="false" comment="Form Redirect Url"/>
+        <column xsi:type="smallint" name="captcha" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Enable Captcha"/>
+        <column xsi:type="smallint" name="admin_email_active" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Enable Email To Admin"/>
+        <column xsi:type="mediumtext" name="admin_email" nullable="false" comment="Admin Email"/>
+        <column xsi:type="smallint" name="customer_email_active" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Enable Email To Customer"/>
+        <column xsi:type="mediumtext" name="customer_to_email" nullable="false" comment="Customer Reply Email"/>
+        <column xsi:type="mediumtext" name="email_field" nullable="false" comment="Customer Email"/>
+        <column xsi:type="varchar" name="result_count" nullable="false" length="255" comment="Results Count"/>
+        <column xsi:type="varchar" name="field_count" nullable="false" length="255" comment="Field Count"/>
+        <column xsi:type="timestamp" name="created_on" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Form Creation Time"/>
+        <column xsi:type="timestamp" name="updated_on" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Form Modification Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>
+        <index referenceId="HEXAMARVEL_FLEXIBLEFORM_TITLE_URL_KEY" indexType="fulltext">
+            <column name="title"/>
+            <column name="url_key"/>
+        </index>
+	</table>
+	<table name="hexamarvel_flexible_fieldset" resource="default" engine="innodb" comment="Hexamarvel Form Fieldset">
+        <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Fieldset Title"/>
+        <column xsi:type="mediumtext" name="description" nullable="false" comment="Fieldset Description"/>
+        <column xsi:type="smallint" name="position" padding="6" nullable="false" comment="Entity Id"/>
+        <column xsi:type="mediumtext" name="class" nullable="false" comment="Fieldset Class"/>
+        <column xsi:type="varchar" name="form_id" nullable="false" length="255" comment="Form Id"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Fieldset Active"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+		    <column name="id"/>
+		</constraint>
+        <index referenceId="HEXAMARVEL_FLEXIBLEFORM_FIELDSET_TITLE" indexType="fulltext">
+            <column name="title"/>
+        </index>
+	</table>
+    <table name="hexamarvel_flexible_fields" resource="default" engine="innodb" comment="Hexamarvel Form Fields">
+        <column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Field Title"/>
+        <column xsi:type="varchar" name="placeholder" nullable="false" length="255" comment="Field Placeholder"/>
+        <column xsi:type="varchar" name="field_type" nullable="false" length="255" comment="Field Type"/>
+        <column xsi:type="mediumtext" name="option_values" nullable="false" comment="option_values"/>
+        <column xsi:type="varchar" name="field_label" nullable="false" length="255" comment="Field Label"/>
+        <column xsi:type="varchar" name="fieldset" nullable="false" length="255" comment="Fieldset"/>
+        <column xsi:type="varchar" name="form_id" nullable="false" length="255" comment="Form Id"/>
+        <column xsi:type="smallint" name="is_required" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Field Required"/>
+        <column xsi:type="varchar" name="layout" nullable="false" length="255" comment="Field Layout"/>
+	    <column xsi:type="smallint" name="position" padding="6" nullable="false" comment="Field position"/>
+        <column xsi:type="varchar" name="tooltip" nullable="false" length="255" comment="Tooltip"/>
+        <column xsi:type="varchar" name="field_class" nullable="false" length="255" comment="field_class"/>
+        <column xsi:type="mediumtext" name="field_note" nullable="false" comment="field_note"/>
+        <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Field Active"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="HEXAMARVEL_FLEXIBLEFORM_FIELDS_TITLE_FIELD_LABEL" indexType="fulltext">
+            <column name="title"/>
+            <column name="field_label"/>
+        </index>
+    </table>
+    <table name="hexamarvel_flexible_values" resource="default" engine="innodb" comment="Hexamarvel Form Values">
+        <column xsi:type="int" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="Entity Id"/>
+        <column xsi:type="varchar" name="form_id" nullable="false" length="255" comment="Form Id"/>
+        <column xsi:type="text" name="value" nullable="false" comment="form value"/>
+        <column xsi:type="timestamp" name="created_on" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Data Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

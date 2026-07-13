@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="output" translate="label comment" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Storefront Output</label>
+        <comment>This config section may look very tricky. In fact it provides a ton of flexibility to integrate labels in any Magento 2 theme. You have to know what is CSS selector and how to build them and how to use.</comment>
+        <field id="base" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Product Page - image labels target</label>
+            <comment>CSS selector of element where you want to show labels.</comment>
+            <config_path>prolabels/general/base</config_path>
+        </field>
+        <field id="content" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Product Page - content labels target</label>
+            <comment>CSS selector of element where you want to show labels.</comment>
+            <config_path>prolabels/general/content</config_path>
+        </field>
+        <field id="category_item" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Category Page - list item</label>
+            <comment>CSS selector for product list item on category page or any other listing.</comment>
+        </field>
+        <field id="category_base" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Category Page - image labels target</label>
+            <comment>CSS selector of element after what you want to show labels. Please remember, this selector use in context of list item from config above.</comment>
+        </field>
+        <field id="category_content" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Category Page - content labels target</label>
+            <comment>CSS selector of element after what you want to show labels. Please remember, this selector use in context of list item from config above.</comment>
+        </field>
+        <field id="strategy" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Labels output strategy</label>
+            <source_model>Swissup\ProLabels\Model\Config\Source\OutputStrategy</source_model>
+            <comment>Output strategy defines Magento behavior whene there are multiple labels for the same position. Ordered - show all labels ordered by "Sort Order" value. Sinlge - show one label with largest "Sort order".</comment>
+        </field>
+    </group>
+</include>

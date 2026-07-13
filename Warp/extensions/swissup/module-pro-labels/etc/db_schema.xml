@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="swissup_prolabels_label" resource="default" engine="innodb" comment="swissup_prolabels_label">
+    <column xsi:type="int" name="label_id" padding="10" unsigned="true" nullable="false" identity="true" comment="LabelID"/>
+    <column xsi:type="varchar" name="title" nullable="false" length="255" comment="Title"/>
+    <column xsi:type="text" name="store_id" nullable="false" comment="StoreID"/>
+    <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Is Active" disabled="true"/>
+    <column xsi:type="text" name="customer_groups" nullable="false" comment="Customer Groups"/>
+    <column xsi:type="smallint" name="sort_order" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Sort order" />
+    <column xsi:type="text" name="conditions_serialized" nullable="false" comment="Conditions Serialized"/>
+    <column xsi:type="varchar" name="product_position" nullable="true" length="255" comment="Product Position"/>
+    <column xsi:type="text" name="product_image" nullable="false" comment="Product Image"/>
+    <column xsi:type="text" name="product_custom_style" nullable="false" comment="Product Custom Style"/>
+    <column xsi:type="text" name="product_text" nullable="false" comment="Product Text"/>
+    <column xsi:type="varchar" name="product_custom_url" nullable="true" length="255" comment="Product Custom Url"/>
+    <column xsi:type="varchar" name="product_round_method" nullable="true" length="255" comment="Product Round Method"/>
+    <column xsi:type="varchar" name="product_round_value" nullable="true" length="255" comment="Product Round Value"/>
+    <column xsi:type="varchar" name="category_position" nullable="true" length="255" comment="Category Position"/>
+    <column xsi:type="text" name="category_image" nullable="false" comment="Category Image"/>
+    <column xsi:type="text" name="category_custom_style" nullable="false" comment="Category Custom Style"/>
+    <column xsi:type="text" name="category_text" nullable="false" comment="Category Text"/>
+    <column xsi:type="varchar" name="category_custom_url" nullable="true" length="255" comment="Category Custom Url"/>
+    <column xsi:type="varchar" name="category_round_method" nullable="true" length="255" comment="Category Round Method"/>
+    <column xsi:type="varchar" name="category_round_value" nullable="true" length="255" comment="Category Round Value"/>
+    <column xsi:type="smallint" name="status" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Label Status" onCreate="migrateDataFrom(is_active)"/>
+    <column xsi:type="text" name="product_target_element" nullable="true" comment="Target Element to place content label"/>
+    <column xsi:type="varchar" name="product_insert_method" nullable="true" length="20" comment="Jquery method name"/>
+    <column xsi:type="text" name="category_target_element" nullable="true" comment="Target Element to place content label"/>
+    <column xsi:type="varchar" name="category_insert_method" nullable="true" length="20" comment="Jquery method name"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="label_id"/>
+    </constraint>
+  </table>
+  <table name="swissup_prolabels_index" resource="default" engine="innodb" comment="Swissup Labels Index Table">
+    <column xsi:type="bigint" name="index_id" padding="20" unsigned="false" nullable="false" identity="true" comment="Index ID"/>
+    <column xsi:type="int" name="label_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Label ID"/>
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Entity ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="index_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_PROLBLS_IDX_LBL_LBL_ID_SWISSUP_PROLBLS_LBL_LBL_ID" table="swissup_prolabels_index" column="label_id" referenceTable="swissup_prolabels_label" referenceColumn="label_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_PROLBLS_IDX_PRD_ENTT_ID_CAT_PRD_ENTT_ENTT_ID" table="swissup_prolabels_index" column="entity_id" referenceTable="catalog_product_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    <index referenceId="SWISSUP_PROLABELS_LABEL_LABEL_ID" indexType="btree">
+      <column name="label_id"/>
+    </index>
+    <index referenceId="SWISSUP_PROLABELS_ENTITY_ENTITY_ID" indexType="btree">
+      <column name="entity_id"/>
+    </index>
+  </table>
+</schema>

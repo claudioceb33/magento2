@@ -1,0 +1,8 @@
+"Leave as-is","Leave as-is  (Magento way)"
+"Use rel=""canonical"" to view all page","Canonical url to ""View all"" page (improved Magento way)"
+"Unique rel=""canonical"" to each page","Canonical url to each page (Google way)"
+"Use rel=""next"" and rel=""prev""","Rel=""next"" and rel=""prev"" (deprecated Google way)"
+"Enable SEO enhancements","Enable SEO enhancements"
+"Show view-all link","Show view-all link"
+"Strategy of paginated content presentation for search engines","Strategy of paginated content presentation for search engines"
+"Title when pagination used","Title when pagination used"

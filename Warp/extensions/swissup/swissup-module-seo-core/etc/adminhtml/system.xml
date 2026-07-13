@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="swissup_seocore" sortOrder="296" class="swissup-mover-tab swissup-seosuite-tab">
+            <label>Swissup SEO Suite</label>
+        </tab>
+
+        <section id="swissup_seosuite" translate="label" type="text" sortOrder="1900" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top swissup-seosuite-config-item</class>
+            <label>SEO Suite</label>
+            <tab>swissup</tab>
+            <resource>Swissup_SeoCore::config</resource>
+
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

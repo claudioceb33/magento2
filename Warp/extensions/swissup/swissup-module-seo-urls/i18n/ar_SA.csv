@@ -1,0 +1,27 @@
+"Advanced Properties","خصائص متقدمة"
+"Links with `nofollow` in Layered Navigation","ارتباطات مع ""nofollow"" في التنقل الطبقات"
+"4 and up","4 وما فوق"
+"3 and up","3 وما فوق"
+"2 and up","2 وما فوق"
+"1 and up","1 وما فوق"
+any,اي
+"In URL body","في نص عنوان URL"
+"As request parameter","كمعلمة طلب"
+"Infinite recursion call or category tree is too deep.","استدعاء التكرار اللانهائي أو شجرة الفئة عميقة جداً."
+In,في
+Out,خارج
+"SEO URLs","عناوين URL لكبار المسئولين الاقتصاديين"
+"Manage In-URL Attribute Label","إدارة تسمية سمة عنوان URL"
+"Use this section to set attribute labels for URLs in layered navigation.","استخدم هذا القسم لتعيين تسميات السمات لعناوين URL في التنقل الطبقات."
+"Manage In-URL Option Label for Attribute","إدارة تسمية خيار عنوان URL للسمة"
+"Use this section to set attribute values for URLs in layered navigation.","استخدم هذا القسم لتعيين قيم السمة لعناوين URL في التنقل الطبقات."
+Option,الخيار
+"Sending attribute values as package.","إرسال قيم السمة كحزمة."
+"Use separator for filters","استخدام فاصل للفلاتر"
+"Separator string","سلسلة فاصل"
+"Search controller name in URLs","اسم وحدة تحكم البحث في عناوين URL"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","اسم وحدة تحكم الماجنتو للبحث هو 'catalogsearch/result'. نغيره إلى 'search'. يمكنك تغييره إلى أي اسم آخر."
+"Place search term","مكان مصطلح البحث"
+"CMS Pages","صفحات CMS"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","إعادة التوجيه إلى الصفحة الرئيسية للموقع عندما يحاول الزائر الوصول إلى صفحة CMS ذات الصلة مع رابط مباشر"
+"In-URL label","تسمية في عنوان URL"

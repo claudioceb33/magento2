@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="is_new" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>"Is New" Label</label>
+        <comment>New Labels are used for the presentation of new items at your store.</comment>
+
+        <include path="Swissup_ProLabels::system/_common.xml" />
+
+        <include path="Swissup_ProLabels::system/is_new/product.xml" />
+        <include path="Swissup_ProLabels::system/is_new/category.xml" />
+
+    </group>
+</include>

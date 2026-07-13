@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <checkout>
+            <options>
+                <enable_guest_checkout_login>1</enable_guest_checkout_login>
+            </options>
+        </checkout>
+        <otpcode>
+            <general>
+                <active>1</active>
+                <otp_code_length>6</otp_code_length>
+                <otp_code_request_time>180</otp_code_request_time>
+            </general>
+            <messages>
+                <email_message_sent>Hemos enviado el codigo de acceso a la direccion de correo indicada.</email_message_sent>
+                <email_message_error>La direccion de correo no esta registrada, revisa si esta bien escrita o registrate.</email_message_error>
+                <otp_message_error>El codigo ingresado es incorrecto o ha expirado.</otp_message_error>
+            </messages>
+        </otpcode>
+    </default>
+</config>

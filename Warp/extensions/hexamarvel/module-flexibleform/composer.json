@@ -1,0 +1,28 @@
+{
+    "name": "hexamarvel/module-flexibleform",
+    "description": "Flexible Form",
+    "require": {
+        "magento/framework": ">100.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.12",
+    "license": [
+        "GPL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Hexamarvel",
+            "email": "hello@hexamarvel.com",
+            "homepage": "https://www.hexamarvel.com",
+            "role": "Leader"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Hexamarvel\\FlexibleForm\\": ""
+        }
+    }
+}

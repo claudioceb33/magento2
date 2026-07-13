@@ -1,0 +1,166 @@
+<?xml version="1.0" ?>
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_Formbuilder
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- BACKEND API LIST -->
+    <route method="GET" url="/V1/lof-formbuilder/formbuildersetting">
+        <service class="Lof\Formbuilder\Api\FormbuilderSettingManagementInterface" method="getSetting"/>
+        <resources>
+           <resource ref="Lof_Formbuilder::config_form"/>
+       </resources>
+   </route>
+
+   <route url="/V1/lof-formbuilder/getformbyid/:formId" method="GET" >
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getFormById"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::form"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/listform">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::form"/>
+        </resources>
+    </route>
+
+    <route method="PUT" url="/V1/lof-formbuilder/saveform">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::form"/>
+        </resources>
+    </route>
+
+    <route method="DELETE" url="/V1/lof-formbuilder/deletebyid/:formId">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::form"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/getlistmessage">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getListMessage"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::message"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/getlastmessage">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getLastMessage"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::message"/>
+        </resources>
+    </route>
+
+    <route url="/V1/lof-formbuilder/getmessagebyid/:messageId" method="GET" >
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getMessageById"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::message"/>
+        </resources>
+    </route>
+
+    <route method="DELETE" url="/V1/lof-formbuilder/deletemessage/:messageId">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="deleteMessageById"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::message"/>
+        </resources>
+    </route>
+
+    <route method="POST" url="/V1/lof-formbuilder/formbuilderblacklist">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="addIp"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::blacklist_save"/>
+        </resources>
+    </route>
+
+    <route method="POST" url="/V1/lof-formbuilder/sendreplymessage">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="send"/>
+        <resources>
+            <resource ref="Lof_Formbuilder::reply"/>
+        </resources>
+    </route>
+
+    <!-- FRONTEND API -->
+    <route method="GET" url="/V1/lof-formbuilder/me/messages">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getMyListMessage"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route url="/V1/lof-formbuilder/me/message/:messageId" method="GET" >
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getMyMessageById"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/getFormFieldData/:messageId">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getFormFieldData"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/get-message-by-customer">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getMessageContent"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="POST" url="/V1/lof-formbuilder/form">
+        <service class="Lof\Formbuilder\Api\SubmitFormRepositoryInterface" method="submitForm"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="customerId" force="true">%customer_id%</parameter>
+        </data>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/getForm/:formId">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getFormDesign"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/lof-formbuilder/getformfield/:formId">
+        <service class="Lof\Formbuilder\Api\FormbuilderRepositoryInterface" method="getFormField"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+</routes>

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sitemap\Model\Sitemap" type="Swissup\Hreflang\Model\Sitemap" />
+    <type name="Magento\Sitemap\Model\Sitemap">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="hreflangData" xsi:type="object">Swissup\Hreflang\Helper\Sitemap</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Store\Model\Store">
+        <!-- plugin for Store Model - add locale code in URL -->
+        <plugin name="appendLangInUrl"
+                type="Swissup\Hreflang\Plugin\Model\Store"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Store\App\Request\PathInfoProcessor">
+        <!-- plugin for PathInfoProcessor - findout store from hreflang -->
+        <plugin name="beforePathInforParsed"
+                type="Swissup\Hreflang\Plugin\App\Request\PathInfoProcessor"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Store\App\Request\StorePathInfoValidator">
+        <!-- plugin for StorePathInfoValidator - findout store from hreflang -->
+        <plugin name="swissupHreflangMagento234plus"
+                type="Swissup\Hreflang\Plugin\App\Request\StorePathInfoValidator"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Category">
+        <plugin name="collectHreflangCategory"
+                type="Swissup\Hreflang\Plugin\Sitemap\ResourceModel\Catalog\Category"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sitemap\Model\ResourceModel\Catalog\Product">
+        <plugin name="collectHreflangProduct"
+                type="Swissup\Hreflang\Plugin\Sitemap\ResourceModel\Catalog\Product"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Sitemap\Model\ResourceModel\Cms\Page">
+        <plugin name="collectHreflangCmsPage"
+                type="Swissup\Hreflang\Plugin\Sitemap\ResourceModel\Cms\Page"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Swissup\Highlight\Model\Sitemap\ItemProvider">
+        <plugin name="collectHreflangCmsPage"
+                type="Swissup\Hreflang\Plugin\Sitemap\Highlight\ItemProvider"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Swissup\Attributepages\Model\Sitemap\ItemProvider">
+        <plugin name="swissup_hreflang"
+                type="Swissup\Hreflang\Plugin\Sitemap\Attributepages\ItemProvider"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+</config>

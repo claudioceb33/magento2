@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Block\Order\Totals" type="Ecommerce66\MultilineDiscount\Block\Order\Totals" />
+    <preference for="Magento\SalesRule\Model\Validator" type="Ecommerce66\MultilineDiscount\Model\Validator" />
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="saveCustomDiscounts" type="Ecommerce66\MultilineDiscount\Plugin\ShippingInformationManagementPlugin"/>
+    </type>
+    <type name="Magento\Checkout\CustomerData\Cart">
+        <plugin name="discount_segments" type="Ecommerce66\MultilineDiscount\Plugin\Checkout\CustomerData\CartPlugin"/>
+    </type>
+</config>

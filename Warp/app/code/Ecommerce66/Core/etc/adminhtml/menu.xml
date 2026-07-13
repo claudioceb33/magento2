@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ecommerce66_Core::top_level"
+             title="Ecommerce66"
+             module="Ecommerce66_Core"
+             sortOrder="65"
+             resource="Ecommerce66_Core::top_level"/>
+    </menu>
+</config>

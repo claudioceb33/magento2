@@ -1,0 +1,76 @@
+"Product Labels","Rótulos de produtos"
+"Add New Label","Adicionar novo rótulo"
+"Save Label","Salvar rótulo"
+"Delete Label","Excluir rótulo"
+"Edit Label '%1'","Editar rótulo '%1'"
+"New Label","Novo rótulo"
+Settings,Configurações
+Position,Posição
+Top-Left,"Canto superior esquerdo"
+Top-Center,Centro-Pivô
+Top-Right,Topo-direito
+Middle-Left,Centro-esquerda
+Middle-Center,Centro-Médio
+Middle-Right,Centro-Direita
+Bottom-Left,"Inferior esquerdo"
+Bottom-Center,Centro-Pivô
+Bottom-Right,"Inferior direito"
+Content,Conteúdo
+"Label Text","Texto do rótulo"
+"Custom Css Label","Rótulo Css personalizado"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Css Style Only. Exemplo: cor: #fff; sombra de texto: 0 1px 0 rgba (0,0,0,0,3); largura: 60px; altura: 60px;fundo:#ff7800; raio de fronteira:50%;"
+"Label Custom Url","Url personalizado do rótulo"
+"Round Method","Método redondo"
+Math,Matemática
+Ceil,Ceil
+Floor,Chão
+"Round Value","Valor Redondo"
+"Labels Gallery","Galeria de Rótulos"
+"Label Image","Imagem do rótulo"
+"Category Label","Rótulo da categoria"
+"Conditions (don't add conditions if label is applied to all products)","Condições (não adicione condições se o rótulo for aplicado a todos os produtos)"
+"Indexed Products","Produtos Indexados"
+"Attribute Set","Conjunto de atributos"
+"Product Label","Rótulo do produto"
+"Label Gallery","Galeria de Rótulos"
+"We couldn't find any labels","Não encontramos rótulos."
+"Labels have been applied.","Foram aplicados rótulos."
+"Label has been applied.","O rótulo foi aplicado."
+"Label was deleted.","O rótulo foi apagado."
+"Can't find a label to delete.","Não consigo encontrar uma etiqueta para apagar."
+"Label was disabled.","A etiqueta estava desativada."
+"Can't find a label to disable.","Não consigo encontrar uma etiqueta para desativar."
+ProLabels,ProLabels
+"Manage Labels","Gerenciar rótulos"
+"This label no longer exists.","Este rótulo não existe mais."
+"Edit Label","Editar rótulo"
+"Label was enabled.","O rótulo foi ativado."
+"Can't find a label to enable.","Não consigo encontrar um rótulo para habilitar."
+"Label has been saved.","O rótulo foi salvo."
+"Something went wrong while saving the label.","Algo deu errado enquanto salvava a etiqueta."
+"up to ","até "
+Edit,Editar
+"All Store Views","Todas as visualizações da loja"
+"Click here or drag and drop to add images.","Clique aqui ou arraste e solte para adicionar imagens."
+Swissup,Swissup
+"jQuery Selector For Base Image Wrapper","seletor de jQuery para invólucro de imagem base"
+"jQuery Selector For Content Labels Container","jQuery Selector para contêiner de etiquetas de conteúdo"
+"On Sale","À venda"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","Os rótulos sale são a maneira econômica de marcar as vendas das lojas e atrair a atenção dos visitantes. Eles são mostrados em produtos com desconto e à venda. Usando etiquetas on sale você chama a atenção dos clientes para os itens promocionais."
+"Product Page","Página do produto"
+Image,Imagem
+"Custom Label","Etiqueta personalizada"
+"Category Page","Página da categoria"
+"Is New","É Novo"
+"New Labels are used for the presentation of new items at your store.","Novos rótulos são usados para a apresentação de novos itens em sua loja."
+"In Stock","Em Estoque"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","Em Stock labels são usados para mostrar itens de baixo estoque. Usando em estoque e fora de rótulos de estoque, você foca a atenção dos clientes na disponibilidade limitada de produtos."
+"Display if Stock is lower then","Exibir se O estoque for menor, então"
+"Out Of Stock","Fora de estoque"
+"Apply Labels","Aplicar rótulos"
+"Product Image","Imagem do produto"
+"Product Position","Posição do produto"
+"Product Text","Texto do produto"
+"Category Image","Imagem da categoria"
+"Category Position","Posição da categoria"
+"Category Text","Texto da categoria"

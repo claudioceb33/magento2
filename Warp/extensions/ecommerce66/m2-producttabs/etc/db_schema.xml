@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    
+    <table name="mgs_protabs" resource="default" engine="innodb">
+        <column xsi:type="int" name="tab_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Protabs Id" />
+        <column xsi:type="varchar" name="title" length="255" nullable="true" comment="Title" />
+        <column xsi:type="varchar" name="tab_type" length="255" nullable="true" comment="Type" />
+        <column xsi:type="varchar" name="value" length="255" nullable="true" comment="Value" />
+        <column xsi:type="int" name="position" nullable="true" comment="Position" />
+        <column xsi:type="varchar" name="scope" length="8" nullable="true" comment="Scope" />
+        <column xsi:type="int" name="scope_id" nullable="false" default="0" comment="Scope Id" />
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="tab_id"/>
+        </constraint>
+
+    </table>
+    
+</schema>

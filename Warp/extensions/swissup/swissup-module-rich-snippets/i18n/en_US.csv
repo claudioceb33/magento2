@@ -1,0 +1,32 @@
+"Go to Home Page","Go to Home Page"
+"No structured data","No structured data"
+"Microdata (implemented by Magento)","Microdata (implemented by Magento)"
+JSON-LD,JSON-LD
+"Product not found.","Product not found."
+"Rich Snippets","Rich Snippets"
+"Product Page structured data format","Product Page structured data format"
+"Minify structured data","Minify structured data"
+Breadcrumbs,Breadcrumbs
+"Product Structured Data","Product Structured Data"
+"Settings in this section works only with structured data format JSON-LD.","Settings in this section works only with structured data format JSON-LD."
+"Product Brand Attribute","Product Brand Attribute"
+"When 'None' selected - brand is disabled in structured data.","When 'None' selected - brand is disabled in structured data."
+"Product Condition Attribute","Product Condition Attribute"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","All attributes have type ""Dropdown"". When 'None' selected - product condition is always new."
+"New Option","New Option"
+"Value from Admin label of attribute option. Leave empty to ignore.","Value from Admin label of attribute option. Leave empty to ignore."
+"Used Option","Used Option"
+"Damaged Option","Damaged Option"
+"Refurbished Option","Refurbished Option"
+Organization,Organization
+"Organization Name","Organization Name"
+Street,Street
+Locality,Locality
+Region,Region
+"Postal code","Postal code"
+Url,Url
+"Social Links","Social Links"
+"Site Name","Site Name"
+"Site Url","Site Url"
+"Price Valid Until", "Price Valid Until"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.", "The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more."

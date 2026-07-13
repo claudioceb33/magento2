@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="swissup_richsnippets" class="Swissup\RichSnippets\Block\Widget\Faq"
+            is_email_compatible="false"
+            placeholder_image="Magento_Widget::placeholder.gif"
+            ttl="86400">
+        <label translate="true">Rich Snippets - FAQ</label>
+        <description/>
+        <parameters>
+            <parameter name="questions" xsi:type="block" visible="true">
+                <label translate="true">Frequantly Asked Questions</label>
+                <block class="Swissup\RichSnippets\Block\Form\Element\Renderer\Questions">
+                    <data>
+                        <item name="scope_name" xsi:type="string">swissup_richsnippets_questions</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="output" xsi:type="select" source_model="Swissup\RichSnippets\Model\Config\Source\FaqsOutput">
+                <label translate="true">Output</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

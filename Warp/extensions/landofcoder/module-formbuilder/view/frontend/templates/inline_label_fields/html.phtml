@@ -1,0 +1,87 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helperData       = $this->helper(Data::class);
+$field       = $this->getData('field_data');
+$form        = $block->getForm();
+$fieldType  = $field['field_type'];
+$label       = $block->filterMessage($field['label']);
+$inlineCss   = $field['inline_css'] ?? '';
+$cid         = $helperData->getFieldId($field);
+$description = '';
+if (isset($field['field_options']["description"])) {
+    $description = $block->filterMessage($field['field_options']["description"]);
+}
+$helper            = $this->helper(Fields::class);
+$fieldName        = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$options           = $field['field_options'];
+
+$colorLabel       = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$colorText        = isset($options['color_text']) ? 'color:'.$options['color_text'].';' : '';
+$colorDescription = isset($options['color_description']) ? 'color:'.$options['color_description'].';' : '';
+$backgroundColor  = isset($options['background_color']) ? 'background-color:'.$options['background_color'].';' : '';
+
+$fontSize         = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle        = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight       = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+$frameWorkCss    = '';
+if (isset($field['frame_work_css'])) {
+    $frameWorkCss      = $field['frame_work_css'];
+}
+
+$labelCol = 12;
+if (isset($field['fieldcol']) && $field['fieldcol']) {
+    if ((int)$field['fieldcol'] < 12) {
+        $labelCol = 12 - (int)$field['fieldcol'];
+    }
+}
+if ($frameWorkCss == 'foundation') {
+    $colunm =  isset($field['fieldcol']) ? 'medium-'.$field['fieldcol'] : 'medium-12';
+    $labelColumn = 'medium-'.$labelCol;
+} else {
+    $colunm =  isset($field['fieldcol']) ? 'col-sm-'.$field['fieldcol'] : 'col-sm-12';
+    $labelColumn = 'col-sm-'.$labelCol;
+}
+?>
+<div class="subtemplate-wrapper" style="<?= $inlineCss ?>">
+
+    <div class="row">
+        <?php if ($label && $label != '') { ?>
+        <div class="field-html-label <?= $labelColumn; ?>">
+            <label for="<?= $fieldId; ?>"> <?= $label; ?></label>
+        </div>
+        <?php } ?>
+        <div class="field-html <?= $colunm; ?>" style="<?= $backgroundColor; ?>">
+            <div class="sm-html" style="<?= $colorText.$fontSize.$fontStyle.$fontWeight; ?>">
+                <?php if ($description != '') { ?>
+                <div class="form-custom-html">
+                    <?= $description; ?>
+                </div>
+                <textarea name="<?= $fieldName; ?>"  id="<?= $fieldId; ?>" style="display:none;" ><?= $description; ?></textarea>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>

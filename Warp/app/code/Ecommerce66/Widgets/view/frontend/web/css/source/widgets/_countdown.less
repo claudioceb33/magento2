@@ -1,0 +1,214 @@
+
+.event-countdown {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'work sans light',arial;
+
+    .pointer {
+        cursor: pointer;
+    }
+
+    h2,h3 {
+        color: inherit;
+        font-family: inherit;
+    }
+    h2 {
+        font-size: 4vw !important;
+    }
+    h3 {
+        font-size: 3vw !important;
+    }
+    .title {
+        margin: 0 !important;
+        padding: 0 3vw 0 4vw;
+    }
+
+    .left {
+        text-align: left;
+        .title{
+            text-align: left;
+        }
+    }
+    .center {
+        text-align: center;
+        .title {
+            text-align: center;
+        }
+    }
+    .right {
+        text-align: right;
+        .title {
+            text-align: right;
+        }
+    }
+
+}
+
+#clockdiv {
+    display: inline-flex;
+    flex-direction: row;
+    height: 120px;
+    padding-top: 15px;
+    margin: -25px auto 0 auto;
+    position: relative;
+    top: 45%;
+
+    .time {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 10px;
+        position: relative;
+        text-align: center;
+        width: 10vw;
+
+        &::after {
+            content: "";
+            display: block;
+            font-size: 36px;
+            position: absolute;
+            right: 0;
+            height: ~'calc(100% - 45px)';
+            width: 1px;
+            background: #000;
+        }
+        .smalltext {
+            display: block;
+            font-size: 18px;
+            line-height: 18px;
+            font-family: inherit;
+        }
+    }
+    .time:last-child:after {
+        display: none;
+    }
+    .time span:not(.smalltext) {
+        display: block;
+        font-size: 72px;
+        line-height: 64px;
+        font-family: 'work sans',arial;
+    }
+}
+
+@media only screen and (min-width: 2400px) {
+    #clockdiv.clock-wrapper {
+        .time {
+            width: 7vw;
+        }
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    #clockdiv.clock-wrapper {
+        .time {
+            width: 12vw;
+            span:not(.smalltext) {
+                font-size: 65px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .event-countdown {
+        h2 {
+            font-size: 6vw !important;
+        }
+        h3 {
+            font-size: 4vw !important;
+        }
+    }
+    #clockdiv.clock-wrapper {
+        .time span:not(.smalltext) {
+            font-size: 50px;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .event-countdown {
+        .left {
+            text-align: center;
+            .title {
+                text-align: center;
+            }
+        }
+        .right {
+            text-align: center;
+            .title {
+                text-align: center;
+            }
+        }
+        h2 {
+            font-size: 7vw !important;
+        }
+        h3 {
+            font-size: 5vw !important;
+        }
+        .title {
+            padding: 0 7vw;
+        }
+    }
+
+    #clockdiv.clock-wrapper {
+        height: 90px;
+        width: 95%;
+        margin: 0 auto;
+        justify-content: center !important;
+
+        .time {
+            flex-direction: column;
+            padding: 5px 5px 10px;
+            position: relative;
+            text-align: center;
+            width: 15%;
+            &::after {
+                font-size: 24px;
+            }
+            .smalltext {
+                font-size: 12px;
+                line-height: 14px;
+            }
+            span:not(.smalltext) {
+                font-size: 42px;
+                line-height: 42px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #clockdiv.clock-wrapper {
+        .time {
+            width: 17%;
+            padding-top: 10px;
+            span:not(.smalltext) {
+                font-size: 35px;
+                line-height: 40px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .event-countdown {
+        .title {
+            padding: 0 10vw;
+        }
+    }
+    #clockdiv.clock-wrapper{
+        .time {
+            width: 20%;
+            padding: 10px 5px;
+            span:not(.smalltext) {
+                font-size: 29px;
+                line-height: 30px;
+                padding-top: 3px;
+            }
+            .smalltext {
+                font-size: 8px;
+                line-height: 14px;
+            }
+        }
+    }
+}

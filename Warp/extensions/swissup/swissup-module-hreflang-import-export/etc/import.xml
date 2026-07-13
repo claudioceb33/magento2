@@ -1,0 +1,11 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_ImportExport:etc/import.xsd">
+    <entity name="swissup_hreflang_catalog_categories"
+        label="Hreflang - Catalog Categories"
+        model="Swissup\HreflangImportExport\Model\Import\CatalogCategory"
+        behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+    <entity name="swissup_hreflang_cms_pages"
+        label="Hreflang - CMS Pages"
+        model="Swissup\HreflangImportExport\Model\Import\CmsPage"
+        behaviorModel="Magento\ImportExport\Model\Source\Import\Behavior\Basic" />
+</config>

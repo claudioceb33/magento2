@@ -1,0 +1,8 @@
+"Looks like Magento went into infinit loop... Product ID - %1. Image - %2","마겐토가 무한루프에 들어간 것 같습니다... 제품 ID - %1. 이미지 - %2"
+"Misc. string in path of resized image","크기 조정 된 이미지의 경로에 기타 문자열"
+"Use clear parameters for product images","제품 이미지에 명확한 매개변수 사용"
+"Image Name","이미지 이름"
+"Product image template","제품 이미지 템플릿"
+"Magento codes all resize parameters of image into hash string. Adds this hash to resized image path. With option below you can enable clear parameters presentation. Instead of ""ea013e3e574bd4924b1531f962e2c015"" you will get ""240x300"".","Magento 코드 해시 문자열로 이미지의 모든 크기 조정 매개 변수. 크기 조정된 이미지 경로에 이 해시를 추가합니다. 아래 옵션을 사용하면 명확한 매개 변수 프리젠 테이션을 활성화 할 수 있습니다. 대신 ""ea013e3e574bd4924b1531f962e2c015""당신은 ""240x300""을 얻을 것이다."
+"Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code=""attr_code""}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template.","Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code=""attr_code""}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template."
+"None of settings affects original images. Everything can be turned off easy and reverted to default Magento behaviour.","설정중 어느 것도 원본 이미지에 영향을 미치지 않습니다. 모든 것을 쉽게 해제하고 기본 Magento 동작으로 되돌릴 수 있습니다."

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_block_product_list_collection">
+        <observer name="swissup_seotemplates_catalog_block_product_list_collection" instance="Swissup\SeoTemplates\Observer\SetFlagPreloadSeodata" />
+    </event>
+    <event name="catalog_product_collection_load_after">
+        <observer name="swissup_seotemplates" instance="Swissup\SeoTemplates\Observer\PreloadSeodata" />
+    </event>
+    <!-- Preload data for related products block -->
+    <event name="swissup_event_block_product_list_collection">
+        <observer name="swissup_seotemplates_block_product_list_collection" instance="Swissup\SeoTemplates\Observer\SetFlagPreloadSeodata" />
+    </event>
+</config>

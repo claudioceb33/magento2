@@ -1,0 +1,62 @@
+<style>
+    /* .admin__fieldset .directives-description { margin-left: calc( (100%) * 0.25 ); width: calc( (100%) * 0.5 );} */
+    .admin__fieldset .directives-description > li { margin-bottom: 1.5em; list-style: none; }
+    .admin__fieldset .directives-description > li pre { display: inline; font-style: italic; background-color: #eee; }
+    .admin__fieldset .directives-description > li strong pre { font-style: normal; background-color: transparent; }
+    .admin__fieldset .directives-description > li.comment { font-size: .8em; padding: 0 0 0 10px; margin-bottom: 0; }
+    .admin__fieldset .directives-description > li.comment::before { content: '* '; color: red; }
+    .admin__fieldset .directives-description > li.comment.two-stars::before { content: '** '; }
+    .admin__fieldset .directives-description > li.usage-example ul { margin-left: 40px; list-style: circle; }
+</style>
+<ul class="directives-description">
+    <li>Below you can find a list of available directives and examples of how to use them.</li>
+    <li>
+        <strong><pre>{{attribute code="..." [prefix="..."] [sufix="..."] [exclude="..."] [limit="..."] [separator="..."] [max_length="…" [break_words="…" etc="…"]]}}</pre></strong> - value of attribute by its code. You can set multiple codes separated with comma. It will return first not empty value. For example, some of your products have attribute <pre>manufacturer</pre> and other have - <pre>brand</pre>. In such case you can use <pre>{{attribute code="brand,manufacturer"}}</pre>.
+    <?php if ($block->isTypeProduct()): ?>
+        With configurable product this directive can return values of attribute from child products. You can set max number of values (<pre>limit="5"</pre>) and separator (<pre>separator=", "</pre>).
+    <?php endif; ?>
+        <pre>exclude</pre> option allows you to exclude some values from output. It can contain multiple values separated with comma.
+        <pre>max_length</pre> sets max length in characters for output. By default, it respects words and doesn't cut them. <pre>break_words="1"</pre> will force to cut words. <pre>etc</pre> sets trailing string that will be added after output truncate.
+    </li>
+    <li>
+        <strong><pre>{{ifexist code="..." [then="..."] [else="..."]}}</pre></strong> - condition directive returns <pre>then</pre> if attribute with code <pre>code</pre> has value. Otherwise, it returns <pre>else</pre>.
+    </li>
+<?php if ($block->isTypeProduct()): ?>
+    <li>
+        <strong><pre>{{price [prefix="..."] [sufix="..."] [tax="include|exclude"] [decimals="N"] [dec_point="."] [thousands_sep=","]}}</pre></strong> - product price. You can include or exclude tax in price with optional parameter 'tax'. Price has two decimals by default. If you need to change it then use parameter 'decimals' <pre>(decimals="0")</pre>.
+    </li>
+    <li>
+        <strong><pre>{{categories [direction="from_assigned|from_top"] [depth="N"] [prefix="..."] [sufix="..."]}}</pre></strong> - category product is assigned for. When product assigned to multiple categories all of them outputed. With option <pre>direction</pre> you can set how to travers category tree - from assigned category and up to top or from top down to assigned category. You can set how deep of category tree goes. Use option <pre>depth</pre> with integer value. If depth=1 then directive returns only direct parents. If depth=2 - direct parents and parents of those parents. And so on. You can use options limit, prefix, sufix and exclude also.
+    </li>
+<?php elseif ($block->isTypeCategory()): ?>
+    <li>
+        <strong><pre>{{products attribute="..." [prefix="..."] [sufix="..."] [exclude="..."] [limit="..."] [separator="..."]}}</pre></strong> - get values of attribute with code <pre>attribute</pre> from category products. You can set max number of values (<pre>limit</pre>) and separator (<pre>separator</pre>). With <pre>exclude</pre> option you can exclude some values from output.
+    </li>
+    <li>
+        <strong><pre>{{subcats [prefix="..."] [sufix="..."] [exclude="..."] [limit="..."] [separator="..."]}}</pre></strong> - get subcategories for category. You can set max number of subcategories to output (<pre>limit</pre>) and separator (<pre>separator</pre>). With <pre>exclude</pre> option you can exclude some subcategories from output by their names.
+    </li>
+    <li>
+        <strong><pre>{{parents [direction="from_assigned|from_top"] [depth="N"] [prefix="..."] [sufix="..."]}}</pre></strong> - parent categories category is assigned for. With option <pre>direction</pre> you can set how to travers category tree - from assigned category and up to top or from top down to assigned category. You can set how deep of category tree goes. Use option <pre>depth</pre> with integer value. If depth=1 then directive returns only direct parents. If depth=2 - direct parents and parents of those parents. And so on. You can use options limit, prefix, sufix and exclude also.
+    </li>
+    <li>
+        <strong><pre>{{minprice [prefix="..."] [sufix="..."]}}</pre></strong> - mininal price among all category products.
+    </li>
+<?php endif; ?>
+    <li>
+        <strong><pre>{{random "value 1|value 2|...|value N"}}</pre></strong> - randomly select string from list of strings separated with "|" (pipe / vertical bar).
+    </li>
+    <li class="usage-example">
+        Template for products <pre>{{attribute code="gender"}} {{attribute code="name"}} by {{attribute code="brand,manufacturer"}} {{price prefix="for $"}}</pre> can generate next strings:
+        <ul>
+            <li>Male Air Max by Nike for $89.99</li>
+            <li>Air Max by Nike for $89.99 - there is no attribute gender for product or it is not set</li>
+            <li>Male Air Max by Nike - product has no price (e.g. grouped product)</li>
+        </ul>
+    </li>
+    <li class="comment">
+        With <pre>sufix</pre> and <pre>prefix</pre> options you can add some text before or after output. Works only when output is not empty.
+    </li>
+    <li class="comment two-stars">
+        Directive options in square brackets (<pre>[...]</pre>) are optional. If you want to use option please do not wrap it in square brackets.
+    </li>
+</ul>

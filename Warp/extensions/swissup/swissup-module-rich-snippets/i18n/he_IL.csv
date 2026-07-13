@@ -1,0 +1,32 @@
+"Go to Home Page","עבור לדף הבית"
+"No structured data","אין נתונים מובנים"
+"Microdata (implemented by Magento)","מיקרו-מידע (מיושם על-ידי מחנטו)"
+JSON-LD,בעלי-מיון
+"Product not found.","המוצר לא נמצא."
+"Rich Snippets","קטעי ריץ '"
+"Product Page structured data format","תבנית נתונים מובנית של דף מוצר"
+"Minify structured data","נתונים מובנים של minify"
+Breadcrumbs,"פירורי לחם"
+"Product Structured Data","נתונים מובנים של מוצר"
+"Settings in this section works only with structured data format JSON-LD.","ההגדרות בסעיף זה פועלות רק עם תבנית נתונים מובנית JSON-LD."
+"Product Brand Attribute","תכונת מותג המוצר"
+"When 'None' selected - brand is disabled in structured data.","כאשר ' אף אחד ' נבחר-מותג אינו זמין בנתונים מובנים."
+"Product Condition Attribute","תכונת תנאי המוצר"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","כל התכונות יש סוג ""נפתח"". כאשר תנאי ' ללא ' מוצר נבחר הוא תמיד חדש."
+"New Option","אופציה חדשה"
+"Value from Admin label of attribute option. Leave empty to ignore.","ערך מתווית ' מנהל ' של התכונה. . השאר ריק להתעלם ממנו"
+"Used Option","אפשרות משומשים"
+"Damaged Option","אפשרות פגומה"
+"Refurbished Option","אפשרות משופץ"
+Organization,ארגון
+"Organization Name","שם הארגון"
+Street,רחוב
+Locality,יישוב
+Region,אזור
+"Postal code",מיקוד
+Url,Url
+"Social Links","קישורים חברתיים"
+"Site Name","שם האתר"
+"Site Url","כתובת אתר"
+"Price Valid Until","המחיר תקף עד"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more."

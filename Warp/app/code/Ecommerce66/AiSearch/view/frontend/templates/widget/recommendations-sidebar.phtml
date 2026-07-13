@@ -1,0 +1,53 @@
+<?php
+/**
+ * Simple recommendations sidebar template.
+ *
+ * @var \Ecommerce66\AiSearch\Block\Product\RecommendationList $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$products = $block->getLoadedProductCollection();
+?>
+<?php if ($products && $products->getSize()): ?>
+    <div class="recommendation-sidebar">
+        <?php foreach ($products as $product): ?>
+            <?php
+                $productUrl = $product->getProductUrl();
+                $imageUrl = $block->getImage($product, 'category_page_list')
+                    ->getImageUrl();
+                $priceHtml = $block->getProductPriceHtml(
+                    $product,
+                    \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                    \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST
+                );
+            ?>
+            <article class="recommendation-card">
+                <a class="recommendation-image" href="<?= $escaper->escapeUrl($productUrl) ?>">
+                    <img
+                        src="<?= $escaper->escapeUrl($imageUrl) ?>"
+                        alt="<?= $escaper->escapeHtmlAttr($product->getName()) ?>"
+                        loading="lazy"
+                    />
+                </a>
+                <div class="recommendation-details">
+                    <a class="recommendation-title" href="<?= $escaper->escapeUrl($productUrl) ?>">
+                        <?= $escaper->escapeHtml($product->getName()) ?>
+                    </a>
+                    <?php if ($priceHtml): ?>
+                        <div class="recommendation-price">
+                            <?= /* @noEscape */ $priceHtml ?>
+                        </div>
+                    <?php endif; ?>
+                    <a class="action primary recommendation-action"
+                       href="<?= $escaper->escapeUrl($productUrl) ?>">
+                        <span><?= $escaper->escapeHtml(__('View Product')) ?></span>
+                    </a>
+                </div>
+            </article>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <div class="recommendation-empty">
+        <?= $escaper->escapeHtml(__('We couldn\'t load related products right now.')) ?>
+    </div>
+<?php endif; ?>

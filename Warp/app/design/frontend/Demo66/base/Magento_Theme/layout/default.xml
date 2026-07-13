@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+
+        <referenceBlock name="header-wrapper">
+            <container name="login_container" label="Top User container" htmlTag="div" htmlClass="user-cont">
+                    <block class="Magento\Customer\Block\Account\AuthorizationLink" name="user-cont" template="Magento_Customer::account/link/authorization.phtml" before="-" />
+                    <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-dropdown" template="Magento_Customer::account/link/authorization_dropdown.phtml"/>
+            </container>
+        </referenceBlock>
+
+        <move element="minicart" destination="login_container" after="-"/>
+
+        <referenceContainer name="footer-container">
+            <block class="Magento\Cms\Block\Block" name="home_menu" before="footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">home_menu</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="newsletter" after="home_menu">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">newsletter</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="footer">
+            <block class="Magento\Cms\Block\Block" name="footer_blocks">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">footer_blocks</argument>
+                </arguments>
+            </block>
+
+            <block class="Magento\Cms\Block\Block" name="copyright_footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">copyright_footer</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

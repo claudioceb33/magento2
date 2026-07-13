@@ -1,0 +1,27 @@
+"Advanced Properties",詳細プロパティ
+"Links with `nofollow` in Layered Navigation","階層型ナビゲーションで 'nofollow' を含むリンク"
+"4 and up",4とアップ
+"3 and up",3とアップ
+"2 and up",2とアップ
+"1 and up",1とアップ
+any,任意
+"In URL body","URL 本文内"
+"As request parameter",要求パラメーターとして
+"Infinite recursion call or category tree is too deep.","無限再帰呼び出しまたはカテゴリ ツリーが深すぎます。"
+In,インチ
+Out,乙
+"SEO URLs","SEO URL"
+"Manage In-URL Attribute Label","URL 内属性ラベルの管理"
+"Use this section to set attribute labels for URLs in layered navigation.","このセクションを使用して、階層化ナビゲーションの URL の属性ラベルを設定します。"
+"Manage In-URL Option Label for Attribute","属性の URL 内オプション ラベルの管理"
+"Use this section to set attribute values for URLs in layered navigation.","このセクションを使用して、階層化ナビゲーションの URL の属性値を設定します。"
+Option,オプション
+"Sending attribute values as package.",属性値をパッケージとして送信しています。
+"Use separator for filters",フィルターに区切り記号を使用する
+"Separator string",区切り文字列
+"Search controller name in URLs","URL 内の検索コントローラー名"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","検索用の Magento コントローラー名は「カタログ検索/結果」です。「検索」に変更します。他の名前に変更できます。"
+"Place search term",検索語句を配置する
+"CMS Pages","CMS ページ"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link",訪問者が直接リンクを持つそれぞれのCMSページにアクセスしようとするとサイトのホームページにリダイレクト
+"In-URL label","URL 内ラベル"

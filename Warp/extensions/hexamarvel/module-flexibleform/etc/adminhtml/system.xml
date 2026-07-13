@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Hexamarvel" translate="label" sortOrder="999" class="hexamarvel-tab">
+            <label>Hexamarvel Extensions</label>
+        </tab>
+        <section id="hexaform" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Form Builder</label>
+            <tab>Hexamarvel</tab>
+            <resource>Hexamarvel_FlexibleForm::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable extension.</comment>
+                </field>
+                <field id="enable_breadcrumb" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable breadcrumbs on form detail page.</comment>
+                </field>
+                <field id="map_key" translate="label comment" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Map Key for Auto Complete Address</label>
+                </field>
+            </group>
+            <group id="admin_email_settings" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Admin Email Settings</label>
+                 <field id="enable_email" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable admin notifications when a form is submitted.</comment>
+                </field>
+                <field id="admin_email" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send To</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="email_subject" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Subject</label>
+                    <comment>Set e-mail subject for the admin notification.</comment>
+                </field>
+            </group>
+            <group id="customer_email_settings" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customer Email Settings</label>
+                <field id="enable_email" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable customer notifications when a form is submitted.</comment>
+                </field>
+                <field id="customer_reply_to" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reply To</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="email_subject" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Subject</label>
+                    <comment>Set e-mail subject for the customer notification.</comment>
+                </field>
+                <field id="email_template" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+            <group id="product_inquiry_settings" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Inquiry Form Settings</label>
+                <field id="enable_enquiry" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable showing the form in product tab section on product’s detail page</comment>
+                </field>
+                <field id="tab_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Tab Title</label>
+                    <comment>Option to manage title for product tab</comment>
+                </field>
+                <field id="form_lists" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Forms List</label>
+                    <source_model>Hexamarvel\FlexibleForm\Model\Config\FormLists</source_model>
+                    <comment>Option to select a form to display in product tab section</comment>
+                </field>
+            </group>
+            <group id="captcha_option" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Captcha Configuration]]></label>
+                <field id="captcha_type" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Captcha Type</label>
+                    <source_model>Hexamarvel\FlexibleForm\Model\Config\Captcha</source_model>
+                </field>
+                <field id="site_key" translate="label comment" sortOrder="30" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Captcha Sitekey</label>
+                    <depends>
+                        <field id="captcha_type">google</field>
+                    </depends>
+                </field>
+                <field id="secret_key" translate="label comment" sortOrder="40" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Captcha Secretkey</label>
+                    <depends>
+                        <field id="captcha_type">google</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="custom_option" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[Date Format]]></label>
+                <field id="date_order" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Date Format</label>
+                    <frontend_model>Magento\Catalog\Block\Adminhtml\Form\Renderer\Config\DateFieldsOrder</frontend_model>
+                    <comment>Select date format (E.g: DD/MM/YYYY)</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

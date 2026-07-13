@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <!-- i was lazy to add css file. sorry... -->
+            <block class="Magento\Framework\View\Element\Text" name="about_us.label">
+                <arguments>
+                    <argument name="text" xsi:type="string"><![CDATA[
+<style>
+    .rule-tree .fieldset > .legend {
+        border: 0;
+    }
+    .rule-tree .fieldset > .legend span {
+        font-weight: normal;
+        font-size: 1.4rem;
+    }
+</style>
+]]></argument>
+                </arguments>
+            </block>
+
+            <referenceBlock name="seotemplates_template_edit">
+                <block class="Swissup\SeoTemplates\Block\Adminhtml\Template\LogTab" name="log_tab" />
+            </referenceBlock>
+
+            <uiComponent name="seotemplates_template_edit"/>
+        </referenceContainer>
+    </body>
+</page>

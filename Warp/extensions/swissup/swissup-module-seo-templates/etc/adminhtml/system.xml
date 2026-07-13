@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="swissup_seotemplates" translate="label" type="text" sortOrder="1321" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Metadata Templates</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoTemplates::seotemplates_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="force" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Force to use generated metadata</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[<b>'Yes'</b> - use generated metadata even when products/categories have own metadata.<br/><b>'No'</b> - use generated metadata only for products/categories that do not have own metadata.]]></comment>
+                </field>
+            </group>
+            <group id="optimize" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Optimize meta data</label>
+                <comment>Settings at this section work with generated metadata as well as with original metadata.</comment>
+                <field id="meta_title_length" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta title max length</label>
+                    <comment>When title is longer it will be truncated (words don't break). Recommended length is ~70 characters.</comment>
+                </field>
+                <field id="meta_description_length" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta description max length</label>
+                    <comment>When description is longer it will be truncated (words don't break). Set it to large number like 999 if you want to keep full length. Recommended length is ~160-170 characters.</comment>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

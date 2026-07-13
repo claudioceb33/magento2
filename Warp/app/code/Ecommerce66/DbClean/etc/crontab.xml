@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="ecommerce66_dbclean_clean_logs" instance="Ecommerce66\DbClean\Cron\LogTables" method="execute">
+            <config_path>dbclean/log_tables/cron_schedule</config_path>
+        </job>
+        <job name="ecommerce66_dbclean_delete_old_products" instance="Ecommerce66\DbClean\Cron\Products" method="execute">
+            <schedule>*/10 2 * * *</schedule>
+        </job>
+    </group>
+</config>

@@ -1,0 +1,32 @@
+"Go to Home Page","Gå til Hjemmeside"
+"No structured data","Ingen strukturerte data"
+"Microdata (implemented by Magento)","Mikrodata (implementert av Magento)"
+JSON-LD,"JSON-LD (Andre betydninger)"
+"Product not found.","Produktet ble ikke funnet."
+"Rich Snippets","Rike utdrag"
+"Product Page structured data format","Strukturdataformat for produktside"
+"Minify structured data","Minify strukturerte data"
+Breadcrumbs,Brødsmuler
+"Product Structured Data","Produktstrukturerte data"
+"Settings in this section works only with structured data format JSON-LD.","Innstillinger i denne delen fungerer bare med strukturert dataformat JSON-LD."
+"Product Brand Attribute","Attributt for produktmerke"
+"When 'None' selected - brand is disabled in structured data.","Når 'Ingen' valgt - merket er deaktivert i strukturerte data."
+"Product Condition Attribute","Attributt for produktbetingelse"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","Alle attributter har typen ""Rullegardin"". Når 'Ingen' valgt - produkttilstand er alltid ny."
+"New Option","Nytt alternativ"
+"Value from Admin label of attribute option. Leave empty to ignore.","Verdi fra administratoretikett for attributtalternativ. La stå tomt for å ignorere."
+"Used Option","Brukt alternativ"
+"Damaged Option","Skadet alternativ"
+"Refurbished Option","Renovert alternativ"
+Organization,Organisasjon
+"Organization Name","Navn på organisasjon"
+Street,Street
+Locality,Lokaliteten
+Region,Regionen
+"Postal code",Postnummer
+Url,Url
+"Social Links","Sosiale lenker"
+"Site Name","Navn på nettsted"
+"Site Url","Url-adresse for nettsted"
+"Price Valid Until","Prisen gyldig til"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","Datoen (i <a href=""https://no.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> datoformat) hvoretter prisen ikke lenger vil være tilgjengelig. Gjelder for alle produkter uten spesialpris. Når spesialprisen har utløpsdato, brukes den.<br/>Sjekk <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google-veiledninger</a> for å finne ut mer."

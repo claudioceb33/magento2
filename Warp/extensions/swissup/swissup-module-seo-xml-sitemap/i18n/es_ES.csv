@@ -1,0 +1,6 @@
+Sitemaps,Sitemaps
+"Other Links Options","Otras opciones de enlaces"
+"Advanced settings","Configuración avanzada"
+"Max Number of URLs Per File","Número máximo de URL por archivo"
+"Max File Size","Tamaño máximo de archivo"
+"<p>You can setup Magento Cron to generate sitemap XML. Go to <a href=""section/sitemap/#sitemap_generate-link"">Catalog Sitemap Cron Settings</a>.</p><p>Also you may enable <a href=""section/sitemap/#sitemap_search_engines-link"">submissions to robots.txt</a>.","<p>Puede configurar Magento Cron para generar XML de sitemap. Ve a <a href=""section/sitemap/#sitemap_generate-link"">Configuración del cron de sitemap del catálogo</a>.</p> <p>También puede habilitar <a href=""section/sitemap/#sitemap_search_engines-link"">envíos a robots.txt</a>."

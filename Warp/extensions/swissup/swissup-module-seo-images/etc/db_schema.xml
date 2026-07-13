@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="swissup_seoimages" resource="default" engine="innodb" comment="swissup_seoimages">
+    <column xsi:type="varchar" name="file_key" nullable="false" length="255" comment="File Key"/>
+    <column xsi:type="varchar" name="original_file" nullable="true" length="255" comment="Original file name"/>
+    <column xsi:type="varchar" name="target_file" nullable="true" length="255" comment="Target file name"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="file_key"/>
+    </constraint>
+    <index referenceId="SWISSUP_SEOIMAGES_TARGET_FILE" indexType="btree">
+      <column name="target_file"/>
+    </index>
+  </table>
+  <table name="swissup_seoimages_params" resource="default" engine="innodb" comment="swissup_seoimages_params">
+    <column xsi:type="int" name="params_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="varchar" name="params" nullable="true" length="255" comment="Params string"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="params_id"/>
+    </constraint>
+  </table>
+  <table name="swissup_seoimages_index" resource="default" engine="innodb" comment="swissup_seoimages_index">
+    <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Entity Id"/>
+    <column xsi:type="varchar" name="file" nullable="true" length="255" comment="File"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <index referenceId="SWISSUP_SEOIMAGES_INDEX_FILE_FILE" indexType="btree">
+      <column name="file"/>
+    </index>
+  </table>
+</schema>

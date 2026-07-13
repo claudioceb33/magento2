@@ -1,0 +1,573 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">ecommerce66_brands_brand_details_form.brand_details_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Ecommerce66\Brands\Block\Adminhtml\Brand\Details\Edit\BackButton"/>
+			<button name="save" class="Ecommerce66\Brands\Block\Adminhtml\Brand\Details\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Ecommerce66\Brands\Block\Adminhtml\Brand\Details\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>ecommerce66_brands_brand_details_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>ecommerce66_brands_brand_details_form.brand_details_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="brand_details_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="brand_details_form_data_source" class="Ecommerce66\Brands\Model\Branddetails\DataProvider">
+			<settings>
+				<requestFieldName>brand_details_id</requestFieldName>
+				<primaryFieldName>brand_details_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="brand">
+		<settings>
+			<label>Brand Management</label>
+		</settings>
+        <fieldset name="general">
+            <settings>
+                <label>General Settings</label>
+                <collapsible>true</collapsible>
+                <opened>true</opened>
+            </settings>
+            <field name="active" formElement="checkbox" sortOrder="10">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                        <item name="default" xsi:type="string">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                    <label translate="true">Active</label>
+                    <dataScope>active</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+
+            <field name="name" formElement="input" sortOrder="20">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Name</label>
+                    <dataScope>name</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="category_id" component="Magento_Catalog/js/components/new-category" sortOrder="30" formElement="select">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="filterOptions" xsi:type="boolean">true</item>
+                        <item name="multiple" xsi:type="boolean">false</item>
+                        <item name="showCheckbox" xsi:type="boolean">false</item>
+                        <item name="disableLabel" xsi:type="boolean">true</item>
+                        <item name="levelsVisibility" xsi:type="number">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <required>true</required>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
+                    <label translate="true">Category</label>
+                    <dataScope>category_id</dataScope>
+                    <componentType>field</componentType>
+                    <listens>
+                        <link name="${ $.namespace }.${ $.namespace }:responseData">setParsed</link>
+                    </listens>
+                </settings>
+                <formElements>
+                    <select>
+                        <settings>
+                            <options class="Magento\Catalog\Ui\Component\Product\Form\Categories\Options"/>
+                        </settings>
+                    </select>
+                </formElements>
+            </field>
+
+            <field name="logo" formElement="imageUploader" sortOrder="40">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <componentType>imageUploader</componentType>
+                    <label translate="true">Logo</label>
+                    <dataScope>logo</dataScope>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <previewTmpl>Ecommerce66_Brands/image-preview</previewTmpl>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>2097152</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">ecommerce66_brands/branddetails/upload</param>
+                                <param name="paramName" xsi:type="string">image</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+
+            <!--field name="logo" sortOrder="40" formElement="imageUploader">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <elementTmpl>ui/form/element/uploader/image</elementTmpl>
+                    <dataType>string</dataType>
+                    <label translate="true">Logo Image</label>
+                    <dataScope>logo</dataScope>
+                    <visible>true</visible>
+                    <required>false</required>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <required>false</required>
+                            <uploaderConfig>
+                                <param xsi:type="url" name="url" path="catalog/category_image/upload"/>
+                            </uploaderConfig>
+                            <previewTmpl>Magento_Catalog/image-preview</previewTmpl>
+                            <openDialogTitle>Media Gallery</openDialogTitle>
+                            <initialMediaGalleryOpenSubpath>catalog/category</initialMediaGalleryOpenSubpath>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>4194304</maxFileSize>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field-->
+
+            <field name="image" formElement="imageUploader" sortOrder="50">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <componentType>imageUploader</componentType>
+                    <label translate="true">Image</label>
+                    <dataScope>image</dataScope>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <previewTmpl>Ecommerce66_Brands/image-preview</previewTmpl>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>2097152</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">ecommerce66_brands/branddetails/upload</param>
+                                <param name="paramName" xsi:type="string">image</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+
+            <field name="mobile_image" formElement="imageUploader" sortOrder="60">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <componentType>imageUploader</componentType>
+                    <label translate="true">Mobile Image</label>
+                    <dataScope>mobile_image</dataScope>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <previewTmpl>Ecommerce66_Brands/image-preview</previewTmpl>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>2097152</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">ecommerce66_brands/branddetails/upload</param>
+                                <param name="paramName" xsi:type="string">image</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+
+            <field name="description" formElement="wysiwyg" template="ui/form/field" sortOrder="70">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                        <item name="rows" xsi:type="number">10</item>
+                        <item name="wysiwygConfigData" xsi:type="array">
+                            <item name="width" xsi:type="string">700px</item>
+                            <item name="height" xsi:type="string">300px</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                            <item name="toggle_button" xsi:type="boolean">true</item>
+                            <item name="add_variables" xsi:type="boolean">true</item>
+                            <item name="add_widgets" xsi:type="boolean">true</item>
+                            <item name="add_images" xsi:type="boolean">true</item>
+                            <item name="add_directives" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Description</label>
+                    <dataScope>description</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="sort_order" formElement="input" sortOrder="80">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Sort Order</label>
+                    <dataScope>sort_order</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="option_id" formElement="select" sortOrder="100">
+                <argument name="data" xsi:type="array">
+                    <item name="options" xsi:type="object">Ecommerce66\Brands\Model\Category\Attribute\Source\RelatedBrand</item>
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                        <item name="disabled" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Option Id</label>
+                    <dataScope>option_id</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+        </fieldset>
+        <fieldset name="landing">
+            <settings>
+                <label>Landing Page</label>
+                <collapsible>true</collapsible>
+                <opened>false</opened>
+            </settings>
+            <field name="landing_active" formElement="checkbox" sortOrder="10">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                        <item name="default" xsi:type="string">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                    <label translate="true">Active</label>
+                    <dataScope>landing_active</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+
+            <field name="landing_name" formElement="input" sortOrder="20">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Name</label>
+                    <dataScope>landing_name</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="landing_url_key" formElement="input" sortOrder="30">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Url Key</label>
+                    <dataScope>landing_url_key</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="landing_image" formElement="imageUploader" sortOrder="40">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <componentType>imageUploader</componentType>
+                    <label translate="true">Image</label>
+                    <dataScope>landing_image</dataScope>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <previewTmpl>Ecommerce66_Brands/image-preview</previewTmpl>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>2097152</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">ecommerce66_brands/branddetails/upload</param>
+                                <param name="paramName" xsi:type="string">image</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+
+            <field name="landing_mobile_image" formElement="imageUploader" sortOrder="50">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <componentType>imageUploader</componentType>
+                    <label translate="true">Mobile Image</label>
+                    <dataScope>landing_mobile_image</dataScope>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <previewTmpl>Ecommerce66_Brands/image-preview</previewTmpl>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>2097152</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">ecommerce66_brands/branddetails/upload</param>
+                                <param name="paramName" xsi:type="string">image</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+
+            <field name="landing_content" formElement="wysiwyg" template="ui/form/field" sortOrder="60">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                        <item name="rows" xsi:type="number">10</item>
+                        <item name="wysiwygConfigData" xsi:type="array">
+                            <item name="width" xsi:type="string">700px</item>
+                            <item name="height" xsi:type="string">300px</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                            <item name="toggle_button" xsi:type="boolean">true</item>
+                            <item name="add_variables" xsi:type="boolean">true</item>
+                            <item name="add_widgets" xsi:type="boolean">true</item>
+                            <item name="add_images" xsi:type="boolean">true</item>
+                            <item name="add_directives" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                    <label translate="true">Content</label>
+                    <dataScope>landing_content</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="landing_meta_key" formElement="input" sortOrder="70">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Meta Keywords</label>
+                    <dataScope>landing_meta_key</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="landing_meta_desc" formElement="input" sortOrder="80">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Meta Description</label>
+                    <dataScope>landing_meta_desc</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+        </fieldset>
+        <fieldset name="product">
+            <settings>
+                <label>Product Page</label>
+                <collapsible>true</collapsible>
+                <opened>false</opened>
+            </settings>
+            <field name="product_active" formElement="checkbox" sortOrder="10">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                        <item name="default" xsi:type="string">1</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>boolean</dataType>
+                    <label translate="true">Active</label>
+                    <dataScope>product_active</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+                <formElements>
+                    <checkbox>
+                        <settings>
+                            <valueMap>
+                                <map name="false" xsi:type="number">0</map>
+                                <map name="true" xsi:type="number">1</map>
+                            </valueMap>
+                            <prefer>toggle</prefer>
+                        </settings>
+                    </checkbox>
+                </formElements>
+            </field>
+
+            <field name="product_banner_img" formElement="imageUploader" sortOrder="20">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <componentType>imageUploader</componentType>
+                    <label translate="true">Banner Image</label>
+                    <dataScope>product_banner_img</dataScope>
+                </settings>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <previewTmpl>Ecommerce66_Brands/image-preview</previewTmpl>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>2097152</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">ecommerce66_brands/branddetails/upload</param>
+                                <param name="paramName" xsi:type="string">image</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+
+            <field name="product_banner_bkg" formElement="input" sortOrder="30">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Banner Background</label>
+                    <dataScope>product_banner_bkg</dataScope>
+                    <notice>Enter an hexadecimal color like: #000000</notice>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+
+            <field name="product_banner_url" formElement="input" sortOrder="40">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">brand_details</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>string</dataType>
+                    <label translate="true">Banner Url</label>
+                    <dataScope>product_banner_url</dataScope>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </settings>
+            </field>
+        </fieldset>
+    </fieldset>
+</form>

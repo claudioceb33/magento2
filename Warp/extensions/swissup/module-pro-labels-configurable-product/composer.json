@@ -1,0 +1,21 @@
+{
+    "name": "swissup/module-pro-labels-configurable-product",
+    "description": "Product labels and badges. Advanced behavior for configurable product",
+    "type": "magento2-module",
+    "version": "1.0.1",
+    "license": [
+        "OSL-3.0"
+    ],
+    "require": {
+        "magento/module-configurable-product": ">=100.0",
+        "swissup/module-pro-labels": "^1.7.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Swissup\\ProLabelsConfigurableProduct\\": ""
+        }
+    }
+}

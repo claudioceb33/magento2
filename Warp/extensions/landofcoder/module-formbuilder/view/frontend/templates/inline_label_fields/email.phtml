@@ -1,0 +1,116 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helper           = $this->helper(Fields::class);
+$helperData       = $this->helper(Data::class);
+$form             = $block->getForm();
+$formData        = $this->getData('form_data');
+$field            = $this->getData('field_data');
+$fieldType       = $field['field_type'];
+$label            = $block->filterMessage($field['label']);
+$inlineCss        = $field['inline_css'] ?? '';
+$cssClass   = isset($field['css_class']) ? ($block->escapeHtmlAttr($field['css_class']).' ') : '';
+$placeholder      = isset($field['placeholder']) ? $block->filterMessage($field['placeholder']) : '';
+$options          = $field['field_options'];
+$required         = $field['required'];
+$cid              = $helperData->getFieldId($field);
+$fieldName       = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$availableFields = $helper->getAvailableFields();
+$html             = '';
+$fieldValidate   = $availableFields[$fieldType] ?? '';
+$validates        = $fieldValidate;
+$fieldHelp       = isset($options['description']) ? $block->filterMessage($options['description']) : '';
+if ($fieldValidate && is_array($fieldValidate)) {
+    $validates = implode(" ", $fieldValidate);
+}
+$validates .= " ".$cssClass;
+$size = $options['size'] ?? '';
+
+$colorLabel       = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$colorText       = isset($options['color_text']) ? 'color:'.$options['color_text'].';' : '';
+$colorDescription = isset($options['color_description']) ? 'color:'.$options['color_description'].';' : '';
+$backgroundColor = isset($options['background_color']) ? 'background-color:'.$options['background_color'].';' : '';
+
+$borderWidth      = isset($options['border_width']) ? 'border-width:'.(int)$options['border_width'].'px;' : '';
+$borderRadius      = isset($options['border_radius']) ? 'border-radius:'.(int)$options['border_radius'].'px;' : '';
+$borderColor      = isset($options['border_color']) ? 'border-color:'.$options['border_color'].';' : '';
+$borderStyle      = isset($options['border_style']) ? 'border-style:'.$options['border_style'].';' : '';
+
+$fontSize           = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle       = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight      = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+
+$defaultValue         = isset($field['default_value']) ? $block->filterMessage($field['default_value']) : '';
+if ($formData && isset($formData[$fieldName]) && $formData[$fieldName] != '') {
+    $defaultValue = $formData[$fieldName];
+}
+
+$icon              = $options['icon'] ?? '';
+$iconColor          = $options['icon_color'] ?? '';
+$frameWorkCss   = '';
+if (isset($field['frame_work_css'])) {
+    $frameWorkCss      = $field['frame_work_css'];
+}
+if ($frameWorkCss == 'foundation') {
+    $medium = 'columns medium-';
+} else {
+    $medium = 'col-sm-';
+}
+
+$type  = 'text';
+if (isset($field['is_hidden_field']) && $field['is_hidden_field'] == 1) {
+    $type = 'hidden';
+}
+$attr = '';
+if (isset($field['is_readonly']) && $field['is_readonly'] == 1) {
+    $attr = 'readonly';
+}
+$labelCol = 12;
+if (isset($field['fieldcol']) && $field['fieldcol']) {
+    if ((int)$field['fieldcol'] < 12) {
+        $labelCol = 12 - (int)$field['fieldcol'];
+    }
+}
+?>
+<div class="subtemplate-wrapper" style="<?= $inlineCss ?>">
+    <div class="row">
+        <div class="input-box-label <?= $medium.$labelCol; ?>">
+            <label for="<?= $fieldId; ?>" style="<?= $fontSize.$fontStyle.$fontWeight.$colorLabel; ?>"  class="<?= (1 == $required) ? 'required' : ''; ?>"><?= __($label); ?><?= (1 == $required) ? '<em>*</em>' : '';?></label>
+        </div>
+        <div class="input-box <?= isset($field['fieldcol']) ? $medium.$field['fieldcol'] : $medium.'12'; ?>">
+            <div class="subtemplate-inner">
+                <input name="<?= $fieldName; ?>" <?php if ($placeholder) {
+                    echo "placeholder='".$placeholder."'";
+                } ?> id="<?= $fieldId; ?>" style="<?= $colorText.$backgroundColor.$borderWidth.$borderRadius.$borderColor.$borderStyle; ?>" title="<?= $label; ?>" value="<?= $block->escapeHtmlAttr($this->helper('Lof\Formbuilder\Helper\Data')->getPostValue($fieldName) ?: $defaultValue) ?>" class="input-text <?= (1 == $required) ? 'required-entry' : ''; ?> <?= $validates; ?><?= $size; ?>" type="<?= $type; ?>" <?= $attr; ?>/>
+                <?php if ($icon) { ?>
+                <i class="fa <?= $icon; ?> form-field-icon" style="color:<?= $iconColor; ?>;"></i>
+                <?php } ?>
+                <?php if ($fieldHelp) { ?>
+                <span class="help-block"  style="<?= $colorDescription; ?>"><?= $fieldHelp ?></span>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+</div>

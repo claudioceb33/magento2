@@ -1,0 +1,183 @@
+<?php
+use Magento\Framework\App\Action\Action;
+
+/** @var \Ecommerce66\Widgets\Block\Widget\GridSliderProducts $block
+* @var \Magento\Framework\Escaper $escaper
+*/
+
+$brandViewModel = $block->getLayout()
+    ->createBlock(\Ecommerce66\Brands\Block\ViewModelBrand::class)
+    ->getViewModelBrand();
+
+// phpcs:disable Generic.Files.LineLength.TooLong
+// phpcs:disable Magento2.Templates.ThisInTemplate.FoundHelper
+
+?>
+<?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())): ?>
+    <?php
+    $type = 'widget-product-grid';
+    $mode = 'carousel';
+    $image = 'new_products_content_widget_grid';
+    $items = $block->getProductCollection()->getItems();
+    $showWishlist = $block->getData('show_whislist');
+    $showCompare = $block->getData('show_compare');
+    $showCart = $block->getData('show_addtocart');
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    $description = $block->getData('show_description');
+    ?>
+    <div id="<?= /* @noEscape */ $block->getData('grid_group_id'); ?>" class="block widget block-products-slider <?= /* @noEscape */ $mode ?>">
+        <?php if ($block->getTitle()): ?>
+            <div class="block-title">
+                <h2 class="titulo-sections"><?= $block->escapeHtml(__($block->getTitle())) ?></h2>
+            </div>
+        <?php endif ?>
+        <div class="block-content">
+            <?= /* @noEscape */ '<!-- ' . $image . '-->' ?>
+            <div class="products-<?= /* @noEscape */ $mode ?> <?= /* @noEscape */ $mode ?>">
+                <ol class="product-items <?= /* @noEscape */ $type ?>">
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $_item): ?>
+                        <?= /* @noEscape */ ($iterator++ == 1) ? '<li class="product-item">' : '</li><li class="product-item">' ?>
+                        <div class="product-item-info">
+
+                            <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>" class="product-item-photo">
+                                <?= $block->getImage($_item, $image)->toHtml() ?>
+                                <?php if ($showWishlist || $showCompare): ?>
+                                    <div class="actions-secondary" data-role="add-to-links">
+                                        <?php if ($block->getHelper(\Magento\Wishlist\Helper\Data::class)->isAllow() && $showWishlist): ?>
+                                            <a href="#"
+                                                data-post='<?= /* @noEscape */ $block->getAddToWishlistParams($_item) ?>' class="action towishlist" data-action="add-to-wishlist" title="<?= $block->escapeHtmlAttr(__('Add to Wish List')) ?>">
+                                                    <span><?= $block->escapeHtml(__('Add to Wish List')) ?></span>
+                                            </a>
+                                        <?php endif; ?>
+                                        <?php if ($block->getAddToCompareUrl() && $showCompare): ?>
+                                            <?php $compareHelper = $block->getHelper(\Magento\Catalog\Helper\Product\Compare::class); ?>
+                                                <a href="#" class="action tocompare" data-post='<?= /* @noEscape */ $compareHelper->getPostDataParams($_item) ?>' title="<?= $block->escapeHtmlAttr(__('Add to Compare')) ?>">
+                                                    <span><?= $block->escapeHtml(__('Add to Compare')) ?></span>
+                                                </a>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </a>
+
+                            <div class="product-item-details">
+
+                                <strong class="product brand product-item-brand">
+                                    <?php
+                                        $brandOptionId = $_item->getBrand();
+                                        $brandDetails = $brandViewModel->getBrandUrlDetailsViewModel($brandOptionId);
+                                        if (!empty($brandDetails)):
+                                            ?>
+                                            <a class="product-item-link"
+                                            href="<?= $escaper->escapeUrl($brandDetails['url']) ?>">
+                                                <?=/* @noEscape */ $brandDetails['name'] ?>
+                                            </a>
+                                        <?php endif;
+                                    ?>
+                                </strong>
+
+                                <strong class="product-item-name">
+                                    <a title="<?= $block->escapeHtml($_item->getName()) ?>"
+                                    href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>"
+                                    class="product-item-link">
+                                        <?= $block->escapeHtml($_item->getName()) ?>
+                                    </a>
+                                </strong>
+
+                                <?php if ($templateType): ?>
+                                    <?= $block->getReviewsSummaryHtml($_item, $templateType) ?>
+                                <?php endif; ?>
+
+                                <?= $block->getProductPriceHtml($_item, $type) ?>
+
+                                <?= $block->getProductDetailsHtml($_item) ?>
+
+                                <?php if ($showWishlist || $showCompare || $showCart): ?>
+                                    <div class="product-item-inner">
+                                        <div class="product-item-actions">
+                                            <?php if ($showCart): ?>
+                                                <div class="actions-primary">
+                                                    <?php if ($_item->isSaleable()): ?>
+                                                        <?php $postParams = $block->getAddToCartPostParams($_item); ?>
+                                                        <form data-role="tocart-form" data-product-sku="<?= $block->escapeHtml($_item->getSku()) ?>" action="<?= $block->escapeUrl($postParams['action']) ?>" method="post">
+                                                            <input type="hidden" name="product" value="<?= $block->escapeHtmlAttr($postParams['data']['product']) ?>">
+                                                            <input type="hidden" name="<?= /* @noEscape */ Action::PARAM_NAME_URL_ENCODED ?>" value="<?= /* @noEscape */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+                                                            <?= $block->getBlockHtml('formkey') ?>
+                                                            <button type="submit"
+                                                                    title="<?= $block->escapeHtml(__('Add to Cart')) ?>"
+                                                                    class="action tocart primary">
+                                                                <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                                                            </button>
+                                                        </form>
+                                                    <?php else: ?>
+                                                        <?php if ($_item->isAvailable()): ?>
+                                                            <div class="stock available"><span><?= $block->escapeHtml(__('In stock')) ?></span></div>
+                                                        <?php else: ?>
+                                                            <div class="stock unavailable"><span><?= $block->escapeHtml(__('Out of stock')) ?></span></div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?= ($iterator == count($items) + 1) ? '</li>' : '' ?>
+                    <?php endforeach ?>
+                </ol>
+            </div>
+            <?= $block->getPagerHtml() ?>
+        </div>
+    </div>
+    <?php if ($block->getBlockHtml('formkey')): ?>
+        <script type="text/x-magento-init">
+    {
+        ".block.widget [data-role=tocart-form]": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+    </script>
+    <?php endif;?>
+    <script>
+        require([
+            'jquery',
+            'slick'
+        ], function ($) {
+            jQuery(document).ready(function () {
+                jQuery("#<?= /* @noEscape */ $block->getData('grid_group_id'); ?> .products-carousel .product-items").slick({
+                    dots: <?= ($block->getData('show_dots_pagination') == 1) ?  'true' : 'false'  ?>,
+                    arrows: <?= ($block->getData('show_arrows') == 1) ? 'true' : 'false' ?>,
+                    infinite: true,
+                    autoplay: true,
+                    speed: 500,
+                    slidesToShow: <?=  /* @noEscape */ $block->getData('slider_elements_desk'); ?>,
+                    slidesToScroll: 1,
+                    responsive: [
+                        {
+                            breakpoint: 1200,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_tablet'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 992,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_mobile'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 650,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+<?php endif;?>

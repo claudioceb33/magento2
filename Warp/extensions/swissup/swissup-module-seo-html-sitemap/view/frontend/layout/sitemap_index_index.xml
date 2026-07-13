@@ -1,0 +1,61 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Swissup_SeoHtmlSitemap::css/seohtmlsitemap.css" media="screen, print"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Swissup\SeoHtmlSitemap\Block\Stores"
+            name="seohtmlsitemap.stores" template="sitemap.phtml">
+                <action method="setTitle">
+                    <argument translate="true" name="title"
+                        xsi:type="string">Stores</argument>
+                </action>
+            </block>
+            <block class="Swissup\SeoHtmlSitemap\Block\Categories"
+            name="seohtmlsitemap.categories" template="sitemap.phtml">
+                <action method="setTitle">
+                    <argument translate="true" name="title"
+                        xsi:type="string">Categories</argument>
+                </action>
+                <action method="setTemplate"
+                ifconfig="seohtmlsitemap/content_settings/group_by_first_letter">
+                    <argument name='template' xsi:type='string'>grouped.phtml</argument>
+                </action>
+            </block>
+            <block class="Swissup\SeoHtmlSitemap\Block\Products"
+            name="seohtmlsitemap.products" template="sitemap.phtml">
+                <action method="setTitle">
+                    <argument translate="true" name="title"
+                        xsi:type="string">Products</argument>
+                </action>
+                <action method="setTemplate"
+                ifconfig="seohtmlsitemap/content_settings/group_by_first_letter">
+                    <argument name='template' xsi:type='string'>grouped.phtml</argument>
+                </action>
+            </block>
+            <block class="Swissup\SeoHtmlSitemap\Block\Cms"
+            name="seohtmlsitemap.cms" template="sitemap.phtml">
+                <action method="setTitle">
+                    <argument translate="true" name="title"
+                        xsi:type="string">CMS Pages</argument>
+                </action>
+                <action method="setTemplate"
+                ifconfig="seohtmlsitemap/content_settings/group_by_first_letter">
+                    <argument name='template' xsi:type='string'>grouped.phtml</argument>
+                </action>
+            </block>
+            <block class="Swissup\SeoHtmlSitemap\Block\Custom"
+            name="seohtmlsitemap.custom" template="sitemap.phtml">
+                <action method="setTitle">
+                    <argument translate="true" name="title"
+                        xsi:type="string">Other Pages</argument>
+                </action>
+                <action method="setTemplate"
+                ifconfig="seohtmlsitemap/content_settings/group_by_first_letter">
+                    <argument name='template' xsi:type='string'>grouped.phtml</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

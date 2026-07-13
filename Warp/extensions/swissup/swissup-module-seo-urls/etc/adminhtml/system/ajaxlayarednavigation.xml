@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <section id="ajaxlayerednavigation">
+        <group id="general">
+            <group id="filters">
+                <field id="is_category_multiple">
+                    <frontend_model>Swissup\SeoUrls\Block\System\Config\Ajaxlayerednavigation\IsCategoryMultiple</frontend_model>
+                </field>
+            </group>
+        </group>
+    </section>
+</include>

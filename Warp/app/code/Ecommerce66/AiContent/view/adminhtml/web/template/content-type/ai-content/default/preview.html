@@ -1,0 +1,50 @@
+<!--
+/**
+ * AI Content Preview Template
+ */
+-->
+<div class="pagebuilder-content-type pagebuilder-ai-content" 
+     event="{ mouseover: onMouseOver, mouseout: onMouseOut }, mouseoverBubble: false">
+    
+    <div class="ai-content-preview" 
+         attr="data.main.attributes"
+         ko-style="data.main.style"
+         css="data.main.css"
+         data-bind="css: {'ai-has-content': data.generated_content}">
+        
+        <div class="ai-preview-icon">
+            <svg width="32" height="32" viewBox="0 0 64 64">
+                <defs>
+                    <linearGradient id="aiPreviewGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1"></stop>
+                        <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1"></stop>
+                    </linearGradient>
+                </defs>
+                <rect x="12" y="8" width="40" height="48" rx="4" fill="none" stroke="url(#aiPreviewGradient)" stroke-width="2"></rect>
+                <line x1="18" y1="18" x2="46" y2="18" stroke="url(#aiPreviewGradient)" stroke-width="2" opacity="0.6"></line>
+                <line x1="18" y1="26" x2="42" y2="26" stroke="url(#aiPreviewGradient)" stroke-width="2" opacity="0.6"></line>
+                <path d="M 42,-8 L 44,-2 L 50,0 L 44,2 L 42,8 L 40,2 L 34,0 L 40,-2 Z" transform="translate(0, 54)" fill="#667eea"></path>
+            </svg>
+        </div>
+        
+        <div class="ai-preview-content">
+            <!-- ko if: data.generated_content -->
+            <div class="ai-preview-text" data-bind="html: data.generated_content"></div>
+            <!-- /ko -->
+            
+            <!-- ko ifnot: data.generated_content -->
+            <div class="ai-preview-placeholder">
+                <!-- ko if: data.prompt -->
+                <span data-bind="i18n: 'AI Content: '"></span>
+                <span data-bind="text: data.prompt"></span>
+                <!-- /ko -->
+                <!-- ko ifnot: data.prompt -->
+                <span data-bind="i18n: 'AI Content Generator - Click to configure'"></span>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    
+    <render args="getOptions().template"></render>
+</div>

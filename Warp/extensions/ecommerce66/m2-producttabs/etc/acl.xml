@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+        <resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Ecommerce66_Core::top_level" title="Ecommerce66 Extensions">
+					<resource id="Ecommerce66_ProductTabs::menu" title="Product Tabs" sortOrder="90">
+						<resource id="Ecommerce66_ProductTabs::ecommerce66_manage_producttabs" title="Product Tabs Settings" sortOrder="10"/>
+					</resource>
+				</resource>
+
+				<resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config" title="config">
+    						<resource id="Ecommerce66_ProductTabs::config_protabs" title="Product Tabs" sortOrder="100"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

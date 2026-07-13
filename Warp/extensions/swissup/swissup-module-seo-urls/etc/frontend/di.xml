@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\SeoUrls\Model\Url\Filter">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="layerResolver" xsi:type="object">Magento\Catalog\Model\Layer\Resolver</item>
+                <item name="seoUrl" xsi:type="object">Swissup\SeoCore\Model\Url</item>
+                <item name="seoHelper" xsi:type="object">Swissup\SeoUrls\Helper\Filter</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Swissup\SeoUrls\Model\Url\Search">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="seoHelper" xsi:type="object">Swissup\SeoUrls\Helper\Data</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- declare virtual types -->
+    <virtualType name="swissupSeoUrlsTemplateContext" type="Magento\Framework\View\Element\Template\Context">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Swissup\SeoUrls\Model\Url\Filter</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="swissupSeoUrlsHelperContext" type="Magento\Framework\App\Helper\Context">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Swissup\SeoUrls\Model\Url\Search</argument>
+        </arguments>
+    </virtualType>
+    <!-- override url builder for regular filter -->
+    <type name="Magento\Catalog\Model\Layer\Filter\Item">
+        <arguments>
+            <argument name="url" xsi:type="object">Swissup\SeoUrls\Model\Url\Filter</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Layer\FilterList">
+        <plugin name="swissup_seourls"
+                type="Swissup\SeoUrls\Plugin\Catalog\Model\Layer\FilterList"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <!-- override url builder for swatches -->
+    <type name="Magento\Swatches\Block\LayeredNavigation\RenderLayered">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsTemplateContext</argument>
+        </arguments>
+    </type>
+    <!-- override url builder for product list toolbar -->
+    <type name="Magento\Catalog\Block\Product\ProductList\Toolbar">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsTemplateContext</argument>
+        </arguments>
+    </type>
+    <!-- override url builder for product list pager -->
+    <type name="Magento\Theme\Block\Html\Pager">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsTemplateContext</argument>
+        </arguments>
+    </type>
+    <!-- override url builder for magento search helper -->
+    <type name="Magento\Search\Helper\Data">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsHelperContext</argument>
+        </arguments>
+    </type>
+    <!-- SWISSUP AJAX LAYERED NAVIGATION inegration -->
+    <!-- override url builder for swatches in Swissup ALN -->
+    <type name="Swissup\Ajaxlayerednavigation\Block\Navigation\RenderLayered">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsTemplateContext</argument>
+        </arguments>
+    </type>
+    <!-- override url builder in helper/config to get proper clear all url in Swissup ALN -->
+    <type name="Swissup\Ajaxlayerednavigation\Helper\Config">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsHelperContext</argument>
+        </arguments>
+    </type>
+    <!-- SWISSUP SEO PAGER integration -->
+    <virtualType name="swissupSeoUrlsPagerHelperContext" type="Magento\Framework\App\Helper\Context">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Swissup\SeoUrls\Model\Url\Filter</argument>
+        </arguments>
+    </virtualType>
+    <type name="Swissup\SeoPager\Helper\Data">
+        <arguments>
+            <argument name="context" xsi:type="object">swissupSeoUrlsPagerHelperContext</argument>
+        </arguments>
+    </type>
+    <!-- add router -->
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="seo_urls_search" xsi:type="array">
+                    <item name="class" xsi:type="string">Swissup\SeoUrls\Controller\RouterSearch</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">30</item>
+                </item>
+                <item name="seo_urls_layer" xsi:type="array">
+                    <item name="class" xsi:type="string">Swissup\SeoUrls\Controller\RouterLayer</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">44</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Use subcategory url for category filter -->
+    <virtualType name="Swissup\SeoUrls\Model\Layer\Filter\ItemCategoryFactory" type="Magento\Catalog\Model\Layer\Filter\ItemFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">\Swissup\SeoUrls\Model\Layer\Filter\ItemCategory</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\CatalogSearch\Model\Layer\Filter\Category">
+        <arguments>
+            <argument name="filterItemFactory" xsi:type="object">Swissup\SeoUrls\Model\Layer\Filter\ItemCategoryFactory</argument>
+        </arguments>
+    </type>
+    <type name="Swissup\Ajaxlayerednavigation\Model\Layer\Filter\Category">
+        <arguments>
+            <argument name="filterItemFactory" xsi:type="object">Swissup\SeoUrls\Model\Layer\Filter\ItemCategoryFactory</argument>
+        </arguments>
+    </type>
+
+    <!-- add plugin redirect to homapage with 301 code (Moved Permanently) -->
+    <type name="Magento\Cms\Controller\Page\View">
+        <plugin name="redirectCmsToHomepage"
+                type="Swissup\SeoUrls\Plugin\RedirectCmsToHomepage"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <!-- add plugin - append in-url labels and values to swatch data -->
+    <type name="Magento\Swatches\Block\Product\Renderer\Listing\Configurable">
+        <plugin name="addInUrlLabelsforSwatches"
+                type="Swissup\SeoUrls\Plugin\Swatches\Block\Product\Renderer\Listing\Configurable"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+
+    <!-- add custom hreflang curent url provider for action catalog_category_view -->
+    <type name="Swissup\Hreflang\Model\CurrentUrl">
+        <arguments>
+            <argument name="providerFactory" xsi:type="array">
+                <item name="catalog_category_view" xsi:type="string">Swissup\SeoUrls\Model\CurrentUrl\CatalogCategoryView</item>
+                <item name="catalogsearch_result_index" xsi:type="string">Swissup\SeoUrls\Model\CurrentUrl\CatalogsearchResultIndex</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- add rel="nofollow" into links in layered navigation -->
+    <type name="Magento\LayeredNavigation\Block\Navigation\FilterRenderer">
+        <plugin name="addRelNoFollowAndDisableAjax"
+                type="Swissup\SeoUrls\Plugin\LayeredNavigation\Block\Navigation\FilterRenderer"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Swatches\Block\LayeredNavigation\RenderLayered">
+        <plugin name="addRelNoFollowToLinks"
+                type="Swissup\SeoUrls\Plugin\Swatches\Block\LayeredNavigation\RenderLayered"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Swissup\Ajaxlayerednavigation\Block\Navigation\RenderLayered">
+        <plugin name="addRelNoFollowToLinks"
+                type="Swissup\SeoUrls\Plugin\Swatches\Block\LayeredNavigation\RenderLayered"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Swissup\Ajaxlayerednavigation\ViewModel\Config">
+        <plugin name="disableCategoryMultipleIfForceSubcategory"
+                type="Swissup\SeoUrls\Plugin\Ajaxlayerednavigation\ViewModel\ConfigPlugin"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+
+    <!-- THIRD-PARTY MODULES INTEGRATIONS -->
+    <!-- Vendor: Smile -->
+    <type name="Smile\ElasticsuiteCatalog\Model\Layer\Filter\Item\Attribute">
+        <arguments>
+            <argument name="url" xsi:type="object">Swissup\SeoUrls\Model\Url\Filter</argument>
+        </arguments>
+    </type>
+
+    <!-- Vendor: Blueskytechco -->
+    <type name="Blueskytechco\LayeredAjax\Plugins\Model\Layer\Filter\Item">
+        <arguments>
+            <argument name="url" xsi:type="object">Swissup\SeoUrls\Model\Url\Filter</argument>
+        </arguments>
+    </type>
+
+</config>

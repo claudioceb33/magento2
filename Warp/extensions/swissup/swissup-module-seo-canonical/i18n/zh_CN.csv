@@ -1,0 +1,8 @@
+"Canonical URLs",规范网址
+"Enable canonical URL for category",为类别启用规范URL
+"Enable canonical URL for product",启用产品的规范网址
+"Use parent product for canonical",将父产品用于规范
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.",如果当前产品是任何其他产品（可配置，分组或捆绑）的一部分，则父URL将用作当前产品的规范。
+"Allowed parent types",允许的父类型
+"CMS Pages",CMS页面
+"Enable canonical URL for CMS pages",为CMS页面启用规范URL

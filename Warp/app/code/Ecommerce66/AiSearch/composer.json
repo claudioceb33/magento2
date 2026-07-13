@@ -1,0 +1,18 @@
+{
+    "name": "ecommerce66/module-aisearch",
+    "description": "Ecommerce66 AiSearch - AI-assisted search integration (ElasticSuite-friendly).",
+    "type": "magento2-module",
+    "require": {
+        "php": "^8.1",
+        "magento/framework": "*",
+        "ecommerce66/module-aicore": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ecommerce66\\AiSearch\\": ""
+        }
+    }
+}

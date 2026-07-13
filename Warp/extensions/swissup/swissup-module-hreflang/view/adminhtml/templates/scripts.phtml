@@ -1,0 +1,65 @@
+<style type="text/css">
+    .hreflang--cms-identifier {
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: .75rem;
+    }
+
+    .hreflang--cms-identifier > * {
+        flex-shrink: 0;
+    }
+
+    .hreflang--cms-identifier strong {
+        font-weight: 600;
+    }
+
+    .hreflang--cms-identifier em {
+        font-size: .95em;
+        font-style: normal;
+    }
+
+    [data-index="hreflang_links"] .admin__action-multiselect-dropdown {
+        left: 1rem;
+        z-index: 2;
+    }
+
+    [data-index="hreflang_links"] .admin__action-multiselect-crumb {
+        padding: .3rem 1rem .4rem 2.4rem;
+    }
+
+    [data-index="hreflang_links"] .admin__action-multiselect-crumb .action-close {
+        right: auto;
+        left: 0;
+    }
+
+    [data-index="hreflang_links"] .admin__action-multiselect-label > span {
+        max-width: calc(100% - 21px);
+    }
+</style>
+
+<script type="text/javascript">
+    require([
+        'Magento_Ui/js/lib/view/utils/async'
+    ], function ($) {
+        'use strict';
+
+        $.async({
+            selector: '[data-index="hreflang_links"] .admin__action-multiselect-label, [data-index="hreflang_links"] .admin__action-multiselect-crumb'
+        }, function (label) {
+            const $el = $(label).find('span').length ?
+                $(label).find('span').first() :
+                $(label);
+
+            var stores, html;
+
+            stores = $el.text().split('|');
+            html = '<strong>' + stores.shift() + '</strong>';
+            stores.forEach((store) => {
+                html += ` <em title="${store}">${store}</em>`;
+            })
+
+            $el.html(html);
+            $el.addClass('hreflang--cms-identifier');
+        });
+    });
+</script>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\RichSnippets\Model\Product\StructuredData">
+        <arguments>
+            <argument name="dataSnippet" xsi:type="array">
+                <item name="image" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Image</item>
+                <item name="description" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Description</item>
+                <item name="brand" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Brand</item>
+                <item name="offers" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offers</item>
+                <item name="aggregateRating" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\AggregateRating</item>
+                <item name="review" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Review</item>
+                <item name="weight" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Weight</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Swissup\RichSnippets\Model\Product\StructuredData\Offers">
+        <arguments>
+            <argument name="dataSnippet" xsi:type="array">
+                <item name="availability" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\Availability</item>
+                <item name="itemCondition" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\ItemCondition</item>
+                <item name="price" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\Price</item>
+                <item name="priceCurrency" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\PriceCurrency</item>
+                <item name="priceValidUntil" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\PriceValidUntil</item>
+                <item name="shippingDetails" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\ShippingDetails</item>
+                <item name="hasMerchantReturnPolicy" xsi:type="string">Swissup\RichSnippets\Model\Product\StructuredData\Offer\MerchantReturnPolicy</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Block\Html\Breadcrumbs">
+        <plugin
+            name="swissup_richsnippets_breadcrumbs"
+            type="Swissup\RichSnippets\Plugin\Breadcrumbs"
+            sortOrder="100"
+            disabled="false" />
+    </type>
+    <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
+        <plugin
+            name="swissup_richsnippets_finalpricebox"
+            type="Swissup\RichSnippets\Plugin\FinalPriceBox"
+            sortOrder="10"
+            disabled="false" />
+    </type>
+    <type name="Magento\Review\Block\Product\ReviewRenderer">
+        <plugin
+            name="swissup_richsnippets_reviewrenderer"
+            type="Swissup\RichSnippets\Plugin\Review\ReviewRenderer"
+            sortOrder="10"
+            disabled="false" />
+    </type>
+    <type name="Magento\Review\Block\Product\View\ListView">
+        <plugin
+            name="swissup_richsnippets_listview"
+            type="Swissup\RichSnippets\Plugin\Review\ListView"
+            sortOrder="10"
+            disabled="false" />
+    </type>
+</config>

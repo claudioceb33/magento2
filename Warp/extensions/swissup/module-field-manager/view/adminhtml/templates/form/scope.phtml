@@ -1,0 +1,13 @@
+<div class="field-service">
+    <label for="<?= $block->getElement()->getHtmlId() ?>_default" class="choice use-default">
+        <input <?php echo $block->getElement()->getReadonly() ? 'disabled="disabled"' : '' ?>
+                type="checkbox"
+                name="use_default[]"
+                class="use-default-control"
+                id="<?= $block->getElement()->getHtmlId() ?>_default"
+                <?php echo $block->getIsDefault() ? 'checked="checked"' : '' ?>
+                onclick='toggleValueElements(this, this.up(".field"))'
+                value="<?= $block->getElement()->getName() ?>"/>
+        <span class="use-default-label"><?=  __('Use Default Value') ?></span>
+    </label>
+</div>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!-- System config for AiCore under existing "e66" tab -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ecommerce66_ai" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Ecommerce66 AI Suite</label>
+            <tab>e66</tab>
+            <resource>Ecommerce66_AiCore::config</resource>
+
+            <group id="core" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Core Settings</label>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="label" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label</label>
+                </field>
+
+                <field id="code" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Code</label>
+                </field>
+
+                <field id="api_key" translate="label" type="password" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Key</label>
+                </field>
+
+                <field id="client_id" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Client ID</label>
+                </field>
+
+                <field id="base_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Base URL</label>
+                    <comment>e.g. https://ai.66ecommerce.com</comment>
+                </field>
+
+                <field id="endpoint_general" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint - General</label>
+                </field>
+
+                <field id="endpoint_seo" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint - SEO</label>
+                </field>
+
+                <field id="endpoint_search" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint - Search</label>
+                </field>
+
+                <field id="endpoint_products" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint - Products</label>
+                </field>
+
+                <field id="timeout" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Timeout (seconds)</label>
+                </field>
+
+                <field id="retries" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Retries</label>
+                </field>
+
+                <field id="retry_delay" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Retry Delay (ms)</label>
+                </field>
+
+                <field id="endpoint_health" translate="label" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Endpoint - Health</label>
+                    <comment>Relative to Base URL. Example: /health or /status</comment>
+                </field>
+
+                <!-- NEW: botón de prueba -->
+                <field id="test_connection" translate="label" type="button" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Test Connection</label>
+                    <frontend_model>Ecommerce66\AiCore\Block\Adminhtml\System\Config\TestButton</frontend_model>
+                </field>
+            </group>
+            <!-- Grupo Feeds -->
+            <group id="feeds" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Feeds</label>
+
+                <!-- === Catalog daily feed === -->
+                <field id="catalog_cron" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Catalog Feed Schedule</label>
+                    <comment>Runs daily at selected hour</comment>
+                    <source_model>Ecommerce66\AiCore\Model\Config\Source\Cron\CatalogDaily</source_model>
+                </field>
+
+                <field id="catalog_type" translate="label" type="select" sortOrder="20" showInDefault="1">
+                    <label>Catalog Feed Type</label>
+                    <source_model>Ecommerce66\AiCore\Model\Config\Source\FeedFormat</source_model>
+                </field>
+
+                <field id="brand_attribute" translate="label" type="select" sortOrder="25" showInDefault="1">
+                    <label>Brand Attribute</label>
+                    <comment>Select the attribute that provides the brand value.</comment>
+                    <source_model>Ecommerce66\AiCore\Model\Config\Source\ProductAttributesAll</source_model>
+                </field>
+
+                <field id="catalog_attributes" translate="label" type="multiselect" sortOrder="30" showInDefault="1">
+                    <label>Extra Product Attributes</label>
+                    <source_model>Ecommerce66\AiCore\Model\Config\Source\ProductAttributes</source_model>
+                    <comment>
+                        <![CDATA[
+                        These will be included in addition to default fields:
+                        sku, name, price, special_price, minimal_price, small_image, manufacturer, visibility, url_key, stock_status.
+                        If an attribute has no value, export null.
+                        ]]>
+                    </comment>
+                </field>
+
+                <!-- === Stock incremental feed === -->
+                <field id="stock_cron" translate="label" type="select" sortOrder="40" showInDefault="1">
+                    <label>Stock Feed Schedule</label>
+                    <comment>Runs every N hours</comment>
+                    <source_model>Ecommerce66\AiCore\Model\Config\Source\Cron\StockInterval</source_model>
+                </field>
+
+                <field id="stock_type" translate="label" type="select" sortOrder="50" showInDefault="1">
+                    <label>Stock Feed Type</label>
+                    <source_model>Ecommerce66\AiCore\Model\Config\Source\FeedFormat</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

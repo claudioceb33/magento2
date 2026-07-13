@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ecommerce66_ai>
+            <search>
+                <!-- Endpoint propio de AiSearch: por defecto en /rest/v1/search -->
+                <endpoint_search>/rest/v1/search_v2</endpoint_search>
+                <!-- default: hybrid -->
+                <search_type>hybrid</search_type>
+                <!-- default: 5 items -->
+                <search_items>5</search_items>
+                <slider_elements_desk>5</slider_elements_desk>
+                <slider_elements_tablet>2</slider_elements_tablet>
+                <slider_elements_mobile>1</slider_elements_mobile>
+                <result_block>0</result_block>
+            </search>
+        </ecommerce66_ai>
+    </default>
+</config>

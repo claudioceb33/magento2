@@ -1,0 +1,34 @@
+# Magento phpcs/phpmd bitbucket pipeline
+# php vendor/squizlabs/php_codesniffer/bin/phpcs --standard=vendor/magento/magento-coding-standard/Magento2 --severity=9  app/code app/design | wc -l
+# if composer cache doesnt works you should need to check the COMPOSER_HOME env variable
+# You can specify a custom docker image from Docker Hub as your build environment
+image: summasolutions/php:8.3-fpm
+
+options:
+    max-time: 15
+pipelines:
+    pull-requests:
+        '**':
+            - step:
+                  name: Static Code Analysis
+                  services:
+                      - docker
+                  caches:
+                      - composer-custom24
+                  script:
+                      #- apt-get update && apt-get install -y unzip
+                      - mkdir -p /var/www/cache/composer
+                      - ls -l /var/www/
+                      - export COMPOSER_HOME="/var/www/cache/composer"
+                      ##- composer config --global --list | grep cache
+                      - composer install --ignore-platform-reqs --no-interaction #--no-dev
+                      - php vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/,../../magento/php-compatibility-fork
+                      - php ./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=./vendor/magento/magento-coding-standard/Magento2 --severity=7 app/code app/design
+                      - php ./vendor/phpmd/phpmd/src/bin/phpmd app/code text app/devops/TestPR.xml
+                      - php -dmemory_limit=-1 bin/magento setup:di:compile
+definitions:
+    services:
+        docker:
+            memory: 1024
+    caches:
+        composer-custom24: /var/www/cache/composer

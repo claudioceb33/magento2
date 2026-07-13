@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var $block Ecommerce66\InvoiceA\Block\Adminhtml\Order\View\InfoFiscal
+ *
+ **/
+/** @var $escaper \Magento\Framework\Escaper */
+
+$data = $block->getInfoFiscal();
+?>
+<section class="admin__page-section order-view-ecommerce66-fields">
+    <div class="admin__page-section-title">
+        <span class="title"><?= /* @noEscape */ __('Información Fiscal') ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-information">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary order-ecommerce66-table">
+                    <tbody>
+                    <?php foreach ($data as $field => $value): ?>
+                        <tr><td><?= $escaper->escapeHtml($field) ?></td><td><?= $escaper->escapeHtml($value) ?></td></tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

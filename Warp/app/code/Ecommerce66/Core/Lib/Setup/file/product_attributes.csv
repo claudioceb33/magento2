@@ -1,0 +1,5 @@
+"label";"input";"required";"code";"scope";"is_used_in_grid";"is_filterable_in_grid";"is_filterable";"sort_order";"is_visible_on_front"
+"Test select";"select";0;"test_select";"global";0;0;0;;1
+"Test multi";"multiselect";0;"test_multi";"global";0;0;0;;1
+"Test text";"text";0;"test_text";"global";0;0;0;;1
+"Test bool";"boolean";0;"test_bool";"global";0;0;0;;1

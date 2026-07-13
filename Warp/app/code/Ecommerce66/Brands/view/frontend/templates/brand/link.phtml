@@ -1,0 +1,21 @@
+<?php
+/**
+ * @var $block \Ecommerce66\Brands\Block\Brand\Link
+ */
+$product = $block->getCurrentProduct();
+$name = '';
+if (is_object($product)):
+    $brandOptionId = $product->getData($block->getBrandAttributeCode());
+    $brandDetails = $block->getBrandUrlDetails($brandOptionId);
+    if (!empty($brandDetails)):
+        ?>
+    <div class="brand-link">
+        <strong class="product brand product-item-brand">
+            <a class="product-item-link"
+               href="<?= /* @noEscape */ $brandDetails['url'] ?>">
+                <?= /* @noEscape */ $brandDetails['name'] ?>
+            </a>
+        </strong>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>

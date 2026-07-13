@@ -1,0 +1,30 @@
+"Save Field",フィールドを保存
+"Delete Field",フィールドを削除
+"Edit Field '%1'","フィールド '％1'を編集"
+"New Field",新しいフィールド
+"Advanced Field Properties",高度なフィールドプロパティ
+"Show on Storefront",店頭で展示
+"Show In Forms",フォームに表示
+"Field Properties",フィールドのプロパティ
+"Field Information",フィールド情報
+"You cannot delete this field.",このフィールドは削除できません。
+"Field was deleted.",フィールドが削除されました。
+"Can't find a field to delete.",削除するフィールドが見つかりません。
+"This field no longer exists.",このフィールドはもう存在しません。
+"You cannot edit this attribute.",この属性は編集できません。
+"You saved the field.",フィールドを保存しました。
+"An field with this code already exists.",このコードのフィールドは既に存在します。
+"An field with the same code (%1) already exists.",同じコード（％1）のフィールドが既に存在します。
+"Customer Address Registration",顧客住所登録
+"Customer Account Address",顧客アカウントの住所
+"Customer Registration",顧客登録
+"Customer Account Edit",顧客アカウント編集
+"Admin Checkout",管理者のチェックアウト
+"Name must be required.",名前が必要です。
+"Country must be visible to keep Magento working.",Magentoを機能させるには、国が表示されている必要があります。
+"Use ""Stores > Configuration > General > State"" to change region field status",「ストア」>「構成」>「一般」>「状態」を使用して、地域フィールドのステータスを変更します
+"Use ""Stores > Configuration > General > Country Options"" to change postcode status",「ストア」>「構成」>「一般」>「国のオプション」を使用して、郵便番号ステータスを変更します
+"Email must be required.",メールが必要です。
+"Website_id must be required.",Website_idが必要です。
+"Group_id must be required.",Group_idが必要です。
+"Remove website overrides",ウェブサイトの上書きを削除

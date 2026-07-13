@@ -1,0 +1,75 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+$form = $this->getCurrentForm();
+$design = $form->getData('design');
+$design = @trim($design);
+if ($design && $this->startsWith('[', $design)) {
+    $design = @substr($design, 1, -1);
+}
+$fields = @json_decode('[' . $form->getData('design') . ']', true);
+if (isset($fields[0]['fields'])) {
+    $fields[0] = $fields[0]['fields'];
+    $fls = [];
+    foreach ($fields[0] as $k => $v) {
+        if (isset($v['field_type'])) {
+            $fls[] = $v;
+        }
+    }
+    $fields[0] = $fls;
+}
+$fields = $form->getFields();
+?>
+<div class='fb-main'></div>
+<script type="text/javascript">
+  <?php if ($categories = $this->getModelCategories()): ?>
+  const data_model_categories = JSON.parse('<?= $categories; ?>');
+  <?php else: ?>
+  const data_model_categories = null;
+  <?php endif; ?>
+</script>
+
+<script>
+    const _FORMBUILDER_SELECT_IMAGE_AJAX_URL = "<?= $this->getUrl("formbuilder/cms/cmsImage"); ?>";
+    require([
+    'Lof_Formbuilder/js/formbuilder'
+    ], function(){
+        const fb = new Formbuilder({
+            selector: '.fb-main',
+            bootstrapData: <?= (isset($fields)) ? json_encode($fields) : '[]' ?>
+        });
+        fb.on('save', function(payload){
+        jQuery('#form-design').html(payload);
+      })
+    });
+  </script>
+
+  <script>
+    require(['jquery'], function($){
+      jQuery(document).ready(function($) {
+        $(document).on('click', '.lof-fieldset .fb-edit-section-header', function(){
+          $(this).toggleClass('active');
+          $(this).next().toggleClass('active');
+        });
+      });
+    });
+  </script>
+<textarea id="form-design" name="design" style="display: none"><?= (isset($fields)) ? @json_encode($fields) : '' ?></textarea>

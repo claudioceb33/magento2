@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="ecommerce66_llm" frontName="ecommerce66_llm">
+            <module name="Ecommerce66_AiLlmSearch" />
+        </route>
+    </router>
+</config>

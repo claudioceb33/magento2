@@ -1,0 +1,33 @@
+<?php
+    $isMultiselect = $block->getField()->getFrontendInput() === 'multiselect';
+    $values = $block->getValue();
+
+    if (!is_array($values)) {
+        $values = (string) $values;
+        $values = $values !== '' ? explode(',', $values) : [];
+    }
+?>
+<div class="field <?= $block->escapeHtmlAttr($block->getAdditionalClasses()) ?>">
+    <label class="label">
+        <span><?= $block->escapeHtml($block->getLabel()) ?></span>
+    </label>
+    <div class="control">
+        <?php foreach ($block->getOptions() as $i => $option): ?>
+            <?php if (!$option['value'] && !$option['label']): ?>
+                <?php continue; // skip empty entries ?>
+            <?php endif ?>
+
+            <div class="field choice">
+                <input type="<?= $isMultiselect ? 'checkbox' : 'radio' ?>"
+                    id="<?= $block->getHtmlId() ?>_<?= $i ?>"
+                    name="<?= $block->escapeHtmlAttr($block->getFieldName()) ?>"
+                    value="<?= $block->escapeHtmlAttr($option['value']) ?>"
+                    class="<?= $isMultiselect ? 'checkbox' : 'radio' ?> <?= $block->escapeHtmlAttr($block->getHtmlClass()) ?>"
+                    <?php if (in_array($option['value'], $values)): ?> checked<?php endif;?>>
+                <label for="<?= $block->getHtmlId() ?>_<?= $i ?>">
+                    <?= $block->escapeHtml($option['label']) ?>
+                </label>
+            </div>
+        <?php endforeach;?>
+    </div>
+</div>

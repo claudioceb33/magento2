@@ -1,0 +1,71 @@
+<?php
+/** @var $block \Magento\Theme\Block\Html\Topmenu */
+/** @var $themeSettings \Ecommerce66\Theme\ViewModel\ThemeSettings */
+
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$menuHtml = $block->getHtml('level-top', 'submenu', $columnsLimit);
+
+$themeSettings = $block->getData('viewmodel_theme66');
+$navType  = $themeSettings->getNavigationType();
+$navLabel = $themeSettings->getNavigationLabel();
+$navLinks = $themeSettings->getNavigationLinks();
+$ulTopClass = ($navType == 'vertical' || $navType == 'button') ? 'class="list-wrapper"' : '';
+?>
+
+<nav class="navigation nav-<?= /* @noEscape */ $navType ?>" data-action="navigation">
+    <?php if ($navType == 'vertical' || $navType == 'button'): ?>
+    <div class="vertical-top-nav">
+        <span class="categories"><i class="fas fa-bars"></i> <?= /* @noEscape */ $navLabel ?></span>
+        <?php if($navType == 'vertical'): ?>
+            <?php foreach ($navLinks as $link): ?>
+                <a class="menu-link" href="<?= /* @noEscape */ $link['url'] ?>"><?= /* @noEscape */ $link['label'] ?></a>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+    <ul <?= /* @noEscape */ $ulTopClass ?> data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= /* @noEscape */ $menuHtml?>
+        <?= $block->getChildHtml() ?>
+    </ul>
+</nav>
+
+<style>
+    <?php if ($themeSettings->isNavigationSticky()): ?>
+    @media (min-width: 769px){
+        .sections.nav-sections {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+    }
+    @media (max-width: 768px){
+        header.page-header{
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+    }
+    <?php endif; ?>
+</style>
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        <?php if ($navType == 'vertical' || $navType == 'button'): ?>
+        /** Vertical navigation start ----------------------------------------------*/
+        // toggle visibility
+        $('body').on('click', 'span.categories', function(){
+            $('nav.navigation').toggleClass("visible");
+        });
+        // closes navigation
+        $(document).on('click', function(event) {
+            var $target = $(event.target);
+            if(!$target.closest('nav.navigation').length) {
+                $('nav.navigation').removeClass('visible');
+            }
+        });
+        /** Vertical navigation end ------------------------------------------------*/
+        <?php endif; ?>
+    });
+</script>

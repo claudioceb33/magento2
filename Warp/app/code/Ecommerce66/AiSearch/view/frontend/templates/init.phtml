@@ -1,0 +1,24 @@
+<script>
+    require(['jquery'], function ($) {
+        'use strict';
+        $(document).on('click', 'dd.e66-ai-item', function () {
+            var url = $(this).attr('data-url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+<style>
+    .e66-ai-item { display:flex; gap:1px; padding:8px; cursor:pointer; }
+    .e66-ai-thumb { margin-top: 5px; width: 15%; min-width: 50px; }
+    .e66-ai-thumb img { object-fit:cover; border-radius:4px; }
+    .e66-ai-thumb .main { width: 50px; height: 50px; }
+    .e66-ai-meta { width: 85%; }
+    .e66-ai-title { line-height:1.2; margin-left: -10px; }
+    .e66-ai-icon { margin-right:6px; }
+    .e66-ai-brand { font-size:12px; opacity:.85; }
+    .e66-ai-price-old { text-decoration: line-through; margin-right:8px; opacity:.65; }
+    .e66-ai-price-from { opacity:.9; }
+    .e66-ai-price-wrap { text-align: right; font-weight: 600;  }
+</style>

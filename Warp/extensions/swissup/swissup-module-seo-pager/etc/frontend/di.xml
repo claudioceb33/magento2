@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="swissup_seopager"
+            type="Swissup\SeoPager\Plugin\View\Page\Config\Renderer"
+            sortOrder="8"
+            disabled="false"
+        />
+    </type>
+    <type name="Magento\Theme\Block\Html\Pager">
+        <plugin name="swissup_seopager"
+            type="Swissup\SeoPager\Plugin\Block\Html\Pager"
+            sortOrder="10"
+            disabled="false"
+        />
+    </type>
+    <type name="Magento\Review\Model\ResourceModel\Review\Summary">
+        <plugin name="swissup_seopager"
+            type="Swissup\SeoPager\Plugin\Model\ResourceModel\Review\Summary"
+            sortOrder="10"
+            disabled="false"
+        />
+    </type>
+    <type name="Swissup\SeoPager\Model\ToolbarResolver">
+        <arguments>
+            <argument name="layoutBlockName" xsi:type="array">
+                <item name="catalog" xsi:type="string">category.products.list</item>
+                <item name="search" xsi:type="string">search_result_list</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

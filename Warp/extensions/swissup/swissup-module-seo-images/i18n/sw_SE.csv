@@ -1,0 +1,8 @@
+"Looks like Magento went into infinit loop... Product ID - %1. Image - %2","Ser ut som Magento gick in i infinit loop ... Produkt-ID - %1. Bild - %2"
+"Misc. string in path of resized image","Övrigt sträng i sökvägen för storleksanverad bild"
+"Use clear parameters for product images","Använd tydliga parametrar för produktbilder"
+"Image Name",Bildnamn
+"Product image template","Mall för produktbild"
+"Magento codes all resize parameters of image into hash string. Adds this hash to resized image path. With option below you can enable clear parameters presentation. Instead of ""ea013e3e574bd4924b1531f962e2c015"" you will get ""240x300"".","Magento koder alla ändra storlek parametrar för bilden till hash sträng. Lägger till den här hash-värdet i storleksanering av bildsökvägen. Med alternativet nedan kan du aktivera tydlig parameterspresentation. Istället för ""ea013e3e574bd4924b1531f962e2c015"" får du ""240x300""."
+"Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code=""attr_code""}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template.","Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code=""attr_code""}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template."
+"None of settings affects original images. Everything can be turned off easy and reverted to default Magento behaviour.","Ingen av inställningarna påverkar originalbilder. Allt kan stängas av enkelt och återgå till standard Magento beteende."

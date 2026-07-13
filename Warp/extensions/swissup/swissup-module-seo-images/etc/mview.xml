@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
+    <view id="swissup_seoimages_index_product" class="Swissup\SeoImages\Model\Index" group="indexer">
+        <subscriptions>
+            <table name="catalog_product_entity_media_gallery_value" entity_column="entity_id" />
+        </subscriptions>
+    </view>
+</config>

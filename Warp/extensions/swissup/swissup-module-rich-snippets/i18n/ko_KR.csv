@@ -1,0 +1,32 @@
+"Go to Home Page","홈 페이지로 이동"
+"No structured data","구조화 된 데이터 없음"
+"Microdata (implemented by Magento)","마이크로 데이터 (마겐토에 의해 구현)"
+JSON-LD,JSON-LD
+"Product not found.","제품을 찾을 수 없습니다."
+"Rich Snippets","리치 스니펫"
+"Product Page structured data format","제품 페이지 구조화 데이터 형식"
+"Minify structured data","구조화 데이터 최소화"
+Breadcrumbs,"빵 부스러기"
+"Product Structured Data","제품 구조화 데이터"
+"Settings in this section works only with structured data format JSON-LD.","이 섹션의 설정은 구조화 된 데이터 형식 JSON-LD에서만 작동합니다."
+"Product Brand Attribute","제품 브랜드 속성"
+"When 'None' selected - brand is disabled in structured data.","'없음'을 선택하면 구조화 된 데이터에서 브랜드가 비활성화됩니다."
+"Product Condition Attribute","제품 상태 특성"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","모든 속성에는 ""드롭다운""이 있습니다. '없음'을 선택하면 제품 상태가 항상 새바입니다."
+"New Option","새 옵션"
+"Value from Admin label of attribute option. Leave empty to ignore.","특성 옵션의 관리 레이블에서 값입니다. 무시하려면 비워 둡니다."
+"Used Option","사용된 옵션"
+"Damaged Option","손상된 옵션"
+"Refurbished Option","리퍼비시 옵션"
+Organization,조직
+"Organization Name","조직 이름"
+Street,거리
+Locality,지역
+Region,지역
+"Postal code","우편 번호"
+Url,Url
+"Social Links","소셜 링크"
+"Site Name","사이트 이름"
+"Site Url","사이트 URL"
+"Price Valid Until","가격 유효 까지"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","가격이 더 이상 제공되지 않는 날짜 (<a href=""https://en.wikipedia.org/wiki/ISO_8601""> ISO 8601 </a> 날짜 형식) 특별 가격이없는 모든 제품에 적용됩니다. 특별 가격에 만료 날짜가 있으면 사용됩니다. <br /> <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties""> Google 가이드 </a> 확인 </ a > 자세한 내용을 알아보십시오."

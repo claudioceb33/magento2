@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="ecommerce66_brands_brand_details" resource="default" engine="innodb" comment="ecommerce66_brands_brand_details Table">
+        <column xsi:type="smallint" name="brand_details_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity id"/>
+        <column name="active"               nullable="true" xsi:type="boolean"  comment="Brand active" default="0"/>
+        <column name="category_id"          nullable="true" xsi:type="smallint" comment="Brand category id" default="0"/>
+        <column name="name"                 nullable="true" xsi:type="varchar"  comment="Brand name or title"/>
+        <column name="logo"                 nullable="true" xsi:type="varchar"  comment="Brand logo"/>
+        <column name="image"                nullable="true" xsi:type="varchar"  comment="Brand image"/>
+        <column name="mobile_image"         nullable="true" xsi:type="varchar"  comment="Brand mobile image"/>
+        <column name="description"          nullable="true" xsi:type="text"     comment="Brand description" />
+        <column name="sort_order"           nullable="true" xsi:type="smallint" comment="Brand sort order" default="1000"/>
+        <column name="option_id"            nullable="true" xsi:type="smallint" comment="Brand attribute option id"/>
+        <column name="landing_active"       nullable="true" xsi:type="boolean"  comment="Landing active" default="0"/>
+        <column name="landing_name"         nullable="true" xsi:type="varchar"  comment="Landing name"/>
+        <column name="landing_url_key"      nullable="true" xsi:type="varchar"  comment="Landing url key"/>
+        <column name="landing_image"        nullable="true" xsi:type="varchar"  comment="Landing image"/>
+        <column name="landing_mobile_image" nullable="true" xsi:type="varchar"  comment="Landing mobile image"/>
+        <column name="landing_content"      nullable="true" xsi:type="text"     comment="Landing content" />
+        <column name="landing_meta_key"     nullable="true" xsi:type="varchar"  comment="Landing meta keywords" />
+        <column name="landing_meta_desc"    nullable="true" xsi:type="varchar"  comment="Landing meta description" />
+        <column name="product_active"       nullable="true" xsi:type="boolean"  comment="Product active" default="0"/>
+        <column name="product_banner_img"   nullable="true" xsi:type="varchar"  comment="Product banner image"/>
+        <column name="product_banner_bkg"   nullable="true" xsi:type="varchar"  comment="Product banner background"/>
+        <column name="product_banner_url"   nullable="true" xsi:type="varchar"  comment="Product banner url"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="brand_details_id"/>
+        </constraint>
+
+        <constraint xsi:type="unique" referenceId="BRAND_ATTRIBUTE_EAV_OPTION_ID">
+            <column name="option_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="BRAND_LANDING_URL_KEY">
+            <column name="landing_url_key"/>
+        </constraint>
+    </table>
+</schema>

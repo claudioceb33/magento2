@@ -1,0 +1,66 @@
+&.active{
+    display: flex !important;
+}
+
+@keyframes PopUpFadeIn {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes PopUpSlideUp {
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes PopUpSlideDown {
+    from{
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+&.bg-overlay{
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    .pop-up-block{
+        position: relative;
+        &.AnimationUp{
+            animation: PopUpSlideUp 300ms backwards;
+        }
+        &.AnimationDown{
+            animation: PopUpSlideDown 300ms backwards;
+        }
+        &.AnimationFadeIn{
+            animation: PopUpFadeIn 300ms backwards;
+        }
+        .popup-close{
+            color: black;
+            font-size: 26px;
+            position: absolute;
+            top: 0;
+            right: 5px;
+            cursor: pointer;
+        }
+    }
+}

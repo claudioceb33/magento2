@@ -1,0 +1,193 @@
+<?php
+/**
+ * @see \Magento\Customer\Block\Form\Login
+ * @var \Ecommerce66\OTPLogin\Block\Form\Login $block
+ *
+ * @codingStandardsIgnoreFile
+ */
+$otpViewModel = $block->getData('otp_view_model');
+$isEnable = $otpViewModel->isEnable();
+$class = ($isEnable) ? 'hidden' : '';
+?>
+
+<div class="block block-customer-login">
+    <div class="block-title">
+        <strong id="block-customer-login-heading" class="title" role="heading" aria-level="2"><?= /** @noEscape */ __('Login in to your account') ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-customer-login-heading">
+        <?php if($isEnable): ?>
+        <?= $block->getLayout()->createBlock(\Ecommerce66\OTPLogin\Block\Form\Login::class)->setTemplate('Ecommerce66_OTPLogin::login-buttons.phtml')->toHtml(); ?>
+        <?php endif;?>
+        <form class="form form-login"
+              action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+              method="post"
+              id="login-form"
+              data-mage-init='{"validation":{}}'>
+            <?= $block->getBlockHtml('formkey') ?>
+            <fieldset class="fieldset login" id="default-mode-fieldset" data-hasrequired="<?= /** @noEscape */ __('* Required Fields') ?>">
+                <div class="field note"><?= /** @noEscape */ __('If you have an account, sign in with your email address. Remember to check at spam.') ?></div>
+                <div class="field email required">
+                    <label class="label" for="email"><span><?= /** @noEscape */ __('Email') ?></span></label>
+                    <div class="control">
+                        <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>"
+                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                               id="email" type="email" class="input-text"
+                               title="<?= /** @noEscape */ __('Email') ?>"
+                               data-mage-init='{"mage/trim-input":{}}'
+                               data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div class="field password required">
+                    <label for="pass" class="label"><span><?= /** @noEscape */ __('Password') ?></span></label>
+                    <div class="control">
+                        <input name="login[password]" type="password"
+                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                               class="input-text" id="pass"
+                               title="<?= /** @noEscape */ __('Password') ?>"
+                               data-validate="{required:true}">
+                    </div>
+                </div>
+                <div class="field choice" data-bind="scope: 'showPassword'">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                </div>
+                <?= $block->getChildHtml('form_additional_info') ?>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit"
+                                class="action login primary"
+                                name="send"
+                                id="send2"
+                            <?php if ($otpViewModel->isDisabled()): ?> disabled="disabled" <?php endif; ?>>
+                            <span><?= /** @noEscape */ __('Sign in') ?></span>
+                        </button>
+                    </div>
+                    <div class="secondary">
+                        <a class="action remind" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>">
+                            <span><?= /** @noEscape */ __('Forgot your password?') ?></span>
+                        </a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        <form class="form form-login"
+              action="<?= $block->escapeUrl($block->getOtpPostActionUrl()) ?>"
+              method="post"
+              id="otp-login-form"
+              data-mage-init='{"validation":{}}'>
+            <?= $block->getBlockHtml('formkey') ?>
+            <fieldset class="fieldset custom-otp hidden" id="custom-otp-fieldset" data-hasrequired="<?= /** @noEscape */ __('* Required fields') ?>">
+                <div class="field note"><?= /** @noEscape */ __('If you have an account, sign in with your email address. Remember to check at spam.') ?></div>
+                <div class="field email required" id="otp-email-div">
+                    <label class="label" for="otp-email"><span><?= /** @noEscape */ __('Email') ?></span></label>
+                    <div class="control">
+                        <input name="otp_login[email]" value="<?= $block->escapeHtmlAttr($block->getOtpEmail()) ?>"
+                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                               id="otp-email" type="email" class="input-text"
+                               title="<?= /** @noEscape */ __('Email') ?>"
+                               data-mage-init='{"mage/trim-input":{}}'
+                               data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div role="alert" id="message" class="message hidden">
+                    <div></div>
+                </div>
+                <div class="field otp-code required hidden" id="otp-code-div">
+                    <label for="otp-code" class="label"><span><?= /** @noEscape */ __('Enter OTP Code') ?></span></label>
+                    <div class="control">
+                        <input name="otp_login[otp_code]" type="text"
+                            <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?>
+                               class="input-text" id="otp-code"
+                               title="<?= /** @noEscape */ __('Code') ?>"
+                               data-validate="{required:true}">
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button class="action login primary"
+                                name="sendOtp"
+                                id="otp-email-submit"
+                            <?php if ($otpViewModel->isDisabled()): ?> disabled="disabled" <?php endif; ?>>
+                            <span><?= /** @noEscape */ __('Send OTP code') ?></span>
+                        </button>
+                    </div>
+                    <div class="primary">
+                        <button type="submit"
+                                class="action login primary hidden"
+                                name="send" id="otp-login-submit"
+                            <?php if ($otpViewModel->isDisabled()): ?> disabled="disabled" <?php endif; ?>>
+                            <span><?= /** @noEscape */ __('Sign in') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <?php // phpcs:ignore Magento2.Legacy.PhtmlTemplate ?>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Customer/js/block-submit-on-send": {
+                    "formId": "login-form"
+                },
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "showPassword": {
+                            "component": "Magento_Customer/js/show-password",
+                            "passwordSelector": "#pass"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        require(['jquery'], function($) {
+            $(document).ready(function () {
+                var $passwordInput = $('#pass');
+
+                // Clonar el input original (excepto el ID y type)
+                var $textInput = $('<input>', {
+                    type: 'text',
+                    id: 'pass-visible',
+                    name: $passwordInput.attr('name'),
+                    'class': $passwordInput.attr('class'),
+                    title: $passwordInput.attr('title'),
+                    autocomplete: $passwordInput.attr('autocomplete'),
+                    'data-validate': $passwordInput.attr('data-validate'),
+                    'aria-required': $passwordInput.attr('aria-required'),
+                    'aria-describedby': $passwordInput.attr('aria-describedby'),
+                    'placeholder': $passwordInput.attr('placeholder'),
+                }).hide();
+
+                // Insertar el input de texto después del de password
+                $passwordInput.after($textInput);
+
+                // Sincronizar valores en ambas direcciones
+                $passwordInput.on('input', function() {
+                    $textInput.val($(this).val());
+                });
+                $textInput.on('input', function() {
+                    $passwordInput.val($(this).val());
+                });
+
+                // Alternar visibilidad según el checkbox
+                $('.field.choice').on('change', '#show-password', function () {
+                    var isChecked = $(this).is(':checked');
+                    if (isChecked) {
+                        $passwordInput.hide();
+                        $textInput.show().focus();
+                    } else {
+                        $textInput.hide();
+                        $passwordInput.show().focus();
+                    }
+                });
+
+                // Por si el campo viene precargado (preload)
+                $textInput.val($passwordInput.val());
+            });
+        });
+    </script>
+
+
+</div>

@@ -1,0 +1,51 @@
+{
+    "swissup_prolabels_label": {
+        "column": {
+            "label_id": true,
+            "title": true,
+            "store_id": true,
+            "is_active": true,
+            "customer_groups": true,
+            "sort_order": true,
+            "conditions_serialized": true,
+            "product_position": true,
+            "product_image": true,
+            "product_custom_style": true,
+            "product_text": true,
+            "product_custom_url": true,
+            "product_round_method": true,
+            "product_round_value": true,
+            "category_position": true,
+            "category_image": true,
+            "category_custom_style": true,
+            "category_text": true,
+            "category_custom_url": true,
+            "category_round_method": true,
+            "category_round_value": true,
+            "status": true,
+            "product_target_element": true,
+            "product_insert_method": true,
+            "category_target_element": true,
+            "category_insert_method": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "swissup_prolabels_index": {
+        "column": {
+            "index_id": true,
+            "label_id": true,
+            "entity_id": true
+        },
+        "index": {
+            "SWISSUP_PROLABELS_INDEX_LABEL_ID": true,
+            "SWISSUP_PROLABELS_INDEX_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_PROLBLS_IDX_LBL_ID_SWISSUP_PROLBLS_LBL_LBL_ID": true,
+            "SWISSUP_PROLBLS_IDX_ENTT_ID_CAT_PRD_ENTT_ENTT_ID": true
+        }
+    }
+}

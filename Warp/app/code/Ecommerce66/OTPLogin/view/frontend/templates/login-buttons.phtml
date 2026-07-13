@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var \Ecommerce66\OTPLogin\Block\Form\Login $block
+ */
+?>
+
+<div class="actions-toolbar custom-buttons">
+    <div class="primary">
+        <span class="action title">
+            <span class="title"><?= /** @noEscape */ __('Login with:') ?></span>
+        </span>
+        <button type="button" class="action login action-show-popup" id="default-login-mode">
+            <span><?= /** @noEscape */ __('Email and password') ?></span>
+        </button>
+        <button type="button" class="action login primary action-show-popup" id="fast-login-mode">
+            <span><?= /** @noEscape */ __('Access code by email') ?></span>
+        </button>
+    </div>
+    <div class="secondary"><a class="action remind" ><span id="return" class="hidden"><?= /** @noEscape */ __('Switch login method') ?></span></a></div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Ecommerce66_OTPLogin/js/login-mode": {}
+        }
+    }
+</script>

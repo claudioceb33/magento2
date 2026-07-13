@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="swissup_hreflang" translate="label" type="text" sortOrder="1819" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Regional and Language URLs</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_Hreflang::hreflang_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <comment><![CDATA[<p>If you have multiple versions of a page for different languages or regions, tell search engines about these different variations. Doing so will help search engines point users to the most appropriate version of your page by language or region.<p>One of ways to indicate multiple language/locale versions of a page is to add <code style="color: #060">&lt;link rel="alternate" hreflang="lang_code"... &gt;</code> elements to your page header.<p>You can read more at this <a href="https://support.google.com/webmasters/answer/189077?hl=en" target="_blank">Google Support article</a>.]]></comment>
+                <field id="enabled" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add `hreflang` to page head</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Hreflang specifies the language and geographic restrictions for a document.</comment>
+                </field>
+                <field id="enabled_xml" translate="label" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add `hreflang` to XML Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Hreflang specifies the language and geographic restrictions for each link in sitemap.</comment>
+                </field>
+                <field id="default_store" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Default store</label>
+                    <source_model>Swissup\Hreflang\Model\Config\Source\StoreView</source_model>
+                    <comment>It will be used as x-default for hreflang. Select 'Not Specified' if you don't need it.</comment>
+                </field>
+                <field id="all_websites" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Include all websites</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Store views for all websites will be included in `hreflang` block.</comment>
+                </field>
+                <field id="allowed_websites" translate="label" type="multiselect" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Websites</label>
+                    <source_model>Swissup\Hreflang\Model\Config\Source\Website</source_model>
+                    <comment>Select websites you want to include in `hreflang` block.</comment>
+                    <depends>
+                        <field id="all_websites">0</field>
+                    </depends>
+                </field>
+                <field id="value_strategy" translate="label" type="select" sortOrder="18" showInDefault="0" showInWebsite="0" showInStore="1">
+                    <label>The hreflang attribute's value</label>
+                    <source_model>Swissup\Hreflang\Model\Config\Source\ValueStrategy</source_model>
+                </field>
+                <field id="custom_locale" translate="label" sortOrder="19" showInDefault="0" showInWebsite="0" showInStore="1">
+                    <label>Custom locale</label>
+                    <depends>
+                        <field id="value_strategy">custom_locale</field>
+                    </depends>
+                </field>
+                <field id="excluded" translate="label" type="select" sortOrder="20" showInDefault="0" showInWebsite="1" showInStore="1">
+                    <label>Exclude from hreflang</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Set "Yes" on store view level if you whant to exlude current store view from hreflang data (both page head and XML Sitemap).</comment>
+                </field>
+            </group>
+            <group id="url" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>URL</label>
+                <field id="add_locale" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Locale as subfolder in URLs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="remove_region" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove region from locale</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use only language code.</comment>
+                </field>
+                <field id="remove_store_code" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove store code parameter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use this option wisely!!! It may affect your store in some unexpected ways. You must be sure that you storeviews have distinct and unique urls. Otherwise visitors won't be able to access them with direct urls.</comment>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

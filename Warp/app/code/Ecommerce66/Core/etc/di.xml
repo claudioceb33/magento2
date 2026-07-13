@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\PageCache\Identifier">
+        <plugin name="ecommerce66_core_clean_url_utm" sortOrder="10"
+                type="Ecommerce66\Core\Plugin\Framework\PageCache\Identifier" />
+    </type>
+    <type name="Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\Collection">
+        <plugin name="ecommerce66_order_eav_plugin" sortOrder="1"
+                type="Ecommerce66\Core\Plugin\Eav\AttributeOptionCollection\EavPlugin" />
+    </type>
+    <type name="Ecommerce66\Core\Console\Command\SetNoFollow">
+        <arguments>
+            <argument name="searchCriteriaBuilder" xsi:type="object">Magento\Framework\Api\SearchCriteriaBuilder</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="product_attribute_nofollow" xsi:type="object">Ecommerce66\Core\Console\Command\SetNoFollow</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

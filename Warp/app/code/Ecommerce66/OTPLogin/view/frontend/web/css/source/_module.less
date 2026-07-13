@@ -1,0 +1,117 @@
+
+.customer-account-login {
+    .login-container {
+        .block-customer-login {
+            min-width: 600px;
+            @media (max-width: 768px) {
+                min-width: auto !important;
+            }
+            #send2 {
+                width: 156px;
+            }
+        }
+    }
+    .custom-buttons {
+        min-width: 600px !important;
+        @media (max-width: 768px) {
+            min-width: auto !important;
+        }
+        .primary {
+            width: 100%;
+        }
+        .action {
+            width: 33% !important;
+            float: none;
+            display: inline-block !important;
+            margin: 0 10px 0 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box;
+            &.title {
+                width: 23% !important;
+            }
+            .title {
+                font-size: 16px !important;
+            }
+            @media (max-width: 768px) {
+                display: block !important;
+                width: 100% !important;
+                &.title {
+                    width: 100% !important;
+                }
+            }
+        }
+        button,
+        button.secondary {
+            background: #eeeeee;
+            span {
+                font-size: 15px !important;
+            }
+            &.primary span {
+                font-size: 14px !important;
+            }
+            &:hover {
+                background: #eeeeee;
+                text-decoration: none;
+            }
+        }
+        .primary button {
+            min-width: 200px !important;
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            position: relative;
+
+            &.fast-login-mode::before {
+                content: '\f023';
+                font-weight: 900;
+            }
+            &.normal-login-mode::before {
+                content: '\f0e0';
+                font-weight: 900;
+            }
+            span {
+                position: relative;
+                z-index: 1;
+            }
+        }
+        .secondary,
+        .secondary span{
+            padding: 1px;
+            font-weight: 600;
+        }
+    }
+    .hidden {
+        display: none;
+    }
+    .show {
+        display: block;
+    }
+}
+
+.checkout-index-index {
+    #methods-login {
+        div.primary {
+            padding-top: 15px;
+            p {
+                display: inline-block;
+                padding-right: 20px;
+            }
+            button {
+                float: none;
+            }
+        }
+    }
+    #forgot-password {
+        display: none !important;
+    }
+    .actions-toolbar .note.otp-note {
+        margin-bottom: 10px;
+    }
+    .hidden {
+        display: none;
+    }
+    .show {
+        display: block;
+    }
+}

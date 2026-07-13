@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header-wrapper">
+            <referenceBlock name="top.search">
+                <arguments>
+                    <argument name="rendererList" xsi:type="array">
+                        <!-- Agregamos nuestro renderer sin tocar los existentes -->
+                        <item name="e66_ai" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">AI Results</item>
+                            <!-- Path de requireJS template (ver #2) -->
+                            <item name="template" xsi:type="string">Ecommerce66_AiSearch/autocomplete/e66_ai</item>
+                        </item>
+                    </argument>
+                </arguments>
+            </referenceBlock>
+        </referenceContainer>
+
+        <!-- Init pequeño para click sobre todo el <dd> -->
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="e66_ai_autocomplete_click_init"
+                   template="Ecommerce66_AiSearch::init.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

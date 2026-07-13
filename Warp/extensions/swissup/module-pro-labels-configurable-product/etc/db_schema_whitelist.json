@@ -1,0 +1,12 @@
+{
+    "swissup_prolabels_label_configurable": {
+        "column": {
+            "label_id": true,
+            "product_show_child_labels": true,
+            "category_show_child_labels": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

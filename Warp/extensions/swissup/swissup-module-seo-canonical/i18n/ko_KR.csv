@@ -1,0 +1,8 @@
+"Canonical URLs","표준 URL"
+"Enable canonical URL for category","카테고리에 표준 URL 사용"
+"Enable canonical URL for product","제품에 표준 URL 사용"
+"Use parent product for canonical","정식 용으로 부모 제품 사용"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","현재 제품이 다른 제품 (구성 가능, 그룹화 또는 번들)의 일부인 경우 상위 URL이 현재 제품의 표준으로 사용됩니다."
+"Allowed parent types","허용되는 부모 유형"
+"CMS Pages","CMS 페이지"
+"Enable canonical URL for CMS pages","CMS 페이지에 표준 URL 사용"

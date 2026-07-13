@@ -1,0 +1,10 @@
+<!-- ko if: isDisplayedDiscountTotal() -->
+<!-- ko foreach: getSegments() -->
+<tr class="totals custom-discount incl">
+    <th class="mark" colspan="1" scope="row" data-bind="text: $data.title"></th>
+    <td class="amount">
+        <span class="price" data-bind="text: $data.value"></span>
+    </td>
+</tr>
+<!-- /ko -->
+<!-- /ko -->

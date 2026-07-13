@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_Formbuilder
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Config/etc/system_file.xsd">
+	<system>
+		<tab id="landofcoder" translate="label" sortOrder="400">
+			<label>Landofcoder Extensions</label>
+		</tab>
+		<section id="lofformbuilder" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Formbuilder</label>
+			<tab>landofcoder</tab>
+			<resource>Lof_Formbuilder::config_form</resource>
+			<group id="general_settings" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General Settings</label>
+				<field id="enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="enable_blacklist" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled Check Blacklist</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="route" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Route</label>
+					<comment><![CDATA[Add Your extension at end of Link, for example: http://domain.com/route/FORM_IDENTIFIER]]></comment>
+				</field>
+				<field id="dateformat" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Date Format</label>
+					<source_model>Lof\Formbuilder\Model\Config\Source\DateFormat</source_model>
+					<comment><![CDATA[Full: Tuesday, April 12, 1952 AD or 3:30:42pm PST<br/>LONG: January 12, 1952 or 3:30:32pm<br/>MEDIUM: Jan 12, 1952<br/>SHORT: 12/13/52 or 3:30pm]]></comment>
+				</field>
+				<field id="recaptcha_heading" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Google reCaptcha</label>
+					<frontend_model>Lof\Formbuilder\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+				</field>
+				<field id="captcha_publickey" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>ReCAPTCHA Site Key</label>
+					<depends><field id="comment_type">default</field></depends>
+				</field>
+				<field id="captcha_privatekey" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>ReCAPTCHA Secret Key</label>
+					<depends><field id="comment_type">default</field></depends>
+				</field>
+				<field id="enable_debug" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled Debug Log</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="email_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Email Settings</label>
+				<field id="sender_email_identity" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Email Sender</label>
+					<source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+				</field>
+				<field id="send_thanks_email" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Allow send thanks you email</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment><![CDATA[Enable/Disable send thanks you email after submit form - for all form profiles.]]></comment>
+				</field>
+				<field id="thanks_email_all" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Allow send thanks you email for all email fields</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment><![CDATA[Enable/Disable send thanks you email after submit form - for all form profiles with all email address in form fields have type 'email'.]]></comment>
+					<depends><field id="send_thanks_email">1</field></depends>
+				</field>
+				<field id="subscription_all" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Auto add emails to newsletter subscription</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment><![CDATA[Enable/Disable auto get all emails from form's fields then add to newsletter subscription list of magento 2.]]></comment>
+				</field>
+				<field id="show_all_fields" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show all form fields on email</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment><![CDATA[Allow/Dont allow show all submitted form fields on email. Disable the setting we should edit manually each fields in form profile to active option <strong>Show In Email</strong> to show/hide fields on email.]]></comment>
+				</field>
+				<field id="reply_email_template" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reply Message Email Template</label>
+                    <comment>Email template will been used when admin reply formbuilder message.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+			</group>
+			<group id="field_templates" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Field Templates</label>
+				<field id="address" translate="label comment" type="textarea" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Address</label>
+				</field>
+			</group>
+			<group id="googleapi" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Google API</label>
+				<field id="publickey" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Public Key</label>
+					<comment>Use for Google Map Form Field.</comment>
+					<depends><field id="comment_type">default</field></depends>
+				</field>
+				<field id="show_address_in_map" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show Autocompleted Address infor after Location</label>
+					<comment>Enabled to show address info under location in submitted form message.</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+			</group>
+			<group id="message_setting" translate="label" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Message Settings</label>
+                <field id="enabled_view" translate="label comment" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show Direct Message on Frontend</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enabled / Disabled direct message on frontend via track link.</comment>
+				</field>
+				<field id="enabled_barcode" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Show Barcode</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="require_login_access_scan" translate="label comment" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Require Logged In Customer to Scan Barcode </label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="save_barcode_image" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Store Barcode Image in Media Folder</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends><field id="enabled_barcode">1</field></depends>
+					<comment>Enabled the option will store barcode image into folder pub/media/lof/formbuilder/barcode.</comment>
+				</field>
+				<field id="enabled_qrcode" translate="label comment" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled QR Code</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="guest_view" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enabled Guest View Message</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="check_logged_customer" translate="label comment" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Check correct customer can view Message</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends><field id="guest_view">0</field></depends>
+				</field>
+				<field id="use_longcode" translate="label comment" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Use long tracking code?</label>
+					<comment>Use short or long tracking code. The long tracking code use sha1 to encode.</comment>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends><field id="enabled_qrcode">1</field></depends>
+				</field>
+				<field id="secret_key" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Secret Key</label>
+					<comment>Input the key which you want to use to generate tracking code.</comment>
+					<depends><field id="use_longcode">1</field></depends>
+				</field>
+				<field id="chunks" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Number Chunks</label>
+					<comment><![CDATA[is number of chunks, default = 1.<br/>If you just want to generate random string, set this to 1. It required at least number 1.<br/>Example: If number of chunk is 3. XXXXX-XXXXX-XXXXX]]></comment>
+					<depends><field id="use_longcode">0</field></depends>
+				</field>
+				<field id="letters" translate="label comment" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Number Letters Per Chunk</label>
+					<comment><![CDATA[is number of letters per chunk, default = 9.<br/>Example: If number of letters per chunk is 2 and number of chunk is 3. XX-XX-XX]]></comment>
+					<depends><field id="use_longcode">0</field></depends>
+				</field>
+				<field id="separate_text" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Separate Chunk Text</label>
+					<comment><![CDATA[is separator text to separate chunks, default = -.<br/>Example: If separator is colon. XXXXX:XXXXX:XXXXX:XXXXX:XXXXX]]></comment>
+					<depends><field id="use_longcode">0</field></depends>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

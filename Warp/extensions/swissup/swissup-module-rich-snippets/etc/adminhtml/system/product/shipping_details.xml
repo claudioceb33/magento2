@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="shipping_details" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Merchant Shipping Details</label>
+        <comment><![CDATA[The following properties apply to merchant listing experiences.]]></comment>
+        <field id="country_config_heading" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Destination shipping countries configuration</label>
+            <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+            <attribute type="shared">1</attribute>
+        </field>
+        <field id="country_config" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Destination shipping countries configuration</label>
+            <comment><![CDATA[<p><strong>Handling time</strong> - the typical delay in days between the receipt of the order and the goods leaving the warehouse.</p><p><strong>Badge</strong> - The typical delay in days between when the order has been sent for delivery and when the goods reach the final customer.</p><p>Both fields allow numeric values only. You can set single number or range. Use dash ("-") to set the range.</p>]]></comment>
+            <frontend_model>Swissup\RichSnippets\Block\Adminhtml\Form\Field\ShippingDetails</frontend_model>
+            <backend_model>Swissup\RichSnippets\Model\Config\Backend\ShippingDetails</backend_model>
+        </field>
+    </group>
+</include>

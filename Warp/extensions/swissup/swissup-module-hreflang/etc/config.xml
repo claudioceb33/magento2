@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_hreflang>
+            <general>
+                <all_websites>1</all_websites>
+                <hreflang_value_strategy>storeview_locale</hreflang_value_strategy>
+            </general>
+        </swissup_hreflang>
+        <swissup_amp>
+            <whitelist>
+                <layout_updates>
+                    <swissup_hreflang>Swissup_Hreflang</swissup_hreflang>
+                </layout_updates>
+                <block_types>
+                    <swissup_hreflang>
+                        <head>
+                            <class>Swissup\Hreflang\Block\Head</class>
+                        </head>
+                    </swissup_hreflang>
+                </block_types>
+            </whitelist>
+        </swissup_amp>
+    </default>
+</config>

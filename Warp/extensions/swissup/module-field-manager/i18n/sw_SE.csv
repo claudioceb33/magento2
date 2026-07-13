@@ -1,0 +1,30 @@
+"Save Field","Spara fält"
+"Delete Field","Radera fält"
+"Edit Field '%1'","Redigera fältet %1"
+"New Field","Nytt fält"
+"Advanced Field Properties","Avancerade fältegenskaper"
+"Show on Storefront","Visa på Storefront"
+"Show In Forms","Visa i formulär"
+"Field Properties",Fältegenskaper
+"Field Information",Fältinformation
+"You cannot delete this field.","Du kan inte ta bort det här fältet."
+"Field was deleted.","Fältet raderades."
+"Can't find a field to delete.","Kan inte hitta ett fält att ta bort."
+"This field no longer exists.","Det här fältet finns inte längre."
+"You cannot edit this attribute.","Du kan inte redigera det här attributet."
+"You saved the field.","Du sparat fältet."
+"An field with this code already exists.","Ett fält med den här koden finns redan."
+"An field with the same code (%1) already exists.","Ett fält med samma kod (%1) finns redan."
+"Customer Address Registration",Kundadressregistrering
+"Customer Account Address",Kundkonto-adress
+"Customer Registration",Kundregistrering
+"Customer Account Edit","Kundkonto Redigera"
+"Admin Checkout","Admin Checkout"
+"Name must be required.","Namn måste krävas."
+"Country must be visible to keep Magento working.","Land måste vara synligt för att Magento ska fungera."
+"Use ""Stores > Configuration > General > State"" to change region field status","Använd ""Butiker> Konfiguration> Allmänt> Tillstånd"" för att ändra regionens fältstatus"
+"Use ""Stores > Configuration > General > Country Options"" to change postcode status","Använd ""Butiker> Konfiguration> Allmänt> Landalternativ"" för att ändra postnummerstatus"
+"Email must be required.","E-post måste krävas."
+"Website_id must be required.","Webbplats_id måste krävas."
+"Group_id must be required.","Group_id måste krävas."
+"Remove website overrides","Ta bort åsidosättningar av webbplatsen"

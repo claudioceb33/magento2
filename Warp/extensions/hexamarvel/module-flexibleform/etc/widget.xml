@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+ -->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+	<widget class="Hexamarvel\FlexibleForm\Block\Form" id="hexaform_builder">
+		<label>Hexamarvel Form Builder</label>
+		<description>Forms</description>
+		<parameters>
+			<parameter name="form_id" xsi:type="select" required="true" source_model="Hexamarvel\FlexibleForm\Model\Config\SelectForm" visible="true" sort_order="8" >
+				<label translate="true">Select Form</label>
+                <description></description>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>

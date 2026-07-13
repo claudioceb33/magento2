@@ -1,0 +1,267 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-weight: 400;
+    color: @demo66_black;
+    font-family: @font-family__base;
+
+    @media (max-width: 768px){
+        overflow-x: hidden;
+    }
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: @demo66_black;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+
+    @media (max-width: 576px){
+        font-size: 20px;
+        line-height: 28px;
+    }
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 36px;
+    color: @demo66_black;
+    line-height: 44px;
+    text-transform: uppercase;
+
+    @media (max-width: 576px){
+        font-size: 26px;
+        line-height: 34px;
+    }
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 32px;
+    color: @demo66_black;
+    line-height: 40px;
+}
+
+h4 {
+    font-size: 28px;
+    font-weight: 400;
+    color: @demo66_black;
+    line-height: 36px;
+    text-transform: uppercase;
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: 400;
+    color: @demo66_black;
+    line-height: 28px;
+    text-transform: uppercase;
+}
+
+h6 {
+    font-size: 16px;
+    font-weight: 400;
+    color: @demo66_black;
+    line-height: 24px;
+    text-transform: uppercase;
+}
+
+.navigation li {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: @demo66_black;
+}
+
+a, a:visited,
+.edit-address-link,
+.action-edit-address  {
+    font-size: 16px;
+    font-weight: 400;
+    color: @demo66_black;
+    line-height: 22px;
+    text-decoration: none !important;
+
+    &:hover {
+        color: @demo66_accent;
+    }
+}
+
+p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+}
+
+em {
+    font-style: italic;
+}
+
+small {
+    font-size: 12px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+dt {
+    color: @demo66_black;
+    background-color: @demo66_offwhite;
+}
+
+dd {
+    color: @demo66_black;
+}
+
+form .fieldset {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+thead {
+    background-color: @demo66_offwhite;
+}
+
+th {
+    color: @demo66_black;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.page-main {
+    font-family: @font-family__main;
+}
+
+.hidden{
+    display: none;
+}
+
+.clearfix {
+    clear: both;
+}
+
+button {
+    color: @demo66_white;
+    background-color: @demo66_accent;
+    border: 0;
+    border-radius: 0;
+    &:hover {
+        background-color: @demo66_black;
+    }
+}
+
+.e66-theme .action.primary,
+.e66-theme .action-primary,
+.e66-theme .action-show-popup,
+.e66-theme .action-select-shipping-item,
+.e66-theme .action-update {
+    color: @demo66_white;
+    background-color: @demo66_accent;
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    text-decoration: none !important;
+    &:hover {
+        background-color: @demo66_black;
+    }
+}
+
+.e66-theme .action.secondary,
+.e66-theme .action-secondary,
+.e66-theme .action.secondary.action-hide-popup,
+.e66-theme .action.action-cancel {
+    color: @demo66_gray !important;
+    background-color: @demo66_white;
+    border: 1px solid @demo66_gray;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    text-decoration: none !important;
+    &:hover {
+        background-color: @demo66_gray;
+        color: @demo66_black !important;
+        border: 1px solid @demo66_gray;
+    }
+}
+
+.e66-theme {
+    label {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+    }
+    input:not([type="checkbox"]):not([type="radio"]) {
+        height: 40px;
+        line-height: 24px;
+        background-color: @demo66_white;
+        border: 1px solid @demo66_gray;
+        padding: 0 10px;
+        box-shadow: none !important;
+
+        &::placeholder {
+            color: @demo66_black;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+        }
+    }
+    input {
+        box-shadow: none !important;  
+    }
+    select {
+        height: 40px;
+        line-height: 24px;
+        padding: 0 30px 0 10px;
+        border-color: @demo66_gray;
+        box-shadow: none !important;
+    }
+
+    .abs-field-tooltip input,
+    .field .control._with-tooltip input {
+        width: 100% !important;
+    }
+
+    .field-tooltip {
+        position: absolute !important;
+        right: 10px !important;
+        top: 6px !important;
+    }
+
+    select + .field-tooltip {
+        right: 30px !important;
+    }
+
+    textarea {
+        border: 1px solid @demo66_gray;
+        box-shadow: none !important;  
+
+        &::placeholder {
+            color: @demo66_black;
+        }
+    }
+}
+
+.page-wrapper > .page-bottom {
+    width: 100% !important;
+}

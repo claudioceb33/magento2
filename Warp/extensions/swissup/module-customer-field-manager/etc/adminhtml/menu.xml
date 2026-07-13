@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_CustomerFieldManager::index"
+            title="Customer Fields Manager"
+            module="Swissup_CustomerFieldManager"
+            sortOrder="380"
+            parent="Swissup_FieldManager::fieldmanager"
+            action="customer_field_manager/index"
+            resource="Swissup_CustomerFieldManager::index"
+        />
+    </menu>
+</config>

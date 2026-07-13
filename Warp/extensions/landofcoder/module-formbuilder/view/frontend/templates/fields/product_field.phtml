@@ -1,0 +1,76 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helper            = $this->helper(Fields::class);
+$dataHelper       = $this->helper(Data::class);
+$form              = $block->getForm();
+$formData         = $this->getData('form_data');
+$field             = $this->getData('field_data');
+$fieldType        = $field['field_type'];
+$label             = $block->filterMessage($field['label']);
+$label                = @trim($label);
+$product_sku       = isset($field['product_sku']) ? @trim($field['product_sku']) : '';
+$label                = $label ? $label : $product_sku;
+$options           = $field['field_options'];
+$inlineCss         = $field['inline_css'] ?? '';
+$cssClass   = isset($field['css_class']) ? ($block->escapeHtmlAttr($field['css_class']).' ') : '';
+$isChecked        = isset($options['is_checked']) ? (int)$options['is_checked'] : 0;
+$cid              = $dataHelper->getFieldId($field);
+$fieldName        = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$availableFields  = $helper->getAvailableFields();
+$html              = '';
+$fieldValidate    = $availableFields[$fieldType] ?? '';
+$validates         = $fieldValidate;
+$fieldHelp        = isset($options['description']) ? $block->filterMessage($options['description']) : '';
+
+$colorLabel       = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$fontSize         = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle        = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight       = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+
+if ($fieldValidate && is_array($fieldValidate)) {
+    $validates = implode(" ", $fieldValidate);
+}
+$validates .= " ".$cssClass;
+$includeOtherOption = $options['include_other_option'] ?? 0;
+
+$gridColumn = isset($field['grid_column']) ? (int)$field['grid_column'] : 1;
+$gridColumn = $gridColumn > 0 ? $gridColumn : 1;
+$x          = 0;
+$itemLabelValue = $block->escapeQuote($product_sku);
+$itemChecked = $isChecked;
+if ($formData && isset($formData[$fieldName]) && $formData[$fieldName] == $itemLabelValue) {
+    $itemChecked = true;
+}
+?>
+<?php if ($gridColumn == 1 || $x % $gridColumn == 0) : ?>
+<div class="row">
+<?php endif; ?>
+    <div class="col-lg-<?= 12 / $gridColumn ?>">
+        <input type="checkbox" name="<?= $fieldName; ?>" id="<?= $fieldId; ?>" value="<?= $itemLabelValue; ?>" class="<?= $validates; ?>" <?= ($itemChecked) ? 'checked="checked"' : ''?>/> <label for="<?= $fieldId; ?>" style="<?= $fontSize.$fontStyle.$fontWeight.$colorLabel; ?>"><?= $block->filterMessage($label); ?></label>
+    </div>
+<?php if ($gridColumn == 1 || $x % $gridColumn == 0) : ?>
+</div>
+<?php endif; ?>

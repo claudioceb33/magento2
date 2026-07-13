@@ -1,0 +1,130 @@
+<?php
+/** @var $block \Ecommerce66\Widgets\Block\Widget\Banners */
+$columns_data = $block->getColumnsData();
+$column_count = $block->getData('banner_columns');
+$size_width = 100 / $block->getData('banner_columns');
+$additional_class= '';
+if($block->getData('fullwidth_slider')){
+    $additional_class= ' banner-full-width ';
+}
+if($block->getData('zoom_banner')){
+    $additional_class .= ' zoom-hover ';
+}
+
+?>
+<div id="<?=  /* @noEscape */ $block->getData('banners_group_id')?>" class="custom-banners-slider <?=  /* @noEscape */ $additional_class ?>">
+    <div  class="widget-banners  wrapper">
+
+        <?php
+
+        $i = 1;
+        foreach ($columns_data as $column) {
+            if ($i <= $column_count):
+                $target = (isset($columns_data['row'.$i]['column-banner-target']) && $columns_data['row'.$i]['column-banner-target'] == '1') ? 'target="_blank" rel="noopener noreferrer"' : '';
+                ?>
+                <div class="item row-<?= /* @noEscape */ $i; ?>" data-image-desktop="<?=  /* @noEscape */ $block->getDataImage($columns_data['row'.$i]['column-banner-desk']);  ?>"
+                     data-image-mobile="<?=  /* @noEscape */  $block->getDataImage($columns_data['row'.$i]['column-banner-mob']);  ?>">
+                    <a href="<?=  /* @noEscape */ $columns_data['row'.$i]['column-banner-url'] ?>" <?= /* @noEscape */ $target ?>><img src="" alt=""></a>
+                </div>
+                <?php
+                $i++;
+            endif;
+        } ?>
+    </div>
+</div>
+<script>
+    require([
+        'jquery',
+        'slick'
+    ], function($) {
+        var $banner_container = $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?> .widget-banners > .item');
+        /**
+         * Behaviour
+         */
+        changeImages();
+
+        $(window).on('resize', function(){
+            changeImages();
+            $("#<?= /* @noEscape */ $block->getData('banners_group_id'); ?>.custom-banners-slider .wrapper").slick('resize');
+        });
+        function changeImages(){
+            $banner_container.each(function(i, obj) {
+                var row = i + 1;
+                var image = ($(window).width() > 799) ?
+                    $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?>  .item.row-'+row).attr('data-image-desktop') : $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?>  .item.row-'+row).attr('data-image-mobile');
+                    if(image === ''){
+                      image = $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?>  .item.row-'+row).attr('data-image-desktop');
+                    }
+                    $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .item.row-'+row +' img').attr('src', '' + image + '');
+            });
+
+
+
+        }
+    });
+</script>
+<script>
+    require([
+        'jquery',
+        'slick'
+    ], function ($) {
+        jQuery(document).ready(function () {
+            jQuery("#<?= /* @noEscape */ $block->getData('banners_group_id'); ?>.custom-banners-slider  .wrapper").slick({
+                dots: <?= ($block->getData('show_dots_pagination') == 1) ?  'true' : 'false'  ?>,
+                dotsClass: "slick-dots <?= /* @noEscape */ ($block->getData('display-dots') == 1) ? 'absolute-dots':''; ?>",
+                arrows: <?= ($block->getData('show_arrows') == 1) ? 'true' : 'false' ?>,
+                autoplay: <?= ($block->getData('slider_autoplay') == 1) ? 'true' : 'false' ?>,
+                autoplaySpeed: <?=  /* @noEscape */ $block->getData('slider_autoplayspeed') ? $block->getData('slider_autoplayspeed') : 3000 ?>,
+                infinite: <?= ($block->getData('slider_loop') == 1) ? 'true' : 'false' ?>,
+                speed: 300,
+                slidesToShow: <?=  /* @noEscape */ $block->getData('slider_elements_desk'); ?>,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                            breakpoint: 1400,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_desk'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 1050,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_sm-desktop'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 900,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_laptop'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_tablet'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 576,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_mobile'); ?>,
+                                slidesToScroll: 1
+                            }
+                        },
+                        {
+                            breakpoint: 481,
+                            settings: {
+                                slidesToShow: <?= /* @noEscape */ $block->getData('slider_elements_mobile'); ?>,
+                                slidesToScroll: 1
+                            }
+                        }
+                ]
+            });
+        });
+    });
+</script>
+

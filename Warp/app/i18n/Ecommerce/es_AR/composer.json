@@ -1,0 +1,21 @@
+{
+    "name": "community-engineering/language-es_ar",
+    "version": "0.0.6",
+    "type": "magento2-language",
+    "description": "es_AR language package.",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}

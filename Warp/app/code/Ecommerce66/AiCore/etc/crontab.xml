@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="e66_aicore_catalog_feed"
+             instance="Ecommerce66\AiCore\Cron\GenerateCatalogFeed"
+             method="execute">
+            <config_path>ecommerce66_ai/feeds/catalog_cron_expr</config_path>
+        </job>
+
+        <job name="e66_aicore_stock_feed"
+             instance="Ecommerce66\AiCore\Cron\GenerateStockFeed"
+             method="execute">
+            <config_path>ecommerce66_ai/feeds/stock_cron_expr</config_path>
+        </job>
+    </group>
+</config>

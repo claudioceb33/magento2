@@ -1,0 +1,27 @@
+"Advanced Properties","Розширені властивості"
+"Links with `nofollow` in Layered Navigation","Посилання з ' NOFOLLOW ' в шаруватої навігації"
+"4 and up","4 і вище"
+"3 and up","3 і вище"
+"2 and up","2 і вище"
+"1 and up","1 і вище"
+any,будь-який
+"In URL body","В URL тіла"
+"As request parameter","Як параметр запиту"
+"Infinite recursion call or category tree is too deep.","Нескінченна рекурсія виклик або дерево категорій занадто глибокий."
+In,В
+Out,На
+"SEO URLs","SEO URL"
+"Manage In-URL Attribute Label","Керування мітками атрибутів у URL-адресі"
+"Use this section to set attribute labels for URLs in layered navigation.","У цьому розділі можна встановити Мітки атрибутів для URL-адрес в області переходів із шарами."
+"Manage In-URL Option Label for Attribute","Підпис параметра в URL-адресі для атрибута"
+"Use this section to set attribute values for URLs in layered navigation.","У цьому розділі можна встановити значення атрибута для URL-адрес у області переходів із шарами."
+Option,Варіант
+"Sending attribute values as package.","Надсилання значень атрибутів як пакету."
+"Use separator for filters","Використовувати сепаратор для фільтрів"
+"Separator string",Роздільник-рядок
+"Search controller name in URLs","Ім'я контролера пошуку в URL-адрес"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","Ім'я контролера Magento для пошуку є 'catalogsearch/result'. Ми змінюємо його на 'search'. Ви можете змінити його на будь-яке інше ім'я."
+"Place search term","Розмістити пошуковий термін"
+"CMS Pages","CMS сторінок"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","Перенаправлення на домашню сторінку сайту, коли відвідувач намагається отримати доступ до відповідної сторінки CMS з прямим посиланням"
+"In-URL label","Мітка в URL-адресі"

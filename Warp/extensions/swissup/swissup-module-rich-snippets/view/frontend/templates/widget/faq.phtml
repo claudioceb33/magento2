@@ -1,0 +1,47 @@
+<?php
+    $faqs = $this->getFaqs();
+    if (empty($faqs)) return;
+?>
+
+<!-- JSON data for FAQPage -->
+<?= $block->fetchView($block->getTemplateFile('ld-json.phtml')) ?>
+
+<?php if ($block->isHtmlBlockAllowed()): ?>
+    <style>
+        .swissup-richsnippets__faqs--item {
+            border: var(--faqs-item__border, solid #ddd);
+            border-width: var(--faqs-item__border-width, 1px 0 1px);
+            margin: var(--faqs-item__margin, -1px 0 0);
+        }
+        .swissup-richsnippets__faqs--question {
+            align-items: flex-start;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-weight: var(--faqs-question__font-weight, 600);
+            padding: var(--faqs-question__padding, 1.25rem 0);
+        }
+        .swissup-richsnippets__faqs--question::after {
+            content: var(--faqs-question__icon__code, '\2039');
+            font-weight: normal;
+            padding: var(--faqs-question__icon__padding, 0 1rem);
+            transform: var(--faqs-question__icon__transform, scale(1.5) rotate(-90deg));
+        }
+        [open] > .swissup-richsnippets__faqs--question::after {
+            transform: var(--faqs-question-open__icon__transform, scale(1.5) rotate(90deg));
+        }
+        .swissup-richsnippets__faqs--answer {
+            padding: var(--faqs-answer__padding, 0 0 1.25rem);
+        }
+    </style>
+
+    <!-- FAQs html block -->
+    <div class="swissup-richsnippets__faqs--wrapper">
+    <?php foreach ($this->getFaqs() as $faq): ?>
+        <details class="swissup-richsnippets__faqs--item">
+            <summary class="swissup-richsnippets__faqs--question"><?= $faq->getQuestion() ?></summary>
+            <div class="swissup-richsnippets__faqs--answer"><?= $faq->getAnswer() ?></div>
+        </details>
+    <?php endforeach ?>
+    </div>
+<?php endif ?>

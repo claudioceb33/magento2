@@ -1,0 +1,42 @@
+<?php
+/** @var MessageView $block */
+
+use Lof\Formbuilder\Block\MessageView;
+
+$backtime = (isset($_REQUEST["back"]) && is_numeric($_REQUEST["back"])) ? (int)$_REQUEST["back"] : 0;
+$timeout = $backtime ? ($backtime * 1000) : 0;
+?>
+<div id="formbuilderMessageInfo" class="formbuilder-message-wrapper"></div>
+<script type="text/javascript">
+    require([
+        'jquery'
+        ], function($) {
+            var url = "<?= $block->getUrl("formbuilder/view/ajax") ?>"
+            $(function() {
+                $.ajax({
+                    url: url,
+                    data: {"code": "<?= $block->getRequest()->getParam("code"); ?>"},
+                    method: "POST",
+                    beforeSend: function() {
+                       return true;
+                    },
+                    success: function(result) {
+                        if (result && typeof(result.url) != "undefined" && result.url) {
+                            window.location.href = result.url;
+                        } else if (result && typeof(result.html) != "undefined") {
+                            $("#formbuilderMessageInfo").html(result.html);
+                        } else {
+                            console.log("<?= $block->escapeHtmlAttr(__("Not found any record.")) ?>")
+                        }
+                    }
+                });
+            });
+        });
+</script>
+<?php if($timeout > 0): ?>
+<script>
+    setTimeout(function() {
+        window.location.href = "<?= $block->getUrl("formbuilder/view/scan");?>";
+    }, <?= $timeout; ?>);
+</script>
+<?php endif; ?>

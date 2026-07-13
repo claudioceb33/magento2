@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <form_builder>1</form_builder>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <form_builder>1</form_builder>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <form_builder>
+                        <label>Form Builder</label>
+                    </form_builder>
+                </areas>
+            </frontend>
+        </captcha>
+        <hexaform>
+            <custom_option>
+                <date_order>m,d,y</date_order>
+            </custom_option>
+        </hexaform>
+    </default>
+</config>

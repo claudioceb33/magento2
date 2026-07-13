@@ -1,0 +1,375 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+$style = '';
+$helper = $this->helper(Data::class);
+$route = $helper->getConfig('general_settings/route');
+$submitRoute = !empty($route) ? ($route . 'SubmitForm') : 'formbuilder/form/post';
+$form = $block->getCurrentForm();
+$fields = $form->getFields();
+$modId = time() . rand();
+$reCaptchaPublicKey = $block->getConfig("general_settings/captcha_publickey");
+$reCaptchaPrivateKey = $block->getConfig("general_settings/captcha_privatekey");
+$beforeFormContent = $helper->filter($form->getData('before_form_content'));
+$afterFormContent = $helper->filter($form->getData('after_form_content'));
+
+$submitTextColor = $form->getSubmitTextColor();
+$submitBackgroundColor = $form->getSubmitBackgroundColor();
+$submitHoverColor = $form->getSubmitHoverColor();
+$inputHoverColor = $form->getInputHoverColor();
+
+
+$frameWorkCss = $this->getData('frame_work_css');
+$buttonText = $this->getData('button_text');
+$prefixClass = $this->getData('prefix_class');
+$displayType = $this->getData('display_type');
+$popupWidth = $this->getData('popup_width');
+$popupHeight = $this->getData('popup_height');
+$title = $this->getData('title');
+$showAfter = (int)$this->getData('show_after');
+$width = (int)$this->getData('width');
+$showCookieTime = $this->getData('show_cookietime');
+$position = $this->getData('position');
+$titleColor = $this->getData('title_color');
+$iconColor = $this->getData('icon_color');
+$iconBgcolor = $this->getData('icon_bgcolor');
+$iconStyle = '';
+if ($iconColor) {
+    $iconStyle .= 'color: ' . $iconColor . ';';
+}
+if ($iconBgcolor) {
+    $iconStyle .= 'background-color: ' . $iconBgcolor . ';';
+}
+if ($iconStyle) {
+    $iconStyle = 'style="' . $iconStyle . '"';
+}
+
+$blockId = time() . rand();
+if ($displayType == 'popup' || $displayType == 'link') {
+    $style .= 'display: none;';
+}
+if (!$width) {
+    $width = 600;
+}
+if ($width && $displayType == 'animation') {
+    $style .= 'width: ' . $width . 'px;';
+    if ($position == 'right') {
+        $style .= 'right: -' . ($width * 2) . 'px';
+    } else {
+        $style .= 'left: -' . ($width * 2) . 'px';
+    }
+}
+if ($style != '') {
+    $style = 'style="' . $style . '"';
+}
+$assetRepository = $this->assetRepository;
+$foundation = '';
+if ($frameWorkCss == 'foundation') {
+    $cssAsset = $assetRepository->createAsset('Lof_Formbuilder::css/foundation-tiny.css');
+    $medium = 'columns medium-';
+    $foundation = 'form-foundation';
+    ?>
+    <?php
+} else {
+    $medium = 'col-sm-';
+    $cssAsset = $assetRepository->createAsset('Lof_All::lib/bootstrap/css/bootstrap-tiny.css');
+}
+$showCaptcha = $form->getShowCaptcha();
+?>
+<link href="<?= $cssAsset->getUrl(); ?>" rel="stylesheet" type="text/css"/>
+<a href="#" class="btnfancy"
+   <?php if ($displayType == 'link') { ?>style="display: none"<?php } ?>><?= $buttonText ?></a>
+<div id="lofform<?= $modId ?>" class="<?= $foundation; ?> formbuilder-form <?php if ($displayType == 'animation') {
+    echo 'animation animation-' . $position;
+} ?> <?= $prefixClass ?>" <?= $style ?>>
+    <?php if ($displayType == 'animation') { ?>
+        <div class="panelbutton" <?= $iconStyle; ?>>
+            <i class="fa fa-envelope-o"></i>
+        </div>
+    <?php } ?>
+    <div class="form-content">
+        <?php if ($title) { ?><h2
+            class="text-center" <?php if ($titleColor) { ?>style="color: <?= $titleColor ?>"<?php } ?>><?= $title ?></h2><?php } ?>
+        <?php if ($beforeFormContent != '') { ?>
+            <div class="before-form-content">
+                <?= $beforeFormContent; ?>
+            </div>
+        <?php } ?>
+        <div class="formbuilder-loading"></div>
+        <form id="formbuilder<?= $modId ?>" class="formbuilder form" action="#" id="formbuilder-form<?= $modId ?>"
+              method="post" data-hasrequired="<?= __('* Required Fields') ?>" data-mage-init='{"validation":{}}'
+              enctype="multipart/form-data">
+            <input type="hidden" name="formId" value="<?= $form->getId(); ?>"/>
+            <input type="hidden" name="return_url"
+                   value="<?= $block->escapeUrl($form->getRedirectLink()) ? $block->escapeUrl($form->getRedirectLink()) : $block->escapeUrl($block->getCurrentUrl()) ?>"/>
+            <input type="hidden" name="current_url" value="<?= $block->escapeUrl($block->getCurrentUrl()) ?>"/>
+            <?php if ($fields) { ?>
+                <div class="form-list row">
+                    <?php foreach ($fields as $field) {
+                        if (!empty($form->getFrameWorkCss())) {
+                            $field['frame_work_css'] = $frameWorkCss;
+                        }
+
+                        $style = '';
+                        if (isset($field['is_hidden_field']) && $field['is_hidden_field'] == 1) {
+                            $style = 'style="height:0; display:none; margin: 0;"';
+                        }
+                        ?>
+                        <div <?= $style ?>
+                            class="field <?= isset($field['wrappercol']) ? $medium . $field['wrappercol'] : $medium . '12'; ?> <?php if ($field['field_type'] == 'section_break' && $field['show_breakline'] == 2) {
+                                echo 'hidden';
+                            } ?>">
+                            <div class="response-field-<?= $field['field_type'] ?>">
+                                <?= $block->getField($form, $field['field_type'], $field); ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                    <?php if ($showCaptcha) { ?>
+                        <div class="field <?= $medium; ?>12">
+                            <div id="form-recaptchap<?= $blockId ?>"></div>
+                        </div>
+                    <?php } ?>
+
+                </div>
+            <?php } ?>
+            <div class="row">
+                <?php $submitButtonText = $form->getSubmitButtonText(); ?>
+                <div class="buttons-set <?= $medium; ?>12">
+
+                    <button type="submit" title="<?= $block->escapeHtml(__('Submit')) ?>"
+                            style="<?= isset($submitTextColor) ? 'color:' . $submitTextColor . ';' : ' '; ?><?= isset($submitBackgroundColor) ? 'background-color:' . $submitBackgroundColor . ';' : ' '; ?> "
+                            class="formbuilder-button button"><span><span>
+                    <?php if ($submitButtonText) { ?>
+                        <?= __($submitButtonText); ?>
+                    <?php } else { ?>
+                        <?= $block->escapeHtml(__('Submit')) ?>
+                    <?php } ?>
+                    </span></span></button>
+                </div>
+            </div>
+        </form>
+
+        <?php if ($afterFormContent != '') { ?>
+            <div class="before-form-content">
+                <?= $afterFormContent; ?>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+<style>
+    #lofform<?= $modId ?> .formbuilder button[type="submit"]:hover {
+    <?= isset($submitHoverColor) ? 'background-color:'.$submitHoverColor.'!important;' : ' '; ?>
+    }
+
+    #lofform<?= $modId ?> .form-content input:hover,
+    #lofform<?= $modId ?> .form-content .input-box:hover textarea {
+    <?= isset($inputHoverColor) ? 'border-color:'.$inputHoverColor.'!important;' : ' '; ?>
+    }
+</style>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'Lof_Formbuilder/js/jquery.cookie',
+        <?php if ($displayType == 'link' || $displayType == 'popup') { ?>
+            <?php if ($this->helper(\Lof\All\Helper\Data::class)->getConfig("enable_fancybox")) { ?>
+        'Lof_All/lib/fancybox/jquery.fancybox.pack',
+                <?php
+            }
+        }
+?>
+        'mage/validation'
+    ], function ($) {
+        jQuery(document).ready(function ($) {
+            <?php if ($width && $displayType == 'animation') { ?>
+            var blockWidth = $('#lofform<?= $modId ?>').outerWidth() + 3;
+                <?php if ($position == 'left') { ?>
+            $('#lofform<?= $modId ?>').css({'left': '-' + blockWidth + 'px'});
+            <?php } ?>
+                <?php if ($position == 'right') { ?>
+            $('#lofform<?= $modId ?>').css({'right': '-' + (blockWidth + 2) + 'px'});
+            <?php } ?>
+            <?php } ?>
+
+            <?php if ($displayType == 'link' || $displayType == 'popup') { ?>
+            jQuery(".btnfancy").fancybox({
+                'href': '#lofform<?= $modId ?>',
+                'titleShow': false,
+                'transitionIn': 'elastic',
+                'transitionOut': 'elastic',
+                <?php if ((int)$popupWidth > 0) { ?>'maxWidth': '<?= $popupWidth ?>',<?php } ?>
+                <?php if ((int)$popupHeight > 0) { ?>'maxHeight': '<?= $popupHeight ?>',<?php } ?>
+            });
+            <?php } ?>
+            <?php if ($displayType == 'popup') { ?>
+                <?php if ((int)$showCookieTime > 0) { ?>
+            if (jQuery.cookie('form_status') !== '1') {
+                <?php } ?>
+                setTimeout(function () {
+                    jQuery('.btnfancy').trigger("click");
+                }, <?= $showAfter ?>);
+                <?php if ((int)$showCookieTime > 0) { ?>
+                jQuery.cookie('form_status', '1', {expires: <?= (int)$showCookieTime ?>});
+            }
+            <?php } ?>
+            <?php } elseif ($displayType == 'animation') { ?>
+            jQuery("#lofform<?= $modId ?> .panelbutton").click(function () {
+                jQuery(this).parent().toggleClass("active");
+            });
+            <?php } ?>
+            <?php if ((int)$showCookieTime > 0 && $displayType == 'popup') { ?>
+            jQuery('#formbuilder<?= $modId ?>').validation().submit(function () {
+                jQuery.cookie('form_status', '1', {expires: 720});
+            });
+            <?php } ?>
+
+            <?php if ($width && $displayType == 'animation') { ?>
+            const orgFormWidth = $('#lofform<?= $modId ?>').outerWidth();
+            const orgRight = (blockWidth + 2);
+            $(window).on("resize", function () {
+                const formHeight = $('#lofform<?= $modId ?>').height();
+                const newFormWidth = $('#lofform<?= $modId ?>').outerWidth() + 35;
+                const formP = $('#lofform<?= $modId ?>').position().top;
+                if ($(window).height() < (formHeight + formP)) {
+                    $('#lofform<?= $modId ?> .form-content').css({'overflow': 'scroll', 'height': '100%'});
+                    $('#lofform<?= $modId ?>').css({'height': ($(window).height() - formP - 10) + 'px'});
+                } else {
+                    $('#lofform<?= $modId ?> .form-content').css({'overflow': ''});
+                    $('#lofform<?= $modId ?>').css({'height': ''});
+                }
+                if ($(window).width() < newFormWidth) {
+                    <?php if ($position == 'right') { ?>
+                    $('#lofform<?= $modId ?>').css({
+                        'width': ($(window).width() - 50) + 'px',
+                        'right': '-' + newFormWidth + 'px'
+                    });
+                    <?php } ?>
+                    <?php if ($position == 'left') { ?>
+                    $('#lofform<?= $modId ?>').css({
+                        'width': ($(window).width() - 50) + 'px',
+                        'left': '-' + newFormWidth + 'px'
+                    });
+                    <?php } ?>
+                } else {
+                    <?php if ($position == 'right') { ?>
+                    $('#lofform<?= $modId ?>').css({'width': orgFormWidth + 'px', 'right': '-' + blockWidth + 'px'});
+                    <?php } ?>
+                    <?php if ($position == 'left') { ?>
+                    $('#lofform<?= $modId ?>').css({'width': orgFormWidth + 'px', 'left': '-' + blockWidth + 'px'});
+                    <?php } ?>
+                }
+
+            }).resize();
+            <?php } ?>
+            <?php if ($showCaptcha) { ?>
+            let widgetId<?= $blockId ?> = null;
+            const recaptchaScript = document.createElement('script');
+            recaptchaScript.src = 'https://www.google.com/recaptcha/api.js?onload=lofICaptchaOnloadCallback';
+            recaptchaScript.attributes = 'async defer';
+            document.body.appendChild(recaptchaScript);
+            window.lofICaptchaOnloadCallback = function () {
+                widgetId<?= $blockId ?> = grecaptcha.render('form-recaptchap<?= $blockId ?>', {
+                    'sitekey': '<?= $reCaptchaPublicKey; ?>'
+                });
+            }
+            <?php } ?>
+
+            jQuery('.response-field-html').parents('.field').css("min-height", "0px");
+            jQuery('#formbuilder<?= $modId ?>').submit(function (e) {
+                e.preventDefault();
+
+                const confirmSignatureField = jQuery(this).find(".confirm-signature-field");
+                if (confirmSignatureField.length > 0) {
+                    confirmSignatureField.each(function () {
+                        if (jQuery(this).hasClass("hidden")) {
+                            if (!jQuery(this).is(':checked')) {
+                                this.checked = true;
+                                jQuery(this).attr("checked", true);
+                                jQuery(this).prop('checked', true);
+                                jQuery(this).trigger("change");
+                            }
+                        }
+                    })
+                }
+                let ajaxurl;
+                if (jQuery(this).validation('isValid') === true) {
+                    jQuery('.formbuilder-loading').addClass('ajax-loading');
+                    ajaxurl = '<?= $this->getUrl($submitRoute); ?>';
+                    const formData = new FormData(this);
+                    if (jQuery(this).find("input:file").length > 0) {
+                        jQuery(this).find("input:file").each(function () {
+                            if (jQuery(this).val() === "") {
+                                formData.delete(jQuery(this).attr("name"));
+                            }
+                        })
+                    }
+                    jQuery.ajax({
+                        url: ajaxurl,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: formData,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function (data) {
+                            <?php if ($redirectLink = $form->getData('redirect_link')) { ?>
+                            if (data && (typeof (data.status) !== "undefined") && (data.status === 1 || data.status === 'true' || data.status === true)) {
+                                window.location.href = '<?= $helper->filter($redirectLink); ?>';
+                            }
+                            <?php } ?>
+                            $('#formbuilder<?= $modId ?>')[0].reset();
+                            $("html, body").animate({scrollTop: 0}, "slow");
+                            jQuery('.formbuilder-loading').removeClass('ajax-loading');
+                            <?php if ($showCaptcha) { ?>
+                            grecaptcha.reset(widgetId<?= $blockId ?>);
+                            <?php } ?>
+                            if ($('#formbuilder<?= $modId ?>').find(".list-unstyled > .media").length > 0) {
+                                $('#formbuilder<?= $modId ?>').find(".list-unstyled > .media").remove();
+                                $('#formbuilder<?= $modId ?>').find(".list-unstyled > .text-muted").show();
+                                if ($('#formbuilder<?= $modId ?>').find(".dm-uploader .input-multi-upload-files.required-entry-old").length > 0) {
+                                    $('#formbuilder<?= $modId ?>').find(".dm-uploader .input-multi-upload-files.required-entry-old").each(function () {
+                                        $(this).removeClass("required-entry-old");
+                                        $(this).addClass("required-entry");
+                                    })
+                                }
+                            }
+                            if (typeof window.clearDigitalSignature != 'undefined') {
+                                window.clearDigitalSignature();
+                                if (confirmSignatureField.length > 0) {
+                                    confirmSignatureField.each(function () {
+                                        if (jQuery(this).hasClass("hidden")) {
+                                            if (jQuery(this).is(':checked')) {
+                                                this.checked = false;
+                                                jQuery(this).attr("checked", false);
+                                                jQuery(this).prop('checked', false);
+                                                jQuery(this).trigger("change");
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

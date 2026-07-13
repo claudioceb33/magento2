@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Ecommerce66. All rights reserved.
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="ecommerce66_ai_product_widget" class="Ecommerce66\AiSearch\Block\Widget\AiAssistant"
+            placeholder_image="Ecommerce66_AiSearch::images/widget_placeholder.png">
+        <label >AI Product Recommendation Assistant</label>
+        <description >Displays an AI-powered assistant that recommends products based on user queries</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label >Widget Title</label>
+                <description >Title displayed above the assistant input</description>
+            </parameter>
+            <parameter name="placeholder_text" xsi:type="text" required="false" visible="true">
+                <label >Placeholder Text</label>
+                <description >Placeholder text for the AI search field</description>
+                <value>Ask me about products...</value>
+            </parameter>
+            <parameter name="related_examples" xsi:type="text" required="false" visible="true">
+                <label >Related Searches</label>
+                <description >Comma separated list of example queries to animate under the input</description>
+            </parameter>
+            <parameter name="show_recommendations" xsi:type="select" required="false" visible="true">
+                <label >Show Related Products Sidebar</label>
+                <description >Enable asynchronous related products sidebar beside the main results</description>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="custom_endpoint" xsi:type="text" required="false" visible="true">
+                <label >Custom Search Endpoint</label>
+                <description >Override default search endpoint (relative to AiCore Base URL). Leave empty to use system config. Example: /rest/v1/custom-search</description>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

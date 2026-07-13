@@ -1,0 +1,1011 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="ecommerce66_widgets_countdown" class="Ecommerce66\Widgets\Block\Widget\Countdown">
+        <label>Ecommerce66 Widgets -  Banner Countdown</label>
+        <description>Block with event countdown clock</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="true" sort_order="10">
+                <label>Event Title</label>
+            </parameter>
+            <parameter name="start_subtitle" xsi:type="text" visible="true" sort_order="15">
+                <label>Subtitle to start</label>
+            </parameter>
+            <parameter name="end_subtitle" xsi:type="text" visible="true" sort_order="20">
+                <label>Subtitle to end</label>
+            </parameter>
+            <parameter name="finished_subtitle" xsi:type="text" visible="true" sort_order="25">
+                <label>Subtitle event finished</label>
+            </parameter>
+            <parameter name="event_from" xsi:type="block" required="true" visible="true" sort_order="30">
+                <label translate="true">Event from</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\DatePicker">
+                </block>
+            </parameter>
+            <parameter name="event_from_hour" xsi:type="select" required="true" visible="true" sort_order="40" source_model="Ecommerce66\Widgets\Model\Config\Source\Hours">
+                <label translate="true">Starting hour</label>
+            </parameter>
+            <parameter name="event_to" xsi:type="block" required="true" visible="true" sort_order="50">
+                <label translate="true">Event to</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\DatePicker">
+                </block>
+            </parameter>
+            <parameter name="event_to_hour" xsi:type="select" required="true" visible="true" sort_order="60" source_model="Ecommerce66\Widgets\Model\Config\Source\Hours">
+                <label translate="true">Ending hour</label>
+            </parameter>
+            <parameter name="text_color" xsi:type="block" required="false" visible="true" sort_order="70">
+                <label translate="true">Text color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#111111</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="shadow_color" xsi:type="block" required="false" visible="true" sort_order="80">
+                <label translate="true">Shadow color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#DDDDDD</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="background_color" xsi:type="block" required="false" visible="true" sort_order="90">
+                <label translate="true">Background color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#FFFFFF</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="desktop_image" xsi:type="block" visible="true" sort_order="100">
+                <label translate="true">Desktop image</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="mobile_image" xsi:type="block" visible="true" sort_order="110">
+                <label translate="true">Mobile image</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="hide_products" xsi:type="select" visible="true" required="true" sort_order="120">
+                <label translate="true">Hide Products</label>
+                <description translate="true">Hide product list previous the event[#layered-filter-block,.toolbar-products,.products-grid,.products-list]</description>
+                <options>
+                    <option name="yes" value="1" selected="true">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="clock_weight" xsi:type="select" required="true" visible="true" sort_order="125" source_model="Ecommerce66\Widgets\Model\Config\Source\FontWeight">
+                <label translate="true">Clock weight</label>
+            </parameter>
+            <parameter name="clock_position" xsi:type="select" required="true" visible="true" sort_order="130" source_model="Ecommerce66\Widgets\Model\Config\Source\HorizontalPosition">
+                <label translate="true">Clock position</label>
+            </parameter>
+            <parameter name="dkt_top" xsi:type="select" required="true" visible="true" sort_order="140" source_model="Ecommerce66\Widgets\Model\Config\Source\Padding">
+                <label translate="true">Desktop padding top</label>
+            </parameter>
+            <parameter name="dkt_btm" xsi:type="select" required="true" visible="true" sort_order="150" source_model="Ecommerce66\Widgets\Model\Config\Source\Padding">
+                <label translate="true">Desktop padding bottom</label>
+            </parameter>
+            <parameter name="mob_top" xsi:type="select" required="true" visible="true" sort_order="160" source_model="Ecommerce66\Widgets\Model\Config\Source\Padding">
+                <label translate="true">Mobile padding top</label>
+            </parameter>
+            <parameter name="mob_btm" xsi:type="select" required="true" visible="true" sort_order="170" source_model="Ecommerce66\Widgets\Model\Config\Source\Padding">
+                <label translate="true">Mobile padding bottom</label>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="ecommerce66_widgets_animatedtext" class="Ecommerce66\Widgets\Block\Widget\Animatedtext">
+        <label>Ecommerce66 Widgets -  Animated Text</label>
+        <description>Block with personalized animated text</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="true" sort_order="10">
+                <label>Animated Text</label>
+            </parameter>
+            <parameter name="animation_type" xsi:type="select" required="true" visible="true" sort_order="40" source_model="Ecommerce66\Widgets\Model\Config\Source\Animationtype">
+                <label translate="true">Animation</label>
+
+            </parameter>
+
+            <parameter name="font_size" xsi:type="text" visible="true" sort_order="50">
+                <label>Font Size</label>
+                <description translate="true">Value in Pixel</description>
+                <value>28</value>
+            </parameter>
+            <parameter name="background_color" xsi:type="block" visible="true" sort_order="60">
+                <label>Background Color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#f5f2f0</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="text_color" xsi:type="block" visible="true" sort_order="70">
+                <label>Text Color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#000000</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="animate_duration" xsi:type="text" visible="true" sort_order="80">
+                <label>Text duration</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="1" />
+                </depends>
+                <value>3000</value>
+            </parameter>
+            <parameter name="animate_between" xsi:type="text" visible="true" sort_order="80">
+                <label>Duration between Words/Letters</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="1" />
+                </depends>
+                <value>5000</value>
+
+            </parameter>
+            <parameter name="animate_duration_two" xsi:type="text" visible="true" sort_order="80">
+                <label>Text duration</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="2" />
+                </depends>
+                <value>3000</value>
+            </parameter>
+            <parameter name="animate_between_two" xsi:type="text" visible="true" sort_order="80">
+                <label>Duration between Words/Letters</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="2" />
+
+                </depends>
+                <value>5000</value>
+
+            </parameter>
+            <parameter name="animate_between_three" xsi:type="text" visible="true" sort_order="90">
+                <label>Duration of static text</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="3" />
+
+                </depends>
+                <value>4000</value>
+
+            </parameter>
+            <parameter name="animate_duration_three" xsi:type="text" visible="true" sort_order="100">
+                <label>Animate duration between states</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="3" />
+                </depends>
+                <value>500</value>
+            </parameter>
+            <parameter name="animate_between_four" xsi:type="text" visible="true" sort_order="110">
+                <label>Duration of static text</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="4" />
+
+                </depends>
+                <value>4000</value>
+
+            </parameter>
+            <parameter name="animate_duration_four" xsi:type="text" visible="true" sort_order="120">
+                <label>Animate duration between states</label>
+                <description translate="true">Value in Miliseconds</description>
+                <depends>
+                    <parameter name="animation_type" value="4" />
+                </depends>
+                <value>500</value>
+            </parameter>
+            <parameter name="animate_id" xsi:type="block" visible="true" sort_order="130">
+                <label></label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\IdGenerator">
+                </block>
+            </parameter>
+
+        </parameters>
+    </widget>
+    <widget id="ecommerce66_Widgets_banners" class="Ecommerce66\Widgets\Block\Widget\Banners">
+        <label>Ecommerce66 Widgets - Banners Layout</label>
+        <description>Lots type of banners and positions</description>
+        <parameters>
+            <parameter name="banner_title" xsi:type="text" visible="true" sort_order="10">
+                <label>Block Banner Title</label>
+            </parameter>
+            <parameter name="banner_columns" xsi:type="select" visible="true" required="true" sort_order="20">
+                <label translate="true">Column Value for banners</label>
+                <description translate="true">Columns</description>
+                <options>
+                    <option name="1" value="1" selected="true">
+                        <label>1</label>
+                    </option>
+                    <option name="2" value="2">
+                        <label>2</label>
+                    </option>
+                    <option name="3" value="3">
+                        <label>3</label>
+                    </option>
+                    <option name="4" value="4">
+                        <label>4</label>
+                    </option>
+                    <option name="5" value="5">
+                        <label>5</label>
+                    </option>
+                    <option name="6" value="6">
+                        <label>6</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mobile_columns" xsi:type="select" visible="true" required="true" sort_order="30">
+                <label translate="true">Columns in mobile</label>
+                <options>
+                    <option name="0" value="1" selected="true">
+                        <label>Preserve Columns in Mobile</label>
+                    </option>
+                    <option name="1" value="2">
+                        <label>Split pair columns</label>
+                    </option>
+                    <option name="2" value="3">
+                        <label>Make new Rows</label>
+                    </option>
+                    <option name="3" value="4">
+                        <label>Full Width Banner</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="columns_banners" xsi:type="block" required="true" visible="true" sort_order="50">
+                <label translate="true">Banners</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\DynamicBannersRows">
+                </block>
+            </parameter>
+            <parameter name="zoom_banner" xsi:type="select" visible="true" required="true" sort_order="60">
+                <label translate="true">Zoom Banner in hover</label>
+                <description translate="true">This option apply to all banners.</description>
+                <options>
+                    <option name="yes" value="1" >
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="banners_group_id" xsi:type="block" visible="true" sort_order="130">
+                <label></label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\IdGenerator">
+                </block>
+            </parameter>
+        </parameters>
+
+    </widget>
+    <widget id="ecommerce66_Widgets_prod_banner" class="Ecommerce66\Widgets\Block\Widget\VideoBanners">
+        <label>Ecommerce66 Widgets - Video Banner</label>
+        <description>Show Video with html in Blocks - Pages - Etc</description>
+        <parameters>
+
+            <parameter name="title_video" xsi:type="text" visible="true" sort_order="10">
+                <label>Title to show</label>
+                <description translate="true">Leave empty to not show</description>
+            </parameter>
+            <parameter name="sub_title_video" xsi:type="text" visible="true" sort_order="10">
+                <label>Subtitle to show</label>
+                <description translate="true">Leave empty to not show</description>
+            </parameter>
+            <parameter name="title_subtitle_color" xsi:type="block" visible="true" sort_order="10">
+                <label>Title and Subtitle text Color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#FFFFFF</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="button_1" xsi:type="text" visible="true" sort_order="20">
+                <label>Text Button 1</label>
+            </parameter>
+            <parameter name="button_1_link" xsi:type="text" visible="true" sort_order="30">
+                <label>Link Button 1</label>
+            </parameter>
+            <parameter name="button_2" xsi:type="text" visible="true" sort_order="40">
+                <label>Text Button 2</label>
+            </parameter>
+            <parameter name="button_2_link" xsi:type="text" visible="true" sort_order="50">
+                <label>Link Button 2</label>
+            </parameter>
+            <parameter name="button_3" xsi:type="text" visible="true" sort_order="60">
+                <label>Text Button 3</label>
+            </parameter>
+            <parameter name="button_3_link" xsi:type="text" visible="true" sort_order="70">
+                <label>Link Button 3</label>
+            </parameter>
+            <parameter name="text_button_color" xsi:type="block" visible="true" sort_order="71">
+                <label>Text Button Color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#FFFFFF</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="background_button_color" xsi:type="block" visible="true" sort_order="72">
+                <label>Background Button Color</label>
+                <description translate="true">Leave Empty for transparent background.</description>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                </block>
+            </parameter>
+            <parameter name="border_button_color" xsi:type="block" visible="true" sort_order="73">
+                <label>Background Button Color</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ColorPicker">
+                    <data>
+                        <item name="value" xsi:type="string">#FFFFFF</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="text_block_position" xsi:type="select" visible="true" required="true" sort_order="80">
+                <label translate="true">Text/Buttons Position</label>
+                <options>
+                    <option name="left" value="txt_video_left">
+                        <label>Left</label>
+                    </option>
+                    <option name="Center" value="txt_video_center">
+                        <label>Center</label>
+                    </option>
+                    <option name="Bottom" value="txt_video_bottom">
+                        <label>Bottom</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="video_brand" xsi:type="select" visible="true" required="true" sort_order="90">
+                <label translate="true">Video Source</label>
+                <options>
+                    <option name="1" value="1" selected="true">
+                        <label>Youtube</label>
+                    </option>
+                    <option name="2" value="2">
+                        <label>Vimeo</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="video_id_desk" xsi:type="text" visible="true" sort_order="90">
+                <label>Youtube id Video Desktop</label>
+                <description translate="true">Only the id</description>
+                <depends>
+                    <parameter name="video_brand" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="video_id_mob" xsi:type="text" visible="true" sort_order="90">
+                <label>Youtube id Video Mobile</label>
+                <description translate="true">Only the id</description>
+                <depends>
+                    <parameter name="video_brand" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="video_id_desk_vim" xsi:type="text" visible="true" sort_order="90">
+                <label>Vimeo id Video Desktop</label>
+                <description translate="true">Only the id</description>
+                <depends>
+                    <parameter name="video_brand" value="2" />
+                </depends>
+
+            </parameter>
+            <parameter name="video_id_mob_vim" xsi:type="text" visible="true" sort_order="90">
+                <label>Vimeo id Video Mobile</label>
+                <description translate="true">Only the id</description>
+                <depends>
+                    <parameter name="video_brand" value="2" />
+                </depends>
+            </parameter>
+            <parameter name="is_fullwidth" xsi:type="select" visible="true" required="true" sort_order="100">
+                <label translate="true">Video FullWidth</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="is_parallax" xsi:type="select" visible="true" required="true" sort_order="110">
+                <label translate="true">Sticky Text on video </label>
+                <description translate="true">Only Works in elements near to header</description>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_gradient" xsi:type="select" visible="true" required="true" sort_order="120">
+                <label translate="true">Show Gradient</label>
+                <description translate="true">Show black to transparent gradient over Video</description>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_controls" xsi:type="select" visible="true" required="true" sort_order="130">
+                <label translate="true">Show Video Controls</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="banners_group_id" xsi:type="block" visible="true" sort_order="130">
+                <label></label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\IdGenerator">
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="ecommerce66_Widgets_product_slider_grid" class="Ecommerce66\Widgets\Block\Widget\GridSliderProducts" is_email_compatible="true" placeholder_image="Magento_Catalog::images/product_widget_new.png" ttl="86400">
+        <label translate="true">Ecommerce66 Widgets - Product Grid / Slider</label>
+        <description translate="true">Show products in grid or slider</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="show_pager" xsi:type="select" visible="true">
+
+                <label translate="true">Display Page Control</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="show_whislist" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Wishlist</label>
+            </parameter>
+            <parameter name="show_compare" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Compare</label>
+            </parameter>
+            <parameter name="show_addtocart" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Add To Cart</label>
+            </parameter>
+            <parameter name="show_description" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Product Description</label>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true">
+                <label translate="true">Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="template_selector" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="1" value="Ecommerce66_Widgets::widget/productsgrid.phtml" >
+                        <label translate="true">Products Grid Template</label>
+                    </option>
+                    <option name="2" value="Ecommerce66_Widgets::widget/productscarousel.phtml" selected="true">
+                        <label translate="true">Products Carousel Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_grid_rows" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns">
+                <label translate="true">Product Rows in Grid</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productsgrid.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="show_grid_columns" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns">
+                <label translate="true">Product Columns in Grid</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productsgrid.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="show_arrows" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Carousel Arrows</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="show_dots_pagination" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Slider Pager Dots</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="slider_elements_desk" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns">
+                <label translate="true">Desktop Items to show</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="slider_elements_tablet" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns">
+                <label translate="true">Tablet Items to show</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="slider_elements_mobile" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns">
+                <label translate="true">Mobile Items to show</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="multi_product_chooser" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Select Products</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ProductChooser" />
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">
+                    <![CDATA[Time in seconds between the widget updates.
+                    <br/>If not set, equals to 86400 seconds (24 hours). To update widget instantly, go to Cache Management and clear Blocks HTML Output cache.
+                    <br/>Widget will not show products that begin to match the specified conditions until cache is refreshed.]]>
+                </description>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="false" required="false" sort_order="10" class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Conditions</label>
+            </parameter>
+            <parameter name="grid_group_id" xsi:type="block" visible="true" sort_order="130">
+                <label></label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\IdGenerator">
+                </block>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.top">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.bottom">
+                <template name="grid" value="default" />
+            </container>
+        </containers>
+    </widget>
+    <widget id="ecommerce66_Widgets_product_tabs"  class="Ecommerce66\Widgets\Block\Widget\TabsProducts" is_email_compatible="true"
+            placeholder_image="Magento_Catalog::images/product_widget_new.png" ttl="86400">
+        <label translate="true">Ecommerce66 Widgets - Product Tabs</label>
+        <description translate="true">Show products Tabs</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" required="false" visible="true" sort_order="10">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="show_pager" xsi:type="select" visible="true" sort_order="20">
+                <label translate="true">Display Page Control</label>
+                <options>
+                    <option name="yes" value="1">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="products_per_page" xsi:type="text" required="false" visible="true" sort_order="30">
+                <label translate="true">Number of Products per Page</label>
+                <depends>
+                    <parameter name="show_pager" value="1" />
+                </depends>
+                <value>5</value>
+            </parameter>
+            <parameter name="show_whislist" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="40">
+                <label translate="true">Display Wishlist</label>
+            </parameter>
+            <parameter name="show_compare" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="50">
+                <label translate="true">Display Compare</label>
+            </parameter>
+            <parameter name="show_addtocart" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="60">
+                <label translate="true">Display Add To Cart</label>
+            </parameter>
+            <parameter name="show_description" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Display Product Description</label>
+            </parameter>
+            <parameter name="products_count" xsi:type="text" required="true" visible="true" sort_order="70">
+                <label translate="true">Number of Products to Display</label>
+                <value>10</value>
+            </parameter>
+            <parameter name="template_selector" xsi:type="select" required="true" visible="true" sort_order="80">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="1" value="Ecommerce66_Widgets::widget/productstabsgrid.phtml" >
+                        <label translate="true">Products Grid Template</label>
+                    </option>
+                    <option name="2" value="Ecommerce66_Widgets::widget/productstabscarousel.phtml" selected="true">
+                        <label translate="true">Products Carousel Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_grid_rows" xsi:type="select" visible="true"
+                       source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="90">
+                <label translate="true">Product Rows in Grid</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabsgrid.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="show_grid_columns" xsi:type="select" visible="true"
+                       source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="100">
+                <label translate="true">Product Columns in Grid</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabsgrid.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="show_arrows" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="110">
+                <label translate="true">Display Carousel Arrows</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="show_dots_pagination" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="120">
+                <label translate="true">Display Slider Pager Dots</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="slider_elements_desk" xsi:type="select" visible="true"
+                       source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="130">
+                <label translate="true">Desktop Items to show</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="slider_elements_tablet" xsi:type="select" visible="true"
+                       source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="140">
+                <label translate="true">Tablet Items to show</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="slider_elements_mobile" xsi:type="select" visible="true"
+                       source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="150">
+                <label translate="true">Mobile Items to show</label>
+                <depends>
+                    <parameter name="template_selector" value="Ecommerce66_Widgets::widget/productstabscarousel.phtml" />
+                </depends>
+            </parameter>
+            <parameter name="tab_1" xsi:type="text" required="false" visible="true" sort_order="160">
+                <label translate="true">Tab Title 1</label>
+            </parameter>
+            <parameter name="product_chooser_tab_1" xsi:type="block" visible="true" required="false" sort_order="170">
+                <label translate="true">Select Products for Tab 1</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ProductChooser" />
+            </parameter>
+            <parameter name="tab_2" xsi:type="text" required="false" visible="true" sort_order="180">
+                <label translate="true">Tab Title 2</label>
+            </parameter>
+            <parameter name="product_chooser_tab_2" xsi:type="block" visible="true" required="false" sort_order="190">
+                <label translate="true">Select Products for Tab 2</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ProductChooser" />
+            </parameter>
+            <parameter name="tab_3" xsi:type="text" required="false" visible="true" sort_order="200">
+                <label translate="true">Tab Title 3</label>
+            </parameter>
+            <parameter name="product_chooser_tab_3" xsi:type="block" visible="true" required="false" sort_order="200">
+                <label translate="true">Select Products for Tab 3</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ProductChooser" />
+            </parameter>
+            <parameter name="tab_4" xsi:type="text" required="false" visible="true" sort_order="210">
+                <label translate="true">Tab Title 4</label>
+            </parameter>
+            <parameter name="product_chooser_tab_4" xsi:type="block" visible="true" required="false" sort_order="210">
+                <label translate="true">Select Products for Tab 4</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\ProductChooser" />
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true" sort_order="220">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">
+                    <![CDATA[Time in seconds between the widget updates.
+                    <br/>If not set, equals to 86400 seconds (24 hours). To update widget instantly, go to Cache Management and clear Blocks HTML Output cache.
+                    <br/>Widget will not show products that begin to match the specified conditions until cache is refreshed.]]>
+                </description>
+            </parameter>
+            <parameter name="condition" xsi:type="conditions" visible="false" required="false" sort_order="230"
+                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Conditions</label>
+            </parameter>
+            <parameter name="tab_group_id" xsi:type="block"  visible="true"  sort_order="240">
+                <label></label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\IdGenerator">
+                </block>
+            </parameter>
+        </parameters>
+        <containers>
+            <container name="content">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.top">
+                <template name="grid" value="default" />
+            </container>
+            <container name="content.bottom">
+                <template name="grid" value="default" />
+            </container>
+        </containers>
+    </widget>
+    <widget id="ecommerce66_Widgets_location" class="Ecommerce66\Widgets\Block\Widget\Location">
+        <label>Location Widget</label>
+        <description>Add blocks with locations of the stores</description>
+        <parameters>
+            <parameter name="title_top" xsi:type="block" visible="true" sort_order="10">
+                <label>image</label>
+              <block class="Ecommerce66\Widgets\Block\Widget\Type\ImageChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string">Choose Image...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="store_name" xsi:type="text" visible="true" sort_order="20">
+                <label>Nombre de la sucursal</label>
+            </parameter>
+            <parameter name="address_store" xsi:type="text" visible="true" sort_order="30">
+                <label>Direccion de la sucursal</label>
+            </parameter>
+
+            <parameter name="url_maps" xsi:type="text" visible="true" sort_order="50">
+                <label>Url Mapa</label>
+            </parameter>
+
+            <parameter name="phone_store" xsi:type="text" visible="true" sort_order="40">
+                <label>Telefono de la sucursal</label>
+            </parameter>
+        </parameters>
+    </widget>
+
+    <widget id="ecommerce66_Widgets_banners_sliders" class="Ecommerce66\Widgets\Block\Widget\BannersSlider">
+        <label>Ecommerce66 Widgets - Banner Sliders</label>
+        <description>Sliders</description>
+        <parameters>
+            <parameter name="banner_title" xsi:type="text" visible="true" sort_order="10">
+                <label>Block Banner Title</label>
+            </parameter>
+            <parameter name="banner_columns" xsi:type="select" visible="true" required="true" sort_order="20">
+                <label translate="true">Column Value for banners</label>
+                <description translate="true">Columns</description>
+                <options>
+                    <option name="1" value="1" selected="true">
+                        <label>1</label>
+                    </option>
+                    <option name="2" value="2">
+                        <label>2</label>
+                    </option>
+                    <option name="3" value="3">
+                        <label>3</label>
+                    </option>
+                    <option name="4" value="4">
+                        <label>4</label>
+                    </option>
+                    <option name="5" value="5">
+                        <label>5</label>
+                    </option>
+                    <option name="6" value="6">
+                        <label>6</label>
+                    </option>
+                    <option name="7" value="7">
+                        <label>7</label>
+                    </option>
+                    <option name="8" value="8">
+                        <label>8</label>
+                    </option>
+                    <option name="9" value="9">
+                        <label>9</label>
+                    </option>
+                    <option name="10" value="10">
+                        <label>10</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="columns_banners" xsi:type="block" required="true" visible="true" sort_order="50">
+                <label translate="true">Banners Sliders</label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\DynamicBannersSlider">
+                </block>
+            </parameter>
+            <parameter name="zoom_banner" xsi:type="select" visible="true" required="true" sort_order="60">
+                <label translate="true">Zoom Banner in hover</label>
+                <description translate="true">This option apply to all banners.</description>
+                <options>
+                    <option name="yes" value="1" >
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter><parameter name="slider_loop" xsi:type="select" visible="true" required="true" sort_order="60">
+                <label translate="true">Inifite Slider</label>
+                <description translate="true">Infinite mode in slider.</description>
+                <options>
+                    <option name="yes" value="1" >
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="slider_autoplay" xsi:type="select" visible="true" required="true" sort_order="60">
+                <label translate="true">Autoplay Slider</label>
+                <options>
+                    <option name="yes" value="1" >
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="slider_autoplayspeed" xsi:type="text" visible="true" required="false" sort_order="60">
+                <label translate="true">Autoplay Slider Speed (In Miliseconds, Default: 3000) </label>
+                <depends>
+                    <parameter name="slider_autoplay" value="1" />
+                </depends>
+                <value>3000</value>
+            </parameter>
+            <parameter name="fullwidth_slider" xsi:type="select" visible="true" required="true" sort_order="60">
+                <label translate="true">Full Width Slider</label>
+                <options>
+                    <option name="yes" value="1" >
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_arrows" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="70">
+                <label translate="true">Display Carousel Arrows</label>
+
+            </parameter>
+            <parameter name="show_dots_pagination" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="80">
+                <label translate="true">Display Slider Pager Dots</label>
+            </parameter>
+
+            <parameter name="display-dots" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno" sort_order="80">
+                <label translate="true">Display Dots over the Banners</label>
+                 <depends>
+                    <parameter name="show_dots_pagination" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="slider_elements_desk" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="90">
+                <label translate="true">Desktop Items to show</label>
+
+            </parameter>
+            <parameter name="slider_elements_sm-desktop" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="100">
+                <label translate="true">Small Desktop Items to show</label>
+
+            </parameter>
+            <parameter name="slider_elements_laptop" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="110">
+                <label translate="true">Latop Items to show</label>
+
+            </parameter>
+            <parameter name="slider_elements_tablet" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="120">
+                <label translate="true">Tablet Items to show</label>
+
+            </parameter>
+            <parameter name="slider_elements_mobile" xsi:type="select" visible="true" source_model="Ecommerce66\Widgets\Model\Config\Source\Columns" sort_order="130">
+                <label translate="true">Mobile Items to show</label>
+
+            </parameter>
+            <parameter name="banners_group_id" xsi:type="block" visible="true" sort_order="140">
+                <label></label>
+                <block class="Ecommerce66\Widgets\Block\Widget\Type\IdGenerator">
+                </block>
+            </parameter>
+        </parameters>
+
+    </widget>
+
+    <widget id="ecommerce66_Widgets_popup" class="Ecommerce66\Widgets\Block\Widget\Popup">
+        <label>Ecommerce66 Widgets - Pop-up</label>
+        <description>Popup</description>
+        <parameters>
+            <parameter name="block_id" xsi:type="block" visible="true" required="true" sort_order="20">
+                <label translate="true">Load Block</label>
+                <block class="Magento\Cms\Block\Adminhtml\Block\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Block...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="animation-delay" xsi:type="text" visible="true" sort_order="30">
+                <label translate="true">Animation Delay (in Miliseconds)</label>
+                <description>
+                    Default: 1000
+                </description>
+                <value>1000</value>
+            </parameter>
+            <parameter name="popup-overlaycolor" xsi:type="text" visible="true" sort_order="40">
+                <label translate="true">Pop Up Overlay Color</label>
+                <description>
+                    In Hex format + Opacity (1%-99%). If you want #000000 with 80% opacity Ex: #00000080 
+                </description>
+                <value>#00000070</value>
+            </parameter>
+            <parameter name="popup-bgcolor" xsi:type="text" visible="true" sort_order="50">
+                <label translate="true">Pop Up Background Color</label>
+                <description>
+                    In Hex format. Ex: #FFFFFF
+                </description>
+                <value>#FFFFFF</value>
+            </parameter>
+            <parameter name="closeButton" xsi:type="select" required="true" visible="true" sort_order="60">
+                <label translate="true">Show Close Button</label>
+                <options>
+                    <option name="no" value="0" selected="true">
+                        <label>No</label>
+                    </option>
+                    <option name="yes" value="1" >
+                        <label>Yes</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="animationType" xsi:type="select" required="true" visible="true" sort_order="70">
+                <label translate="true">Pop Up Animation</label>
+                <options>
+                    <option name="fadein" value="AnimationFadeIn" selected="true">
+                        <label>Fade In</label>
+                    </option>
+                    <option name="slideup" value="AnimationUp" >
+                        <label>Slide Up</label>
+                    </option>
+                    <option name="slidedown" value="AnimationDown" >
+                        <label>Slide Down</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="timePopup" xsi:type="select" required="true" visible="true" sort_order="80">
+                <label translate="true">Pop Up Time</label>
+                <options>
+                    <option name="perLoad" value="perLoad" selected="true">
+                        <label>Once per Load</label>
+                    </option>
+                    <option name="perDay" value="perDay" >
+                        <label>Once per Day</label>
+                    </option>
+                    <option name="perWeek" value="perWeek" >
+                        <label>Once per Week</label>
+                    </option>
+                    <option name="justOnce" value="justOnce" >
+                        <label>Once</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
+

@@ -1,0 +1,12 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="price-container">
+    <!-- ko if: item.regular_price -->
+    <del><span class="regular-price-wrapper" data-bind="html: item.regular_price"></span></del>
+    <!-- /ko -->
+    <span class="price-wrapper" data-bind="html: item.product_price"></span>
+</div>

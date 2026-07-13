@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="swissup_seourls" translate="label" type="text" sortOrder="2168" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>SEO URLs</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoUrls::seourls_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="layered_navigation" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Layered Navigation</label>
+                <comment><![CDATA[<p>You can change filter labels that module uses to build URLs in layered navigation. Find respective product attribute. Open it to edit and with tab "SEO URLs" you can maintain labels.</p> <p>Few other options available below.</p>]]></comment>
+                <field id="separate_filters" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use separator for filters</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use some string as separator for filters. For example, if use string 'shopby' as filters separator then you get URLs like http://example.com/clothing/shopby/color-green.html .</comment>
+                </field>
+                <field id="separator" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Separator string</label>
+                    <depends>
+                        <field id="separate_filters" separator=",">1</field>
+                    </depends>
+                </field>
+                <field id="categoryFilter_heading" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Filter</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="category_child_url" translate="label comment" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use direct URL to subcategory</label>
+                    <frontend_model>Swissup\SeoUrls\Block\System\Config\Seourls\ForceSubcategory</frontend_model>
+                    <comment>This option forces Magento use direct link to subcategory at category page.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="category_label" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>In-URL label</label>
+                    <comment>Module uses this value to build URL when catgory filter applied.</comment>
+                </field>
+                <field id="category_nofolow" translate="label" type="select" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Links with "nofollow"</label>
+                    <source_model>Swissup\SeoUrls\Model\Config\Source\NofollowStategy</source_model>
+                </field>
+            </group>
+            <group id="search" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Search</label>
+                <field id="controller_name" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Search controller name in URLs</label>
+                    <comment>Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.</comment>
+                </field>
+                <field id="term_place" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Place search term</label>
+                    <comment><![CDATA[http://example.com/search/?q=fitness+light - search term as request value<br />http://example.com/search/fitness-light/ - search term in URL body]]></comment>
+                    <source_model>Swissup\SeoUrls\Model\Config\Source\SearchTermPlace</source_model>
+                </field>
+            </group>
+            <group id="cms" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>CMS Pages</label>
+                <field id="redirect_to_home" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Redirect to site homepage when visitor tries to access respective CMS page with direct link</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+
+        <include path="Swissup_SeoUrls::system/ajaxlayarednavigation.xml"/>
+    </system>
+</config>

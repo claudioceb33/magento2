@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_seourls>
+            <layered_navigation>
+                <separate_filters>0</separate_filters>
+                <separator>shopby</separator>
+                <category_child_url>1</category_child_url>
+                <category_label>category</category_label>
+            </layered_navigation>
+            <search>
+                <controller_name>search</controller_name>
+                <term_place>0</term_place>
+            </search>
+            <cms>
+                <redirect_to_home>1</redirect_to_home>
+            </cms>
+        </swissup_seourls>
+    </default>
+</config>

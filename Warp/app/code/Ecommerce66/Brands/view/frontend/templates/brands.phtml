@@ -1,0 +1,102 @@
+<?php
+/**
+ * @var $block \Ecommerce66\Brands\Block\Brands
+ */
+$brand = $block->getBrand();
+$brandList = $block->getBrandList();
+if (!is_object($brand) || !(bool)(int)$brand->getId()):
+    ?>
+    <div class="search-bychar">
+        <h4 class="search-title">Buscar Marcas</h4>
+        <div class="number">
+        </div>
+    </div>
+    <div class="brand-index">
+        <div class="results"><?= /* @noEscape */ $brandList->getSize() .' '. __('Results') ?></div>
+        <ul class="brand-list">
+            <?php foreach ($brandList as $brand): ?>
+
+            <li class="brand-item sort-order-<?= /* @noEscape */ $brand->getSortOrder() ?>" brand-name="<?= /* @noEscape */ $brand->getName() ?>">
+                <a class="logo" href="<?= /* @noEscape */ $block->getBrandUrl($brand) ?>">
+                    <img src="<?= /* @noEscape */ $block->getMediaUrl() . $brand->getLogo() ?>"
+                         alt="<?= /* @noEscape */ $brand->getName() ?>"/>
+                </a>
+                <a class="name" href="<?= /* @noEscape */ $block->getBrandUrl($brand) ?>">
+                    <?= /* @noEscape */ $brand->getName() ?>
+                </a>
+            </li>
+
+            <?php endforeach; ?>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+<?php endif; ?>
+
+<script>
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+           
+            const brands = $('.brand-list .brand-item')
+            const abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+            const $brandsWrapper = $('.brand-index');
+
+            abc.forEach(letter =>{
+                $('.search-bychar').append("<div class='char'>"+ letter +"</div>")
+            })
+
+            function filter(value, method){
+                for(let i = 0; i < brands.length; i++){
+                    let currentBrandCard = brands[i];
+                    let brandName = currentBrandCard.getAttribute('brand-name');
+                    currentBrandCard.style.display = "block"
+
+
+                    if(method === 'startsWith'){
+                        if (brandName.startsWith(value)){
+                            currentBrandCard.style.display = "block"
+                            }else{
+                            currentBrandCard.style.display = "none"
+                        }
+                    } else if(method === "match"){
+                        if (brandName.match(value)){
+                            currentBrandCard.style.display = "block"
+                        }else{
+                            currentBrandCard.style.display = "none"
+                        }
+                    }    
+                }
+                $brandsWrapper.addClass('filtered');
+            }
+
+            function clearFilter(){
+                for(let i = 0; i < brands.length; i++){
+                    let currentBrandCard = brands[i];
+                    currentBrandCard.style.display = "block"
+                }
+                $brandsWrapper.removeClass('filtered');    
+            }
+
+            function clearActive(item){
+                if(item.classList.contains('active')){
+                    item.classList.remove('active')
+                    }else{
+                    $('.active').removeClass('active');
+                    item.classList.add('active')
+                }
+            }
+
+            $('.number').on('click',(e)=>{
+                let currentChar = e.currentTarget;
+                (currentChar.classList.contains('active')) ? clearFilter() : filter(/^\d/, "match");
+                clearActive(currentChar);
+            });
+
+            $('.char').on('click',(e)=>{
+                let currentChar = e.currentTarget;
+                (currentChar.classList.contains('active')) ? clearFilter() : filter(currentChar.innerText, "startsWith");
+                clearActive(currentChar);
+            })
+           
+        });
+    });
+</script>

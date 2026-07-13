@@ -1,0 +1,32 @@
+"Go to Home Page","Перейти на головну сторінку"
+"No structured data","Немає структурованих даних"
+"Microdata (implemented by Magento)","Мікродані (реалізовано Magento)"
+JSON-LD,JSON-LD
+"Product not found.","Продукт не знайдено."
+"Rich Snippets","Багаті фрагменти"
+"Product Page structured data format","Структурований формат даних сторінки продукту"
+"Minify structured data","Мініфікувати структуровані дані"
+Breadcrumbs,Сухарях
+"Product Structured Data","Структуровані дані продукту"
+"Settings in this section works only with structured data format JSON-LD.","Налаштування в цьому розділі працюють тільки з структурованим форматом даних JSON-LD."
+"Product Brand Attribute","Атрибут бренду продукту"
+"When 'None' selected - brand is disabled in structured data.","Коли вибраний-бренд ""None"" вимкнено у структурованих даних."
+"Product Condition Attribute","Атрибут ""умова продукту"""
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","Всі атрибути мають тип ""розкривний список"". Коли вибраний стан продукту ""None"" завжди новий."
+"New Option","Новий параметр"
+"Value from Admin label of attribute option. Leave empty to ignore.","Значення від Admin підпис атрибута варіант. Залиште пустим, щоб проігнорувати."
+"Used Option","Параметр ""використовувати"""
+"Damaged Option","Пошкоджений варіант"
+"Refurbished Option","Відремонтований варіант"
+Organization,Організації
+"Organization Name","Назва організації"
+Street,Вулиці
+Locality,Місцевості
+Region,Регіоні
+"Postal code","Поштовий індекс"
+Url,Url
+"Social Links","Соціальні зв'язки"
+"Site Name","Ім'я сайту"
+"Site Url","URL-адреса сайту"
+"Price Valid Until","Ціна дійсна до"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","Дата (у href = ""https://en.Wikipedia.org/Wiki/ISO_8601"" > ISO 8601 </a> формат дати), після чого ціна більше не буде доступна. Застосовується для всіх товарів без спеціальної ціни. Коли Спеціальна ціна має термін придатності, то він буде використовуватися. < br/> Перевірте < a href = ""https://developers.google.com/search/docs/data-types/product # offer_properties"" > Google направляє </a>, щоб дізнатися більше."

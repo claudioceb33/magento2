@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_Formbuilder
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <css src="Lof_Formbuilder::css/jquery.minicolors.css" />
+        <css src="Lof_Formbuilder::css/bootstrap-select.css" />
+        <css src="Lof_Formbuilder::css/vendor.css" />
+        <css src="Lof_Formbuilder::css/formbuilder.css" />
+        <css src="Lof_Formbuilder::css/bootstrap.tiny.min.css" />
+        <css src="Lof_Formbuilder::css/style.css" />
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="page.main.actions">
+            <block class="Lof\Formbuilder\Block\Adminhtml\Menu" name="lof_formbuilder_menu" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Lof\Formbuilder\Block\Adminhtml\Form\Edit" name="formbuilder_form_edit"/>
+            <block class="Lof\Formbuilder\Block\Adminhtml\Form\Edit\Button\Save" name="email_type_list"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Lof\Formbuilder\Block\Adminhtml\Form\Edit\Tabs" name="lof_formbuilder_edit_tabs">
+            </block>
+        </referenceContainer>
+    </body>
+</page>

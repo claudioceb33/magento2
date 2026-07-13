@@ -1,0 +1,13 @@
+--- a/vendor/swissup/module-pro-labels/Model/ResourceModel/Label.php
++++ b/vendor/swissup/module-pro-labels/Model/ResourceModel/Label.php
+@@ -93,8 +93,8 @@
+         );
+         $select->where('entity_id IN (?)', $productId);
+         $select->where('status = ?', '1');
+-        $select->where('store_id LIKE \'%\\"0\\"%\' OR store_id LIKE ?', "%\"${storeId}\"%");
+-        $select->where('customer_groups LIKE ?', "%\"${customerGroupId}\"%");
++        $select->where('store_id LIKE \'%\\"0\\"%\' OR store_id LIKE ?', "%\"{$storeId}\"%");
++        $select->where('customer_groups LIKE ?', "%\"{$customerGroupId}\"%");
+ 
+         $labels = [];
+         foreach ($connection->fetchAll($select) as $data) {

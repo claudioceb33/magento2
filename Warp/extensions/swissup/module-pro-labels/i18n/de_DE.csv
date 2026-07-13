@@ -1,0 +1,76 @@
+"Product Labels",Produktetiketten
+"Add New Label","Neues Label hinzufügen"
+"Save Label","Speichern des Etiketts"
+"Delete Label","Label löschen"
+"Edit Label '%1'","Label '%1' bearbeiten"
+"New Label","Neues Label"
+Settings,Einstellungen
+Position,Position
+Top-Left,Oben-links
+Top-Center,Top-Center
+Top-Right,Oben-Rechts
+Middle-Left,Mitte-Links
+Middle-Center,Middle-Center
+Middle-Right,Mitte-Rechts
+Bottom-Left,Bottom-Left
+Bottom-Center,Bottom-Center
+Bottom-Right,Bottom-Right
+Content,Inhalt
+"Label Text",Beschriftungstext
+"Custom Css Label","Benutzerdefinierte Css Label"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Nur Css Style. Beispiel: Farbe: #fff; Text-Schatten: 0 1px 0 rgba(0,0,0,0.3); Breite: 60px; Höhe: 60px;background:#ff7800; Grenzradius:50%;"
+"Label Custom Url","Label Custom Url"
+"Round Method",Round-Methode
+Math,Math
+Ceil,Ceil
+Floor,Boden
+"Round Value","Runder Wert"
+"Labels Gallery",Etiketten-Galerie
+"Label Image",Label-Image
+"Category Label",Kategorie-Label
+"Conditions (don't add conditions if label is applied to all products)","Bedingungen (keine Bedingungen hinzufügen, wenn die Bezeichnung auf alle Produkte angewendet wird)"
+"Indexed Products","Indizierte Produkte"
+"Attribute Set",Attributsatz
+"Product Label",Produktetikett
+"Label Gallery","Label Gallery"
+"We couldn't find any labels","Wir konnten keine Etiketten finden"
+"Labels have been applied.","Etiketten wurden angewendet."
+"Label has been applied.","Die Bezeichnung wurde angewendet."
+"Label was deleted.","Die Bezeichnung wurde gelöscht."
+"Can't find a label to delete.","Es kann kein zu löschendes Etikett gefunden werden."
+"Label was disabled.","Die Bezeichnung wurde deaktiviert."
+"Can't find a label to disable.","Es kann keine zu deaktivierende Bezeichnung gefunden werden."
+ProLabels,ProLabels
+"Manage Labels","Verwalten von Etiketten"
+"This label no longer exists.","Diese Bezeichnung ist nicht mehr vorhanden."
+"Edit Label","Bearbeiten der Bezeichnung"
+"Label was enabled.","Die Bezeichnung wurde aktiviert."
+"Can't find a label to enable.","Es kann kein Zuspiel gefunden werden."
+"Label has been saved.","Die Bezeichnung wurde gespeichert."
+"Something went wrong while saving the label.","Beim Speichern des Etiketts ist etwas schief gelaufen."
+"up to ","bis zu "
+Edit,Bearbeiten
+"All Store Views","Alle Store-Ansichten"
+"Click here or drag and drop to add images.","Klicken Sie hier oder ziehen Sie, um Bilder hinzuzufügen."
+Swissup,Swissup
+"jQuery Selector For Base Image Wrapper","jQuery Selector für Basisbild-Wrapper"
+"jQuery Selector For Content Labels Container","jQuery Selector für Content Labels Container"
+"On Sale","On Sale"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","SALE-Etiketten sind die kostengünstige Möglichkeit, den Verkauf von Geschäften zu markieren und die Aufmerksamkeit der Besucher auf sich zu ziehen. Sie werden auf discounted und On-Sale-Produkte angezeigt. Mit On Sale Etiketten erregen Sie Kunden die Aufmerksamkeit auf die Werbeartikel."
+"Product Page",Produktseite
+Image,Bild
+"Custom Label","Benutzerdefiniertes Etikett"
+"Category Page",Kategorieseite
+"Is New","Ist neu"
+"New Labels are used for the presentation of new items at your store.","Neue Etiketten werden für die Präsentation neuer Artikel in Ihrem Shop verwendet."
+"In Stock","Auf Lager"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","In Lageretiketten werden verwendet, um Artikel mit niedrigem Lagerbestand anzuzeigen. Mit Lager- und Lageretiketten fokussieren Sie die Kunden auf die begrenzte Verfügbarkeit von Produkten."
+"Display if Stock is lower then","Anzeigen, wenn der Lagerbestand niedriger ist als"
+"Out Of Stock",Ausverkauft
+"Apply Labels","Etiketten anwenden"
+"Product Image",Produktbild
+"Product Position",Produktposition
+"Product Text",Produkttext
+"Category Image","Kategorie Bild"
+"Category Position","Kategorie Position"
+"Category Text",Kategorietext

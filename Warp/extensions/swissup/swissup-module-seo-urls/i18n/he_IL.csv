@@ -1,0 +1,27 @@
+"Advanced Properties","מאפיינים מתקדמים"
+"Links with `nofollow` in Layered Navigation","קישורים עם ' nofollow ' בניווט בשכבות"
+"4 and up","4 ומעלה"
+"3 and up","3 ומעלה"
+"2 and up","2 ומעלה"
+"1 and up","1 ומעלה"
+any,כל
+"In URL body","בגוף כתובת האתר"
+"As request parameter","כפרמטר בקשה"
+"Infinite recursion call or category tree is too deep.","שיחת רקורסיה אינסופית או עץ קטגוריה היא עמוקה מדי."
+In,ב
+Out,מתוך
+"SEO URLs","כתובות Url של SEO"
+"Manage In-URL Attribute Label","ניהול תווית תכונה ב-URL"
+"Use this section to set attribute labels for URLs in layered navigation.","השתמש במקטע זה כדי להגדיר תוויות תכונה עבור כתובות Url בניווט בשכבות."
+"Manage In-URL Option Label for Attribute","ניהול תווית אפשרות בתוך כתובת URL עבור תכונה"
+"Use this section to set attribute values for URLs in layered navigation.","השתמש במקטע זה כדי להגדיר ערכי תכונות עבור כתובות Url בניווט בשכבות."
+Option,אפשרות
+"Sending attribute values as package.","שליחת ערכי תכונה כחבילה."
+"Use separator for filters","השתמש בתו הפרדה עבור מסננים"
+"Separator string","מחרוזת מפרידים"
+"Search controller name in URLs","שם בקר חיפוש בכתובות Url"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","מחנטו שם בקר לחיפוש הוא 'catalogsearch/result'. אנחנו משנים את זה לחיפוש. . אתה יכול לשנות את זה לכל שם אחר"
+"Place search term","מונח חיפוש במקום"
+"CMS Pages","דפי CMS"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","נתב מחדש לאתר הבית כאשר המבקר מנסה לגשת לדף CMS בהתאמה עם קישור ישיר"
+"In-URL label","תווית בתוך כתובת URL"

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="afm_address_form"/>
+
+    <body>
+        <referenceBlock name="swissup-address-fields">
+            <arguments>
+                <argument name="destination" xsi:type="string">.form-create-account .fieldset.address</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

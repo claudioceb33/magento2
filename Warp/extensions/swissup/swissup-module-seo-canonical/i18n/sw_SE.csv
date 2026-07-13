@@ -1,0 +1,8 @@
+"Canonical URLs","Kanoniska URL: er"
+"Enable canonical URL for category","Aktivera kanonisk URL för kategori"
+"Enable canonical URL for product","Aktivera kanonisk URL för produkt"
+"Use parent product for canonical","Använd överordnad produkt för kanonik"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","När aktuell produkt är en del av någon annan produkt (konfigurerbar, grupperad eller buntad) kommer moder-URL att användas som kanonisk för aktuell produkt."
+"Allowed parent types","Tillåtna föräldertyper"
+"CMS Pages",CMS-sidor
+"Enable canonical URL for CMS pages","Aktivera kanonisk URL för CMS-sidor"

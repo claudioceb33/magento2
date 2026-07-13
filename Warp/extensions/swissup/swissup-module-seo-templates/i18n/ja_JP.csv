@@ -1,0 +1,35 @@
+"Generate metadata",メタデータの生成
+"Don't add any conditions if template is applied to all products.",テンプレートがすべての製品に適用されている場合は、条件を追加しないでください。
+"Entity Id","エンティティ ID"
+"Generated at",生成される
+"Generation log",生成ログ
+"Generate Metadata",メタデータの生成
+"Complete at %1","%1 で完了"
+"%1: items processed - %2","%1: 品目処理済 - %2"
+"Start at %1","%1 から開始"
+"You've deleted template.",テンプレートを削除しました。
+"We can't find template to delete.",削除するテンプレートが見つかりません。
+"Template with ID %1 no longer exists.","ID %1 のテンプレートは存在しません。"
+"Metadata Templates","メタデータ テンプレート"
+"Edit ""%1""","""%1"" を編集する"
+"Create template",テンプレートの作成
+"A total of %1 template(s) have been deleted.","合計 %1 個のテンプレートが削除されました。"
+"A total of %1 template(s) have updated status.","合計 %1 個のテンプレートのステータスが更新されました。"
+"New Template",新しいテンプレート
+"This template no longer exists.",このテンプレートは存在しません。
+"You saved the template.",テンプレートを保存しました。
+"Something went wrong while saving the template.",テンプレートの保存中に何か問題が発生しました。
+"Category Attribute",カテゴリ属性
+"Category ID","カテゴリ ID"
+"All entities",すべてのエンティティ
+"There is generated metadata for %1.","%1 のメタデータが生成されています。"
+Generated,生成
+"Value is read only",値は読み取り専用です
+"Force to use generated metadata",生成されたメタデータを強制的に使用する
+"Start Time",開始時刻
+"Records to process per job",ジョブごとに処理するレコード
+"Metadata Template Information","メタデータ テンプレート情報"
+"Generate metadata from templates",テンプレートからメタデータを生成する
+"Are you sure you want to delete selected templates?",選択したテンプレートを削除しますか?
+"Template for",のテンプレート
+"Data Type",データ型

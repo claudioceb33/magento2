@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="swissup_seodata">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string">SEO Suite</item>
+                <item name="sortOrder" xsi:type="number">990</item>
+            </item>
+        </argument>
+        <container name="swissup_seodata_product">
+            <htmlContent name="block_metadata_category">
+                <argument name="block" xsi:type="object">Swissup\SeoTemplates\Block\Adminhtml\Metadata\Product</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

@@ -1,0 +1,102 @@
+"Add to Cart","Comprar"
+"Add To Cart","Comprar"
+"Enter your email address","Tu email"
+"Related Products","Productos relacionados"
+Subscribe,Suscribirme
+"Product Name","Nombre"
+"%1 has been moved to your wish list.","%1 se guardó en tus Favoritos."
+"%1 has been added to your Wish List.","%1 se guardó en tus Favoritos."
+"Click <a href=""%1"">here</a> to continue shopping.","<a href=""%1"">Continuar comprando</a>."
+"You added %1 to your <a href=""%2"">shopping cart</a>.","Agregaste %1 al <a href=""%2"">carrito</a>."
+"What’s on your mind?","Mensaje"
+Reorder,"Repetir pedido"
+"View Order","Ver"
+"Order Total","Total"
+"All %1", "Todo en %1"
+"Search terms","Búsquedas sugeridas"
+"Item in Cart","Artículo"
+"Items in Cart","Artículos"
+"Cart Subtotal","Sub-total"
+Total,Total
+"Are you sure you want to remove all items from your shopping cart?","¿Está seguro que desea vaciar su carrito?"
+"Items %1 to %2 of %3 total","Artículos %1 - %2 de %3"
+"My Account","Mi cuenta"
+"Success Page","Compra exitosa"
+"More Information","Más info"
+Details,Descripción
+"Search results for: '%1'","Resultados para: '%1'"
+
+"My Cart","Sub-total"
+"Are you sure you want to remove this item from your Compare Products list?","¿Está seguro que desea eliminar este elemento de la lista de comparación?"
+
+"Current location","Ubicación (calle, ciudad, provincia, código postal)*",Amasty
+"Search Radius","Radio de búsqueda (Km)",Amasty
+"Locate Nearby","Buscar por cercanía",Amasty 
+"Work Time Today:","Horario de hoy:",Amasty
+"Monday","Lunes",Amasty
+"Tuesday","Martes",Amasty
+"Wednesday","Miércoles",Amasty
+"Thursday","Jueves",Amasty
+"Friday","Viernes",Amasty
+"Saturday","Sábado",Amasty
+"Sunday","Domingo",Amasty
+"Zip: ","Código postal:",Amasty
+"Country: ","Pais:",Amasty
+"State: ","Provincia:",Amasty
+"City: ","Ciudad:",Amasty
+"Address: ","Dirección:",Amasty
+"Photos","Fotos",Amasty
+
+"Choose on map","Elegir en mapa"
+"Select a store to collect your order:","Seleccione un local para retiro:"
+"Store Pickup","Retiro en local"
+"Choose a store...","Elija local..."
+"Choose a Store","Seleccione un local para retiro"
+"Pick up here","Retirar acá"
+"Everywhere","Todos",Amasty
+"everywhere","Todos",Amasty
+Everywhere,Todos,Amasty
+everywhere,Todos,Amasty
+"Write a review","Escriba una reseña"
+"reviews","reseñas"
+"%1 reviews","%1 reseñas"
+
+"More Choices:","Te puede interesar"
+
+"The coupon code isn't valid. Verify the code and try again.","Este cupón ya fue utilizado o el código ingresado no existe."
+"Apply Discount","Aplicar cupón"
+
+"Related posts","Artículos relacionados"
+"Related Posts","Artículos relacionados"
+
+"View More","Ver más"
+
+"More","+",module,Magento_Swatches
+
+"Address Book","Mis direcciones"
+"Default Billing Address","Dirección de facturación predeterminada"
+
+"Pickup Date","Fecha de retiro"
+"Pickup Time","Hora de retiro"
+
+"There are no source items with the in stock status","Sin stock"
+"My Wish List","Mis favoritos"
+
+"Place Order","Finalizar compra"
+"Proceed to Checkout","Comprar"
+
+"Shipping Address","Datos del comprador"
+
+"Shipping","Datos personales",module,Magento_Checkout
+
+SKU,Cod.
+"Shipping & Handling","Costo de envío"
+"Items Ordered","Pedido"
+Invoices,Factura
+"Order Shipments","Envío"
+Ordered,"Pedido"
+
+"Excl. Tax","Precio sin Impuestos Nacionales"
+"Excluding Tax","Precio sin Impuestos Nacionales"
+Tax,Impuestos Nacionales
+"(Excl. Tax)","sin Impuestos Nacionales"

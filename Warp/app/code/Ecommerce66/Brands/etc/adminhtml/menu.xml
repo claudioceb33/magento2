@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+        <add id="Ecommerce66_Brands::menu"
+             title="Brands Management"
+             module="Ecommerce66_Brands"
+             sortOrder="99"
+             parent="Ecommerce66_Core::top_level"
+             resource="Ecommerce66_Brands::menu"/>
+
+        <add id="Ecommerce66_Brands::brand_details"
+             title="Brand Details"
+             module="Ecommerce66_Brands"
+             sortOrder="9999"
+             resource="Ecommerce66_Core::top_level"
+             parent="Ecommerce66_Brands::menu"
+             action="ecommerce66_brands/branddetails/index"/>
+	</menu>
+</config>

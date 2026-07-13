@@ -1,0 +1,21 @@
+{
+    "name": "community-engineering/language-pt_br",
+    "version": "0.0.40",
+    "type": "magento2-language",
+    "description": "pt_BR language package.",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}

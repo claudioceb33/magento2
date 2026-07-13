@@ -1,0 +1,61 @@
+@import 'common/__mixins';
+@import 'common/__fonts';
+@import 'common/__vars';
+
+@import 'common/__common';
+@import 'common/__content';
+@import 'common/__header';
+@import 'common/__footer';
+
+body[class*="cms-home"]{
+    @import 'sections/_cms_home';
+}
+
+body.catalog-category-view,
+body.catalogsearch-result-index {
+    @import 'sections/_catalog_category_view';
+}
+
+body.catalogsearch-result-index {
+    @import 'sections/_catalogsearch_result_index';
+}
+
+body.catalog-product-view {
+    @import 'sections/_catalog_product_view';
+}
+
+body.customer-account-create {
+    @import 'sections/_customer_account_create';
+}
+
+body.customer-account-login {
+    @import 'sections/_customer_account_login';
+}
+
+body.customer-account-forgotpassword {
+    @import 'sections/_customer_account_forgotpassword';
+}
+
+body.checkout-cart-index {
+    @import 'sections/_checkout_cart_index';
+}
+
+body.checkout-index-index {
+    @import 'sections/_checkout_index_index';
+}
+
+body.checkout-onepage-success {
+    @import 'sections/_checkout_success';
+}
+
+body.account {
+    @import 'sections/_account';
+}
+
+.wishlist-index-index {
+    @import 'sections/_wishlist_index_index';
+}
+
+body.cms-no-route {
+    @import 'sections/_no_route';
+}

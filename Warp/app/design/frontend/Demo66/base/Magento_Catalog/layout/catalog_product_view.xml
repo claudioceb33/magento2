@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Swatches::css/swatches.css"/>
+    </head>
+    <body>
+
+        <referenceBlock name="view.addto.compare" remove="true" />
+        <referenceBlock name="product.info.type" remove="true" />
+        <!-- <referenceBlock name="product.info.social" remove="true" /> -->
+
+        <move element="product.info.stock.sku" destination="product.info.main" before="page.main.title"/>
+
+        <move element="page.main.title" destination="product.info.main" before="product.info.overview"/>
+
+        <move element="product.info.price" destination="product.info.main" after="product.info.overview"/>
+
+        <move element="product.info" destination="product.info.main" after="product.info.overview"/>
+
+        <!-- <move element="view.addto.wishlist" destination="product.info.addtocart" after="-"/> -->
+
+        <!-- <move element="product.info.details" destination="product.info.details.after.wrapper.main" after="-"/> -->
+
+        <referenceBlock name="product.info.main">
+            <block class="Magento\Cms\Block\Block" name="info_pdp" before="footer">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">info_pdp</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        
+        <!-- <referenceBlock name="product.info.main">
+            <block name="shipping" template="Magento_Catalog::html/shipping.phtml">
+            </block>
+        </referenceBlock> -->
+
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Framework\View\Element\Text\ListText" name="product.custom-info.tab" as="custom-info.tab" group="detailed_info">
+                <arguments>
+                    <argument name="title" translate="true" xsi:type="string">Modo de uso</argument>
+                    <argument name="sort_order" xsi:type="string">10</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceBlock name="product.custom-info.tab">
+            <block class="Magento\Catalog\Block\Product\View" name="product.attribute.mas_info" template="Magento_Catalog::product/view/attribute.phtml">
+                <arguments>
+                    <argument name="at_call" xsi:type="string">getMas_info</argument>
+                    <argument name="at_code" xsi:type="string">mas_info</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceBlock name="catalog.product.related">
+            <block class="Magento\Framework\View\Element\RendererList" name="related.product.type.details.renderers" as="details.renderers">
+                <block class="Magento\Swatches\Block\Product\Renderer\Listing\Configurable" as="configurable" template="Magento_Swatches::product/listing/renderer.phtml" >
+                    <arguments>
+                        <argument name="configurable_view_model"
+                                  xsi:type="object">Magento\Swatches\ViewModel\Product\Renderer\Configurable</argument>
+                    </arguments>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

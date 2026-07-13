@@ -1,0 +1,74 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+/** @var Template $block */
+
+use Lof\Formbuilder\Helper\Barcode;
+use Magento\Framework\View\Element\Template;
+
+$helper = $this->helper(Lof\Formbuilder\Helper\Data::class);
+$barcode = $this->helper(Barcode::class);
+$enabled_qrcode = $helper->getConfig("message_setting/enabled_qrcode");
+$message = $this->getCurrentMessage();
+$blockId = rand() . time();
+$tabId = 'formbuilder_message_' . $blockId;
+$qrcode_tracking_link = $helper->getQrcodeTracklink($message);
+$barcode_link = $barcode->generateBarcodeLabel($message, false);
+$track_url = $helper->getTrackUrl($message);
+$backtime = (isset($_REQUEST["back"]) && is_numeric($_REQUEST["back"])) ? (int)$_REQUEST["back"] : 0;
+$timeout = $backtime ? ($backtime * 1000) : 0;
+?>
+<div id="<?= $tabId; ?>" class="formbuilder-message-view">
+    <div class="row lof-formbuilder">
+        <div class="formbuilder-container">
+            <?php $form = $this->getFormInfo($message->getFormId()); ?>
+            <?php if ($form && $form->getId()) : ?>
+                <div><h2><?= __("Submit from the Form: "); ?><a
+                        href="<?= $block->escapeUrl($helper->getFormUrl($form->getIdentifier())); ?>"
+                        target="_BLANK"><?= $form->getTitle(); ?></a>
+                    </h2>
+                </div>
+            <?php endif; ?>
+            <div class="message-content"><?= $message->getSafedMessage() ?></div>
+            <?php if($enabled_qrcode): ?>
+            <div class="message-qrcode">
+                <img src="<?= $qrcode_tracking_link ?>" width="200" height="200" alt="qrcode"/>
+                <br/>
+                <strong><?= __("QR Code:") ?></strong> <em><?= $message->getQrcode(); ?></em>
+            </div>
+            <?php endif; ?>
+            <?php if($barcode_link): ?>
+            <div class="message-barcode">
+                    <br/>
+                    <br/>
+                    <img src="<?= $barcode_link ?>" width="200" height="60"  style="height: 60px" alt="barcode"/>
+                    <p class="text-left"><span><?= $message->getQrcode(); ?></span></p>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php if($timeout > 0): ?>
+<script>
+    setTimeout(function() {
+        window.location.href = "<?= $block->getUrl("formbuilder/view/scan");?>";
+    }, <?= $timeout; ?>);
+</script>
+<?php endif; ?>

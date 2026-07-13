@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="richsnippets" translate="label" type="text" sortOrder="1833" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Rich Snippets</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_RichSnippets::config_richsnippets</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product_format" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Page structured data format</label>
+                    <source_model>Swissup\RichSnippets\Model\Config\Source\StructuredDataFormat</source_model>
+                </field>
+                <field id="minify" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minify structured data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Applies only for JSON-LD format of structured data</comment>
+                </field>
+            </group>
+
+            <group id="breadcrumbs" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Breadcrumbs</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+
+            <group id="product" translate="label comment" type="text" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Structured Data</label>
+                <comment>Settings in this section works only with structured data format JSON-LD.</comment>
+                <field id="structured_data" translate="label" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Structured data</label>
+                    <frontend_model>Swissup\RichSnippets\Block\Adminhtml\Form\Field\StructuredData</frontend_model>
+                    <backend_model>Swissup\RichSnippets\Model\Config\Backend\StructuredData</backend_model>
+                </field>
+                <field id="add_reviews_data" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add reviews data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Include "AggregateRating" and "Review" data blocks into structured data. Turn it off when you have third-party module for reviews.</comment>
+                </field>
+                <field id="add_availability_data" translate="label comment" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add availability data</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Include product availabilty status into "Offers" data block of structured data.</comment>
+                </field>
+
+                <include path="Swissup_RichSnippets::system/product/image.xml"/>
+                <include path="Swissup_RichSnippets::system/product/price_valid.xml"/>
+                <include path="Swissup_RichSnippets::system/product/brand.xml"/>
+                <include path="Swissup_RichSnippets::system/product/condition.xml"/>
+                <include path="Swissup_RichSnippets::system/product/shipping_details.xml"/>
+                <include path="Swissup_RichSnippets::system/product/return_policy.xml"/>
+
+            </group>
+
+            <group id="organization" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Organization</label>
+                <comment>Setting up this section is useful if you have real (physical) store.</comment>
+                <field id="name" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Organization Name</label>
+                </field>
+                <field id="type" translate="label comment" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Orgaization Type</label>
+                    <source_model>Swissup\RichSnippets\Model\Config\Source\OrganizationType</source_model>
+                </field>
+                <field id="street" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Street</label>
+                </field>
+                <field id="locality" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Locality</label>
+                </field>
+                <field id="region" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Region</label>
+                </field>
+                <field id="country" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country</label>
+                </field>
+                <field id="postal_code" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Postal code</label>
+                </field>
+                <field id="phone" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Phone</label>
+                </field>
+                <field id="opening_hours" translate="label" sortOrder="74" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Opening Hours</label>
+                    <frontend_model>Swissup\RichSnippets\Block\Adminhtml\Form\Field\OpeningHours</frontend_model>
+                    <backend_model>Swissup\RichSnippets\Model\Config\Backend\OpeningHours</backend_model>
+                </field>
+                <field id="url" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Url</label>
+                </field>
+                <field id="email" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                </field>
+            </group>
+
+            <group id="social" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Social Links</label>
+                <field id="facebook" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://facebook.com/</label>
+                </field>
+                <field id="twitter" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://twitter.com/</label>
+                </field>
+                <field id="googleplus" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://plus.google.com/</label>
+                </field>
+                <field id="instagram" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://instagram.com/</label>
+                </field>
+                <field id="pinterest" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://pinterest.com/</label>
+                </field>
+                <field id="linkedin" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>https://linkedin.com/</label>
+                </field>
+            </group>
+
+            <group id="website" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Website</label>
+                <field id="sitename" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site Name</label>
+                </field>
+                <field id="siteurl" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Site Url</label>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

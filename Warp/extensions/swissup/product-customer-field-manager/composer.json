@@ -1,0 +1,10 @@
+{
+    "name": "swissup/product-customer-field-manager",
+    "description": "Customer Field manager for Magento 2",
+    "type": "metapackage",
+    "version": "1.2.11",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-customer-field-manager": "^1.2.11"
+    }
+}

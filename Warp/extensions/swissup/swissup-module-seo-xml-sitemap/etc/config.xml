@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <swissup_xmlsitemap>
+            <category>
+                <image_include>none</image_include>
+            </category>
+            <other>
+                <priority>0.25</priority>
+                <changefreq>daily</changefreq>
+            </other>
+        </swissup_xmlsitemap>
+    </default>
+</config>

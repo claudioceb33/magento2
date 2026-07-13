@@ -1,0 +1,177 @@
+<?php
+$dataHelper = $this->helper(\Lof\Formbuilder\Helper\Data::class)
+?>
+<div class="block blacklist-block">
+    <div class="block-title">
+        <strong><?= __("Black list"); ?></strong>
+    </div>
+    <div class="block-content">
+        <table id="tableBlacklist" cellspacing="0" cellpadding="0" border="1" width='100%'>
+            <thead>
+                <tr>
+                    <th style="text-align:left"><?= $block->escapeHtml(__("Email")); ?></th>
+                    <th style="text-align:left"><?= $block->escapeHtml(__("Ip")); ?></th>
+                    <th style="text-align:left"><?= $block->escapeHtml(__("Status")); ?></th>
+                    <th style="text-align:left"><?= $block->escapeHtml(__("Note")); ?></th>
+                    <th style="text-align:left"><?= $block->escapeHtml(__("Created Date")); ?></th>
+                </tr>
+            </thead>
+            <tbody>
+<?php
+$emailBlacklists = $ipBlacklists = [];
+if ($blacklist) : ?>
+<?php
+    foreach ($blacklist as $item) {
+        $status = $item->getStatus();
+        $emailBlacklists[] = $item->getEmail();
+        $ipBlacklists[] = $item->getIp();
+        ?>
+                    <tr>
+                        <td><?= $item->getEmail(); ?></td>
+                        <td><?= $item->getIp(); ?></td>
+                        <td><?= $status ? ('<strong>' . $block->escapeHtml(__("Blocked")) . '</strong>') : $block->escapeHtml(__("Whitelist")); ?></td>
+                        <td><?= $item->getNote(); ?></td>
+                        <td><?= $dataHelper->formatDateFormBuilder($item->getCreatedTime()); ?></td>
+                    </tr>
+                    <?php
+    }
+?>
+<?php endif; ?>
+            </tbody>
+        </table>
+        <style>
+            #tableBlacklist tr td {
+                font-weight: normal;
+            }
+
+            #tableBlacklist td, #tableBlacklist th {
+                padding: 5px;
+            }
+
+            #ajax_message {
+                color: #FF0000;
+            }
+        </style>
+        <div class="form_blacklist">
+            <div id="ajax_message"></div>
+            <div class="action_form">
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <i class="errors hidden" id="errors_block"><? __("Missing email or ip. You should input one of them."); ?></i>
+                    <tbody>
+                    <?php if (!$ipBlacklists || (!in_array($messageModel->getIpAddress(), $ipBlacklists))) : ?>
+                        <tr>
+                            <td width="30%" style="padding: 10px;"><label for="block_ip"><?= $block->escapeHtml(__("Block Ip")); ?></label>
+                            </td>
+                            <td style="padding: 10px;">
+                                <input type="text" id="block_ip" value="<?= $messageModel->getIpAddress(); ?>">
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td width="30%" style="padding: 10px;"><label
+                                for="block_email"><?= $block->escapeHtml(__("Block Email")); ?></label></td>
+                        <td style="padding: 10px;">
+                            <select id="block_email" class="required">
+                                <option value=""><?= $block->escapeHtml(__("Select Email")); ?></option>
+                                <?php if ($emails) {
+                                    foreach ($emails as $email) {
+                                        if (!$emailBlacklists || !in_array($email, $emailBlacklists)) {
+                                            ?>
+                                            <option value="<?= $email; ?>"><?= $email; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                } ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" style="padding: 10px;"><label for="blocklist_note"><?= $block->escapeHtml(__("Note")); ?></label>
+                        </td>
+                        <td style="padding: 10px;">
+                            <textarea rows="3" cols="60" id="blocklist_note"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <a href="javascript:;" class="btn btn-success"
+                               id="btnSubmitBlacklist"><?= $block->escapeHtml(__("Add To Blacklist")); ?></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <input type="hidden" id="form_id" value="<?= $messageModel->getFormId(); ?>">
+                    <input type="hidden" id="message_id" value="<?= $messageModel->getId(); ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function generateBlackListItem(data, tableid) {
+        let html = '<tr>';
+        if (data.email != null) {
+            html += '<td>' + data.email + '</td>';
+        }
+        if (data.email == null) {
+            html += '<td>' + '' + '</td>';
+        }
+        if (data.ip != null) {
+            html += '<td>' + data.ip + '</td>';
+        }
+        if (data.ip == null) {
+            html += '<td>' + '' + '</td>';
+        }
+        html += '<td><strong><?= $block->escapeHtml(__("Blocked"));?></strong></td>';
+        if (data.note != null) {
+            html += '<td>' + data.note + '</td>';
+        }
+        if (data.note == null) {
+            html += '<td>' + '' + '</td>';
+        }
+        html += '<td>' + data.created_time + '</td>';
+        html += '</tr>';
+
+        jQuery(tableid + " tbody").append(html);
+    }
+
+    require(['jquery'], function ($) {
+        jQuery(document).ready(function ($) {
+            $(document).on('click', "#btnSubmitBlacklist", function () {
+                let ip;
+                const email = $("#block_email").val();
+                if ($("#block_ip").length > 0) {
+                    ip = $("#block_ip").val();
+                } else {
+                    ip = "";
+                }
+                const form_id = $("#form_id").val();
+                const message_id = $("#message_id").val();
+                const note = $("#blocklist_note").val();
+                const action_url = "<?= $this->getBlacklistUrl(); ?>";
+                if (email || ip) {
+                    $("#ajax_message").html("<?= $block->escapeHtml(__('Ajax posting data...')); ?>");
+                    $.ajax({
+                        url: action_url,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {email: email, ip: ip, note: note, form_id: form_id, message_id: message_id},
+                        success: function (data) {
+                            if (data.status) {
+                                generateBlackListItem(data.data, "#tableBlacklist");
+                                $("#errors_block").addClass("hidden");
+                                $("#ajax_message").html(data.success);
+                            } else {
+                                $("#ajax_message").html(data.error);
+                            }
+                        }
+                    });
+                } else {
+                    $("#errors_block").removeClass("hidden");
+                }
+            });
+        });
+    });
+</script>

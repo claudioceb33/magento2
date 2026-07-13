@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="otpcode" translate="label" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>OTP Integration</label>
+            <tab>e66</tab>
+            <resource>Ecommerce66_OTPLogin::otpcode_settings</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>General</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="otp_code_length" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>OTP Code Length</label>
+                    <comment>Minimum OTP Code recommended length: 6</comment>
+                    <validate>validate-zero-or-greater validate-number</validate>
+                </field>
+                <field id="otp_code_request_time" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>OTP Code Request Time</label>
+                    <comment>Minimum recommended time required to request a new code: 90 (seconds)</comment>
+                    <validate>validate-zero-or-greater validate-number</validate>
+                </field>
+            </group>
+            <group id="messages" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Messages</label>
+                <field id="email_message_sent" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Email Message Sent</label>
+                    <comment>Message that will be shown to the user when the code has been sent.</comment>
+                </field>
+                <field id="email_message_error" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Email Message Error</label>
+                    <comment>error message that will be displayed when the email is not registered.</comment>
+                </field>
+                <field id="otp_message_error" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Error Code Message</label>
+                    <comment>Message to be shown to the user when the code is incorrect.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,76 @@
+"Product Labels",产品标签
+"Add New Label",添加新标签
+"Save Label",保存标签
+"Delete Label",删除标签
+"Edit Label '%1'","编辑标签 ""%1"""
+"New Label",新标签
+Settings,设置
+Position,位置
+Top-Left,左上角
+Top-Center,顶部中心
+Top-Right,右上
+Middle-Left,中左
+Middle-Center,中间中心
+Middle-Right,中右
+Bottom-Left,左下角
+Bottom-Center,底部中心
+Bottom-Right,右下角
+Content,内容
+"Label Text",标签文本
+"Custom Css Label","自定义 Cs 标签"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","仅限 Cs 样式。示例：颜色：#fff;文本阴影： 0 1px 0 rgba （0，0，0，0.3）;宽度： 60px;高度： 60px;背景：#ff7800;边界半径：50%;"
+"Label Custom Url","标签自定义 Url"
+"Round Method",圆形方法
+Math,数学
+Ceil,席尔
+Floor,地板
+"Round Value",舍入值
+"Labels Gallery",标签库
+"Label Image",标签图像
+"Category Label",类别标签
+"Conditions (don't add conditions if label is applied to all products)",条件（如果标签应用于所有产品，请不要添加条件）
+"Indexed Products",索引产品
+"Attribute Set",属性集
+"Product Label",产品标签
+"Label Gallery",标签库
+"We couldn't find any labels",找不到任何标签
+"Labels have been applied.",已应用标签。
+"Label has been applied.",已应用标签。
+"Label was deleted.",标签已被删除。
+"Can't find a label to delete.",找不到要删除的标签。
+"Label was disabled.",标签已禁用。
+"Can't find a label to disable.",找不到要禁用的标签。
+ProLabels,专业标签
+"Manage Labels",管理标签
+"This label no longer exists.",此标签不再存在。
+"Edit Label",编辑标签
+"Label was enabled.",已启用标签。
+"Can't find a label to enable.",找不到要启用的标签。
+"Label has been saved.",标签已保存。
+"Something went wrong while saving the label.",保存标签时出现问题。
+"up to ","高达 "
+Edit,编辑
+"All Store Views",所有存储视图
+"Click here or drag and drop to add images.",单击此处或拖放以添加图像。
+Swissup,瑞瑞普
+"jQuery Selector For Base Image Wrapper","用于基本图像包装器的 jQuery 选择器"
+"jQuery Selector For Content Labels Container",j查询选择器用于内容标签容器
+"On Sale",正在销售
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","销售标签是标记商店销售额和吸引游客注意力的具有成本效益的方式。它们显示在折扣和售货产品上。使用""销售""标签可吸引客户注意促销商品。"
+"Product Page",产品页面
+Image,图像
+"Custom Label",自定义标签
+"Category Page",类别页面
+"Is New",是新的
+"New Labels are used for the presentation of new items at your store.",新标签用于在商店中展示新商品。
+"In Stock",库存
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.",在库存标签中用于显示低库存项目。使用库存和缺货标签，您可以关注有限的产品可用性。
+"Display if Stock is lower then",如果库存较低，则显示
+"Out Of Stock",缺货
+"Apply Labels",应用标签
+"Product Image",产品图片
+"Product Position",产品位置
+"Product Text",产品文本
+"Category Image",类别图像
+"Category Position",类别位置
+"Category Text",类别文本

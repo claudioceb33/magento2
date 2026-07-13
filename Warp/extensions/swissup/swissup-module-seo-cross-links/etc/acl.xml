@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Swissup_Core::swissup">
+                    <resource id="Swissup_SeoCore::seocore">
+                        <resource id="Swissup_SeoCrossLinks::seocrosslinks" title="SEO Cross Links" sortOrder="368">
+                            <resource id="Swissup_SeoCrossLinks::link_index" title="Create New Link" sortOrder="10"/>
+                            <resource id="Swissup_SeoCrossLinks::link_save" title="Save Link" sortOrder="20"/>
+                            <resource id="Swissup_SeoCrossLinks::link_edit" title="Edit Link" sortOrder="30"/>
+                            <resource id="Swissup_SeoCrossLinks::link_delete" title="Delete Link" sortOrder="40"/>
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Swissup_SeoCore::config">
+                                <resource id="Swissup_SeoCrossLinks::config_seo_cross_links" title="SeoCrossLinks" sortOrder="368" />
+                            </resource>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

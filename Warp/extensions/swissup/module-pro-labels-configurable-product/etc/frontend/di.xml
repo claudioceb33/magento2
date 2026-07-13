@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\ProLabels\Model\ResourceModel\Label">
+        <plugin
+            name="swissup_prolabelsconfigurableproduct"
+            type="Swissup\ProLabelsConfigurableProduct\Plugin\ResourceModel\Label"
+            sortOrder="1"
+            disabled="false"
+        />
+    </type>
+    <type name="Swissup\ProLabels\Model\Stock">
+        <plugin
+            name="swissup_prolabelsconfigurableproduct"
+            type="Swissup\ProLabelsConfigurableProduct\Plugin\Model\Stock"
+            sortOrder="1"
+            disabled="false"
+        />
+    </type>
+</config>

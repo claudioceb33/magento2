@@ -1,0 +1,33 @@
+<!--@subject {{trans "Tu código de acceso rápido para %store_name" store_name=$store_name}} @-->
+<!--@vars
+{
+"var code":"OTP Code",
+"var store_name":"Store Name"
+}
+@-->
+
+<!--@styles
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.otp-code {
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+@-->
+
+{{template config_path="design/email/header_template"}}
+<div class="container">
+    <p>Estimado cliente, su código de acceso rápido es:</p>
+    <p><strong class="otp-code">{{var code}}</strong></p>
+    <p>Use este codigo para completar el proceso de login.</p>
+</div>
+{{template config_path="design/email/footer_template"}}

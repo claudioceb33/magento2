@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="seo_images" type="text" sortOrder="2100" showInDefault="1">
+            <class>separator-top</class>
+            <label>SEO Images</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoImages::config_seo_images</resource>
+            <group id="general" translate="label comment" sortOrder="10" showInDefault="1">
+                <label>General</label>
+                <comment>None of the settings affect original images. Everything can be turned off easily and reverted to default Magento behavior.</comment>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Use SEO enhancements for your store images.</comment>
+                </field>
+            </group>
+
+            <group id="misc_string" translate="label comment" sortOrder="20" showInDefault="1">
+                <label>Misc. string in path of resized image</label>
+                <comment>Magento codes all resize parameters of image into hash string. Adds this hash to resized image path. With option below you can enable clear parameters presentation. Instead of "ea013e3e574bd4924b1531f962e2c015" you will get "240x300".</comment>
+                <field id="clear_params" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Use clear parameters for product images</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="image_name" translate="label comment" sortOrder="30" showInDefault="1">
+                <label>Image Name</label>
+                <comment>Generated image name has no spaces, brackets, slashes etc. But it still can have non-latin letters. Please install package `cocur/slugify` via composer if you want to transform all letters to their latin equivalents.</comment>
+                <field id="product_image" translate="label comment" type="text" sortOrder="10" showInDefault="1" canRestore="1">
+                    <label>Product image template</label>
+                    <comment><![CDATA[Magento adds file extension at the end. Template supports directives:<br /><b>{{sku}}</b> - product SKU;<br /><b>{{name}}</b> - product name;<br /><b>{{attribute code="attr_code"}}</b> - returns value of product attribute with code `attr_code`.<br />Check module docs for more details about template.]]></comment>
+                </field>
+            </group>
+
+            <group id="production" translate="label comment" sortOrder="40" showInDefault="1">
+                <label>Production Mode</label>
+                <comment><![CDATA[<p><strong>First of all</strong>, this feature is beta. Please disable if it does not work as expected at your store.<br /><strong>Second</strong>, it is oriented on Magento instances with a single store. Production mode expects that product has same attribute values (used for image name) at all store views.<br /><strong>Third</strong>, the image name becomes static and doesn't change after you edit the product. Image name won't be generated after product created or new images added as well.<br/>And <strong>final</strong> restriction, run `bin/magento catalog:images:resize` before enabling production mode.</p>
+                <p><strong>What are the benefits of production mode?</strong> Reduce the rendering time of a page that isn't cached yet by Magento FPC. Shorter TTFB. A most noticeable improvement is at category pages and search result pages.</p>]]></comment>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+
+            <group id="cache_index" translate="label comment" sortOrder="40" showInDefault="1">
+                <label>Caching and Indexing</label>
+                <comment><![CDATA[<p>Module has its own index "SEO Images (product to image relation)". You can find it at Index Management grid. We rely heavily on this index. Empty index can increase server response time for category page when it is generated first time after cleaning Magento FPC.</p><p>Cached image names are another important part of SEO Images module. We use cache to figure out what name must be used for what image when Magento generates (resizes) images for storefront. Cache is the only source of SEO names for images when production mode enabled in the upper section. So clean this cache wisely!</p><p>Big number of cache records can also affect time of initial page generation. However, this effect is really small. Change of product image template, product name or other attributes used in image name template adds new records into cache.</p><p>Number of cached names and number of indexed images can be equal only in perfect world when Magento instance is single-store.</p><p>After cleaning SEO names cache you can fill it up again when run `bin/magento catalog:images:resize` or flush Magento cache and browse your store. Cache Warmer can be useful in the second case.</p>]]></comment>
+                <field id="indexed" translate="label" type="note" sortOrder="10" showInDefault="1">
+                    <label>Number of indexed images</label>
+                    <frontend_model>Swissup\SeoImages\Block\Adminhtml\Config\Form\IndexedImages</frontend_model>
+                </field>
+                <field id="cached" translate="label" type="note" sortOrder="20" showInDefault="1">
+                    <label>Cached names for images</label>
+                    <frontend_model>Swissup\SeoImages\Block\Adminhtml\Config\Form\CachedNames</frontend_model>
+                </field>
+                <field id="flush_cache" translate="label" type="note" sortOrder="20" showInDefault="1">
+                    <label />
+                    <frontend_model>Swissup\SeoImages\Block\Adminhtml\Config\Form\FlushCache</frontend_model>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+
+/** @var \Magento\Catalog\Block\Adminhtml\Category\Tab\Product $blockGrid */
+$blockGrid = $block->getBlockGrid();?>
+<?php if ($block->getNotice()): ?>
+    <div id="messages">
+        <div class="messages">
+            <div class="message message-alert alert">
+                <div data-ui-id="messages-message-alert"><?= /*@noEscape*/ $block->getNotice(); ?></div>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+    <?= /*@noEscape*/ $block->getGridHtml(); ?>
+<?php endif; ?>
+<!-- @todo remove when "UI components" will support such initialization -->
+<script>
+    require('mage/apply/main').apply();
+</script>

@@ -1,0 +1,211 @@
+#maincontent {
+    max-width: initial;
+    padding: 0;
+}
+
+.page-main:has(> .page.messages) {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    .page.messages {
+        top: 0 !important;
+    }
+}
+
+.columns {
+    max-width: @layout__max-width;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+
+    @media (max-width: 768px){
+        padding: 0 15px;
+    }
+}
+
+.column.main {
+    padding: 0 !important;
+}
+
+.category-view .page-title-wrapper {
+    display: none;
+}
+
+.category-image .image {
+    width: 100%;
+}
+
+.products-grid {
+    margin-bottom: 10px;
+
+    .product-items {
+        margin: 0;
+    }
+}
+
+.field.limiter {
+    display: none !important;
+}
+
+.action.sorter-action {
+    display: none;
+}
+
+.toolbar-amount {
+    padding: 0;
+    line-height: 30px;
+}
+
+select#sorter {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    background-color: transparent;
+    padding: 0 25px 0 4px;
+}
+
+.sorter-label {
+    font-size: 16px;
+    line-height: 30px;
+}
+
+@media (max-width: 768px){
+    .toolbar-products:has(.toolbar-sorter){
+        display: flex;
+        justify-content: space-between;
+        flex-flow: wrap;
+        gap: 0 15px;
+        margin-bottom: 20px;
+    
+        .toolbar-sorter {
+            position: initial;
+        }
+    
+        &:before, &:after {
+            display: none;
+        }
+    }
+
+    .toolbar-sorter label, .toolbar-sorter select#sorter {
+        font-size: 14px;
+    }
+
+    .toolbar-products .sorter {
+        top: 33px;
+    }
+
+    .toolbar-amount {
+        font-size: 14px;
+    }
+
+    .products-grid {
+        margin-top: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+.block.filter.active strong.action.primary:hover {
+    background: transparent !important;
+    border: 0;
+}
+
+.block.filter.active .filter-options {
+    overflow-y: auto;
+    overflow-x: initial;
+
+    @media (max-width: 768px){
+        padding: 15px;
+    }
+}
+
+.filter-options-item label, .filter-options-item label span, div[data-role="from-label"] {
+    color: #585858;
+}
+
+.filter-title strong {
+    box-shadow: none !important;
+}
+
+.sidebar-main {
+    margin-top: 4px;
+}
+
+.sidebar-additional {
+    display: none;
+}
+
+
+
+@media (max-width: 1023px){
+    ol.products {
+        margin: 0;
+    }
+}
+
+@media (max-width: 991px){
+    .column.main {
+        width: ~'calc(66.66% + 15px)';
+    }
+
+    .sidebar-main {
+        width: ~'calc(33.33% - 15px)';
+    }
+}
+
+@media (max-width: 768px){
+    .page-title-wrapper {
+        display: block;
+        margin: 20px 0; 
+    }
+    .column.main {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .sidebar-main {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .toolbar-products .sorter {
+        top: -6px;
+    }
+
+    .columns {
+        padding-top: 55px;
+    }
+
+    .filter-content{
+        .block-subtitle {
+            display: none; //"Filtros"
+            font-size: 25px;
+            padding: 15px 15px 0;
+        }
+    }
+
+    .filter-title strong {
+        left: 15px;
+    }
+
+    .filter.active .filter-title strong {
+        top: 2px;
+    }
+
+    .filter-actions {
+        display: block !important;
+        margin: 0 0 15px;
+
+        a {
+            font-size: 14px;
+        }
+    }
+}

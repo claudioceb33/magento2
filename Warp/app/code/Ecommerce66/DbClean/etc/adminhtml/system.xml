@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="dbclean" translate="label" type="text" sortOrder="995" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Database Cleaner Settings</label>
+            <tab>e66</tab>
+            <resource>Ecommerce66_DbClean::config_dbclean</resource>
+            <group id="log_tables" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Log Tables</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Cron</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable or Disable the Cron Job</comment>
+                </field>
+                <field id="retention_days" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Retention Days</label>
+                    <source_model>Ecommerce66\DbClean\Model\Config\Source\RetentionDays</source_model>
+                </field>
+                <field id="cron_schedule" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cron Schedule</label>
+                    <source_model>Ecommerce66\DbClean\Model\Config\Source\CronInterval</source_model>
+                    <comment>Specify the cron schedule for the DbClean cron job.</comment>
+                </field>
+            </group>
+            <group id="customers" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customers - todo: old/meli</label>
+            </group>
+            <group id="products" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Products</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Cron</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable or Disable the Cron Job - will delete +1year products without qty.</comment>
+                </field>
+            </group>
+            <group id="sales" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sales - todo: old</label>
+            </group>
+        </section>
+    </system>
+</config>

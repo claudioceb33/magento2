@@ -1,0 +1,10 @@
+{
+    "name": "swissup/product-address-field-manager",
+    "description": "Address field manager for Magento 2",
+    "type": "metapackage",
+    "version": "1.6.15",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-address-field-manager": "^1.6.14"
+    }
+}

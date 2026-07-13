@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="swissup_seoimages_index" view_id="swissup_seoimages_index_product" class="Swissup\SeoImages\Model\Index">
+        <title translate="true">SEO Images (product to image relation)</title>
+        <description translate="true">Build direct relation between product image and product ID.</description>
+    </indexer>
+</config>

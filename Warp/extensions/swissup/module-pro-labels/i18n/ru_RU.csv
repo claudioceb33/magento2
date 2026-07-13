@@ -1,0 +1,76 @@
+"Product Labels","Этикетки продуктов"
+"Add New Label","Добавить новую этикетку"
+"Save Label","Сохранить этикетку"
+"Delete Label","Удалить этикетку"
+"Edit Label '%1'","Отодвить этикетку '%1'"
+"New Label","Новая этикетка"
+Settings,Параметры
+Position,Позиции
+Top-Left,Топ-левый
+Top-Center,Топ-центр
+Top-Right,Вверху-право
+Middle-Left,Средне-левый
+Middle-Center,"Средний центр"
+Middle-Right,"Средний правый"
+Bottom-Left,"Внизу слева"
+Bottom-Center,"Нижний центр"
+Bottom-Right,"Внизу справа"
+Content,Содержимого
+"Label Text","Текст этикетки"
+"Custom Css Label","Пользовательские Css этикетки"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Css Стиль только. Пример: цвет: #fff; текст-тень: 0 1px 0 rgba (0,0,0,0,0.3); ширина: 60px; высота: 60px;фон:#ff7800; радиус границы:50%;"
+"Label Custom Url","Этикетка Пользовательский Url"
+"Round Method","Круглый метод"
+Math,Математике
+Ceil,Цейл
+Floor,Этаже
+"Round Value","Круглое значение"
+"Labels Gallery","Галерея этикеток"
+"Label Image","Изображение этикетки"
+"Category Label","Категория этикетки"
+"Conditions (don't add conditions if label is applied to all products)","Условия (не добавляйте условия, если этикетка применяется ко всем продуктам)"
+"Indexed Products","Индексированные продукты"
+"Attribute Set","Набор атрибутов"
+"Product Label","Этикетка продукта"
+"Label Gallery","Галерея этикеток"
+"We couldn't find any labels","Мы не смогли найти никаких этикеток"
+"Labels have been applied.","Наклейки были применены."
+"Label has been applied.","Наметка этикетки."
+"Label was deleted.","Этикетка была удалена."
+"Can't find a label to delete.","Не усомнитесь в удалении метки."
+"Label was disabled.","Этикетка была отключена."
+"Can't find a label to disable.","Не умудриться отойти на этикетку."
+ProLabels,ProLabels
+"Manage Labels","Управление этикетками"
+"This label no longer exists.","Эта метка больше не существует."
+"Edit Label","Этикетка для отсылки"
+"Label was enabled.","Этикетка была включена."
+"Can't find a label to enable.","Не удается найти этикетку для включения."
+"Label has been saved.","Этикетка сохранена."
+"Something went wrong while saving the label.","Что-то пошло не так, сохраняя этикетку."
+"up to ","до "
+Edit,Редактировать
+"All Store Views","Все просмотры магазина"
+"Click here or drag and drop to add images.","Нажмите здесь или перетащите и перетащите, чтобы добавить изображения."
+Swissup,Swissup
+"jQuery Selector For Base Image Wrapper","J's Selector для базового изображения Обертка"
+"jQuery Selector For Content Labels Container","J's Selector для контейнера для этикеток содержимого"
+"On Sale","На продажу"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","SALE этикетки являются экономически эффективным способом, чтобы отметить продажи магазина и привлечь внимание посетителей. Они отображаются на дисконтированных и на продажных продуктах. Используя этикетки On Sale, вы привлекаете внимание клиентов к рекламным товарам."
+"Product Page","Страница продукта"
+Image,Изображения
+"Custom Label","Пользовательская этикетка"
+"Category Page","Страница категории"
+"Is New","Является новым"
+"New Labels are used for the presentation of new items at your store.","Новые этикетки используются для презентации новых товаров в вашем магазине."
+"In Stock","На складе"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","В стоковых этикетках используются для отображать низкое стоковое элементы. Используя на складе и вне фондовых этикеток, вы фокусируете внимание клиентов на ограниченной доступности продуктов."
+"Display if Stock is lower then","Отобразить, если запас ниже, то"
+"Out Of Stock","Вне склада"
+"Apply Labels","Применить этикетки"
+"Product Image","Изображение продукта"
+"Product Position","Позиция продукта"
+"Product Text","Текст продукта"
+"Category Image","Категория Изображение"
+"Category Position","Позиция категории"
+"Category Text","Категория Текст"

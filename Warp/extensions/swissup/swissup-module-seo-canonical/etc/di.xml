@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\SeoCanonical\Model\ParentProduct">
+        <arguments>
+            <argument name="parentFinder" xsi:type="array">
+                <item name="bundle" xsi:type="object">Swissup\SeoCanonical\Model\ParentFinder\BundleProduct</item>
+                <item name="grouped" xsi:type="object">Swissup\SeoCanonical\Model\ParentFinder\GroupedProduct</item>
+                <item name="configurable" xsi:type="object">Swissup\SeoCanonical\Model\ParentFinder\ConfigurableProduct</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,388 @@
+// General
+
+footer.page-footer {
+    margin-top: 0;
+    padding-bottom: 0;
+    background: @demo66_white;
+}
+
+// Newsletter
+
+footer.page-footer .newsletter-footer {
+    padding: 45px 0;
+    background: @demo66_black;
+
+    .cont {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        h3 {
+            margin: 0;
+            line-height: 35px;
+            color: @demo66_white;
+        }
+
+        p {
+            font-size: 22px;
+            line-height: 30px;
+            color: @demo66_white;
+        }
+    }
+
+    .subs {
+        flex: auto;
+
+        .block.newsletter {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        .form.subscribe {
+            display: flex;
+
+            .field.newsletter {
+                float: initial;
+                width: 100%;
+                max-width: initial;
+
+                .control:before {
+                    display: none;
+                }
+
+                span.label {
+                    display: none;
+                }
+            }
+
+            input {
+                height: 45px;
+                margin: 0;
+                border: 0;
+                border-radius: 0;
+                padding: 0 15px;
+                font-size: 16px;
+                line-height: 45px;
+                box-shadow: none;
+                color: @demo66_black;
+
+                &::placeholder {
+                    color: @demo66_black;
+                }
+            }
+
+            .actions {
+                float: initial;
+                width: auto;
+            }
+
+            button.subscribe {
+                height: 45px;
+                border: 1px solid @demo66_white;
+                border-radius: 0;
+                padding: 0 15px;
+                font-size: 16px;
+                font-weight: 700;
+                text-transform: uppercase;
+                background: @demo66_black;
+                color: @demo66_white;
+
+                &:hover {
+                    background: @demo66_accent;
+                    color: @demo66_black;
+                }
+            }
+
+        }
+    }
+
+    @media (max-width: 991px){
+        .cont {
+            gap: 20px;
+
+            h3 {
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 26px;
+            }
+        }
+
+        .subs,
+        .txt {
+            flex: ~'calc(50% - 10px)';
+        }
+    }
+
+    @media (max-width: 880px){
+        padding: 30px 0;
+
+        .cont {
+            flex-direction: column;
+
+            h3,
+            p {
+                text-align: center;
+            }
+        }
+
+        .subs,
+        .txt {
+            flex: 100%;
+            width: 100%;
+        }
+
+        .subs {
+            max-width: 400px;
+
+            .block.newsletter {
+                margin: 0;
+            }
+        }
+    }
+
+    @media (max-width: 450px){
+        .cont {
+            h3,
+            p {
+                font-size: 16px;
+                line-height: 24px;
+            }
+        }
+
+        .subs .form.subscribe button.subscribe {
+            font-size: 14px;
+        }
+    }
+}
+
+// Columns
+
+footer.page-footer .footer.content {
+    position: relative;
+    max-width: initial;
+    padding: 0;
+}
+
+footer.page-footer .footer-block {
+    max-width: @layout__max-width;
+    margin: auto;
+    padding: 70px 20px 50px;
+    display: flex;
+    gap: 30px;
+
+    .footer-cont {
+        flex: 0 0 ~'calc((100% - 90px)/ 4)';
+
+        .titulos {
+            position: relative;
+            margin: -4px 0 10px 0;
+            border-bottom: 1px solid @demo66_black;
+            padding-bottom: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 23px;
+            text-transform: uppercase;
+            color: @demo66_black;
+        }
+    
+        p.legales,
+        a.legales {
+            display: block;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            text-decoration: none;
+            color: @demo66_black;
+    
+            strong {
+                font-weight: 700;
+            }
+        }
+        
+        a.legales:hover {
+            color: @demo66_accent;
+        }
+    }
+
+    .footer-cont:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 20px;
+
+        .footer-logo {
+            position: relative;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+
+            a {
+                color: @demo66_black;
+
+                &:hover {
+                    color: @demo66_accent;
+                }
+            }
+        }
+    }
+
+    .footer-cont:last-child {
+        display: flex;
+        flex-direction: column;
+
+        a.bta {
+            width: fit-content;
+            margin-top: 10px;
+            border: 1px solid @demo66_black;
+            padding: 5px 10px;
+
+            &:hover {
+                border-color: @demo66_accent;
+                background: @demo66_accent;
+                color: @demo66_black;
+            }
+        }
+    }
+
+    @media (max-width: 991px){
+        flex-flow: wrap;
+
+        .footer-cont {
+            flex: 0 0 ~'calc((100% - 30px)/ 2)';
+        }
+    }
+
+    @media (max-width: 768px){
+        padding: 50px 15px;
+    }
+
+    @media (max-width: 630px){
+        flex-direction: column;
+    }
+}
+
+// WhatsApp Button
+
+footer.page-footer .btn-whatsapp {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    background: @demo66_accent;
+
+    a {
+        display: block;
+        font-size: 32px;
+        line-height: 50px;
+        color: @demo66_white;
+    }
+
+    &:hover {
+        background: @demo66_black;
+    }
+
+    @media(max-width: 768px){
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+
+        a {
+            font-size: 23px;
+            line-height: 40px;
+        }
+    }
+}
+
+// Copyright
+
+.copyright {
+    padding: 0;
+    background: @demo66_black;
+
+    .cont {
+        max-width: @layout__max-width;
+        margin: auto;
+        padding: 10px 20px !important;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+
+        .cc {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0 5px;
+            flex-flow: wrap;
+        }
+
+        p {
+            display: flex;
+            align-items: center;
+            color: @demo66_white;
+
+            a img {
+                height: 24px;
+                margin: 6px 0 0 5px;
+            }
+        }
+
+        > a {
+            width: auto;
+            height: 45px;
+            display: block;
+            
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+
+        @media (max-width: 1470px){
+            > a {
+                padding-right: 70px;
+            }
+        }
+
+        @media (max-width: 768px){
+            padding: 10px 15px !important;
+
+            p {
+                font-size: 14px;
+
+                a img {
+                    height: 20px;
+                }
+            }
+
+            > a {
+                padding-right: 55px;
+            }
+        }
+
+        @media (max-width: 630px){
+            flex-direction: column;
+            justify-content: center;
+
+            > a {
+                padding-right: 0;
+            }
+        }
+    }
+}

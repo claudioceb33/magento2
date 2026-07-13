@@ -1,0 +1,11 @@
+--- a/vendor/swissup/module-pro-labels/Plugin/Block/Product/ImageBuilder.php
++++ b/vendor/swissup/module-pro-labels/Plugin/Block/Product/ImageBuilder.php
+@@ -6,6 +6,8 @@
+ {
+     protected $productId;
+ 
++    private $labelsProvider;
++
+     /**
+      * @param \Swissup\ProLabels\Model\LabelsProvider $labelsProvider
+      */

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<brands>
+			<settings>
+                <show_slider_in_cms>1</show_slider_in_cms>
+                <show_slider_in_plp>0</show_slider_in_plp>
+                <show_slider_in_pdp>0</show_slider_in_pdp>
+                <show_slider_in_cart>1</show_slider_in_cart>
+                <show_in_slider>5654,5697,5663,5701,5696,5688,5689,11400,5641,10190,5772,5684</show_in_slider>
+                <slider_link_type>landing</slider_link_type>
+			</settings>
+		</brands>
+	</default>
+</config>

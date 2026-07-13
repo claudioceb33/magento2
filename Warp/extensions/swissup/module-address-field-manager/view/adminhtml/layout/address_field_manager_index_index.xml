@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Swissup_FieldManager::css/styles.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="category.store.switcher" template="Magento_Backend::store/switcher.phtml">
+                <arguments>
+                    <!--Mimic configuration settings-->
+                    <argument name="switch_websites" xsi:type="boolean">true</argument>
+                    <argument name="switch_store_views" xsi:type="boolean">false</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <uiComponent name="address_field_manager_grid"/>
+        </referenceContainer>
+    </body>
+</page>

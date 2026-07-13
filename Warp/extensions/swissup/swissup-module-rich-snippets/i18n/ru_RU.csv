@@ -1,0 +1,32 @@
+"Go to Home Page","Перейдите на главную страницу"
+"No structured data","Нет структурированных данных"
+"Microdata (implemented by Magento)","Микроданные (реализованы Magento)"
+JSON-LD,JSON-LD
+"Product not found.","Продукт не найден."
+"Rich Snippets","Богатые фрагменты"
+"Product Page structured data format","Формат структурированных данных о странице продукта"
+"Minify structured data","Минифированные структурированные данные"
+Breadcrumbs,Сухарях
+"Product Structured Data","Структурированные данные о продукте"
+"Settings in this section works only with structured data format JSON-LD.","Настройки в этом разделе работают только со структурированным форматом данных JSON-LD."
+"Product Brand Attribute","Атрибут бренда продукта"
+"When 'None' selected - brand is disabled in structured data.","Когда выбран ""Никто"" - бренд отключен в структурированных данных."
+"Product Condition Attribute","Атрибут состояния продукта"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","Все атрибуты имеют тип ""Dropdown"". Когда ""Никто"" выбран - состояние продукта всегда новое."
+"New Option","Новый вариант"
+"Value from Admin label of attribute option. Leave empty to ignore.","Значение от параметра атрибута Admin. Оставьте пустым, чтобы игнорировать."
+"Used Option","Подержанный вариант"
+"Damaged Option","Поврежденный вариант"
+"Refurbished Option","Обновленный вариант"
+Organization,Организации
+"Organization Name","Название организации"
+Street,Улице
+Locality,Местности
+Region,Регионе
+"Postal code","Почтовый код"
+Url,Url
+"Social Links","Социальные связи"
+"Site Name","Название сайта"
+"Site Url","Url сайта"
+"Price Valid Until","Цена действительна до"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","Дата (в <a href=""https://en.wikipedia.org/wiki/ISO_8601""> формате ISO 8601 </a>), после которой цена больше не будет доступна. Относится ко всему товару без специальной цены. Когда срок действия специальной цены истекает, она будет использоваться. <br /> Проверьте <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties""> руководства Google </ a > чтобы узнать больше."

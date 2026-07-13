@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="swissup_seotemplates_template" resource="default" engine="innodb" comment="SEO Templates - template data">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="Template Id"/>
+    <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Template Name"/>
+    <column xsi:type="smallint" name="entity_type" padding="5" unsigned="true" nullable="false" identity="false" comment="Entity Type"/>
+    <column xsi:type="smallint" name="data_name" padding="5" unsigned="true" nullable="false" identity="false" comment="SEO Data Name"/>
+    <column xsi:type="smallint" name="priority" padding="5" unsigned="true" nullable="false" identity="false" comment="Priority"/>
+    <column xsi:type="boolean" name="status" nullable="true" comment="Status"/>
+    <column xsi:type="text" name="conditions_serialized" nullable="true" comment="Conditions Serialized"/>
+    <column xsi:type="text" name="template" nullable="true" comment="Template"/>
+    <column xsi:type="timestamp" name="update_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Modified at"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+  <table name="swissup_seotemplates_store" resource="default" engine="innodb" comment="SEO Templates - template to store link">
+    <column xsi:type="int" name="template_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Template ID"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="template_id"/>
+      <column name="store_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="FK_A0EE5A7646B06FEB7E7662AA34163843" table="swissup_seotemplates_store" column="template_id" referenceTable="swissup_seotemplates_template" referenceColumn="id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_SEOTEMPLATES_STORE_STORE_ID_STORE_STORE_ID" table="swissup_seotemplates_store" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    <index referenceId="SWISSUP_SEOTEMPLATES_STORE_STORE_ID" indexType="btree">
+      <column name="store_id"/>
+    </index>
+  </table>
+  <table name="swissup_seotemplates_data" resource="default" engine="innodb" comment="SEO Templates -  Data">
+    <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="smallint" name="entity_type" padding="5" unsigned="true" nullable="false" identity="false" comment="Entity Type"/>
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Entity Id"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+    <column xsi:type="text" name="meta_title" nullable="true" comment="Meta Title" disabled="true"/>
+    <column xsi:type="text" name="meta_description" nullable="true" comment="Meta Description" disabled="true"/>
+    <column xsi:type="text" name="meta_keywords" nullable="true" comment="Meta Keywords" disabled="true"/>
+    <column xsi:type="text" name="metadata" nullable="false" comment="Meta Data"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_SEOTEMPLATES_DATA_STORE_ID_STORE_STORE_ID" table="swissup_seotemplates_data" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+  </table>
+  <table name="swissup_seotemplates_log" resource="default" engine="innodb" comment="SEO Templates -  Log">
+    <column xsi:type="bigint" name="id" padding="20" unsigned="true" nullable="false" identity="true" comment="Id"/>
+    <column xsi:type="int" name="template_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Template Id"/>
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Entity Id"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+    <column xsi:type="text" name="generated_value" nullable="true" comment="Generated Value"/>
+    <column xsi:type="timestamp" name="generation_time" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Generated at"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_SEOTEMPLATES_LOG_STORE_ID_STORE_STORE_ID" table="swissup_seotemplates_log" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+    <constraint xsi:type="foreign" referenceId="FK_5DB94BDC9DE3326E92EE55654B7C628D" table="swissup_seotemplates_log" column="template_id" referenceTable="swissup_seotemplates_template" referenceColumn="id" onDelete="CASCADE"/>
+  </table>
+</schema>

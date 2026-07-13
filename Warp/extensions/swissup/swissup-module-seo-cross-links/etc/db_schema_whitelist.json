@@ -1,0 +1,36 @@
+{
+    "swissup_seocrosslinks_link": {
+        "column": {
+            "link_id": true,
+            "keyword": true,
+            "title": true,
+            "url_destination": true,
+            "url_entity_id": true,
+            "url_path": true,
+            "replacement_count": true,
+            "search_in": true,
+            "is_active": true,
+            "class": true,
+            "target_attr": true,
+            "extra_attributes": true,
+            "tooltip": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "swissup_seocrosslinks_link_store": {
+        "column": {
+            "link_id": true,
+            "store_id": true
+        },
+        "index": {
+            "SWISSUP_SEOCROSSLINKS_LINK_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_BC0D1605F5780CC02DA59A68DF19D393": true,
+            "SWISSUP_SEOCROSSLINKS_LINK_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

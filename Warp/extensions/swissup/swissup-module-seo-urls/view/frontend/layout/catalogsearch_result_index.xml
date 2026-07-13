@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+       <!--
+       /**
+        * Compatibility with Smile_ElasticsuiteCatalog
+        */
+        -->
+        <referenceBlock name="catalogsearch.navigation.renderer">
+            <!-- Add new renderers programatically -->
+            <block class="Swissup\SeoUrls\Block\Smile\ElasticsuiteCatalog\AdditionalRenderers"
+                name="catalogsearch.navigation.renderer.seoUrlsAddRenderers">
+                <arguments>
+                    <argument name="seoHelper" xsi:type="object">
+                        Swissup\SeoUrls\Helper\Filter
+                    </argument>
+                    <argument name="renderers" xsi:type="array">
+                        <item name="seoUrlsSlider" xsi:type="array">
+                            <item name="class" xsi:type="string">
+                                Swissup\SeoUrls\Block\Smile\ElasticsuiteCatalog\FilterRenderer\Slider
+                            </item>
+                            <item name="before" xsi:type="string">
+                                catalogsearch.navigation.renderer.slider
+                            </item>
+                            <item name="data" xsi:type="array">
+                                <item name="seoHelper" xsi:type="object">
+                                    Swissup\SeoUrls\Helper\Filter
+                                </item>
+                                <item name="originalRenderer" xsi:type="string">
+                                    catalogsearch.navigation.renderer.slider
+                                </item>
+                            </item>
+                        </item>
+                        <item name="seoUrlsPriceSlider" xsi:type="array">
+                            <item name="class" xsi:type="string">
+                                Swissup\SeoUrls\Block\Smile\ElasticsuiteCatalog\FilterRenderer\Slider
+                            </item>
+                            <item name="before" xsi:type="string">
+                                catalogsearch.navigation.renderer.price.slider
+                            </item>
+                            <item name="data" xsi:type="array">
+                                <item name="seoHelper" xsi:type="object">
+                                    Swissup\SeoUrls\Helper\Filter
+                                </item>
+                                <item name="originalRenderer" xsi:type="string">
+                                    catalogsearch.navigation.renderer.price.slider
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

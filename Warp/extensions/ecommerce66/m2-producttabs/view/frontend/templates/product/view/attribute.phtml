@@ -1,0 +1,35 @@
+<?php
+// @ coding Standards IgnoreFile
+
+/**
+ * Product view template
+ *
+ * @see \Magento\Catalog\Block\Product\View
+ * \Magento\Catalog\Block\Product\View\Description $block
+ */
+?>
+<?php
+$_helper = $this->helper(\Magento\Catalog\Helper\Output::class);
+$_product = $block->getProduct();
+$_call = $block->getAtCall();
+$_code = $block->getAtCode();
+$_className = $block->getCssClass();
+$_attributeType = $block->getAtType();
+$_attributeAddAttribute = $block->getAddAttribute();
+
+if ($_attributeType == 'text') {
+    $_attributeValue = ($_helper->productAttribute($_product, $_product->$_call(), $_code)) ? $_product->getAttributeText($_code) : '';
+} elseif ($_attributeType == 'list') {
+    $_arrValue = $_product->getAttributeText($_code);
+    $_attributeValue = implode(', ', $_arrValue);
+} else {
+    $_attributeValue = $_helper->productAttribute($_product, $_product->$_call(), $_code);
+}
+
+?>
+
+<?php if ($_attributeValue): ?>
+<div class="product attibute <?= /* @noEscape  */ $_className?>">
+    <div class="value"><?= /* @noEscape  */ $_attributeValue ?></div>
+</div>
+<?php endif; ?>

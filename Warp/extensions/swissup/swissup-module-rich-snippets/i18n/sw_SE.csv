@@ -1,0 +1,32 @@
+"Go to Home Page","Gå till startsidan"
+"No structured data","Inga strukturerade data"
+"Microdata (implemented by Magento)","Mikrodata (implementerad av Magento)"
+JSON-LD,JSON-LD
+"Product not found.","Det gick inte att hitta produkten."
+"Rich Snippets","Rika utdrag"
+"Product Page structured data format","Strukturerat dataformat för produktsida"
+"Minify structured data","Minifiera strukturerade data"
+Breadcrumbs,Ströbröd
+"Product Structured Data","Strukturerade data för produkter"
+"Settings in this section works only with structured data format JSON-LD.","Inställningarna i det här avsnittet fungerar bara med strukturerat dataformat JSON-LD."
+"Product Brand Attribute","Attributet Produktvarumärke"
+"When 'None' selected - brand is disabled in structured data.","När ""Ingen"" har valts - är varumärket inaktiverat i strukturerade data."
+"Product Condition Attribute","Attributet Product Condition"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","Alla attribut har typen ""Dropdown"". När ""Ingen"" vald - produktens tillstånd är alltid nytt."
+"New Option","Nytt alternativ"
+"Value from Admin label of attribute option. Leave empty to ignore.","Värde från alternativet Admin-etikett för attribut. Lämna tomt att ignorera."
+"Used Option","Använt alternativ"
+"Damaged Option","Skadat alternativ"
+"Refurbished Option","Renoverat alternativ"
+Organization,Organisation
+"Organization Name","Organisationens namn"
+Street,Street
+Locality,Localityen
+Region,Regionen
+"Postal code",Postnummer
+Url,Url
+"Social Links","Sociala länkar"
+"Site Name","Webbplatsens namn"
+"Site Url","Url till webbplats"
+"Price Valid Until","Pris giltigt tills"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","Datumet (i <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) varefter priset inte längre kommer att vara tillgängligt. Gäller för alla produkter utan specialpris. När specialpriset har utgångsdatum används det.<br />Kontrollera <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> för att ta reda på mer."

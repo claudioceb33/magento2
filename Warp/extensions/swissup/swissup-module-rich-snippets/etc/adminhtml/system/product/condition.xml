@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="condition" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Condition</label>
+        <field id="attribute" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Condition Attribute</label>
+            <comment>All attributes have type "Dropdown". When 'None' selected - product condition is always new.</comment>
+            <source_model>Swissup\RichSnippets\Model\Config\Source\ProductDropdownAttributes</source_model>
+        </field>
+        <field id="new_option" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>New Option</label>
+            <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+        </field>
+        <field id="used_option" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Used Option</label>
+            <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+        </field>
+        <field id="damaged_option" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Damaged Option</label>
+            <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+        </field>
+        <field id="refurbished_option" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Refurbished Option</label>
+            <comment>Value from Admin label of attribute option. Leave empty to ignore.</comment>
+        </field>
+    </group>
+</include>

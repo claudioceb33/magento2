@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Store\Model\Store">
+        <arguments>
+            <argument name="url" xsi:type="object" shared="false">Swissup\Hreflang\Model\UrlWithoutScope</argument>
+        </arguments>
+    </type>
+    <type name="Swissup\Hreflang\Model\CurrentUrl">
+        <arguments>
+            <argument name="providerFactory" xsi:type="array">
+                <item name="cms_page_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\CmsPageView</item>
+                <item name="catalog_product_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\CatalogProductView</item>
+                <item name="catalog_category_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\CatalogCategoryView</item>
+                <item name="askit_index_index" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\AskitIndexIndex</item>
+                <!-- Swissup Attribute Pages integration -->
+                <item name="attributepages_page_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\AttributepagesPageView</item>
+                <!-- Swissup Highlight integration -->
+                <item name="highlight_view_bestsellers" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_featured" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_newAction" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_onsale" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <item name="highlight_view_popular" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\HighlightViewIndex</item>
+                <!-- Swissup Easy Catalog Images integration -->
+                <item name="easycatalogimg_departments_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\EasycatalogimgDepartmentsView</item>
+                <!-- Magefan Blog integration -->
+                <item name="blog_post_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\BlogPostView</item>
+                <!-- Fishpig Wordpress integration -->
+                <item name="wordpress_post_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\WordpressPostView</item>
+
+                <!-- Magezon ShopByBrand integration -->
+                <item name="shopbybrand_index_index" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\ShopbybrandIndexIndex</item>
+                <item name="shopbybrand_brand_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\ShopbybrandBrandView</item>
+                <item name="shopbybrand_category_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\ShopbybrandCategoryView</item>
+
+                <!-- Amasty_Storelocator -->
+                <item name="amlocator_index_index" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\AmlocatorIndexIndex</item>
+                <item name="amlocator_location_view" xsi:type="string">Swissup\Hreflang\Model\CurrentUrl\AmlocatorLocationView</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Store\Block\Switcher">
+        <!-- plugin for PathInfoProcessor - findout store from hreflang -->
+        <plugin name="changeTargetStorePostData"
+                type="Swissup\Hreflang\Plugin\Block\Switcher"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+    <type name="Magento\Cms\Controller\Index\Index">
+        <!-- plugin to redirect on homepage when locale in url enabled-->
+        <plugin name="redirectToHomepageWithLocale"
+                type="Swissup\Hreflang\Plugin\RedirectWithLocale"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+
+    <type name="Magento\Framework\View\Page\Config\Renderer">
+        <plugin name="swissup_hreflang"
+                type="Swissup\Hreflang\Plugin\AddHreflang"
+                sortOrder="10"
+                disabled="false"/>
+    </type>
+</config>

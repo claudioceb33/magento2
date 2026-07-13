@@ -1,0 +1,8 @@
+"Canonical URLs","Kanoniczne adresy URL"
+"Enable canonical URL for category","Włącz kanoniczny adres URL dla kategorii"
+"Enable canonical URL for product","Włącz kanoniczny adres URL produktu"
+"Use parent product for canonical","Użyj produktu nadrzędnego do kanonicznego"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","Jeśli bieżący produkt jest częścią dowolnego innego produktu (konfigurowalnego, zgrupowanego lub pakietowego), nadrzędny adres URL zostanie użyty jako kanoniczny dla bieżącego produktu."
+"Allowed parent types","Dozwolone typy rodziców"
+"CMS Pages","Strony CMS"
+"Enable canonical URL for CMS pages","Włącz kanoniczny adres URL dla stron CMS"

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="prolabels_label_load_after">
+        <observer name="swissup_prolabelsconfigurableproduct" instance="Swissup\ProLabelsConfigurableProduct\Observer\LabelLoadAfter" />
+    </event>
+    <event name="prolabels_label_save_after">
+        <observer name="swissup_prolabelsconfigurableproduct" instance="Swissup\ProLabelsConfigurableProduct\Observer\LabelSaveAfter" />
+    </event>
+</config>

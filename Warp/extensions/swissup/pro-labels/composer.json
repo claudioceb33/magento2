@@ -1,0 +1,11 @@
+{
+    "name": "swissup/pro-labels",
+    "description": "Product labels and badges",
+    "type": "metapackage",
+    "version": "1.7.7",
+    "license": "OSL-3.0",
+    "require": {
+        "swissup/module-pro-labels": "^1.7.6",
+        "swissup/module-pro-labels-configurable-product": "^1.0.1"
+    }
+}

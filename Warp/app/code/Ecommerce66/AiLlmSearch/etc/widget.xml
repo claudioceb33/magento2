@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="e66_llm_search_widget" class="Ecommerce66\AiLlmSearch\Block\Widget" is_email_compatible="false">
+        <label translate="true">Ecommerce66 AI Search Widget</label>
+        <description translate="true">Displays AI-assisted search results for a query.</description>
+        <parameters>
+            <parameter name="endpoint_path" xsi:type="text" visible="true" required="false">
+                <label translate="true">Endpoint Path</label>
+            </parameter>
+            <parameter name="title" xsi:type="text" visible="true" required="false">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="view_mode" xsi:type="select" visible="true" required="false">
+                <label translate="true">Product View Mode</label>
+                <options>
+                    <option name="slider" value="slider" selected="true">
+                        <label translate="true">slider</label>
+                    </option>
+                    <option name="grid" value="grid">
+                        <label translate="true">grid</label>
+                    </option>
+                  
+                </options>
+            </parameter>
+            <parameter name="action" xsi:type="select" visible="true" required="false">
+                <label translate="true">Default Action</label>
+                <options>
+                    <option name="search" value="search" selected="true">
+                        <label translate="true">search</label>
+                    </option>
+                    <option name="compare" value="compare">
+                        <label translate="true">compare</label>
+                    </option>
+                    <option name="recommend" value="recommend">
+                        <label translate="true">recommend</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

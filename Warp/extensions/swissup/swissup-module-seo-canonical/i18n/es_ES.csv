@@ -1,0 +1,8 @@
+"Canonical URLs","URL canónicas"
+"Enable canonical URL for category","Habilitar URL canónica para la categoría"
+"Enable canonical URL for product","Habilitar URL canónica para producto"
+"Use parent product for canonical","Utilice el producto principal para canónico"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","Cuando el producto actual es parte de cualquier otro producto (configurable, agrupado o agrupado), la URL principal se utilizará como canónica para el producto actual."
+"Allowed parent types","Tipos de padres permitidos"
+"CMS Pages","Páginas de CMS"
+"Enable canonical URL for CMS pages","Habilitar URL canónica para páginas CMS"

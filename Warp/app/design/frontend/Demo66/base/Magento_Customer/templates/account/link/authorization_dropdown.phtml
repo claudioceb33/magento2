@@ -1,0 +1,81 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// phpcs:disable Generic.Files.LineLength.TooLong
+
+?>
+
+<div class="dropdown" data-bind="scope: 'customer'">
+    <!-- ko if: customer().fullname  -->
+    <ul>
+        <li><a href="/customer/account/">Mi cuenta</a></li>
+        <li><a href="/sales/order/history/">Mis pedidos</a></li>
+        <li><a href="/wishlist/">Mis favoritos</a></li>
+        <li><a href="/customer/account/logout/">Cerrar sesión</a></li>
+    </ul>
+    <!-- /ko -->
+    <!-- ko ifnot: customer().fullname  -->
+    <ul>
+        <li><a href="/customer/account/login/">Ingresar</a></li>
+        <li><a href="/customer/account/create/">Registrarse</a></li>
+    </ul>
+    <!-- /ko --> 
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "customer": {
+                        "component": "Magento_Customer/js/view/customer"
+                    }
+                }
+            },
+            "Magento_Customer/js/block-submit-on-send": {
+                        "formId": "login-form"
+            },
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "showPassword": {
+                            "component": "Magento_Customer/js/show-password",
+                            "passwordSelector": "#pass"
+                    }
+                }
+            }
+
+        }
+    }
+</script>
+<script>
+    require([
+        'jquery'
+    ],
+        function ($){
+            var drop = $('.dropdown');
+
+            function toggle(show, hide){
+                drop.addClass(show)
+                drop.removeClass(hide)
+            }
+            $('.user-cont').click(()=>{
+                if(drop.hasClass("dropdown-show")){
+                    toggle("dropdown-hide","dropdown-show");
+                }else{
+                    toggle("dropdown-show","dropdown-hide");
+                }
+            });
+            $(document).click(()=>{
+                if(drop.hasClass("dropdown-show")){
+                    toggle("dropdown-hide","dropdown-show");
+                } 
+            });
+            $('.user-cont, .dropdown').click((e)=>{
+                e.stopPropagation();
+            });
+        }
+    ); 
+</script>

@@ -1,0 +1,17 @@
+--- a/vendor/meta/module-catalog/Plugin/FacebookCatalogUpdateFullReindexPlugin.php
++++ b/vendor/meta/module-catalog/Plugin/FacebookCatalogUpdateFullReindexPlugin.php
+@@ -102,14 +102,6 @@
+      */
+     public function getChangelogBatchWalkerInstance()
+     {
+-        if (class_exists(\Magento\Framework\Mview\View\ChangeLogBatchWalkerFactory::class)) { // @phpstan-ignore-line
+-            $changeLogWalkerFactory = $this->objectManager->create(
+-                \Magento\Framework\Mview\View\ChangeLogBatchWalkerFactory::class // @phpstan-ignore-line
+-            );
+-            return $changeLogWalkerFactory->create(
+-                \Magento\Framework\Mview\View\ChangeLogBatchWalker::class // @phpstan-ignore-line
+-            );
+-        }
+         $changelogWalkerFactory = $this->objectManager->create(
+             \Magento\Framework\Mview\View\ChangelogBatchWalkerFactory::class // @phpstan-ignore-line
+         );

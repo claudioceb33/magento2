@@ -1,0 +1,27 @@
+"Advanced Properties","Avancerade egenskaper"
+"Links with `nofollow` in Layered Navigation","Länkar med ""nofollow"" i layered navigation"
+"4 and up","4 och uppåt"
+"3 and up","3 och uppåt"
+"2 and up","2 och uppåt"
+"1 and up","1 och uppåt"
+any,Någon
+"In URL body","I URL-brödtext"
+"As request parameter","Parameter för begäran"
+"Infinite recursion call or category tree is too deep.","Oändlig rekursionsanrop eller kategoriträd är för djupt."
+In,I
+Out,Ut
+"SEO URLs","SEO webbadresser"
+"Manage In-URL Attribute Label","Hantera attributetikett för in-URL"
+"Use this section to set attribute labels for URLs in layered navigation.","Använd det här avsnittet om du vill ange attributetiketter för webbadresser i navigering i lager."
+"Manage In-URL Option Label for Attribute","Hantera alternativetikett för in-URL för attribut"
+"Use this section to set attribute values for URLs in layered navigation.","Använd det här avsnittet om du vill ange attributvärden för webbadresser i navigering i flera lager."
+Option,Alternativet
+"Sending attribute values as package.","Skickar attributvärden som paket."
+"Use separator for filters","Använda avgränsare för filter"
+"Separator string",Skiljesträng
+"Search controller name in URLs","Sök handkontrollens namn i webbadresser"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","Magento controller namn för sökning är ""catalogsearch/result"". Vi ändrar det till ""sök"". Du kan ändra det till vilket annat namn som helst."
+"Place search term","Placera söktermen"
+"CMS Pages",CMS-sidor
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","Omdirigera till webbplatsens hemsida när besökaren försöker komma åt respektive CMS-sida med direktlänk"
+"In-URL label","Etikett för webbadress"

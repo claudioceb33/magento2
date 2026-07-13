@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_FieldManager::fieldmanager"
+            title="Customer Fields"
+            module="Swissup_FieldManager"
+            sortOrder="3"
+            parent="Swissup_Core::swissup"
+            resource="Swissup_FieldManager::fieldmanager"
+        />
+    </menu>
+</config>

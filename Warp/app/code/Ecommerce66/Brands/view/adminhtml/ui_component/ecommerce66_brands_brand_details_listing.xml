@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">ecommerce66_brands_brand_details_listing.ecommerce66_brands_brand_details_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>ecommerce66_brands_brand_details_columns</spinner>
+		<deps>
+			<dep>ecommerce66_brands_brand_details_listing.ecommerce66_brands_brand_details_listing_data_source</dep>
+		</deps>
+		<!--buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new brand_details</label>
+			</button>
+		</buttons-->
+	</settings>
+	<dataSource name="ecommerce66_brands_brand_details_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">brand_details_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Ecommerce66_Brands::brand_details</aclResource>
+		<dataProvider name="ecommerce66_brands_brand_details_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>brand_details_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="ecommerce66_brands_brand_details_columns">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="resizeConfig" xsi:type="array">
+                    <item name="enabled" xsi:type="boolean">true</item>
+                </item>
+            </item>
+        </argument>
+		<settings>
+			<!--editorConfig>
+				<param name="selectProvider" xsi:type="string">ecommerce66_brands_brand_details_listing.ecommerce66_brands_brand_details_listing.ecommerce66_brands_brand_details_columns.ids</param>
+				<param name="enabled" xsi:type="boolean">true</param>
+				<param name="indexField" xsi:type="string">brand_details_id</param>
+				<param name="clientConfig" xsi:type="array">
+					<item name="saveUrl" xsi:type="url" path="ecommerce66_brands/branddetails/inlineEdit"/>
+					<item name="validateBeforeSave" xsi:type="boolean">false</item>
+				</param>
+			</editorConfig-->
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">ecommerce66_brands_brand_details_listing.ecommerce66_brands_brand_details_listing.ecommerce66_brands_brand_details_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>brand_details_id</indexField>
+                <resizeDefaultWidth>50</resizeDefaultWidth>
+			</settings>
+		</selectionsColumn>
+		<column name="brand_details_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+                <resizeDefaultWidth>70</resizeDefaultWidth>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Brand Name</label>
+			</settings>
+		</column>
+        <column name="active">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Brand Active</label>
+                <options class="\Magento\Config\Model\Config\Source\Yesno"/>
+                <resizeDefaultWidth>110</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="sort_order">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Sort Order</label>
+                <resizeDefaultWidth>130</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="option_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Brand Option Id</label>
+                <resizeDefaultWidth>130</resizeDefaultWidth>
+            </settings>
+        </column>
+        <column name="category_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Category Id</label>
+                <resizeDefaultWidth>120</resizeDefaultWidth>
+            </settings>
+        </column>
+		<column name="logo" class="Ecommerce66\Brands\Ui\Component\Listing\Column\Thumbnail" component="Magento_Ui/js/grid/columns/thumbnail">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Logo</label>
+                <resizeDefaultWidth>120</resizeDefaultWidth>
+			</settings>
+		</column>
+		<column name="landing_active">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Landing Active</label>
+                <options class="\Magento\Config\Model\Config\Source\Yesno"/>
+                <resizeDefaultWidth>120</resizeDefaultWidth>
+            </settings>
+		</column>
+		<column name="landing_url_key">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Landing Url</label>
+			</settings>
+		</column>
+		<column name="product_active">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Product Active</label>
+                <options class="\Magento\Config\Model\Config\Source\Yesno"/>
+                <resizeDefaultWidth>120</resizeDefaultWidth>
+            </settings>
+		</column>
+		<actionsColumn name="actions" class="Ecommerce66\Brands\Ui\Component\Listing\Column\BranddetailsActions">
+			<settings>
+				<indexField>brand_details_id</indexField>
+				<resizeEnabled>false</resizeEnabled>
+				<resizeDefaultWidth>100</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

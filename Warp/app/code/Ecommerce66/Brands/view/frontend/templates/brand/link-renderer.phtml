@@ -1,0 +1,15 @@
+<?php
+/**
+ * @var $block \Ecommerce66\Brands\Block\Brand\Link
+ */
+$product = $block->getProduct();
+$name = '';
+if (is_object($product)) {
+    $name = $product->getName();
+}
+//if ($brand->getId()):
+// todo: renderer not working - change to viewModel
+?>
+<div class="brand-link">
+    11111111<?= /* @noEscape */ $name ?>not working
+</div>

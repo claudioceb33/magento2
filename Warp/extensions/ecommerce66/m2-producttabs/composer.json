@@ -1,0 +1,26 @@
+{
+    "name": "ecommerce66/m2-producttabs",
+    "description": "The module allow admin to manage product tabs",
+	"type": "magento2-module",
+	"version": "1.1.1",
+	"license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "php": "~8.0|~8.1",
+        "magento/module-config": "101.*",
+        "magento/module-store": "101.*",
+        "magento/module-backend": "102.0.*",
+        "magento/framework": "103.0.*",
+        "lib-libxml": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ecommerce66\\ProductTabs\\": ""
+        }
+    }
+}

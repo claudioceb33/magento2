@@ -1,0 +1,17 @@
+<?php
+
+namespace Ecommerce66\ElasticsuiteCore\Model\System\Message;
+
+class NotificationAboutVersions extends \Smile\ElasticsuiteCore\Model\System\Message\NotificationAboutVersions
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function isDisplayed()
+    {
+        /**
+         * Do not display paid version message
+         */
+        return false;
+    }
+}

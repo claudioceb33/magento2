@@ -1,0 +1,140 @@
+
+.brand-details {
+    padding: 10px 0;
+    .brand-image {
+        padding: 5px 0 30px;
+        img {
+            display: block;
+            min-width: 100%;
+            width: 100%;
+        }
+        .desktop {
+            display: none;
+        }
+        @media (min-width: 769px) {
+            .desktop {
+                display: block !important;
+            }
+            .mobile {
+                display: none !important;
+            }
+        }
+    }
+}
+
+.search-bychar{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    .search-title{
+        width: 100%;
+        text-align: center;
+    }
+    .char, .number{
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background: white;
+        text-align: center;
+        width: 36px;
+        height: 36px;
+        box-sizing: border-box;
+        cursor: pointer;
+        transition: all 300ms;
+    }
+    .char:hover, .number:hover, .active{
+        background: black;
+        color: white;
+    }
+    .number{
+        width: fit-content;
+      
+        &:before{
+            content: '0-9';
+        }
+        
+    }
+}
+
+.brand-index {
+    .brand-list {
+        padding: 0;
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        place-content: space-evenly;
+        .brand-item {
+            margin: 10px;
+            max-width: 100%;
+            display: inline-block;
+            list-style-type: none;
+            box-sizing: border-box;
+            @media (min-width: 769px){
+                width: 220px;
+            }
+            @media (max-width: 768px){
+                width: 300px;
+            }
+        }
+        img,
+        .logo {
+            float: none;
+            max-width: 100%;
+        }
+    }
+    .brand-item {
+        a {
+            margin: 0;
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+        .logo {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            img {
+                width: 100%;
+            }
+        }
+        .name {
+            margin: 15px 0;
+            text-align: center;
+        }
+    }
+}
+
+.brand-slider-wrapper {
+    margin: 20px 0;
+    .title {
+        font-size: 22px;
+        text-align: center;
+        text-transform: uppercase;
+        margin-bottom: 50px;
+    }
+    .brand-list {
+        .brand-item {
+            display: inline-block;
+            list-style-type: none;
+            box-sizing: border-box;
+            .logo {
+                width: 100%;
+                max-width: 100%;
+                padding: 10px 25px;
+                display: block;
+                box-sizing: border-box;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .action {
+        text-align: center;
+    }
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Swissup\AddressFieldManager\Api\Data\FieldDataInterface" type="Swissup\AddressFieldManager\Model\FieldData"/>
+
+    <type name="Magento\Customer\Model\Address\CompositeValidator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="general" xsi:type="object">Swissup\AddressFieldManager\Model\Address\Validator\General</item>
+                <item name="country" xsi:type="object">Swissup\AddressFieldManager\Model\Address\Validator\Country</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Validate saved address when saving shipping information -->
+    <type name="Magento\Quote\Model\QuoteAddressValidator">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\QuoteAddressValidator"/>
+    </type>
+
+    <!-- Overwrite sortOrder values from checkout_index_index.xml -->
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Block\CheckoutLayoutProcessor" sortOrder="1"/>
+    </type>
+
+    <!-- Add custom address attributes to quote and customer address -->
+    <type name="Magento\Quote\Model\Quote\Address\CustomAttributeList">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\CustomAttributeList" sortOrder="1"/>
+    </type>
+    <type name="Magento\Customer\Model\Address\CustomAttributeList">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\CustomAttributeList" sortOrder="1"/>
+    </type>
+
+    <!-- Copy custom address attributes from quote to order/customer addresses -->
+    <type name="Magento\Quote\Model\Quote\Address\ToOrderAddress">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\Address\QuoteToOrder"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\Address\QuoteToCustomer"/>
+    </type>
+    <type name="Magento\Customer\Model\Address">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\Address\OrderToCustomer"/>
+    </type>
+
+    <!-- Copy custom address attributes values during fieldsets copying -->
+    <type name="Magento\Framework\DataObject\Copy">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\DataObjectCopy"/>
+    </type>
+
+    <!-- Save custom address attribute values when editing order address -->
+    <type name="Magento\Sales\Controller\Adminhtml\Order\AddressSave">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Controller\OrderAddressSave"/>
+    </type>
+
+    <!-- Replace custom dropdown attributes ids with actual values in address -->
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="AddressFieldManager" type="Swissup\AddressFieldManager\Plugin\Model\DefaultCheckoutConfigProvider" disabled="true"/>
+    </type>
+</config>

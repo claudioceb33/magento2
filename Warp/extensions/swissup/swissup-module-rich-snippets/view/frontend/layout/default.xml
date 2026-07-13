@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Swissup\RichSnippets\Block\Organization" name="richsnippets.organization" ifconfig="richsnippets/general/enabled" />
+            <block class="Swissup\RichSnippets\Block\Website" name="richsnippets.website" ifconfig="richsnippets/general/enabled" />
+            <block class="Swissup\RichSnippets\Block\Breadcrumbs" name="richsnippets.breadcrumbs" ifconfig="richsnippets/general/enabled" />
+        </referenceContainer>
+    </body>
+</page>

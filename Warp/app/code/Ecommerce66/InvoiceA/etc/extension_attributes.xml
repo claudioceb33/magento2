@@ -1,0 +1,13 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Quote\Api\Data\CartInterface">
+        <attribute code="customer_tax_situation" type="string" />
+        <attribute code="customer_cuit" type="string" />
+        <attribute code="customer_company" type="string" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="customer_tax_situation" type="string" />
+        <attribute code="customer_cuit" type="string" />
+        <attribute code="customer_company" type="string" />
+    </extension_attributes>
+</config>
+

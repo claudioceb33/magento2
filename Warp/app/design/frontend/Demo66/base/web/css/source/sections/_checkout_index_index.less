@@ -1,0 +1,847 @@
+// Clear header & footer
+
+.top-bar,
+.user-cont,
+.nav-toggle,
+.authentication-wrapper,
+.page-footer {
+    display: none !important;
+}
+
+.header.content {
+    display: flex;
+    justify-content: center;
+    .navigation.nav-default,
+    .block-search,
+    .minicart-wrapper,
+    .top-menu,
+    .top-links-header {
+        display: none;
+    }
+}
+
+// Generalidades
+
+@media (max-width: 768px){
+    #maincontent {
+        margin-top: 20px;
+    }
+}
+
+.checkout-container {
+    margin-bottom: 0;
+}
+
+.checkout-shipping-address,
+.checkout-payment-method {
+    margin-top: 12px;
+}
+
+.opc-wrapper .form-login,
+.opc-wrapper .form-shipping-address {
+    max-width: initial;
+    background: @demo66_white !important;
+}
+
+.actions-toolbar .primary button {
+    font-size: 16px !important;
+    line-height: 40px;
+    height: 40px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.page-bottom {
+    padding: 0;
+    max-width: initial;
+
+    .copyright {
+        padding: 15px;
+    }
+}
+
+// Progress Bar
+
+.opc-progress-bar {
+    margin: 20px 0 40px;
+
+    .opc-progress-bar-item {
+        width: 50%;
+
+        &:before,
+        > span:before {
+            border: 0;
+            background: @demo66_offwhite;
+        }
+
+        &:before {
+            top: 12px;
+            height: 8px;
+        }
+
+        > span {
+            color: @demo66_gray;
+            font-weight: 400;
+
+            &:before {
+                height: 32px;
+                width: 32px;
+            }
+    
+            &:after {
+                border: 0;
+                background: transparent;
+                color: @demo66_white;
+                margin-left: -16px;
+                top: 3px;
+            }
+        }
+
+        &._active {
+            > span {
+                color: @demo66_black;
+                font-weight: 700;
+            }
+
+            &:before,
+            > span:before {
+                background: @demo66_accent;
+            }
+        }
+    }
+}
+
+// Minicart button
+
+.opc-estimated-wrapper {
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    .estimated-block {
+        display: none;
+    }
+
+    .minicart-wrapper {
+        float: none;
+        position: absolute;
+        top: 31px;
+        margin: 0;
+        right: 15px;
+
+        @media (min-width: 769px){
+            display: none;
+        }
+
+        .action.showcart {
+            &:before {
+                background-image: url(../images/cart.png);
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                content: '' !important;
+                line-height: normal;
+                height: 28px;
+                aspect-ratio: 1;
+            }
+
+            .counter.qty {
+                border-radius: 20px;
+                background-color: @demo66_accent;
+                color: @demo66_white;
+                font-size: 12px;
+                font-weight: 400;
+                height: 15px;
+                line-height: 15px;
+                min-width: 15px;
+                padding: 0 3px;
+                position: absolute;
+                top: -3px;
+                right: -5px;
+                margin: 0;
+
+                span {
+                    text-shadow: none;
+                }
+            }
+        }
+    }
+}
+
+// Sidebar - Cart
+
+.opc-sidebar {
+    margin: 0;
+
+    .modal-inner-wrap {
+        margin-top: 0 !important;
+        width: 100% !important;
+        padding: 0;
+        background: @demo66_white;
+
+        .modal-header {
+            @media (min-width: 769px){
+                display: none;
+            }
+    
+            padding: 0 !important;
+    
+            .action-close {
+                position: absolute;
+                margin: 0;
+                padding: 12px 15px;
+                line-height: 24px;
+    
+                &:before {
+                    color: @demo66_gray;
+                    line-height: 24px;
+                }
+    
+                &:hover:before {
+                    color: @demo66_black;
+                }
+            }
+        }
+    }
+}
+
+// Main Wrapper
+
+@media (min-width: 769px) {
+    .opc-wrapper {
+        padding-right: 20px;
+    }
+}
+
+.opc-wrapper .step-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    border-bottom: 1px solid @demo66_lightgray !important;
+    padding: 0 0 12px;
+    color: @demo66_black;
+}
+
+// Paso 1 - Addresses
+
+.opc-wrapper .shipping-address-items {
+    display: flex;
+    flex-flow: wrap;
+
+    .shipping-address-item {
+        width: 50%;
+        padding: 20px 30px 20px 20px;
+        font-size: 14px;
+        line-height: 24px;
+        transition: initial;
+    
+        .action-select-shipping-item {
+            background: transparent;
+            border: 2px solid @demo66_black;
+            color: @demo66_black;
+            font-size: 14px;
+            line-height: 30px;
+            padding: 0 15px;
+            width: auto;
+            float: right;
+            margin: 10px 0 0;
+    
+            &:hover {
+                border-color: @demo66_accent;
+                color: @demo66_accent;
+                background: transparent;
+            }
+        }
+    
+        &:before {
+            display: none;
+        }
+    
+        .edit-address-link {
+            font-size: 14px;
+            border: 2px solid @demo66_gray;
+            padding: 0 15px;
+            line-height: 30px;
+            color: @demo66_gray;
+            font-weight: 700;
+            margin: 10px 10px 0 0;
+            position: initial;
+        
+            &:hover {
+                color: @demo66_accent;
+                border-color: @demo66_accent;
+            }
+        
+            > span {
+                position: initial;
+                margin: 0;
+            }
+        
+            &:before {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 639px){
+            width: 100%;
+            padding: 15px 30px 15px 15px;
+        }
+
+        &.selected-item {
+            border-color: @demo66_accent;
+
+            &:after {
+                background: @demo66_accent;
+                right: 0;
+                top: 0;
+                line-height: 30px;
+                height: 30px;
+                width: 30px;
+                padding: 0;
+            }
+        }
+    }
+}
+
+#checkout-step-shipping .action-show-popup {
+    font-size: 16px;
+    font-weight: 700;
+    color: @demo66_accent;
+    border: 2px solid @demo66_accent;
+    background: transparent;
+    line-height: 36px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    width: auto;
+
+    &:hover {
+        color: @demo66_black;
+        border-color: @demo66_black;
+    }
+}
+
+// Paso 1 - Shipping methods
+
+.opc-wrapper .methods-shipping {
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.table-checkout-shipping-method {
+    width: 100%;
+}
+
+#checkout-shipping-method-load {
+    thead {
+        display: none;
+    }
+
+    tbody {
+        tr.row {
+            cursor: pointer;
+        }
+    
+        td {
+            border: 0;
+        }
+    } 
+
+    @media (max-width: 480px){
+        margin-top: 20px;
+
+        tbody tr {
+            display: flex;
+            flex-flow: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+
+            input[type="radio"] {
+                margin-right: 0;
+            }
+
+            td {
+                padding: 0;
+            }
+
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+.checkout-shipping-method .actions-toolbar .action.primary.button {
+    border: 0;
+    background: @demo66_accent;
+
+    &:hover {
+        background: @demo66_black;
+        color: @demo66_white;
+    }
+}
+
+// Paso 1/2 - Summary
+
+.opc-block-summary {
+    padding: 0 20px 20px;
+    background: @demo66_offwhite;
+    margin: 0;
+
+    > .title {
+        padding: 12px 0;
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        color: @demo66_black;
+        border-bottom: 1px solid @demo66_lightgray;
+    }
+
+    .items-in-cart > .title {
+        border: 0;
+        padding: 12px 0 0;
+        cursor: initial !important;
+
+        strong {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        &:after {
+            display: none !important;
+        }
+    }
+
+    div.minicart-items {
+        display: block !important;
+    }
+
+    .minicart-items-wrapper {
+        max-height: initial;
+        overflow: initial;
+        padding: 0;
+        margin: 0;
+
+        ol.minicart-items .product-item:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    .product-item {
+        padding: 15px 0;
+
+        .product-image-container {
+            width: 75px !important;
+            height: auto !important;
+            border: 1px solid @demo66_gray;
+            overflow: hidden;
+
+            .product-image-wrapper {
+                display: flex;
+            }
+        }
+
+        .product-item-details {
+            padding-left: 85px;
+        }
+
+        .product-item-inner {
+            margin-bottom: 0;
+            position: relative;
+
+            .product-item-name-block {
+                padding: 0;
+
+                .product-item-name {
+                    min-height: initial !important;
+                }
+            }
+
+            .subtotal {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+
+                .price-including-tax {
+                    margin: 0;
+                }
+
+                .price {
+                    display: block;
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 17px;
+                    color: @demo66_black;
+                }
+
+                @media (max-width: 1024px) and (min-width: 769px){
+                    position: initial;
+                    margin-top: 5px;
+                    text-align: right;
+                }
+
+                @media (max-width: 369px){
+                    position: initial;
+                    margin-top: 5px;
+                    text-align: right;
+                }
+            }
+        }
+
+        @media (max-width: 991px){
+            .product-item-details {
+                padding-left: 65px;
+            }
+    
+            .product-image-container {
+                width: 55px !important;
+            }
+        }
+    }
+
+    @media (max-width: 768px){
+        padding: 0 15px 15px;
+    }
+}
+
+// Paso 2 - Summary > Totals
+
+.opc-block-summary .table-totals {
+    margin-top: 9px;
+    border: 0;
+
+    .table-caption {
+        display: none;
+    }
+
+    * {
+        word-break: keep-all;
+    }
+
+    .mark {
+        padding: 5px 0 !important;
+
+        .value {
+            color: @demo66_gray;
+        }
+    }
+
+    .amount {
+        padding: 5px 0 5px 15px !important;
+    }
+
+    .totals.sub.incl {
+        display: none;
+    }
+
+    .grand.totals {
+        th,
+        td {
+            font-size: 18px;
+            line-height: 24px;
+
+            strong {
+                font-weight: 700;
+                padding: 0;
+            }
+        }
+        
+        td strong {
+            color: @demo66_accent;
+        }
+    }
+
+
+    + .items-in-cart {
+        border-top: 2px solid @demo66_lightgray;
+        margin-top: 20px;
+    }
+}
+
+// Paso 2 - Shipping information
+
+.opc-block-shipping-information {
+    padding: 0;
+
+    &:has(.shipping-information){
+        padding: 20px 20px 0;
+        
+        @media (max-width: 768px){
+            padding: 15px 15px 0;
+        }
+    }
+
+    .shipping-information-title {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+    
+        span {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            color: @demo66_black;
+        }
+
+        .action-edit {
+            top: 0;
+
+            &:before {
+                color: @demo66_gray;
+            }
+        
+            &:hover:before {
+                color: @demo66_accent;
+            }
+        }
+    }
+    
+    .shipping-information-content {
+        line-height: 24px;
+    }
+}
+
+// Paso 2 - Payment
+
+.checkout-payment-method {
+    .payment-methods {
+        margin: 0;
+
+        .payment-method-title {
+            padding: 15px 0;
+        }
+    }
+    
+    .billing-address-form,
+    .field-select-billing  {
+        max-width: initial;
+    }
+}
+
+#co-payment-form .fieldset > hr {
+    display: none;
+}
+
+.checkout-billing-address {
+    .fieldset:has([name="billing_address_id"]){
+        border-bottom: 1px solid @demo66_lightgray;
+        padding-bottom: 20px;
+    }
+
+    .action-edit-address {
+        font-size: 14px;
+        border: 2px solid @demo66_gray;
+        padding: 0 15px;
+        line-height: 30px;
+        color: @demo66_gray;
+        font-weight: 700;
+        margin: 10px 10px 0 0;
+        position: initial;
+        background: transparent;
+    
+        &:hover {
+            color: @demo66_accent;
+            border-color: @demo66_accent;
+        }
+    
+        > span {
+            position: initial;
+            margin: 0;
+        }
+    
+        &:before {
+            display: none;
+        }
+    }
+    
+    .actions-toolbar .primary {
+        display: flex;
+        gap: 10px;
+    
+        .action {
+            margin: 0;
+            line-height: 36px;
+            width: auto;
+        }
+    }
+}
+
+.payment-method-content p[data-bind="html: getInstructions()"]{
+    margin-bottom: 20px;
+}
+
+// Factura A
+
+.fieldset[class*="-checkout-fields"]{
+    margin-top: 40px;
+
+    .step-title {
+        margin-bottom: 15px;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input::placeholder {
+        color: transparent;
+    }
+}
+
+// Discount Code
+
+.payment-option {
+    .payment-option-content {
+        padding: 0;
+    }
+
+    .payment-option-title {
+        padding-left: 0 !important;
+    }
+
+    @media (max-width: 768px){
+        margin: 0 !important;
+
+        &.discount-code {
+            margin-top: 40px !important;
+        }
+    }
+}
+
+.discount-code {
+    margin-top: 40px !important;
+
+    #block-discount-heading span {
+        font-weight: 700;
+    }
+
+    .action-toggle {
+        color: @demo66_black;
+
+        &:after {
+            color: @demo66_black;
+        }
+
+        &:hover {
+            color: @demo66_accent;
+
+            &:after {
+                color: @demo66_accent;
+            }
+        }
+    }
+
+    .form-discount {
+        max-width: initial;
+        position: relative;
+
+        .payment-option-inner {
+            width: 100%;
+
+            input {
+                line-height: 38px;
+                border-color: @demo66_gray;
+            }
+        }
+
+        .actions-toolbar {
+            width: initial;
+            position: absolute;
+            top: 3px;
+            right: 3px;
+
+            .primary {
+                button {
+                    background: transparent !important;
+                    color: @demo66_black !important;
+                    border: 2px solid @demo66_black !important;
+                    font-weight: 400;
+                    height: 34px;
+                    margin: 0 !important;
+                    font-size: 14px !important;
+                    line-height: 30px;
+                    box-shadow: none !important;
+                    text-transform: initial;
+
+                    &:hover {
+                        border-color: @demo66_accent !important;
+                        color: @demo66_accent !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Checkout
+
+.action.primary.checkout {
+    font-weight: 700;
+    font-size: 18px !important;
+    border: 0 !important;
+    background: @demo66_accent !important;
+
+    &:hover {
+        background: @demo66_black !important;
+        color: @demo66_white !important;
+    }
+}
+
+// Login Checkout
+
+#methods-login {
+    .primary {
+        display: flex;
+        flex-flow: wrap;
+        gap: 15px;
+        align-items: center;
+        margin-right: 0 !important;
+        float: initial !important;
+    }
+
+    p {
+        padding-right: 0 !important;
+        white-space: nowrap;
+
+        @media (max-width: 490px){
+            flex: 0 0 100%;
+        }
+    }
+
+    button {
+        font-size: 15px !important;
+        line-height: 38px;
+    }
+}
+
+#customer-email-fieldset {
+    .show .primary {
+        float: left;
+
+        .action {
+            margin: 0 15px 0 0;
+        }
+    }
+    .secondary.show {
+        text-align: left;
+        cursor: pointer;
+        
+        .action.remind {
+            height: 40px;
+            margin: 0;
+            line-height: 40px;
+            white-space: nowrap;
+        }
+    }
+
+    #customer-otp::placeholder,
+    #customer-password::placeholder {
+        color: transparent;
+    }
+}

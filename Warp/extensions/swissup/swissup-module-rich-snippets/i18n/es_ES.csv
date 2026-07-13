@@ -1,0 +1,32 @@
+"Go to Home Page","Ir a la página de inicio"
+"No structured data","Sin datos estructurados"
+"Microdata (implemented by Magento)","Microdatos (implementados por Magento)"
+JSON-LD,JSON-LD
+"Product not found.","Producto no encontrado."
+"Rich Snippets","Fragmentos enriquecidos"
+"Product Page structured data format","Formato de datos estructurados de la página del producto"
+"Minify structured data","Minify datos estructurados"
+Breadcrumbs,"Pan rallado"
+"Product Structured Data","Datos estructurados del producto"
+"Settings in this section works only with structured data format JSON-LD.","La configuración de esta sección solo funciona con el formato de datos estructurado JSON-LD."
+"Product Brand Attribute","Atributo de marca de producto"
+"When 'None' selected - brand is disabled in structured data.","Cuando se selecciona 'Ninguno', la marca está deshabilitada en los datos estructurados."
+"Product Condition Attribute","Atributo de condición del producto"
+"All attributes have type ""Dropdown"". When 'None' selected - product condition is always new.","Todos los atributos tienen el tipo ""Dropdown"". Cuando se selecciona 'Ninguno', la condición del producto siempre es nueva."
+"New Option","Nueva opción"
+"Value from Admin label of attribute option. Leave empty to ignore.","Valor de la etiqueta Admin de la opción de atributo. Deje vacío para ignorar."
+"Used Option","Opción usada"
+"Damaged Option","Opción dañada"
+"Refurbished Option","Opción reformada"
+Organization,Organización
+"Organization Name","Nombre de la organización"
+Street,Calle
+Locality,Localidad
+Region,Región
+"Postal code","Código postal"
+Url,Url
+"Social Links","Vínculos sociales"
+"Site Name","Nombre del sitio"
+"Site Url","Url del sitio"
+"Price Valid Until","Precio válido hasta"
+"The date (in <a href=""https://en.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href=""https://developers.google.com/search/docs/data-types/product#offer_properties"">Google guides</a> to find out more.","La fecha (en <a href-""https://es.wikipedia.org/wiki/ISO_8601"">ISO 8601</a> formato de fecha) después de la cual el precio ya no estará disponible. Se aplica a todos los productos sin precio especial. Cuando el precio especial tiene fecha de caducidad, entonces se usará.<br />Compruebe <a href-""https://developers.google.com/search/docs/data-types/product-offer_properties"">Guías de Google</a> para obtener más información."

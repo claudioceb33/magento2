@@ -1,0 +1,154 @@
+<?php
+/** @var $block \Ecommerce66\Widgets\Block\Widget\VideoBanners
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+$desktop = ($block->getData('video_brand') == '2' ? 'https://vimeo.com/' . $block->getData('video_id_desk_vim') : 'https://www.youtube.com/watch?v=' . $block->getData('video_id_desk'));
+$mobile = ($block->getData('video_brand') == '2' ? 'https://vimeo.com/' . $block->getData('video_id_mob_vim') : 'https://www.youtube.com/watch?v=' . $block->getData('video_id_mob'));
+
+$fullwidth = ($block->getData('is_fullwidth') == 1 ? 'fullwidth' : '');
+$parallax = ($block->getData('is_parallax') == 1 ? 'parallax-text' : 'no-parallax');
+
+?>
+<div class="container bann-video <?= /* @noEscape */ $fullwidth ?> " id="<?= /* @noEscape */ $block->getData('banners_group_id'); ?>">
+    <div class="banner-video jarallax" data-video-src="" data-speed="1" data-mobile-video="<?= /* @noEscape */ $mobile ?>" data-desktop-video="<?= /* @noEscape */ $desktop ?>">
+        <div class="banner-video-content <?= /* @noEscape */ $block->getData('text_block_position'); ?> <?= /* @noEscape */ $parallax ?>" >
+            <?php if ($block->getData('title_video')) { ?>
+                <h2><?= /* @noEscape */ $block->getData('title_video'); ?></h2>
+            <?php } ?>
+            <?php if ($block->getData('sub_title_video')) { ?>
+                <h3><?= /* @noEscape */ $block->getData('sub_title_video'); ?></h3>
+            <?php } ?>
+            <?php if ($block->getData('button_1')) { ?>
+                <div class="actions banner-video-buttons">
+                        <a href="<?= /* @noEscape */ $block->getData('button_1_link'); ?>" class="action primary btn-video"><?= /* @noEscape */ $block->getData('button_1'); ?></a>
+                    <?php if ($block->getData('button_2')) { ?>
+                        <a href="<?= /* @noEscape */ $block->getData('button_2_link'); ?>" class="action primary btn-video"><?= /* @noEscape */ $block->getData('button_2'); ?></a>
+                    <?php } ?>
+                    <?php if ($block->getData('button_3')) { ?>
+                        <a href="<?= /* @noEscape */ $block->getData('button_3_link'); ?>" class="action primary btn-video"><?= /* @noEscape */ $block->getData('button_3'); ?></a>
+                    <?php } ?>
+                </div>
+            <?php } ?>
+
+        </div>
+        <?php if ($block->getData('show_gradient')) { ?>
+            <div class="iframe-cover"></div>
+        <?php } ?>
+        <?php if ($block->getData('show_controls')) { ?>
+            <div class="controls"></div>
+        <?php } ?>
+    </div>
+
+</div>
+
+<style>
+    #<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video h2,
+    #<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video h3{
+        color: <?= /* @noEscape */ $block->getData("title_subtitle_color"); ?>;
+
+    }
+    #<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video .actions.banner-video-buttons a{
+        border: 1px solid <?= /* @noEscape */ $block->getData("border_button_color"); ?>;
+        color: <?= /* @noEscape */ $block->getData("text_button_color"); ?>;
+        background-color:  <?= /* @noEscape */ ($block->getData("background_button_color") ? $block->getData("background_button_color") : 'transparent'); ?>;
+     }
+    #<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video .banner-video-content.txt_video_bottom.parallax-text {
+        top: 35%;
+      }
+</style>
+<script>
+    require([
+        'jquery',
+        'mage/mage',
+        "jarallax",
+        "jarallaxVideo"
+    ], function($,jarallax,jarallaxVideo) {
+        var $video_container = $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video');
+        var $sticky_container = $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video-content.parallax-text');
+
+        <?php $position = ($block->getData('text_block_position') == 'txt_video_bottom' ? 1.3 : 2) ?>
+
+        changeVideosV($video_container);
+
+        $(window).on('resize', function(){
+            changeVideosV($video_container);
+        });
+        
+        $.fn.isInViewport = function() {
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+            return elementBottom > viewportTop && elementTop < viewportBottom;
+        };
+        <?php if ($block->getData('is_parallax') == 1) { ?>
+        $(window).on('resize scroll', function() {
+            if ($sticky_container.isInViewport()) {
+                stickyFunction($sticky_container);
+                function stickyFunction($sticky_container){
+                    $sticky_container.mage('sticky',{
+                       container: '#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video.jarallax',
+                       spacingTop: parseInt($('#<?=  /* @noEscape */ $block->getData("banners_group_id"); ?> .banner-video.jarallax').height()) / <?= /* @noEscape */ $position; ?>
+                    });
+                }
+            }
+        });
+        <?php } ?>
+
+        function changeVideosV($vid_cont){
+            $vid_cont.jarallax('destroy');
+            var video = ($(window).width() > 799) ?
+                $vid_cont.attr('data-desktop-video') : $vid_cont.attr('data-mobile-video');
+            $vid_cont.attr('data-video-src',video)
+            $vid_cont.jarallax({
+                videoVolume: 0,
+                videoPlayOnlyVisible: false,
+                onInit: function () {
+                    <?php if ($block->getData('show_controls')) { ?>
+                        var self = this;
+                        var video = self.video;
+                        if (video) {
+                            var $muteBtn = $('<div class="jarallax-video-pause"><i class="fas fa-volume-mute"></i></div>');
+                            var $playBtn = $('<div class="jarallax-video-play"><i class="fas fa-pause"></i></div>');
+
+                            video.on('ready', function() {
+                                $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .controls').empty();
+                                $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .controls').append($muteBtn);
+                                $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .controls').append($playBtn);
+                            });
+                            
+                            let muted = true;
+                            $muteBtn.on('click', function () {
+                                if (muted) {
+                                    muted = false;
+                                    video.unmute();
+                                    $muteBtn.html('<i class="fas fa-volume-up"></i>');
+                                } else {
+                                    muted = true;
+                                    video.mute();
+                                    $muteBtn.html('<i class="fas fa-volume-mute"></i>');
+                                }
+                            });
+                            let play = true;
+                            $playBtn.on('click', function () {
+                                if (play) {
+                                    play = false;
+                                    video.pause();
+                                    $playBtn.html('<i class="fas fa-play"></i>');
+                                } else {
+                                    play = true;
+                                    video.play();
+                                    $playBtn.html('<i class="fas fa-pause"></i>');
+                                }
+                            });
+                        }
+                    <?php } ?>
+                }
+            });
+
+        }
+
+    });
+
+</script>

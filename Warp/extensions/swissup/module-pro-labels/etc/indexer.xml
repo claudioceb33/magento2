@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="swissup_prolabels" view_id="swissup_prolabels_index" class="Swissup\ProLabels\Model\Indexer">
+        <title translate="true">ProLabels index</title>
+        <description translate="true">Index for manual product labels.</description>
+    </indexer>
+</config>

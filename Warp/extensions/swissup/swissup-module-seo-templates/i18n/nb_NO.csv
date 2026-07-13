@@ -1,0 +1,35 @@
+"Generate metadata","Generer metadata"
+"Don't add any conditions if template is applied to all products.","Ikke legg til noen betingelser hvis mal brukes på alle produkter."
+"Entity Id",Enhets-ID
+"Generated at","Generert på"
+"Generation log","Generasjon logg"
+"Generate Metadata","Generer metadata"
+"Complete at %1","Fullfør på %1"
+"%1: items processed - %2","%1: Varer behandlet - %2"
+"Start at %1","Start på %1"
+"You've deleted template.","Du har slettet malen."
+"We can't find template to delete.","Vi finner ikke mal du kan slette."
+"Template with ID %1 no longer exists.","Mal med IDen %1 finnes ikke lenger."
+"Metadata Templates",Metadatamaler
+"Edit ""%1""","Rediger %1"
+"Create template","Opprett mal"
+"A total of %1 template(s) have been deleted.","Totalt %1 mal(er) er slettet."
+"A total of %1 template(s) have updated status.","Totalt %1 mal(er) har oppdatert status."
+"New Template","Ny mal"
+"This template no longer exists.","Denne malen finnes ikke lenger."
+"You saved the template.","Du lagret malen."
+"Something went wrong while saving the template.","Noe gikk galt mens du lagret malen."
+"Category Attribute",Kategori-attributt
+"Category ID",Kategori-ID
+"All entities","Alle enheter"
+"There is generated metadata for %1.","Det finnes genererte metadata for %1."
+Generated,Generert
+"Value is read only","Verdien er skrivebeskyttet"
+"Force to use generated metadata","Tving til å bruke genererte metadata"
+"Start Time",Starttid
+"Records to process per job","Poster som skal behandles per jobb"
+"Metadata Template Information","Informasjon om metadatamal"
+"Generate metadata from templates","Generer metadata fra maler"
+"Are you sure you want to delete selected templates?","Er du sikker på at du vil slette valgte maler?"
+"Template for","Mal for"
+"Data Type",Datatype

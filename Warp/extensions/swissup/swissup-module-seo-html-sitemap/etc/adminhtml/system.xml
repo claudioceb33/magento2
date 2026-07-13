@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="seohtmlsitemap" type="text" sortOrder="875" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>HTML Sitemap</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoHtmlSitemap::config_seohtmlsitemap</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10"
+                showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="page_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sitemap Page Title</label>
+                </field>
+                <field id="meta_description" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sitemap Meta Description</label>
+                </field>
+                <field id="meta_keywords" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sitemap Meta Keywords</label>
+                </field>
+            </group>
+
+            <group id="content_settings" translate="label" type="text" sortOrder="20"
+                showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sitemap Content Settings</label>
+                <field id="show_stores" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Stores on Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_categories" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Categories on Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="max_categories_depth" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max Categories Depth</label>
+                    <comment>Use 0 for all levels</comment>
+                    <depends>
+                        <field id="show_categories">1</field>
+                    </depends>
+                </field>
+                <field id="show_products" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Products on Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_out_of_stock" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Out of Stock Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="show_products">1</field>
+                    </depends>
+                </field>
+                <field id="sort_by" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sort Products and Categories By</label>
+                    <source_model>Swissup\SeoHtmlSitemap\Model\Config\Source\ItemSort</source_model>
+                </field>
+                <field id="columns_number" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of Columns</label>
+                    <source_model>Swissup\SeoHtmlSitemap\Model\Config\Source\ColumnsNumber</source_model>
+                </field>
+                <field id="group_by_first_letter" translate="label" type="select"
+                    sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Group Links by First Letter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="show_cms" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show CMS Pages on Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="hide_highlight_pages" translate="label" type="select" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide Highlight Pages from Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="exclude_cms" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude certain CMS pages from Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="show_cms">1</field>
+                    </depends>
+                </field>
+                <field id="exclude_cms_list" translate="label" type="multiselect" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exclude CMS Pages</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Page</source_model>
+                    <depends>
+                        <field id="exclude_cms">1</field>
+                    </depends>
+                </field>
+                <field id="show_custom_links" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Custom Links on Sitemap</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[To add custom links go Swissup > HTML Sitemap Links ]]></comment>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

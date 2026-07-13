@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ecommerce66_ai>
+            <core>
+                <enabled>0</enabled>
+                <label>Demo</label>
+                <code>demo</code>
+                <client_id>5</client_id>
+                <api_key>bcCRbbT5iWVcmv6sIrTtlmk6R87PYAaO</api_key>
+                <!-- API base URL por defecto -->
+                <base_url>https://ai.66ecommerce.com</base_url>
+                <!-- Endpoints (parametrizables) -->
+                <endpoint_health>/rest/v1/health</endpoint_health>
+                <endpoint_general>/rest/v1/general</endpoint_general>
+                <endpoint_seo>/rest/v1/seo</endpoint_seo>
+                <endpoint_search>/rest/v1/search</endpoint_search>
+                <endpoint_products>/rest/v1/products</endpoint_products>
+                <!-- Timeouts/retries -->
+                <timeout>5</timeout>
+                <retries>1</retries>
+                <retry_delay>500</retry_delay>
+            </core>
+            <feeds>
+                <!-- daily at 00:00 -->
+                <catalog_cron>0 0 * * *</catalog_cron>
+                <catalog_type>json</catalog_type>
+                <catalog_attributes></catalog_attributes>
+                <brand_attribute>manufacturer</brand_attribute>
+
+                <!-- every 2 hours -->
+                <stock_cron>0 */2 * * *</stock_cron>
+                <stock_type>json</stock_type>
+            </feeds>
+        </ecommerce66_ai>
+    </default>
+</config>

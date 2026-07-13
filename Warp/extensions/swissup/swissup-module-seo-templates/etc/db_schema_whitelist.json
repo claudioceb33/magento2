@@ -1,0 +1,63 @@
+{
+    "swissup_seotemplates_template": {
+        "column": {
+            "id": true,
+            "name": true,
+            "entity_type": true,
+            "data_name": true,
+            "priority": true,
+            "status": true,
+            "conditions_serialized": true,
+            "template": true,
+            "update_time": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "swissup_seotemplates_store": {
+        "column": {
+            "template_id": true,
+            "store_id": true
+        },
+        "index": {
+            "SWISSUP_SEOTEMPLATES_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_A0EE5A7646B06FEB7E7662AA34163843": true,
+            "SWISSUP_SEOTEMPLATES_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "swissup_seotemplates_data": {
+        "column": {
+            "id": true,
+            "entity_type": true,
+            "entity_id": true,
+            "store_id": true,
+            "meta_title": true,
+            "meta_description": true,
+            "meta_keywords": true,
+            "metadata": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_SEOTEMPLATES_DATA_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "swissup_seotemplates_log": {
+        "column": {
+            "id": true,
+            "template_id": true,
+            "entity_id": true,
+            "store_id": true,
+            "generated_value": true,
+            "generation_time": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_SEOTEMPLATES_LOG_STORE_ID_STORE_STORE_ID": true,
+            "FK_5DB94BDC9DE3326E92EE55654B7C628D": true
+        }
+    }
+}

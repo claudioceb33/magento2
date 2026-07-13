@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceBlock name="product.info.details">
+            <referenceBlock name="product.attributes" remove="false" />
+			<action method="setTemplate" ifconfig="protabs/general/is_enabled">
+				<argument name="template" xsi:type="string">Ecommerce66_ProductTabs::product/view/details.phtml</argument>
+			</action>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,76 @@
+"Product Labels",製品ラベル
+"Add New Label",新しいラベルの追加
+"Save Label",ラベルを保存
+"Delete Label",ラベルの削除
+"Edit Label '%1'","ラベル '%1' の編集"
+"New Label",新しいラベル
+Settings,設定
+Position,位置
+Top-Left,左上
+Top-Center,トップセンター
+Top-Right,右上
+Middle-Left,中-左
+Middle-Center,ミドルセンター
+Middle-Right,中-右
+Bottom-Left,左下
+Bottom-Center,ボトムセンター
+Bottom-Right,右下
+Content,コンテンツ
+"Label Text","ラベル テキスト"
+"Custom Css Label","カスタム CSS ラベル"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","CSS スタイルのみ。例: 色: #fff;テキストシャドウ: 0 1px 0 rgba(0,0,0,0.3);幅:60px;高さ: 60px;背景:#ff7800;境界半径:50%"
+"Label Custom Url","カスタム URL のラベル"
+"Round Method",ラウンド方式
+Math,数学
+Ceil,セイル
+Floor,床
+"Round Value",ラウンド値
+"Labels Gallery","ラベル ギャラリー"
+"Label Image",ラベル画像
+"Category Label",カテゴリラベル
+"Conditions (don't add conditions if label is applied to all products)","条件 (ラベルがすべての製品に適用されている場合は条件を追加しない)"
+"Indexed Products",インデックス付き製品
+"Attribute Set",属性セット
+"Product Label",製品ラベル
+"Label Gallery","ラベル ギャラリー"
+"We couldn't find any labels",ラベルが見つかりませんでした
+"Labels have been applied.",ラベルが適用されました。
+"Label has been applied.",ラベルが適用されました。
+"Label was deleted.",ラベルが削除されました。
+"Can't find a label to delete.",削除するラベルが見つかりません。
+"Label was disabled.",ラベルが無効になりました。
+"Can't find a label to disable.",無効にするラベルが見つかりません。
+ProLabels,プロラベル
+"Manage Labels",ラベルの管理
+"This label no longer exists.",このラベルは存在しません。
+"Edit Label",ラベルの編集
+"Label was enabled.",ラベルが有効になりました。
+"Can't find a label to enable.",有効にするラベルが見つかりません。
+"Label has been saved.",ラベルが保存されました。
+"Something went wrong while saving the label.",ラベルを保存中に何かが問題になった。
+"up to ","まで "
+Edit,編集
+"All Store Views","すべてのストア ビュー"
+"Click here or drag and drop to add images.",ここをクリックするか、ドラッグアンドドロップして画像を追加します。
+Swissup,スイスアップ
+"jQuery Selector For Base Image Wrapper",ベースイメージラッパー用jQueryセレクタ
+"jQuery Selector For Content Labels Container","コンテンツ ラベル コンテナの jQuery セレクタ"
+"On Sale",販売中
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.",SALEラベルは、店舗の売り上げをマークし、訪問者の注目を集める費用対効果の高い方法です。これらは、割引および販売製品に表示されます。販売上のラベルを使用すると、プロモーションアイテムに顧客の注目を集めます。
+"Product Page",製品ページ
+Image,イメージ
+"Custom Label",カスタムラベル
+"Category Page",カテゴリページ
+"Is New",新しい
+"New Labels are used for the presentation of new items at your store.",新しいラベルは、店舗での新しいアイテムのプレゼンテーションに使用されます。
+"In Stock",在庫
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.",在庫ラベルは、低在庫品目を表示するために使用されます。在庫および在庫切れラベルを使用して、製品の限られた可用性に顧客の注意を集中します。
+"Display if Stock is lower then",在庫が低い場合に表示
+"Out Of Stock",在庫切れ
+"Apply Labels",ラベルの適用
+"Product Image",製品イメージ
+"Product Position",製品の位置
+"Product Text",製品テキスト
+"Category Image",カテゴリ画像
+"Category Position",カテゴリの位置
+"Category Text",カテゴリテキスト

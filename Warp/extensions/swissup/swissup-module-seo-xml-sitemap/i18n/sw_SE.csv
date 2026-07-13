@@ -1,0 +1,6 @@
+Sitemaps,Webbplatskartor
+"Other Links Options","Alternativ för andra länkar"
+"Advanced settings","Avancerade inställningar"
+"Max Number of URLs Per File","Max antal webbadresser per fil"
+"Max File Size","Maximal filstorlek"
+"<p>You can setup Magento Cron to generate sitemap XML. Go to <a href=""section/sitemap/#sitemap_generate-link"">Catalog Sitemap Cron Settings</a>.</p><p>Also you may enable <a href=""section/sitemap/#sitemap_search_engines-link"">submissions to robots.txt</a>.","<p>Du kan ställa in Magento Cron att generera sitemap XML. Gå till <a href=""section/sitemap/#sitemap_generate-link"">Inställningar för katalogwebbplatsens cron</a>.</p> <p>Ås kan du också aktivera <a href=""section/sitemap/#sitemap_search_engines-link"">submissions to robots.txt</a>."

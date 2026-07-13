@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_SeoCrossLinks::seocrosslinks"
+            title="CrossLinks"
+            module="Swissup_SeoCrossLinks"
+            parent="Swissup_SeoCore::seocore"
+            action="seocrosslinks/link"
+            resource="Swissup_SeoCrossLinks::seocrosslinks"/>
+    </menu>
+</config>

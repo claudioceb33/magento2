@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @var \Magento\Customer\Block\Account\Link $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+?>
+<a <?= /* @noEscape */ $block->getLinkAttributes() ?> >
+    <span><?= $escaper->escapeHtml(__('My Account')) ?></span>
+</a>

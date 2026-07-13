@@ -1,0 +1,111 @@
+.jarallax {
+    position: relative;
+    float: none;
+    width: 100%;
+
+}
+.jarallax:after {
+    content: '';
+    display: block;
+    padding-top: 56%;
+}
+.jarallax [id*='jarallax-container'] video,
+.jarallax [id*='jarallax-container'] iframe {
+    visibility: visible;
+}
+&.container.fullwidth {
+    position: relative;
+    .banner-video {
+        width: 100vw;
+        margin-left:  ~"calc(-50vw + 50% - 8px)";
+        position: relative;
+        height: 100vh;
+    }
+}
+
+.banner-video {
+    .controls {
+        position: absolute;
+        right: 3%;
+        bottom: 5%;
+        display: flex;
+        color: white;
+        i.fas {
+            font-size: 18px;
+            border: 1px solid white;
+            padding: 10px;
+            margin: 5px;
+            opacity: 0.5;
+            border-radius: 100%;
+            transition: 15ms;
+            cursor:pointer;
+        }
+        i.fas:hover{
+            opacity: 1;
+        }
+    }
+}
+.banner-video-content{
+
+    color:white;
+    position: relative;
+    text-align: center;
+    a{
+        color: white;
+    }
+    &.no-parallax{
+        position: absolute;
+        bottom: 10%;
+        margin: 0 auto;
+        width: 100%;
+    }
+    &.txt_video_bottom.no-parallax {
+        bottom: 10px;
+        position: absolute;
+        margin: 0 auto;
+        width: 100%;
+    }
+    &.txt_video_center {
+
+        position: relative;
+        width: 80%;
+        margin: auto;
+    }
+    &.txt_video_left {
+
+        left: 5%;
+        text-align: left;
+        max-width: 50%;
+    }
+    .actions.banner-video-buttons{
+        margin-top: 25px;
+    }
+}
+.fullwidth .jarallax:after {
+    content: '';
+    display: block;
+    padding-top: 0%;
+}
+.iframe-cover {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,0.6558998599439776) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,0.6558998599439776) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,0.6558998599439776) 0%, rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}
+@media screen and (max-width: 780px){
+
+    .actions.banner-video-buttons{
+        display: flex;
+        flex-direction: column;
+    }
+    .actions.banner-video-buttons .btn-video{
+        width: 50%;
+        margin: 15px auto;
+    }
+}

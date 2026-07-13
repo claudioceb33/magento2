@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Mageplaza\TableRateShipping\Helper\Data" type="Ecommerce66\TableRateShipping\Helper\Data" />
+
+    <type name="Mageplaza\TableRateShipping\Model\Carrier\TableRate">
+        <plugin name="table_rate_fix_shipping_estimate" sortOrder="10"
+                type="Ecommerce66\TableRateShipping\Plugin\Model\Carrier\TableRatePlugin" />
+    </type>
+</config>

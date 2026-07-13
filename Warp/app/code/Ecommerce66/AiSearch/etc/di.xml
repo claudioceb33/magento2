@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\CatalogSearch\Block\Result">
+        <plugin name="ecommerce66_aisearch_result_block_plugin"
+                type="Ecommerce66\AiSearch\Plugin\ResultBlockPlugin"
+                sortOrder="10"/>
+    </type>
+
+    <!-- Controla la mezcla/reemplazo de sugerencias para search/ajax/suggest -->
+    <type name="Magento\Search\Model\Autocomplete">
+        <plugin name="e66_aisearch_autocomplete_plugin"
+                type="Ecommerce66\AiSearch\Plugin\AutocompletePlugin"
+                sortOrder="10"/>
+    </type>
+</config>

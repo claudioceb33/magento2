@@ -1,0 +1,141 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helper         = $this->helper(Fields::class);
+$helperData = $this->helper(Data::class);
+$form           = $block->getForm();
+$field          = $this->getData('field_data');
+
+$fieldType     = $field['field_type'];
+$label          = $block->filterMessage($field['label']);
+$options        = $field['field_options'];
+$required       = $field['required'];
+$cid              = $helperData->getFieldId($field);
+$inlineCss      = $field['inline_css'] ?? '';
+$cssClass   = isset($field['css_class']) ? ($block->escapeHtmlAttr($field['css_class']).' ') : '';
+$fieldName     = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$frameWorkCss = '';
+if (isset($field['frame_work_css'])) {
+    $frameWorkCss      = $field['frame_work_css'];
+}
+$availableFields = $helper->getAvailableFields();
+$html             = '';
+$fieldValidate   = $availableFields[$fieldType] ?? '';
+$validates        = $fieldValidate;
+$fieldHelp       = isset($options['description']) ? $block->filterMessage($options['description']) : '';
+if ($fieldValidate && is_array($fieldValidate)) {
+    $validates = implode(" ", $fieldValidate);
+}
+$validates .= " ".$cssClass;
+$imageType = $field['image_type'] ?? 'png,jpg,gif,jpeg,zip,doc,pdf';
+
+$colorLabel       = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$colorText       = isset($options['color_text']) ? 'color:'.$options['color_text'].';' : '';
+$colorDescription = isset($options['color_description']) ? 'color:'.$options['color_description'].';' : '';
+$backgroundColor = isset($options['background_color']) ? 'background-color:'.$options['background_color'].';' : '';
+$fontSize           = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle       = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight      = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+$imageMaximumSize = $field['image_maximum_size'] ?? 10;
+$imageMaximumSize = (int)$imageMaximumSize * 1000000;
+$fileNumberLimit = isset($field['file_number_limit']) ? (int)$field['file_number_limit'] : 1;
+$showFileList = isset($field['show_file_list']) ? (int)$field['show_file_list'] : 0;
+$dragDropText = (isset($field['drag_drop_text']) && $field['drag_drop_text']) ? __($field['drag_drop_text']) : __('Drag &amp; drop files here');
+$openBrowserText = (isset($field['open_browser_text']) && $field['open_browser_text']) ? __($field['open_browser_text']) : __('Open the file Browser');
+
+if ($frameWorkCss == 'foundation') : ?>
+<div class="docs-code-live">
+    <label for="<?= $fieldId; ?>Zone" style="<?= $fontSize.$fontStyle.$fontWeight.$colorLabel; ?>" class="button <?= (1 == $required) ? 'required' : ''; ?>"><?= __($label); ?><?= (1 == $required) ? '<em>*</em>' : '';?></label>
+
+    <!-- Our markup, the important part here! -->
+      <div id="<?= $fieldId; ?>Zone" class="fbd-files-uploader dm-uploader p-5"
+        data-fieldid="<?= $fieldId; ?>"
+        data-fieldname="<?= $fieldName; ?>[]"
+        data-backend="<?= $block->escapeUrl($this->getUrl('formbuilder/form/uploader', ["form_id" => $form->getId()])); ?>"
+        data-filetype="<?= $imageType;?>"
+        data-fieldclass="show-for-sr input-text<?= (1 == $required) ? ' required-entry' : ''; ?> <?= $validates; ?>"
+        data-limitfiles="<?= $fileNumberLimit;?>"
+        data-maxsize="<?= $imageMaximumSize;?>"
+        style="<?= $colorText.$backgroundColor; ?>">
+        <h3 class="mb-5 mt-5 text-muted" style="<?= $colorText; ?>"><?= $dragDropText;?></h3>
+
+        <div class="btn btn-primary btn-block mb-5">
+            <span><?= $openBrowserText;?></span>
+            <input type="file"  id="<?= $fieldId; ?>" name="<?= $fieldName; ?>" title='<?= $block->escapeHtml(__("Click to add Files"));?>' class="input-multi-upload-files show-for-sr input-text<?= (1 == $required) ? ' required-entry' : ''; ?> <?= $validates; ?>"/>
+        </div>
+      </div><!-- /uploader -->
+      <?php if ($fieldHelp) : ?>
+            <span class="help-block" style="<?= $colorDescription; ?>" ><?= $fieldHelp; ?></span>
+        <?php endif; ?>
+
+      <div class="card h-50 <?= !$showFileList ? 'hidden' : '';?>" <?= !$showFileList ? 'style="display:none;"' : '';?>>
+        <div class="card-header">
+          <?= __("File List"); ?>
+        </div>
+        <ul class="list-unstyled p-2 d-flex flex-column col" id="files-<?= $fieldId; ?>">
+          <li class="text-muted text-center empty"><?= $block->escapeHtml(__("No files uploaded."));?></li>
+        </ul>
+      </div>
+</div>
+<?php
+else :
+    ?>
+
+<div class="subtemplate-wrapper" style="<?= $inlineCss ?>">
+    <label for="<?= $fieldId; ?>Zone" style="<?= $fontSize.$fontStyle.$fontWeight.$colorLabel; ?>" class="<?= (1 == $required) ? 'required' : ''; ?>"><?= __($label); ?><?= (1 == $required) ? '<em>*</em>' : '';?></label>
+    <div class="input-box">
+        <!-- Our markup, the important part here! -->
+      <div id="<?= $fieldId; ?>Zone" class="fbd-files-uploader dm-uploader p-5"
+        data-fieldid="<?= $fieldId; ?>"
+        data-fieldname="<?= $fieldName; ?>"
+        data-backend="<?= $block->escapeUrl($this->getUrl('formbuilder/form/uploader', ["form_id" => $form->getId(),
+            "cid" => $cid])); ?>"
+        data-filetype="<?= $imageType;?>"
+        data-fieldclass="show-for-sr input-text<?= (1 == $required) ? ' required-entry' : ''; ?> <?= $validates; ?>"
+        data-limitfiles="<?= $fileNumberLimit;?>"
+        data-maxsize="<?= $imageMaximumSize;?>"
+        style="<?= $colorText.$backgroundColor; ?>">
+        <h3 class="mb-5 mt-5 text-muted" style="<?= $colorText; ?>"><?= $dragDropText;?></h3>
+
+        <div class="btn btn-primary btn-block mb-5">
+            <span><?= $openBrowserText;?></span>
+            <input type="file" id="<?= $fieldId; ?>" name="<?= $fieldName; ?>" id="" title='<?= $block->escapeHtml(__("Click to add Files"));?>' class="input-multi-upload-files show-for-sr input-text<?= (1 == $required) ? ' required-entry' : ''; ?> <?= $validates; ?>"/>
+        </div>
+      </div><!-- /uploader -->
+      <?php if ($fieldHelp) { ?>
+            <span class="help-block" style="<?= $colorDescription; ?>" ><?= $fieldHelp; ?></span>
+        <?php } ?>
+      <div class="card h-50 <?= !$showFileList ? 'hidden' : '';?>" <?= !$showFileList ? 'style="display:none;"' : '';?>>
+        <div class="card-header">
+          <?= __("File List"); ?>
+        </div>
+        <ul class="list-unstyled p-2 d-flex flex-column col" id="files-<?= $fieldId; ?>">
+          <li class="text-muted text-center empty"><?= $block->escapeHtml(__("No files uploaded."));?></li>
+        </ul>
+      </div>
+    </div>
+</div>
+<?php endif; ?>
+

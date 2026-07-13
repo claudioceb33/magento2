@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="swissup_prolabels_label_configurable" resource="default" engine="innodb" comment="Swissup Labels - Configurable product settings">
+    <column xsi:type="int" name="label_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Label ID"/>
+    <column xsi:type="smallint" name="product_show_child_labels" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Product - show child labels"/>
+    <column xsi:type="smallint" name="category_show_child_labels" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Category - show child labels"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="label_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="SWISSUP_PROLBLS_IDX_LBL_LBL_ID_SWISSUP_PROLBLS_LBL_LBL_ID" table="swissup_prolabels_label_configurable" column="label_id" referenceTable="swissup_prolabels_label" referenceColumn="label_id" onDelete="CASCADE"/>
+  </table>
+</schema>

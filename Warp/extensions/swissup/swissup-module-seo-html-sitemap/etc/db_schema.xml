@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="swissup_seohtmlsitemap_links" resource="default" engine="innodb" comment="Swissup SEO HTML Sitemap Links Table">
+        <column xsi:type="int" name="link_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Link ID"/>
+        <column xsi:type="smallint" name="status" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Link status"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="100" comment="Link name"/>
+        <column xsi:type="varchar" name="url" nullable="false" length="100" comment="Link url"/>
+        <column xsi:type="datetime" name="creation_time" on_update="false" nullable="true" comment="Link creation time"/>
+        <column xsi:type="datetime" name="update_time" on_update="false" nullable="true" comment="Link update time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="link_id"/>
+        </constraint>
+        <index referenceId="SWISSUP_SEOHTMLSITEMAP_LINKS_NAME_URL" indexType="fulltext">
+            <column name="name"/>
+            <column name="url"/>
+        </index>
+    </table>
+    <table name="swissup_seohtmlsitemap_store" resource="default" engine="innodb" comment="Swissup SEO HTML Sitemap To Store Linkage Table">
+        <column xsi:type="int" name="link_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Link ID"/>
+        <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="link_id"/>
+            <column name="store_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_B4F28FEE82069242E606B82B8B1C719F" table="swissup_seohtmlsitemap_store" column="link_id" referenceTable="swissup_seohtmlsitemap_links" referenceColumn="link_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="SWISSUP_SEOHTMLSITEMAP_STORE_STORE_ID_STORE_STORE_ID" table="swissup_seohtmlsitemap_store" column="store_id" referenceTable="store" referenceColumn="store_id" onDelete="CASCADE"/>
+        <index referenceId="SWISSUP_SEOHTMLSITEMAP_STORE_STORE_ID" indexType="btree">
+            <column name="store_id"/>
+        </index>
+    </table>
+</schema>

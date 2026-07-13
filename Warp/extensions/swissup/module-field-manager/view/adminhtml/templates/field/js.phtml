@@ -1,0 +1,32 @@
+<!-- Added to use form fields dependencies -->
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "swatchesProductAttributes": {
+                "hiddenFields": { }
+            }
+        }
+    }
+</script>
+
+<!-- Disable Used In Forms for required fields -->
+<script>
+require(['jquery'], function($) {
+    function toggleUsedInForms(flag) {
+        if (flag == '1') {
+            $('#used_in_forms').prop('disabled', true);
+            $('#used_in_forms option').prop('selected', true);
+        } else {
+            $('#used_in_forms').prop('disabled', false);
+        }
+    }
+
+    if ($('#is_required')) {
+        $('#is_required').on('change', function(e) {
+            toggleUsedInForms($(this).val());
+        });
+
+        toggleUsedInForms($('#is_required').val());
+    }
+});
+</script>

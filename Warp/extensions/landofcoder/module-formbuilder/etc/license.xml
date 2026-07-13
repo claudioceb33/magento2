@@ -1,0 +1,30 @@
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_Formbuilder
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+
+<license>
+	<code>magento-2-form-builder</code>
+	<name>Lof_Formbuilder</name>
+	<author>Landofcoder</author>
+	<author_email>info@landofcoder.com</author_email>
+	<item_title>Form Builder for Magento 2</item_title>
+	<item_url>http://landofcoder.com/magento-2-form-builder.html</item_url>
+	<item_id>8492057</item_id>
+	<version>1.1.4</version>
+</license>

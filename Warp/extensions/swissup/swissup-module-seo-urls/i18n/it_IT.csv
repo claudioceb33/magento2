@@ -1,0 +1,27 @@
+"Advanced Properties","Proprietà avanzate"
+"Links with `nofollow` in Layered Navigation","Collegamenti con 'nofollow' nella navigazione a più livelli"
+"4 and up","4 e in su"
+"3 and up","3 e in su"
+"2 and up","2 e in su"
+"1 and up","1 e in su"
+any,Qualsiasi
+"In URL body","Nel corpo dell'URL"
+"As request parameter","Come parametro di richiesta"
+"Infinite recursion call or category tree is too deep.","La chiamata di ricorsione infinita o l'albero delle categorie è troppo profondo."
+In,Pollici
+Out,Cambio
+"SEO URLs","URL SEO"
+"Manage In-URL Attribute Label","Gestisci etichetta attributo in-URL"
+"Use this section to set attribute labels for URLs in layered navigation.","Utilizzare questa sezione per impostare le etichette degli attributi per gli URL nella navigazione a più livelli."
+"Manage In-URL Option Label for Attribute","Gestisci etichetta opzione in-URL per l'attributo"
+"Use this section to set attribute values for URLs in layered navigation.","Utilizzare questa sezione per impostare i valori degli attributi per gli URL nella navigazione a più livelli."
+Option,Opzione
+"Sending attribute values as package.","Invio di valori di attributo come pacchetto."
+"Use separator for filters","Usa separatore per i filtri"
+"Separator string","Stringa separatore"
+"Search controller name in URLs","Nome del controller di ricerca negli URL"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","Il nome del controller Magento per la ricerca è 'catalogsearch/result'. Lo cambiamo in 'search'. È possibile modificarlo con qualsiasi altro nome."
+"Place search term","Inserisci termine di ricerca"
+"CMS Pages","Pagine CMS"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","Reindirizza alla home page del sito quando il visitatore cerca di accedere alla rispettiva pagina CMS con collegamento diretto"
+"In-URL label","Etichetta nell'URL"

@@ -1,0 +1,222 @@
+<script>
+require([
+    'jquery',
+    'Ecommerce66_AiContent/js/product/ai-simple-modal',
+    'mage/translate',
+    'domReady!'
+], function($, aiSimpleModal, $t) {
+    'use strict';
+    
+    /**
+     * Inject AI button after short description textarea
+     */
+    function injectAiButton() {
+        // Wait for the form to be fully loaded
+        var checkInterval = setInterval(function() {
+            // Find the short description field container
+            var $shortDescContainer = $('[data-index="short_description"]');
+            
+            if ($shortDescContainer.length) {
+                clearInterval(checkInterval);
+                
+                // Check if button already exists
+                if ($shortDescContainer.find('.ai-wysiwyg-generate-button').length) {
+                    return;
+                }
+                
+                // Find the control wrapper
+                var $controlWrapper = $shortDescContainer.find('.admin__field-control');
+                
+                if ($controlWrapper.length) {
+                    // Create button element
+                    var $button = $('<button>', {
+                        type: 'button',
+                        class: 'action-secondary ai-wysiwyg-generate-button',
+                        html: '<span>⚡</span> <span>' + $t('Generate Short Description with AI') + '</span>'
+                    });
+                    
+                    // Add click handler
+                    $button.on('click', function(e) {
+                        e.preventDefault();
+                        
+                        aiSimpleModal.open(
+                            function(content) {
+                                setFieldValue('short_description', content);
+                            },
+                            {
+                                contentType: 'product_description'
+                            }
+                        );
+                    });
+                    
+                    // Create wrapper div
+                    var $wrapper = $('<div>', {
+                        class: 'ai-button-container',
+                        css: {
+                            marginTop: '10px',
+                            marginBottom: '10px'
+                        }
+                    }).append($button);
+                    
+                    // Insert after the textarea/control
+                    $controlWrapper.after($wrapper);
+                    
+                    console.log('AI button injected successfully for short_description');
+                }
+            }
+        }, 500);
+        
+        // Stop trying after 10 seconds
+        setTimeout(function() {
+            clearInterval(checkInterval);
+        }, 10000);
+    }
+    
+    /**
+     * Set value in the target field
+     */
+    function setFieldValue(fieldName, content) {
+        console.log('Setting field:', fieldName);
+        console.log('Content length:', content.length);
+        
+        var success = false;
+        var editorFound = false;
+        
+        // 1. Try TinyMCE editor - First look for WYSIWYG instances
+        if (typeof window.tinyMCE !== 'undefined') {
+            // Try standard field name
+            var editor = window.tinyMCE.get(fieldName);
+            if (editor) {
+                console.log('Found TinyMCE by field name:', fieldName);
+                editor.setContent(content);
+                editor.save();
+                // Force update the underlying textarea
+                var $textarea = $('#' + fieldName);
+                if ($textarea.length) {
+                    $textarea.val(content).trigger('change');
+                }
+                editorFound = true;
+                success = true;
+            }
+            
+            // Try with product prefix
+            if (!editorFound) {
+                var editorId = 'product_form_' + fieldName;
+                editor = window.tinyMCE.get(editorId);
+                if (editor) {
+                    console.log('Found TinyMCE by editor ID:', editorId);
+                    editor.setContent(content);
+                    editor.save();
+                    var $textarea = $('#' + editorId);
+                    if ($textarea.length) {
+                        $textarea.val(content).trigger('change');
+                    }
+                    editorFound = true;
+                    success = true;
+                }
+            }
+            
+            // Search all TinyMCE editors
+            if (!editorFound && window.tinyMCE.editors) {
+                for (var i = 0; i < window.tinyMCE.editors.length; i++) {
+                    var ed = window.tinyMCE.editors[i];
+                    if (ed.id && (ed.id.indexOf(fieldName) !== -1 || ed.targetElm.name.indexOf(fieldName) !== -1)) {
+                        console.log('Found TinyMCE by search:', ed.id);
+                        ed.setContent(content);
+                        ed.save();
+                        $(ed.targetElm).val(content).trigger('change');
+                        editorFound = true;
+                        success = true;
+                        break;
+                    }
+                }
+            }
+        }
+        
+        // 2. Try textarea with name attribute (fallback if no TinyMCE)
+        if (!success) {
+            var $textarea = $('[name="product[' + fieldName + ']"]');
+            if ($textarea.length) {
+                console.log('Found textarea:', 'product[' + fieldName + ']');
+                $textarea.val(content).trigger('change').trigger('keyup');
+                
+                // Try to update TinyMCE if it exists for this textarea
+                var textareaId = $textarea.attr('id');
+                if (textareaId && typeof window.tinyMCE !== 'undefined') {
+                    var ed = window.tinyMCE.get(textareaId);
+                    if (ed) {
+                        ed.setContent(content);
+                    }
+                }
+                success = true;
+            }
+        }
+        
+        // 3. Try by ID
+        if (!success) {
+            var $field = $('#' + fieldName);
+            if ($field.length) {
+                console.log('Found by ID:', fieldName);
+                $field.val(content).trigger('change').trigger('keyup');
+                
+                // Try to update TinyMCE
+                if (typeof window.tinyMCE !== 'undefined') {
+                    var ed = window.tinyMCE.get(fieldName);
+                    if (ed) {
+                        ed.setContent(content);
+                    }
+                }
+                success = true;
+            }
+        }
+        
+        // 4. Try in container
+        if (!success) {
+            var $container = $('[data-index="' + fieldName + '"]');
+            if ($container.length) {
+                var $textarea = $container.find('textarea').first();
+                if ($textarea.length) {
+                    console.log('Found in container');
+                    $textarea.val(content).trigger('change').trigger('keyup');
+                    
+                    // Try to update TinyMCE
+                    var textareaId = $textarea.attr('id');
+                    if (textareaId && typeof window.tinyMCE !== 'undefined') {
+                        var ed = window.tinyMCE.get(textareaId);
+                        if (ed) {
+                            console.log('Updating TinyMCE from container textarea');
+                            ed.setContent(content);
+                        }
+                    }
+                    success = true;
+                }
+            }
+        }
+        
+        if (success) {
+            console.log('Content inserted successfully');
+            // Small delay to ensure visual update
+            setTimeout(function() {
+                if (typeof window.tinyMCE !== 'undefined') {
+                    window.tinyMCE.triggerSave();
+                }
+            }, 100);
+        } else {
+            console.error('Could not find field');
+            alert($t('Could not find field. Content copied to clipboard.'));
+            copyToClipboard(content);
+        }
+    }
+    
+    function copyToClipboard(text) {
+        var $temp = $('<textarea>');
+        $('body').append($temp);
+        $temp.val(text).select();
+        document.execCommand('copy');
+        $temp.remove();
+    }
+    
+    // Initialize when DOM is ready
+    injectAiButton();
+});
+</script>

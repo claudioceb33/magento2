@@ -1,0 +1,32 @@
+{
+    "swissup_seohtmlsitemap_links": {
+        "column": {
+            "link_id": true,
+            "status": true,
+            "name": true,
+            "url": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "index": {
+            "SWISSUP_SEOHTMLSITEMAP_LINKS_NAME_URL": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "swissup_seohtmlsitemap_store": {
+        "column": {
+            "link_id": true,
+            "store_id": true
+        },
+        "index": {
+            "SWISSUP_SEOHTMLSITEMAP_STORE_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_B4F28FEE82069242E606B82B8B1C719F": true,
+            "SWISSUP_SEOHTMLSITEMAP_STORE_STORE_ID_STORE_STORE_ID": true
+        }
+    }
+}

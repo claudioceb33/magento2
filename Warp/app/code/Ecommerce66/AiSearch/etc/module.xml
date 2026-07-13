@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Ecommerce66_AiSearch" setup_version="1.1.3">
+        <sequence>
+            <module name="Ecommerce66_AiCore"/>
+            <!-- No estrictamente necesario, pero AiSearch convive con ElasticSuite -->
+            <module name="Magento_Search"/>
+            <module name="Smile_ElasticsuiteCore"/>
+            <module name="Smile_ElasticsuiteCatalog"/>
+        </sequence>
+    </module>
+</config>

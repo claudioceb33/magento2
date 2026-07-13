@@ -1,0 +1,76 @@
+"Product Labels",Produktetiketter
+"Add New Label","Lägg till ny etikett"
+"Save Label","Spara etikett"
+"Delete Label","Ta bort etikett"
+"Edit Label '%1'","Redigera etiketten %1"
+"New Label","Ny etikett"
+Settings,Inställningar
+Position,Position
+Top-Left,"Överst till vänster"
+Top-Center,"Övre mitten"
+Top-Right,"Överst till höger"
+Middle-Left,Mitten-vänster
+Middle-Center,Mitten-Mitten
+Middle-Right,Mitten-höger
+Bottom-Left,"Nederkant till vänster"
+Bottom-Center,Nederkant
+Bottom-Right,"Nederkant till höger"
+Content,Innehåll
+"Label Text",Etiketttext
+"Custom Css Label","Anpassad css-etikett"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Endast Css-stil. Exempel: färg: #fff; text-skugga: 0 1px 0 rgba(0,0,0,0.3); bredd: 60px; höjd: 60px;bakgrund:#ff7800; gränsradie:50 %."
+"Label Custom Url","Anpassad url för etikett"
+"Round Method","Rund metod"
+Math,Matematik
+Ceil,Ceil
+Floor,Golvet
+"Round Value","Runt värde"
+"Labels Gallery","Galleri för etiketter"
+"Label Image",Etikettbild
+"Category Label","Kategori etikett"
+"Conditions (don't add conditions if label is applied to all products)","Villkor (lägg inte till villkor om etiketten tillämpas på alla produkter)"
+"Indexed Products","Indexerade produkter"
+"Attribute Set",Attributuppsättning
+"Product Label",Produktetikett
+"Label Gallery",Etikettgalleri
+"We couldn't find any labels","Vi hittade inga etiketter"
+"Labels have been applied.","Etiketter har tillämpats."
+"Label has been applied.","Etiketten har tillämpats."
+"Label was deleted.","Etiketten har tagits bort."
+"Can't find a label to delete.","Det går inte att hitta en etikett att ta bort."
+"Label was disabled.","Etiketten har inaktiverats."
+"Can't find a label to disable.","Det går inte att hitta en etikett att inaktivera."
+ProLabels,"ProLabels (andra)"
+"Manage Labels","Hantera etiketter"
+"This label no longer exists.","Den här etiketten finns inte längre."
+"Edit Label","Redigera etikett"
+"Label was enabled.","Etiketten har aktiverats."
+"Can't find a label to enable.","Det går inte att hitta en etikett som ska aktiveras."
+"Label has been saved.","Etiketten har sparats."
+"Something went wrong while saving the label.","Något gick fel när du sparar etiketten."
+"up to ","upp till "
+Edit,Redigera
+"All Store Views","Alla butiksvyer"
+"Click here or drag and drop to add images.","Klicka här eller dra och släpp för att lägga till bilder."
+Swissup,"Swissup (på andra sätt)"
+"jQuery Selector For Base Image Wrapper","jQuery Selector för basbildomslag"
+"jQuery Selector For Content Labels Container","jQuery Selector för behållare för innehållsetiketter"
+"On Sale","Till salu"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","SALE etiketter är det kostnadseffektiva sättet att markera butiksförsäljning och locka besökare uppmärksamhet. De visas på rabatterade och on-sale produkter. Med etiketter för till försäljning får du kunderna uppmärksamhet på kampanjartiklarna."
+"Product Page",Produktsida
+Image,Bild
+"Custom Label","Anpassad etikett"
+"Category Page",Kategorisida
+"Is New","Är ny"
+"New Labels are used for the presentation of new items at your store.","Nya etiketter används för presentation av nya artiklar i butiken."
+"In Stock","I lager"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","I Lageretiketter används för att visa låga lagerartiklar. Med hjälp av i lager och i lager etiketter, fokuserar du kundernas uppmärksamhet på den begränsade tillgången på produkter."
+"Display if Stock is lower then","Visa om aktien är lägre"
+"Out Of Stock","i lager"
+"Apply Labels","Använda etiketter"
+"Product Image",Produktbild
+"Product Position","Produktens position"
+"Product Text",Produkttext
+"Category Image","Bild av kategori"
+"Category Position","Kategori position"
+"Category Text","Text för kategori"

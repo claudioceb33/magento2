@@ -1,0 +1,76 @@
+"Product Labels",Productlabels
+"Add New Label","Nieuw label toevoegen"
+"Save Label","Label opslaan"
+"Delete Label","Label verwijderen"
+"Edit Label '%1'","Label '%1' bewerken"
+"New Label","Nieuw label"
+Settings,Instellingen
+Position,Positie
+Top-Left,Linksboven
+Top-Center,Top-Center
+Top-Right,Rechtsboven
+Middle-Left,Midden-links
+Middle-Center,Midden-Midden
+Middle-Right,Midden-rechts
+Bottom-Left,Linksonder
+Bottom-Center,"Onderste midden"
+Bottom-Right,Rechtsonder
+Content,Inhoud
+"Label Text",Labeltekst
+"Custom Css Label","Aangepast Css-label"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Alleen css-stijl. Voorbeeld: kleur: #fff; tekstschaduw: 0 1px 0 rgba(0,0,0,0,0,3); breedte: 60 px; hoogte: 60px;achtergrond:#ff7800; grensstraal:50%;"
+"Label Custom Url","Aangepaste url labelen"
+"Round Method","Ronde methode"
+Math,Math
+Ceil,"Ceil (Ceil)"
+Floor,Verdieping
+"Round Value",Rondewaarde
+"Labels Gallery","Galerie Labels"
+"Label Image",Labelafbeelding
+"Category Label",Categorielabel
+"Conditions (don't add conditions if label is applied to all products)","Voorwaarden (voeg geen voorwaarden toe als het etiket op alle producten wordt toegepast)"
+"Indexed Products","Geïndexeerde producten"
+"Attribute Set",Kenmerkset
+"Product Label",Productlabel
+"Label Gallery",Labelgalerie
+"We couldn't find any labels","We konden geen labels vinden"
+"Labels have been applied.","Er zijn labels aangebracht."
+"Label has been applied.","Label is toegepast."
+"Label was deleted.","Label is verwijderd."
+"Can't find a label to delete.","Kan geen label vinden om te verwijderen."
+"Label was disabled.","Label was uitgeschakeld."
+"Can't find a label to disable.","Kan geen label vinden om uit te schakelen."
+ProLabels,"ProLabels ProLabels"
+"Manage Labels","Labels beheren"
+"This label no longer exists.","Dit label bestaat niet meer."
+"Edit Label","Label bewerken"
+"Label was enabled.","Label is ingeschakeld."
+"Can't find a label to enable.","Kan geen label vinden om in te schakelen."
+"Label has been saved.","Label is opgeslagen."
+"Something went wrong while saving the label.","Er ging iets mis tijdens het opslaan van het label."
+"up to ","tot "
+Edit,Bewerken
+"All Store Views","Alle winkelweergaven"
+"Click here or drag and drop to add images.","Klik hier of sleep en drop om afbeeldingen toe te voegen."
+Swissup,"Swissup Swissup"
+"jQuery Selector For Base Image Wrapper","jQuery-kiezer voor basisafbeeldingswrapper"
+"jQuery Selector For Content Labels Container","jQuery-kiezer voor container met inhoudslabels"
+"On Sale","Te koop"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","SALE labels zijn de kosteneffectieve manier om winkelverkopen te markeren en bezoekers de aandacht te trekken. Ze worden getoond op scherp geprijsde en on-sale producten. Met behulp van On Sale labels let je op de aandacht van klanten voor de promotionele artikelen."
+"Product Page",Productpagina
+Image,Afbeelding
+"Custom Label","Aangepast label"
+"Category Page",Rubriekspagina
+"Is New","Is nieuw"
+"New Labels are used for the presentation of new items at your store.","Nieuwe labels worden gebruikt voor de presentatie van nieuwe artikelen in uw winkel."
+"In Stock","Op voorraad"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","In Stock labels worden gebruikt om items met een lage voorraad weer te geven. Met behulp van op voorraad en niet op voorraad etiketten, richt u de aandacht van de klanten op de beperkte beschikbaarheid van producten."
+"Display if Stock is lower then","Weergeven als de voorraad lager is dan"
+"Out Of Stock","Niet op voorraad"
+"Apply Labels","Labels toepassen"
+"Product Image",Productafbeelding
+"Product Position",Productpositie
+"Product Text",Producttekst
+"Category Image","Afbeelding van categorie"
+"Category Position",Categoriepositie
+"Category Text",Categorietekst

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Bloque de resultados IA: se posiciona debajo del listado de productos -->
+        <!--referenceContainer name="content">
+            <block class="Ecommerce66\AiSearch\Block\Results"
+                   name="ecommerce66.ai.search.results"
+                   template="Ecommerce66_AiSearch::results.phtml"
+                   before="search.result"
+            />
+        </referenceContainer-->
+        <!-- Bloque AI slider ANTES del bloque nativo de resultados -->
+        <referenceContainer name="content">
+            <block class="Ecommerce66\AiSearch\Block\AiSlider"
+                   name="e66.ai.search.slider"
+                   before="search.result"
+                   template="Ecommerce66_Widgets::widget/productscarousel.phtml">
+                <arguments>
+                    <argument name="title" xsi:type="string">AI Results</argument>
+                    <!-- Forzar modo slider y opciones del widget -->
+                    <argument name="template_selector" xsi:type="string">Ecommerce66_AiSearch::widget/productscarousel.phtml</argument>
+                    <argument name="show_addtocart" xsi:type="number">1</argument>
+                    <argument name="show_whislist" xsi:type="number">0</argument>
+                    <argument name="show_compare" xsi:type="number">0</argument>
+                    <argument name="show_arrows" xsi:type="number">1</argument>
+                    <argument name="show_dots_pagination" xsi:type="number">0</argument>
+                    <!-- Estos tres se sobreescriben desde System Config en el bloque -->
+                    <argument name="slider_elements_desk" xsi:type="string">5</argument>
+                    <argument name="slider_elements_tablet" xsi:type="string">2</argument>
+                    <argument name="slider_elements_mobile" xsi:type="string">1</argument>
+                    <!-- Límite de ítems: sobreescribe desde config -->
+                    <argument name="products_count" xsi:type="number">10</argument>
+                    <!-- Vida de caché breve (el bloque ya variará por query) -->
+                    <argument name="cache_lifetime" xsi:type="number">600</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

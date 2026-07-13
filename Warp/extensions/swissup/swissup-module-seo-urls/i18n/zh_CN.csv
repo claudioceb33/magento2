@@ -1,0 +1,27 @@
+"Advanced Properties",高级属性
+"Links with `nofollow` in Layered Navigation","分层导航中带有""no 关注""的链接"
+"4 and up","4 及 4 及上"
+"3 and up","3 及 3 及上"
+"2 and up","2 及 2 及上"
+"1 and up","1 及 1 及上"
+any,任何
+"In URL body","在 URL 正文中"
+"As request parameter",作为请求参数
+"Infinite recursion call or category tree is too deep.",无限递归调用或类别树太深。
+In,在
+Out,出
+"SEO URLs","SEO URL"
+"Manage In-URL Attribute Label","管理 URL 内属性标签"
+"Use this section to set attribute labels for URLs in layered navigation.","使用此部分可以在分层导航中为 URL 设置属性标签。"
+"Manage In-URL Option Label for Attribute","管理属性的 URL 内选项标签"
+"Use this section to set attribute values for URLs in layered navigation.","使用此部分可设置分层导航中 URL 的属性值。"
+Option,选项
+"Sending attribute values as package.",将属性值作为包发送。
+"Use separator for filters",对过滤器使用分离器
+"Separator string",分隔符字符串
+"Search controller name in URLs","URL 中的搜索控制器名称"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","用于搜索的马根托控制器名称为""目录搜索/结果""。我们将其更改为""搜索""。您可以将其更改为任何其他名称。"
+"Place search term",放置搜索字词
+"CMS Pages","CMS 页面"
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","当访问者尝试使用直接链接访问相应的 CMS 页面时，重定向到网站主页"
+"In-URL label","URL 内标签"

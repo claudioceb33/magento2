@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer Email" design_abstraction="custom">
+    <body>
+        <block class="Hexamarvel\FlexibleForm\Block\Email\FormFields" name="customer.info" template="Hexamarvel_FlexibleForm::email/customer_info.phtml"/>
+    </body>
+</page>

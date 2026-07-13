@@ -1,0 +1,8 @@
+"Canonical URLs","Канонічні URL-адреси"
+"Enable canonical URL for category","Увімкнути канонічну URL-адресу для категорії"
+"Enable canonical URL for product","Увімкніть канонічну URL-адресу для продукту"
+"Use parent product for canonical","Використовуйте батьківський продукт як канонічний"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","Якщо поточний продукт є частиною будь-якого іншого продукту (може бути налаштований, згрупований або в комплекті), батьківська URL-адреса буде використана як канонічна для поточного продукту."
+"Allowed parent types","Дозволені типи батьків"
+"CMS Pages","Сторінки CMS"
+"Enable canonical URL for CMS pages","Увімкніть канонічну URL-адресу для CMS-сторінок"

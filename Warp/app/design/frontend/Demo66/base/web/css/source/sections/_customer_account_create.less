@@ -1,0 +1,53 @@
+h1.page-title {
+    margin: 30px 0;
+    text-align: center;
+    display: block !important;
+}
+
+.fieldset {
+    margin-bottom: 20px;
+
+    strong span {
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    .field {
+        &:not(.newsletter) > .label {
+            display: flex;
+        }
+        
+        > .control {
+            width: 100%;
+        }
+    }
+
+    .field.choice.newsletter {
+        display: none;
+    }
+}
+
+.action.primary {
+
+    span {
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+.form-create-account {
+    margin: auto;
+
+    .fieldset.create.account:after {
+        margin-top: 20px;
+    }
+
+    legend.legend span {
+        font-size: 18px;
+        font-weight: 500;
+    }
+}
+
+.field.choice:not(.newsletter){
+    display: none;
+}

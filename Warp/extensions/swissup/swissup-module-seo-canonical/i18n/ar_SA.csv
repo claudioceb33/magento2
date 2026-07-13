@@ -1,0 +1,8 @@
+"Canonical URLs","عناوين URL الأساسية"
+"Enable canonical URL for category","تمكين عنوان URL الأساسي للفئة"
+"Enable canonical URL for product","تمكين عنوان URL الأساسي للمنتج"
+"Use parent product for canonical","استخدام المنتج الأصلي للشريعة"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","عندما يكون المنتج الحالي جزءًا من أي منتج آخر (قابل للتهيئة أو مجمعة أو حزمة) ، فسيتم استخدام عنوان URL الأصلي باعتباره أساسيًا للمنتج الحالي."
+"Allowed parent types","أنواع الوالدين المسموح بها"
+"CMS Pages","صفحات CMS"
+"Enable canonical URL for CMS pages","تمكين عنوان URL الأساسي لصفحات CMS"

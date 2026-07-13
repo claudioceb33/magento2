@@ -1,0 +1,71 @@
+<?php
+    $items = [];
+    if ($collection = $block->getCollection()) {
+        $collection = clone $collection;
+        $collection->setPageSize(40);
+        $lastPage = $collection->getLastPageNumber();
+        $page = 1;
+        do {
+            $collection->clear();
+            $collection->setCurPage($page);
+            foreach ($collection as $item) {
+                $url = $block->getItemUrl($item);
+                $name = $block->getItemName($item);
+                $items[$url] = new \Magento\Framework\DataObject([
+                    'name' => $name,
+                    'url' => $url
+                ]);
+            }
+
+            $page++;
+        } while ($lastPage >= $page);
+    }
+
+    if (empty($items)) {
+        return;
+    }
+
+    $config = $this->helper('Swissup\SeoHtmlSitemap\Helper\Config');
+    $helper = $this->helper('Swissup\SeoHtmlSitemap\Helper\Data');
+    $columnsNumber = $config->getColumnsNumber();
+    $groupedItems = $helper->groupCollectionByFirstLetter($items);
+?>
+<div class="sitemap-block sitemap-links-grouped">
+    <h3 class="block-subtitle subtitle"><?= $this->getTitle() ?></h3>
+    <div class="sitemap-block-content">
+        <ul class="list-links-grouped">
+        <?php foreach ($groupedItems as $letter => $items): ?>
+            <li class="links-group">
+                <div class="links-group-title">
+                    <?= $helper->getGroupTitle($letter) ?>
+                </div>
+                <?php if ($columnsNumber > 1): ?>
+                <div class="col<?= $columnsNumber?>-set">
+                    <div class="col-1">
+                <?php endif ?>
+                    <?php
+                        $itemsNumber = count($items);
+                        $itemsPerColumn = (int)ceil($itemsNumber / $columnsNumber);
+                        $i = 0; $col = 1;
+                    ?>
+                    <?php foreach ($items as $item): ?>
+                        <div>
+                            <a href="<?= $item->getUrl() ?>">
+                                <?= $item->getName() ?>
+                            </a>
+                        </div>
+                    <?php $i++; ?>
+                    <?php if ($columnsNumber > 1 && $col < $columnsNumber && $i == $itemsPerColumn): $col++; $i = 0; ?>
+                    </div>
+                    <div class="col-<?= $col ?>">
+                    <?php endif ?>
+                <?php endforeach; ?>
+                <?php if ($columnsNumber > 1): ?>
+                    </div>
+                </div>
+                <?php endif ?>
+            </li>
+        <?php endforeach; ?>
+        </ul>
+    </div>
+</div>

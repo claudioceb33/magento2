@@ -1,0 +1,88 @@
+<?php
+/** @var $block \Ecommerce66\Widgets\Block\Widget\Banners */
+$columns_data = $block->getColumnsData();
+$column_count = $block->getData('banner_columns');
+$size_width = 100 / $block->getData('banner_columns');
+$additional_class= '';
+if($column_count == 1 && $block->getData('mobile_columns') == 4){
+    $additional_class= ' banner-full-width ';
+}
+if($block->getData('zoom_banner')){
+    $additional_class .= ' zoom-hover ';
+}
+
+?>
+<div id="<?=  /* @noEscape */ $block->getData('banners_group_id')?>" class="widget-banners custom-banners <?=  /* @noEscape */ $additional_class ?>">
+
+    <?php
+
+    $i = 1;
+    foreach ($columns_data as $column) {
+        if ($i <= $column_count):
+            ?>
+            <div class="item row-<?= /* @noEscape */ $i; ?>" data-image-desktop="<?=  /* @noEscape */ $block->getDataImage($columns_data['row'.$i]['column-banner-desk']);  ?>"
+                 data-image-mobile="<?=  /* @noEscape */  $block->getDataImage($columns_data['row'.$i]['column-banner-mob']);  ?>">
+                <a href="<?=  /* @noEscape */ $columns_data['row'.$i]['column-banner-url'] ?>" ><img src="" alt=""></a>
+            </div>
+            <?php
+            $i++;
+        endif;
+    } ?>
+</div>
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        var $banner_container = $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners > .item');
+        /**
+         * Behaviour
+         */
+        changeImages();
+
+        $(window).on('resize', function(){
+            changeImages();
+        });
+        function changeImages(){
+            $banner_container.each(function(i, obj) {
+                var row = i + 1;
+                var imgage = ($(window).width() > 799) ?
+                    $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?> > .item.row-'+row).attr('data-image-desktop') : $('#<?=  /* @noEscape */ $block->getData("banners_group_id") ?> > .item.row-'+row).attr('data-image-mobile');
+                    $('#<?= /* @noEscape */ $block->getData("banners_group_id"); ?> .item.row-'+row +' img').attr('src', '' + imgage + '');
+            });
+
+        }
+    });
+</script>
+<style>
+    #<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners{
+        display: flex;
+    }
+    #<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners .item {
+      width:  <?= /* @noEscape */ $size_width; ?>%;
+        padding: 10px;
+     }
+     <?php
+
+        if ($block->getData('mobile_columns') == 2): ?>
+        @media only screen and (max-width: 768px) {
+        #<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners {
+            flex-wrap: wrap;
+        }
+
+        #<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners .item {
+             width: 50%;
+            padding: inherit;
+
+         }
+        }
+        <?php  elseif ($block->getData('mobile_columns') == 3): ?>
+    @media only screen and (max-width: 768px) {
+        #<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners{
+            flex-wrap: wrap;
+        }
+        #<?=  /* @noEscape */ $block->getData("banners_group_id") ?>.widget-banners .item {
+             width:  100%;
+         }
+    }
+    <?php endif; ?>
+</style>

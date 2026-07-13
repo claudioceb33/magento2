@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Remueve el bloque de suscripción al newsletter -->
+        <referenceBlock name="form.subscribe" remove="true" />
+
+        <!-- Remueve el footer completo -->
+        <referenceContainer name="footer-container" remove="true" />
+        <!-- Opcionalmente, remueve otros contenedores relacionados al pie de página -->
+        <referenceContainer name="footer" remove="true" />
+        <referenceBlock name="report.bugs" remove="true" />
+
+        <referenceContainer name="page.bottom.container">
+            <block class="Magento\Theme\Block\Html\Footer"
+                   name="copyright_checkout"
+                   template="Magento_Theme::html/copyright.phtml"
+                   after="-" />
+        </referenceContainer>
+    </body>
+</page>

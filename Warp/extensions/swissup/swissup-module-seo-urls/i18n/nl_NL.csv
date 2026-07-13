@@ -1,0 +1,27 @@
+"Advanced Properties","Geavanceerde eigenschappen"
+"Links with `nofollow` in Layered Navigation","Koppelingen met 'nofollow' in gelaagde navigatie"
+"4 and up","4 en meer"
+"3 and up","3 en meer"
+"2 and up","2 en meer"
+"1 and up","1 en meer"
+any,elke
+"In URL body","In URL-body"
+"As request parameter","Als aanvraagparameter"
+"Infinite recursion call or category tree is too deep.","Oneindige recursie oproep of categorie boom is te diep."
+In,Inch
+Out,Uit
+"SEO URLs",SEO-URL's
+"Manage In-URL Attribute Label","Label in-URL-kenmerk beheren"
+"Use this section to set attribute labels for URLs in layered navigation.","Gebruik deze sectie om kenmerklabels in te stellen voor URL's in gelaagde navigatie."
+"Manage In-URL Option Label for Attribute","In-URL option Label voor kenmerk beheren"
+"Use this section to set attribute values for URLs in layered navigation.","Gebruik deze sectie om kenmerkwaarden in te stellen voor URL's in gelaagde navigatie."
+Option,Optie
+"Sending attribute values as package.","Kenmerkwaarden verzenden als pakket."
+"Use separator for filters","Scheidingsteken gebruiken voor filters"
+"Separator string",Scheidingstekenreeks
+"Search controller name in URLs","Naam van zoekcontroller in URL's"
+"Magento controller name for search is 'catalogsearch/result'. We change it to 'search'. You can change it to any other name.","Magento controller naam voor zoeken is 'catalogsearch/result'. We veranderen het in 'search'. Je het veranderen in een andere naam."
+"Place search term","Zoekterm plaatsen"
+"CMS Pages",CMS-pagina's
+"Redirect to site homepage when visitor tries to access respective CMS page with direct link","Omleiding naar startpagina van de site wanneer de bezoeker probeert toegang te krijgen tot de respectievelijke CMS-pagina met directe link"
+"In-URL label",In-URL-label

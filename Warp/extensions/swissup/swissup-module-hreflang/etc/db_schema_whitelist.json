@@ -1,0 +1,24 @@
+{
+    "swissup_hreflang_cms": {
+        "column": {
+            "page_id": true,
+            "hreflang_page_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_HREFLANG_CMS_PAGE_ID_CMS_PAGE_PAGE_ID": true,
+            "SWISSUP_HREFLANG_CMS_HREFLANG_PAGE_ID_CMS_PAGE_PAGE_ID": true
+        }
+    },
+    "swissup_hreflang_category": {
+        "column": {
+            "category_id": true,
+            "hreflang_category_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_HREFLANG_CATEGORY_CATEGORY_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID": true,
+            "SWISSUP_HREFLANG_CATEGORY_HREFLANG_CATEGORY_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID": true
+        }
+    }
+}

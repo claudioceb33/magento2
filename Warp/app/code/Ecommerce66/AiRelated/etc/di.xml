@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Helper Data has no constructor argument named cacheDir; removed unused DI argument -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="ecommerce66_ai_generate_related" xsi:type="object">Ecommerce66\AiRelated\Console\Command\GenerateRelated</item>
+                    <item name="ecommerce66_ai_generate_related_all" xsi:type="object">Ecommerce66\AiRelated\Console\Command\GenerateRelatedAll</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

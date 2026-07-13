@@ -1,0 +1,107 @@
+<?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_Formbuilder
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
+
+use Lof\Formbuilder\Helper\Data;
+use Lof\Formbuilder\Helper\Fields;
+
+$helper           = $this->helper(Fields::class);
+$dataHelper       = $this->helper(Data::class);
+$form             = $block->getForm();
+$formData        = $this->getData('form_data');
+$field            = $this->getData('field_data');
+$fieldType       = $field['field_type'];
+$label            = $block->filterMessage($field['label']);
+$inlineCss        = $field['inline_css'] ?? '';
+$cssClass   = isset($field['css_class']) ? ($block->escapeHtmlAttr($field['css_class']).' ') : '';
+$options          = $field['field_options'];
+$required         = $field['required'];
+$cid              = $dataHelper->getFieldId($field);
+$fieldName       = $helper->getFieldPrefix() . $cid . $form->getId();
+$fieldId          = $fieldName.uniqid();
+$availableFields = $helper->getAvailableFields();
+$html             = '';
+$fieldValidate   = $availableFields[$fieldType] ?? '';
+$validates        = $fieldValidate;
+$fieldHelp       = isset($options['description']) ? $block->filterMessage($options['description']) : '';
+
+$colorLabel       = isset($options['color_label']) ? 'color:'.$options['color_label'].';' : '';
+$colorText       = isset($options['color_text']) ? 'color:'.$options['color_text'].';' : '';
+$colorDescription = isset($options['color_description']) ? 'color:'.$options['color_description'].';' : '';
+$backgroundColor = isset($options['background_color']) ? 'background-color:'.$options['background_color'].';' : '';
+
+$fontSize           = isset($options['font_size']) ? 'font-size:'.(int)$options['font_size'].'px;' : '';
+$fontStyle       = isset($options['font_style']) ? 'font-style:'.$options['font_style'].';' : '';
+$fontWeight      = isset($options['font_weight']) ? 'font-weight:'.$options['font_weight'].';' : '';
+
+if ($fieldValidate && is_array($fieldValidate)) {
+    $validates = implode(" ", $fieldValidate);
+}
+$includeOtherOption = $options['include_other_option'] ?? 0;
+
+$frameWorkCss   = '';
+if (isset($field['frame_work_css'])) {
+    $frameWorkCss      = $field['frame_work_css'];
+}
+if ($frameWorkCss == 'foundation') {
+    $medium = 'columns medium-';
+} else {
+    $medium = 'col-sm-';
+}
+?>
+<div class="subtemplate-wrapper <?= $cssClass; ?>" style="<?= $inlineCss ?>">
+    <div class="input-box row">
+        <?php if ($label && $label != '') { ?>
+            <div class="input-list-label <?= $medium; ?>6">
+                <label  for="<?= $fieldId; ?>" style="<?= $fontSize.$fontStyle.$fontWeight.$colorLabel; ?>" class="<?= (1 == $required) ? 'required' : ''; ?>"><?= __($label); ?><?= (1 == $required) ? '<em>*</em>' : '';?></label>
+            </div>
+        <?php } ?>
+        <div class="input-list <?= $medium; ?>6" style="<?= $colorText.$backgroundColor; ?>">
+            <ul class="list-options">
+                <?php
+                if ($options['options']) {
+                    foreach ($options['options'] as $key => $val) {
+                        $itemLabel = $val['label'];
+                        $itemLabelShow = str_replace(["{{", "}}"], ['<img src="{{', '}}" alt="img"/>'], $itemLabel);
+                        $itemChecked = $val['checked'];
+                        if ($formData && isset($formData[$fieldName]) && $formData[$fieldName] == $itemLabel) {
+                            $itemChecked = true;
+                        }
+                        $itemLabelShow2 = $block->filterMessage($itemLabelShow);
+                        ?>
+                        <li>
+                            <input type="radio" name="<?= $fieldName; ?>" id="<?= $fieldId.$key; ?>" value="<?= $block->escapeQuote($itemLabel); ?>" class="<?= (1 == $required) ? 'validate-one-required-by-name' : ''; ?>" <?= ($itemChecked) ? 'checked="checked"' : ''; ?>/> <label for="<?= $fieldName.$key; ?>"><?= __($itemLabelShow2); ?></label>
+                        </li>
+                        <?php } ?>
+
+                        <?php if ($includeOtherOption) {
+                            $key++; ?>
+                            <li>
+                                <input type="radio" name="<?= $fieldName; ?>" id="<?= $fieldId.'_other'; ?>" title="<?= $block->escapeHtml(__('Other')); ?>" value="other" class="<?= (1 == $required) ? 'validate-one-required-by-name' : ''; ?>"/> <label for="<?= $fieldName.'_other'; ?>"><?= __("Other"); ?></label> <input name="<?= $fieldName.'_other'; ?>" id="<?= $fieldId.$key;?>" title="<?= __("Other");?>" value="<?= ($formData && isset($formData[$fieldName.$key])) ? $formData[$fieldName.$key] : ''; ?>"  class="input-text" type="text" />
+                            </li>
+                            <?php } ?>
+                            <?php } ?>
+                        </ul>
+            </div>
+        </div>
+        <?php if ($fieldHelp) { ?>
+        <span class="help-block" style="<?= $colorDescription; ?>"><?= $fieldHelp; ?></span>
+        <?php } ?>
+</div>

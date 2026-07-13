@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="search_engine_optimization">
+        <settings>
+            <collapsible>true</collapsible>
+            <label translate="true">Search Engine Optimization</label>
+        </settings>
+        <container name="ai_seo_container" component="Ecommerce66_AiContent/js/category/ai-seo-button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="generate_url" xsi:type="url" path="aiecontent/seo/generate"/>
+                    <item name="meta_title_field" xsi:type="string">meta_title</item>
+                    <item name="meta_description_field" xsi:type="string">meta_description</item>
+                    <item name="entity_fields" xsi:type="array">
+                        <item name="name" xsi:type="string">name</item>
+                        <item name="description" xsi:type="string">description</item>
+                        <item name="url_key" xsi:type="string">url_key</item>
+                    </item>
+                </item>
+            </argument>
+        </container>
+    </fieldset>
+</form>

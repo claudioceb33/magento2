@@ -1,0 +1,35 @@
+"Generate metadata","Metagegevens genereren"
+"Don't add any conditions if template is applied to all products.","Voeg geen voorwaarden toe als de sjabloon op alle producten wordt toegepast."
+"Entity Id",Entiteits-id
+"Generated at","Gegenereerd op"
+"Generation log",Generatielogboek
+"Generate Metadata","Metagegevens genereren"
+"Complete at %1","Compleet op %1"
+"%1: items processed - %2","%1: verwerkte artikelen - %2"
+"Start at %1","Begin bij %1"
+"You've deleted template.","U hebt de sjabloon verwijderd."
+"We can't find template to delete.","We kunnen geen sjabloon vinden om te verwijderen."
+"Template with ID %1 no longer exists.","Sjabloon met ID %1 bestaat niet meer."
+"Metadata Templates",Metagegevenssjablonen
+"Edit ""%1""","'%1' bewerken"
+"Create template","Sjabloon maken"
+"A total of %1 template(s) have been deleted.","Een totaal van %1 template(s) zijn verwijderd."
+"A total of %1 template(s) have updated status.","Een totaal van %1-sjabloon(s) heeft de status bijgewerkt."
+"New Template","Nieuwe sjabloon"
+"This template no longer exists.","Deze sjabloon bestaat niet meer."
+"You saved the template.","U hebt de sjabloon opgeslagen."
+"Something went wrong while saving the template.","Er is iets misgegaan tijdens het opslaan van de sjabloon."
+"Category Attribute",Categoriekenmerk
+"Category ID",Categorie-id
+"All entities","Alle entiteiten"
+"There is generated metadata for %1.","Er zijn gegenereerde metagegevens voor %1."
+Generated,Gegenereerd
+"Value is read only","Waarde wordt alleen gelezen"
+"Force to use generated metadata","Forceren om gegenereerde metagegevens te gebruiken"
+"Start Time",Begintijd
+"Records to process per job","Records om te verwerken per taak"
+"Metadata Template Information","Gegevens over metagegevenssjabloon"
+"Generate metadata from templates","Metagegevens genereren uit sjablonen"
+"Are you sure you want to delete selected templates?","Weet u zeker dat u geselecteerde sjablonen wilt verwijderen?"
+"Template for","Sjabloon voor"
+"Data Type",Gegevenstype

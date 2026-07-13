@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Hexamarvel Team
+ * @copyright Copyright (c) 2021 Hexamarvel (https://www.hexamarvel.com)
+ * @package Hexamarvel_FlexibleForm
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hexaform_form_listing_data_source" xsi:type="string">
+                    Hexamarvel\FlexibleForm\Model\ResourceModel\Form\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Hexamarvel\FlexibleForm\Model\ResourceModel\Form\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hexamarvel_flexibleform</argument>
+            <argument name="resourceModel" xsi:type="string">Hexamarvel\FlexibleForm\Model\ResourceModel\Form</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Hexamarvel\FlexibleForm\Model\Export\ExportToCsv" type="\Magento\Ui\Model\Export\ConvertToCsv">
+        <arguments>
+            <argument name="metadataProvider" xsi:type="object">Hexamarvel\FlexibleForm\Model\Export\MetadataProvider</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Hexamarvel\FlexibleForm\Model\Export\ExportToXml" type="\Magento\Ui\Model\Export\ConvertToXml">
+        <arguments>
+            <argument name="metadataProvider" xsi:type="object">Hexamarvel\FlexibleForm\Model\Export\MetadataProvider</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hexamarvel\FlexibleForm\Controller\Adminhtml\Export\GridToCsv">
+        <arguments>
+            <argument name="converter" xsi:type="object">Hexamarvel\FlexibleForm\Model\Export\ExportToCsv</argument>
+        </arguments>
+    </type>
+    <type name="Hexamarvel\FlexibleForm\Controller\Adminhtml\Export\GridToXml">
+        <arguments>
+            <argument name="converter" xsi:type="object">Hexamarvel\FlexibleForm\Model\Export\ExportToXml</argument>
+        </arguments>
+    </type>
+</config>

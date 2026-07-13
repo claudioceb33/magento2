@@ -1,0 +1,76 @@
+"Product Labels","Etichette dei prodotti"
+"Add New Label","Aggiungi nuova etichetta"
+"Save Label","Salva etichetta"
+"Delete Label","Elimina etichetta"
+"Edit Label '%1'","Modifica etichetta '%1'"
+"New Label","Nuova etichetta"
+Settings,Impostazioni
+Position,Posizione
+Top-Left,"In alto a sinistra"
+Top-Center,Centro-alto
+Top-Right,"In alto a destra"
+Middle-Left,Centro-Sinistra
+Middle-Center,Centro-Centro
+Middle-Right,Centro-destra
+Bottom-Left,"In basso a sinistra"
+Bottom-Center,"In basso al centro"
+Bottom-Right,"In basso a destra"
+Content,Contenuto
+"Label Text","Testo etichetta"
+"Custom Css Label","Etichetta Css personalizzata"
+"Css Style Only. Example: color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.3); width: 60px; height: 60px;background:#ff7800; border-radius:50%;","Solo stile Css. Esempio: colore: #fff; text-shadow: 0 1px 0a(0,0,0,0.3); larghezza: 60px; altezza: 60px;background:#ff7800; border-radius:50%;"
+"Label Custom Url","URL personalizzato etichetta"
+"Round Method","Metodo Round"
+Math,Matematica
+Ceil,Ceil
+Floor,Pavimento
+"Round Value","Valore arrotondato"
+"Labels Gallery","Raccolta etichette"
+"Label Image","Immagine etichetta"
+"Category Label","Etichetta categoria"
+"Conditions (don't add conditions if label is applied to all products)","Condizioni (non aggiungere condizioni se l'etichetta viene applicata a tutti i prodotti)"
+"Indexed Products","Prodotti indicizzati"
+"Attribute Set","Set di attributi"
+"Product Label","Etichetta del prodotto"
+"Label Gallery","Raccolta etichette"
+"We couldn't find any labels","Non siamo riusciti a trovare alcuna etichetta"
+"Labels have been applied.","Sono state applicate etichette."
+"Label has been applied.","L'etichetta è stata applicata."
+"Label was deleted.","L'etichetta è stata eliminata."
+"Can't find a label to delete.","Impossibile trovare un'etichetta da eliminare."
+"Label was disabled.","L'etichetta è stata disabilitata."
+"Can't find a label to disable.","Impossibile trovare un'etichetta da disabilitare."
+ProLabels,"Etichette secondarie"
+"Manage Labels","Gestisci etichette"
+"This label no longer exists.","Questa etichetta non esiste più."
+"Edit Label","Modifica etichetta"
+"Label was enabled.","L'etichetta è stata abilitata."
+"Can't find a label to enable.","Impossibile trovare un'etichetta da abilitare."
+"Label has been saved.","L'etichetta è stata salvata."
+"Something went wrong while saving the label.","Si è verificato un problema durante il salvataggio dell'etichetta."
+"up to ","fino a "
+Edit,Modifica
+"All Store Views","Tutte le viste del negozio"
+"Click here or drag and drop to add images.","Fare clic qui o trascinare e rilasciare per aggiungere immagini."
+Swissup,Swissup
+"jQuery Selector For Base Image Wrapper","Selettore jQuery per wrapper dell'immagine di base"
+"jQuery Selector For Content Labels Container","JQuery Selettore per contenitore etichette contenuto"
+"On Sale","In vendita"
+"SALE labels are the cost-effective way to mark store sales and attract visitors attention. They are shown on discounted and on-sale products. Using On Sale labels you catch customers attention to the promotional items.","Le etichette SALE sono il modo conveniente per contrassegnare le vendite dei negozi e attirare l'attenzione dei visitatori. Essi sono mostrati su prodotti scontati e in vendita. Utilizzando le etichette On Sale, catturi l'attenzione dei clienti sugli articoli promozionali."
+"Product Page","Pagina del prodotto"
+Image,Immagine
+"Custom Label","Etichetta personalizzata"
+"Category Page","Pagina Categoria"
+"Is New","È nuovo"
+"New Labels are used for the presentation of new items at your store.","Le nuove etichette vengono utilizzate per la presentazione di nuovi articoli nel tuo negozio."
+"In Stock","In magazzino"
+"In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.","In Etichette stock vengono utilizzate per mostrare gli articoli a scorta bassa. Utilizzando in magazzino e out of stock labels, si concentrano i clienti attenzione sulla disponibilità limitata dei prodotti."
+"Display if Stock is lower then","Visualizza se Stock è più basso"
+"Out Of Stock",Esaurito
+"Apply Labels","Applica etichette"
+"Product Image","Immagine del prodotto"
+"Product Position","Posizione del prodotto"
+"Product Text","Testo del prodotto"
+"Category Image","Categoria Immagine"
+"Category Position","Posizione categoria"
+"Category Text","Testo categoria"

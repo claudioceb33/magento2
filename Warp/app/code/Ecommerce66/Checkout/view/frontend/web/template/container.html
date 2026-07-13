@@ -1,0 +1,8 @@
+<div class="fieldset gloss-checkout-fields" data-bind="visible: visible">
+    <div class="step-title" translate="'¿Necesitas recibir Factura A?'" data-role="title"></div>
+    <div class="fieldset" data-role="content">
+        <each args="data: elems, as: 'element'">
+            <render if="hasTemplate()"></render>
+        </each>
+    </div>
+</div>

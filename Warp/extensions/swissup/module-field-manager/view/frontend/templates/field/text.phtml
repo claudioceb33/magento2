@@ -1,0 +1,12 @@
+<div class="field <?= $block->escapeHtmlAttr($block->getAdditionalClasses()) ?>">
+    <label class="label" for="<?= $block->getHtmlId() ?>">
+        <span><?= $block->escapeHtml($block->getLabel()) ?></span>
+    </label>
+    <div class="control">
+        <input type="text"
+            id="<?= $block->getHtmlId() ?>"
+            name="<?= $block->escapeHtmlAttr($block->getFieldName()) ?>"
+            value="<?= $block->escapeHtmlAttr($block->getValue()) ?>"
+            class="input-text <?= $block->getHtmlClass() ?>">
+    </div>
+</div>

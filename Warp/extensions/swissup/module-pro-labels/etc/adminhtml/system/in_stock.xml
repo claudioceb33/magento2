@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="in_stock" translate="label comment" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>"In Stock" Label</label>
+        <comment>In Stock labels are used to show low stock items. Using in stock and out of stock labels, you focus the customers attention on the limited availability of products.</comment>
+
+        <include path="Swissup_ProLabels::system/_common.xml" />
+
+        <include path="Swissup_ProLabels::system/in_stock/product.xml" />
+        <include path="Swissup_ProLabels::system/in_stock/category.xml" />
+
+    </group>
+</include>

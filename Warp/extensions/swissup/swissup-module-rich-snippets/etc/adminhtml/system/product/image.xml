@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="image" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Image</label>
+        <field id="id" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+            <label>Image identifier</label>
+            <source_model>Swissup\RichSnippets\Model\Config\Source\ImageId</source_model>
+            <comment>Defines width and height of an image in data snippet. To add new image identifier use `view.xml` in your storefront theme.</comment>
+        </field>
+    </group>
+</include>

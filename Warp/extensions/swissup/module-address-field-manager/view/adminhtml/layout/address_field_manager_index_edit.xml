@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Swissup_FieldManager::css/styles.css"/>
+    </head>
+    <body>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="website_switcher" template="Magento_Backend::store/switcher.phtml">
+                <arguments>
+                    <argument name="switch_websites" xsi:type="string">1</argument>
+                    <argument name="switch_store_groups" xsi:type="string">0</argument>
+                    <argument name="switch_store_views" xsi:type="string">0</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Swissup\FieldManager\Block\Adminhtml\Field\Edit\Tabs" name="attribute_edit_tabs">
+                <container label="Main" name="main">
+                    <block class="Swissup\FieldManager\Block\Adminhtml\Field\Edit\Tab\Main" name="main.base" as="base"/>
+                    <block class="Swissup\FieldManager\Block\Adminhtml\Field\Edit\Tab\Front" name="attribute_edit_tabs.front" as="front">
+                        <arguments>
+                            <argument name="config" xsi:type="array">
+                                <item name="entityType" xsi:type="string">customer_address</item>
+                            </argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Eav\Block\Adminhtml\Attribute\Edit\Options\Options" name="main.options" as="options"/>
+                    <block class="Swissup\FieldManager\Block\Adminhtml\Field\Edit\Tab\Advanced" name="main.advanced" as="advanced"/>
+                </container>
+                <block class="Magento\Eav\Block\Adminhtml\Attribute\Edit\Options\Labels" name="attribute_edit_tabs.labels" as="labels"/>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Swissup\FieldManager\Block\Adminhtml\Field\Edit" name="attribute_edit_content">
+                <arguments>
+                    <argument name="config" xsi:type="array">
+                        <item name="blockGroup" xsi:type="string">Swissup_FieldManager</item>
+                        <item name="resource" xsi:type="string">Swissup_AddressFieldManager</item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="js">
+            <block class="Magento\Backend\Block\Template" name="attribute_edit_js" template="Swissup_FieldManager::field/js.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

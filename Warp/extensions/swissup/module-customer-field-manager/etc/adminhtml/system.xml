@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="customer_field_manager" type="text" sortOrder="380" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Customer Field Manager</label>
+            <tab>swissup</tab>
+            <resource>Swissup_CustomerFieldManager::config</resource>
+            <group id="compatibility" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Compatibility</label>
+                <field id="ignore" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Ignored Fields</label>
+                    <source_model>Swissup\CustomerFieldManager\Model\Config\Source\Fields</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Select fields which are displayed by other modules on customer pages to avoid duplication</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

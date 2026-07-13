@@ -1,0 +1,193 @@
+<?php
+/** @var $block \Ecommerce66\Widgets\Block\Widget\AnimatedText */
+
+?>
+<?php if ($block->getData('animation_type') == 1) { ?>
+    <div class="word-container" id="<?= /* @noEscape */ $block->getData('animate_id'); ?>">
+        <p class="to-animate"></p>
+        <style>
+            #<?=  /* @noEscape */ $block->getData("animate_id"); ?>.word-container {
+                background-color: <?=  /* @noEscape */ $block->getData('background_color'); ?>;
+                margin: 20px 0;
+            }
+            #<?=  /* @noEscape */ $block->getData("animate_id"); ?>.word-container p {
+                color: <?=  /* @noEscape */ $block->getData('text_color'); ?>;
+                font-size: <?=  /* @noEscape */ $block->getData('font_size'); ?>px;
+                min-height: calc((<?=  /* @noEscape */ $block->getData('font_size'); ?>px * 1.43) + 40px);
+                text-align: center;
+                margin: 0;
+                padding: 20px 0;
+            }
+        </style>
+        <script >
+            require(['jquery',"https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"], function($,anime) {
+
+                function wrapWords (text) {
+                    words = text.split(" ");
+                    var spantext = "";
+                    for (var i = 0; i < words.length; i++) {
+                        spantext += "<span class='word-anima' style = \"opacity: 0; position: relative; top: 0px;\">" + words[i] +  " " + "</span>";
+                    }
+                    return spantext
+                }
+
+                function animatetext () {
+                    anime({
+                        targets: '#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate .word-anima',
+                        translateY: -30,
+                        duration: <?=  /* @noEscape */ $block->getData('animate_duration'); ?>,
+                        opacity: 1,
+                        loop: true,
+                        delay: anime.stagger(<?=  /* @noEscape */ $block->getData('animate_between'); ?>),
+                    });
+                }
+
+                $(function() {
+                    x =  "<?=  /* @noEscape */ $block->getData('title'); ?>";
+                    xarr = wrapWords(x);
+                    $('#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate').append(xarr);
+                    animatetext(xarr);
+                });
+            });
+        </script>
+    </div>
+<?php } ?>
+
+<?php if ($block->getData('animation_type') == 2) { ?>
+    <div class="type-container" id="<?=  /* @noEscape */ $block->getData('animate_id'); ?>">
+        <p id="anim" class="to-animate-2"></p>
+
+        <style>
+            #<?=  /* @noEscape */ $block->getData("animate_id"); ?>.type-container {
+                background-color: <?=  /* @noEscape */ $block->getData('background_color'); ?>;
+                margin: 20px 0;
+            }
+            #<?=  /* @noEscape */ $block->getData("animate_id"); ?>.type-container p {
+                color: <?=  /* @noEscape */ $block->getData('text_color'); ?>;
+                font-size: <?=  /* @noEscape */ $block->getData('font_size'); ?>px;
+                min-height: calc((<?=  /* @noEscape */ $block->getData('font_size'); ?>px * 1.43) + 40px);
+                text-align: center;
+                margin: 0;
+                padding: 20px 0;
+            }
+        </style>
+
+        <script>
+          require(['jquery',"https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"], function($,anime) {
+            function wrapLetters (text) {
+                letter = text.split("").map(function (char){
+                    return "<span class='let-anima'>"+char+"</span>";
+                }).join("");
+                return letter
+            }
+
+            function animateletter () {
+                anime({
+                    targets: '#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate-2 .let-anima',
+                    translateY: -30,
+                    duration: <?=  /* @noEscape */ $block->getData('animate_duration_two'); ?>,
+                    opacity: [0,1],
+                    loop: true,
+                    delay: anime.stagger(<?=  /* @noEscape */ $block->getData('animate_between_two'); ?>),
+                });
+            }
+
+                $(function() {
+                    x =  "<?=  /* @noEscape */ $block->getData('title'); ?>";
+                    xarr = wrapLetters(x);
+                    $('#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate-2').append(xarr);
+                    animateletter(xarr);
+                });
+            });
+        </script>
+    </div>
+<?php } ?>
+
+<?php if ($block->getData('animation_type') == 3) { ?>
+
+    <div class="slide-container" id="<?=  /* @noEscape */ $block->getData('animate_id'); ?>">
+        <p id="anim" class="to-animate-3" ></p>
+        <script>
+            require(['jquery',"https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"], function($,anime) {
+                function animateletter () {
+                    anime({
+                        targets: '#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate-3',
+                        keyframes: [
+                            {translateX: -1000, opacity: 0.5, duration:0},
+                            {translateX: 0, opacity:1, duration: <?=  /* @noEscape */ $block->getData('animate_duration_three'); ?>},
+                            {translateX: 1000, opacity:0,delay: <?=  /* @noEscape */ $block->getData('animate_between_three'); ?>, duration:<?=  /* @noEscape */ $block->getData('animate_duration_three'); ?>},
+                        ],
+                        delay: anime.stagger(2500, {start: 0}),
+                        easing: 'easeInOutQuad',
+                        loop: true
+                    });
+                }
+
+                $(function() {
+                    var text_3 = "<span class='element'><?=  /* @noEscape */ $block->getData('title'); ?></span>";
+                    $('#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate-3').append(text_3);
+                    animateletter();
+                });
+            });
+        </script>
+        <style>
+            #<?=  /* @noEscape */ $block->getData("animate_id"); ?>.slide-container {
+                background-color: <?=  /* @noEscape */ $block->getData('background_color'); ?>;
+                margin: 20px 0;
+                overflow: hidden;
+            }
+            #<?=  /* @noEscape */ $block->getData("animate_id"); ?>.slide-container p {
+                color: <?=  /* @noEscape */ $block->getData('text_color'); ?>;
+                font-size: <?=  /* @noEscape */ $block->getData('font_size'); ?>px;
+                text-align: center;
+                margin: 0;
+                padding: 20px 0;
+            }
+        </style>
+    </div>
+<?php } ?>
+
+<?php if ($block->getData('animation_type') == 4) { ?>
+    <div class="fade-container" id="<?=  /* @noEscape */ $block->getData('animate_id'); ?>">
+        <p id="anim" class="to-animate-4" ></p>
+        <script>
+            require(['jquery',"https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"], function($,anime) {
+                function animateletter () {
+                    anime({
+                        targets: '#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate-4',
+                        keyframes: [
+                            {opacity: 0, duration:0},
+                            {opacity:1, duration:<?=  /* @noEscape */ $block->getData('animate_between_four'); ?>},
+                            {opacity:0,delay: <?=  /* @noEscape */ $block->getData('animate_duration_four'); ?>, duration:<?=  /* @noEscape */ $block->getData('animate_between_four'); ?>}, //Delay de termina el tiempo de permanencia del frame anterior
+                        ],
+                        delay: anime.stagger(2500, {start: 0}),
+                        easing: 'easeInOutQuad',
+                        loop: true
+                    });
+                }
+
+                $(function() {
+                    var text_4 = "<span class='element'><?=  /* @noEscape */ $block->getData('title'); ?></span>";
+                    $('#<?=  /* @noEscape */ $block->getData("animate_id"); ?> .to-animate-4').append(text_4);
+                    animateletter();
+                });
+            });
+        </script>
+        <style>
+              #<?=  /* @noEscape */ $block->getData('animate_id'); ?>.fade-container {
+                background-color: <?=  /* @noEscape */ $block->getData('background_color'); ?>;
+                margin: 20px 0;
+            }
+                #<?=  /* @noEscape */ $block->getData('animate_id'); ?>.fade-container p {
+                color: <?=  /* @noEscape */ $block->getData('text_color'); ?>;
+                font-size: <?=  /* @noEscape */ $block->getData('font_size'); ?>px;
+                text-align: center;
+                margin: 0;
+                padding: 20px 0;
+
+            }
+
+
+        </style>
+    </div>
+<?php } ?>

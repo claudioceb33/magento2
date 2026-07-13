@@ -1,0 +1,8 @@
+"Canonical URLs","Canonieke URL's"
+"Enable canonical URL for category","Schakel canonieke URL in voor categorie"
+"Enable canonical URL for product","Schakel canonieke URL in voor product"
+"Use parent product for canonical","Gebruik ouderproduct voor canoniek"
+"When current product is a part of any other product (configurable, grouped or bundle) then parent URL will be used as canonical for current product.","Als het huidige product deel uitmaakt van een ander product (configureerbaar, gegroepeerd of bundel), wordt de bovenliggende URL gebruikt als canoniek voor het huidige product."
+"Allowed parent types","Toegestane oudertypes"
+"CMS Pages",CMS-pagina's
+"Enable canonical URL for CMS pages","Schakel canonieke URL in voor CMS-pagina's"

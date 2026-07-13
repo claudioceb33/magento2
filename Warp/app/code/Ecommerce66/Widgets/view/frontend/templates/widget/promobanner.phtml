@@ -1,0 +1,16 @@
+<?php
+/* @var $block \Ecommerce66\Widgets\Block\Widget\PromoBanner
+  *
+  */
+$bannerImageUrl = $block->getImageUrl() ?>
+<?php if ($bannerImageUrl!=''): ?>
+    <div class="content-block promobanner-block">
+        <div class="mgs-promobanner promobanner" <?php if ($block->getUrl()!=''): ?>onclick="location.href='<?= /* @noEscape */ $block->getBannerUrl() ?>'"<?php endif ?>>
+                <a href="<?= /* @noEscape */ $block->getBannerUrl() ?>">
+                    <img alt="" loading="lazy" src="<?= /* @noEscape */ $bannerImageUrl ?>" class="banner-image"/>
+                </a>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="message info empty"><div><?= /* @noEscape */ __('Have no banner to show.') ?></div></div>
+<?php endif ?>

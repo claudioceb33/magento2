@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ecommerce66_ai">
+            <group id="content" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Content Generator</label>
+
+                <group id="prompts" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>System Prompts</label>
+                    <field id="cms" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>CMS Prompt</label>
+                        <comment>System prompt for CMS page content generation</comment>
+                    </field>
+                    <field id="category" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Category Prompt</label>
+                        <comment>System prompt for category description generation</comment>
+                    </field>
+                    <field id="product" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Product Prompt</label>
+                        <comment>System prompt for product description generation</comment>
+                    </field>
+                    <field id="seo" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>SEO Prompt</label>
+                        <comment>System prompt for SEO meta content generation</comment>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

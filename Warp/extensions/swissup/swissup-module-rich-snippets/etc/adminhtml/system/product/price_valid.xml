@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="price_valid" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+        <label>Price Valid</label>
+        <field id="type" translate="label comment" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Price Valid Until</label>
+            <source_model>Swissup\RichSnippets\Model\Config\Source\PriceValidUntil</source_model>
+            <comment><![CDATA[The date (in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> date format) after which the price will no longer be available. Applies for all product without special price. When special price has expiration date then it will be used.<br />Check <a href="https://developers.google.com/search/docs/data-types/product#offer_properties">Google guides</a> to find out more.]]></comment>
+        </field>
+        <field id="until" translate="label comment" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Static date</label>
+            <comment>Static value of date in ISO 8601 date format.</comment>
+            <depends>
+                <field id="type">0</field>
+            </depends>
+        </field>
+        <field id="offset" translate="label comment" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Days from today</label>
+            <comment>Offset of days from now. Integer value.</comment>
+            <depends>
+                <field id="type">1</field>
+            </depends>
+        </field>
+    </group>
+</include>

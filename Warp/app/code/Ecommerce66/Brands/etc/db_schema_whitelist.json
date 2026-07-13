@@ -1,0 +1,13 @@
+{
+    "ecommerce66_brands_brand_details": {
+        "column": {
+            "brand_details_id": true,
+            "active": true,
+            "name": true,
+            "landing_url_key": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

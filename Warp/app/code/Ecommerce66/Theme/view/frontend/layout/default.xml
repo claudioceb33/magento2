@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+        <css src="https://use.fontawesome.com/releases/v5.15.4/css/all.css" src_type="url"/>
+    </head>
+    <body>
+        <attribute name="class" value="e66-theme"/>
+        <attribute name="class" value="full-width"/>
+
+        <referenceBlock name="catalog.topnav">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ecommerce66_Theme::html/topmenu.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="viewmodel_theme66" xsi:type="object">Ecommerce66\Theme\ViewModel\ThemeSettings</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

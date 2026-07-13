@@ -1,0 +1,35 @@
+"Generate metadata","Generieren von Metadaten"
+"Don't add any conditions if template is applied to all products.","Fügen Sie keine Bedingungen hinzu, wenn die Vorlage auf alle Produkte angewendet wird."
+"Entity Id",Entitäts-ID
+"Generated at","Erzeugt bei"
+"Generation log",Generierungsprotokoll
+"Generate Metadata","Generieren von Metadaten"
+"Complete at %1","Komplett bei %1"
+"%1: items processed - %2","%1: verarbeitete Artikel - %2"
+"Start at %1","Beginnen Sie bei %1"
+"You've deleted template.","Sie haben die Vorlage gelöscht."
+"We can't find template to delete.","Wir können keine Vorlage zum Löschen finden."
+"Template with ID %1 no longer exists.","Vorlage mit der ID %1 ist nicht mehr vorhanden."
+"Metadata Templates",Metadatenvorlagen
+"Edit ""%1""","Bearbeiten von ""%1"""
+"Create template","Vorlage erstellen"
+"A total of %1 template(s) have been deleted.","Insgesamt wurden %1-Vorlagen gelöscht."
+"A total of %1 template(s) have updated status.","Insgesamt %1-Vorlagen haben den Status aktualisiert."
+"New Template","Neue Vorlage"
+"This template no longer exists.","Diese Vorlage ist nicht mehr vorhanden."
+"You saved the template.","Sie haben die Vorlage gespeichert."
+"Something went wrong while saving the template.","Beim Speichern der Vorlage ist etwas schief gelaufen."
+"Category Attribute",Kategorieattribut
+"Category ID",Kategorie-ID
+"All entities","Alle Entitäten"
+"There is generated metadata for %1.","Es werden Metadaten für %1 generiert."
+Generated,Generiert
+"Value is read only","Wert wird nur gelesen"
+"Force to use generated metadata","Erzwingen der Verwendung generierter Metadaten"
+"Start Time",Startzeit
+"Records to process per job","Datensätze, die pro Auftrag verarbeitet werden sollen"
+"Metadata Template Information",Metadatenvorlageninformationen
+"Generate metadata from templates","Generieren von Metadaten aus Vorlagen"
+"Are you sure you want to delete selected templates?","Möchten Sie ausgewählte Vorlagen wirklich löschen?"
+"Template for","Vorlage für"
+"Data Type",Datentyp

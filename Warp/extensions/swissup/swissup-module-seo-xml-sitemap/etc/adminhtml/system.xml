@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="swissup_xmlsitemap" type="text" sortOrder="2450" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>XML Sitemap</label>
+            <tab>swissup_seocore</tab>
+            <resource>Swissup_SeoXmlSitemap::config_seoxmlsitemap</resource>
+            <group id="category" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Categories Options</label>
+                <field id="changefreq" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Frequency</label>
+                    <source_model>Magento\Sitemap\Model\Config\Source\Frequency</source_model>
+                    <config_path>sitemap/category/changefreq</config_path>
+                </field>
+                <field id="priority" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Priority</label>
+                    <backend_model>Magento\Sitemap\Model\Config\Backend\Priority</backend_model>
+                    <comment>Valid values range from 0.0 to 1.0.</comment>
+                    <config_path>sitemap/category/priority</config_path>
+                </field>
+                <field id="image_include" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Add Images into Sitemap</label>
+                    <source_model>Magento\Sitemap\Model\Source\Product\Image\IncludeImage</source_model>
+                </field>
+            </group>
+            <group id="product" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Products Options</label>
+                <field id="changefreq" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Frequency</label>
+                    <source_model>Magento\Sitemap\Model\Config\Source\Frequency</source_model>
+                    <config_path>sitemap/product/changefreq</config_path>
+                </field>
+                <field id="priority" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Priority</label>
+                    <backend_model>Magento\Sitemap\Model\Config\Backend\Priority</backend_model>
+                    <comment>Valid values range from 0.0 to 1.0.</comment>
+                    <config_path>sitemap/product/priority</config_path>
+                </field>
+                <field id="image_include" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Add Images into Sitemap</label>
+                    <source_model>Magento\Sitemap\Model\Source\Product\Image\IncludeImage</source_model>
+                    <config_path>sitemap/product/image_include</config_path>
+                </field>
+            </group>
+            <group id="page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>CMS Pages Options</label>
+                <field id="changefreq" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Frequency</label>
+                    <source_model>Magento\Sitemap\Model\Config\Source\Frequency</source_model>
+                    <config_path>sitemap/page/changefreq</config_path>
+                </field>
+                <field id="priority" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Priority</label>
+                    <backend_model>Magento\Sitemap\Model\Config\Backend\Priority</backend_model>
+                    <comment>Valid values range from 0.0 to 1.0.</comment>
+                    <config_path>sitemap/page/priority</config_path>
+                </field>
+            </group>
+            <group id="other" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Other Links Options</label>
+                <field id="changefreq" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Frequency</label>
+                    <source_model>Magento\Sitemap\Model\Config\Source\Frequency</source_model>
+                </field>
+                <field id="priority" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Priority</label>
+                    <backend_model>Magento\Sitemap\Model\Config\Backend\Priority</backend_model>
+                    <comment>Valid values range from 0.0 to 1.0.</comment>
+                </field>
+            </group>
+            <group id="advanced" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced settings</label>
+                <comment><![CDATA[<p>You can setup Magento Cron to generate sitemap XML. Go to <a href="section/sitemap/#sitemap_generate-link">Catalog Sitemap Cron Settings</a>.</p><p>Also you may enable <a href="section/sitemap/#sitemap_search_engines-link">submissions to robots.txt</a>.]]></comment>
+                <field id="limit_max_lines" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Max Number of URLs Per File</label>
+                    <config_path>sitemap/limit/max_lines</config_path>
+                </field>
+                <field id="limit_max_file_size" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Max File Size</label>
+                    <comment>File size in bytes.</comment>
+                    <config_path>sitemap/limit/max_file_size</config_path>
+                </field>
+            </group>
+            <include path="Swissup_SeoCore::system/seomodules.xml"/>
+        </section>
+    </system>
+</config>

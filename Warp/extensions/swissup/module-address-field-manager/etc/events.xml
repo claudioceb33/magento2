@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <!-- Save custom attribute value after quote address saved -->
+    <event name="sales_quote_address_save_after">
+        <observer name="swissup_address_field_manager" instance="Swissup\AddressFieldManager\Observer\QuoteAddressSaveAfter" />
+    </event>
+    <!-- Save custom attribute value after order address saved -->
+    <event name="sales_order_address_save_after">
+        <observer name="swissup_address_field_manager" instance="Swissup\AddressFieldManager\Observer\OrderAddressSaveAfter" />
+    </event>
+
+    <!-- Add custom attribute value to quote address collection -->
+    <event name="sales_quote_address_collection_load_after">
+        <observer name="swissup_address_field_manager" instance="Swissup\AddressFieldManager\Observer\QuoteAddressCollectionLoad" />
+    </event>
+    <!-- Add custom attribute value to order address collection -->
+    <event name="sales_order_address_collection_load_after">
+        <observer name="swissup_address_field_manager" instance="Swissup\AddressFieldManager\Observer\OrderAddressCollectionLoad" />
+    </event>
+
+    <!-- Add custom attribute value to loaded order address -->
+    <event name="sales_order_address_load_after">
+        <observer name="swissup_address_field_manager" instance="Swissup\AddressFieldManager\Observer\OrderAddressLoad" />
+    </event>
+</config>

@@ -1,0 +1,102 @@
+{
+    "hexamarvel_flexibleform": {
+        "column": {
+            "id": true,
+            "title": true,
+            "url_key": true,
+            "store": true,
+            "is_active": true,
+            "top_content": true,
+            "bottom_content": true,
+            "success_message": true,
+            "failure_message": true,
+            "submit_button": true,
+            "redirect_url": true,
+            "captcha": true,
+            "admin_email_active": true,
+            "admin_email": true,
+            "customer_email_active": true,
+            "customer_to_email": true,
+            "result_count": true,
+            "field_count": true,
+            "created_on": true,
+            "updated_on": true
+        },
+        "index": {
+            "HEXAMARVEL_FLEXIBLEFORM_TITLE_URL_KEY": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "hexamarvel_Flexibleform_fieldset": {
+        "column": {
+            "id": true,
+            "title": true,
+            "description": true,
+            "position": true,
+            "class": true,
+            "is_active": true
+        },
+        "index": {
+            "HEXAMARVEL_FLEXIBLEFORM_FIELDSET_TITLE": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "hexamarvel_Flexibleform_fields": {
+        "column": {
+            "id": true,
+            "title": true,
+            "field_type": true,
+            "field_label": true,
+            "fieldset": true,
+            "is_required": true,
+            "layout": true,
+            "position": true,
+            "tooltip": true
+        },
+        "index": {
+            "HEXAMARVEL_FLEXIBLEFORM_FIELDS_TITLE_FIELD_LABEL": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "hexamarvel_flexible_fieldset": {
+        "column": {
+            "id": true,
+            "title": true,
+            "description": true,
+            "position": true,
+            "class": true,
+            "is_active": true
+        },
+        "index": {
+            "HEXAMARVEL_FLEXIBLE_FIELDSET_TITLE": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "hexamarvel_flexible_fields": {
+        "column": {
+            "id": true,
+            "title": true,
+            "field_type": true,
+            "field_label": true,
+            "fieldset": true,
+            "is_required": true,
+            "layout": true,
+            "position": true,
+            "tooltip": true
+        },
+        "index": {
+            "HEXAMARVEL_FLEXIBLE_FIELDS_TITLE_FIELD_LABEL": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

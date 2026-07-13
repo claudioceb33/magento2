@@ -1,0 +1,49 @@
+& when (@media-common = true) {
+
+    @import '../source/base.less';
+
+    .prolabels {
+        &-wrapper {
+            height: 100%;
+            text-align: center;
+
+            .product-item-photo {
+                font-size: 0;
+            }
+
+            .hover-image-container {
+                left: 50%;
+                transform: translateX(-50%);
+
+                .rtl & {
+                    left: auto;
+                    right: 50%;
+                    transform: translateX(50%);
+
+                }
+            }
+        }
+
+        &-product-image-labels,
+        &-content-labels {
+            display: none;
+        }
+
+    }
+
+    /* Fotorama fullscreen hide labels */
+    .fotorama--fullscreen .prolabels-wrapper .prolabel {
+        display: none;
+    }
+
+    .breeze-gallery {
+        .prolabels-wrapper {
+            height: auto;
+        }
+        &.opened {
+            .prolabels-wrapper .prolabel {
+                display: none;
+            }
+        }
+    }
+}

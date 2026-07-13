@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <referenceBlock name="product.info.addtocart">
+                <block class="Ecommerce66\CartQuantity\Block\Product\CustomQty"
+                       name="custom.qty.product.info"
+                       before="-"
+                       template="Ecommerce66_CartQuantity::html/qty_box.phtml"
+                       ifconfig="theme66/settings_plp/qty_box"
+                />
+            </referenceBlock>
+            <referenceBlock name="product.info.addtocart.additional">
+                <block class="Ecommerce66\CartQuantity\Block\Product\CustomQty"
+                       name="custom.qty.info.additional"
+                       before="-"
+                       template="Ecommerce66_CartQuantity::html/qty_box.phtml"
+                       ifconfig="theme66/settings_plp/qty_box"
+                />
+            </referenceBlock>
+            <referenceBlock name="product.info.addtocart.bundle">
+                <block class="Ecommerce66\CartQuantity\Block\Product\CustomQty"
+                       name="custom.qty.info.bundle"
+                       before="-"
+                       template="Ecommerce66_CartQuantity::html/qty_box.phtml"
+                       ifconfig="theme66/settings_plp/qty_box"
+                />
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="content.aside">
+            <referenceBlock name="related.product.addto">
+                <block class="Ecommerce66\CartQuantity\Block\Product\CustomQty"
+                       name="custom.qty.related"
+                       before="-"
+                       template="Ecommerce66_CartQuantity::html/qty_box.phtml"
+                       ifconfig="theme66/settings_plp/qty_box"
+                />
+            </referenceBlock>
+            <referenceBlock name="upsell.product.addto">
+                <block class="Ecommerce66\CartQuantity\Block\Product\CustomQty"
+                       name="custom.qty.upsell"
+                       before="-"
+                       template="Ecommerce66_CartQuantity::html/qty_box.phtml"
+                       ifconfig="theme66/settings_plp/qty_box"
+                />
+            </referenceBlock>
+        </referenceContainer>
+    </body>
+</page>

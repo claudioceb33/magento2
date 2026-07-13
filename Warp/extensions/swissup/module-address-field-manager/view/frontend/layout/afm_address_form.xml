@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Swissup_AddressFieldManager::css/address-field-manager.css" media="screen, print"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Swissup\AddressFieldManager\Block\Address\Edit" name="swissup-address-fields" template="Swissup_FieldManager::customer/fields.phtml">
+                <arguments>
+                    <argument name="formCode" xsi:type="string">customer_address_edit</argument>
+                    <argument name="destination" xsi:type="string">.form-address-edit .field:not(.set.billing):not(.set.shipping)</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

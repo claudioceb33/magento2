@@ -1,0 +1,33 @@
+<?php
+    $isMultiselect = $block->getField()->getFrontendInput() === 'multiselect';
+    $values = $block->getValue();
+
+    if (!is_array($values)) {
+        $values = (string) $values;
+        $values = $values !== '' ? explode(',', $values) : [];
+    }
+?>
+<div class="field <?= $block->escapeHtmlAttr($block->getAdditionalClasses()) ?>">
+    <label class="label" for="<?= $block->getHtmlId() ?>">
+        <span><?= $block->escapeHtml($block->getLabel()) ?></span>
+    </label>
+    <div class="control">
+        <select <?php if ($isMultiselect): ?> multiple <?php endif ?>
+            id="<?= $block->getHtmlId() ?>"
+            name="<?= $block->escapeHtmlAttr($block->getFieldName()) ?>"
+            class="select <?= $block->escapeHtmlAttr($block->getHtmlClass()) ?>">
+
+            <?php foreach ($block->getOptions() as $option): ?>
+                <?php if (!$option['value'] && !$option['label']): ?>
+                    <?php if ($isMultiselect): continue; endif; ?>
+                    <?php $option['label'] = __('Please select') ?>
+                <?php endif ?>
+
+                <option value="<?= $block->escapeHtmlAttr($option['value']) ?>"
+                    <?php if (in_array($option['value'], $values)): ?> selected="selected"<?php endif;?>>
+                    <?= $block->escapeHtml($option['label']) ?>
+                </option>
+            <?php endforeach;?>
+        </select>
+    </div>
+</div>

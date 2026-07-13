@@ -1,0 +1,56 @@
+<?php
+    $items = [];
+    if ($collection = $block->getCollection()) {
+        $collection = clone $collection;
+        $collection->setPageSize(40);
+        $lastPage = $collection->getLastPageNumber();
+        $page = 1;
+        do {
+            $collection->clear();
+            $collection->setCurPage($page);
+            foreach ($collection as $item) {
+                $url = $block->getItemUrl($item);
+                $name = $block->getItemName($item);
+                $items[$url] = $name;
+            }
+
+            $page++;
+        } while ($lastPage >= $page);
+    }
+
+    if (empty($items)) {
+        return;
+    }
+
+    $config = $this->helper('Swissup\SeoHtmlSitemap\Helper\Config');
+    $itemsNumber = count($items);
+    $columnsNumber = $config->getColumnsNumber();
+    $itemsPerColumn = (int)ceil($itemsNumber / $columnsNumber);
+?>
+<div class="sitemap-block">
+    <h3 class="block-subtitle subtitle"><?= $this->getTitle() ?></h3>
+    <div class="sitemap-block-content">
+        <?php if ($columnsNumber > 1) : ?>
+        <div class="col<?= $columnsNumber?>-set">
+            <div class="col-1">
+        <?php endif ?>
+        <?php $i = 0; $col = 1; ?>
+        <?php foreach ($items as $url => $name): ?>
+            <div>
+                <a href="<?= $url ?>"><?= $name ?></a>
+            </div>
+            <?php
+                $i++;
+                if ($columnsNumber > 1 && $col < $columnsNumber && $i == $itemsPerColumn) :
+                    $col++; $i = 0;
+            ?>
+            </div>
+            <div class="col-<?= $col ?>">
+        <?php endif ?>
+        <?php endforeach; ?>
+        <?php if ($columnsNumber > 1): ?>
+            </div>
+        </div>
+        <?php endif ?>
+    </div>
+</div>

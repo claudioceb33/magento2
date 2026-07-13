@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Swissup\SeoXmlSitemap\Model\ItemProvider\OtherLinks">
+        <arguments>
+            <argument name="collectionClass" xsi:type="string">Swissup\SeoHtmlSitemap\Model\ResourceModel\Link\Collection</argument>
+        </arguments>
+    </type>
+</config>

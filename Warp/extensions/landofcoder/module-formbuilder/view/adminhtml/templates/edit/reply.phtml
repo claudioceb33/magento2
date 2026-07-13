@@ -1,0 +1,174 @@
+<div class="block reply-block">
+    <div class="block-title">
+        <strong><?= __("List email reply"); ?></strong>
+    </div>
+    <div class="block-content">
+        <table id="tableReplylist" cellspacing="0" cellpadding="0" border="1" width='100%'>
+            <thead>
+            <tr>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Email From")); ?></th>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Email To")); ?></th>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Subject")); ?></th>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Message Content")); ?></th>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Status")); ?></th>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Created Date")); ?></th>
+                <th style="text-align:center"><?= $block->escapeHtml(__("Error Message")); ?></th>
+            </tr>
+            </thead>
+            <tbody>
+<?php
+$emailFrom = $emailTo = $subject = $message = [];
+if ($reply) :
+            foreach ($reply as $item) :
+                $status = $item->getStatus();
+                $emailFrom[] = $item->getEmailFrom();
+                $emailTo[] = $item->getEmailTo();
+                $subject[] = $item->getSubject();
+                $message[] = $block->xssClean($item->getMessage());
+                ?>
+                    <tr>
+                        <td align="center"><?= $item->getEmailFrom(); ?></td>
+                        <td align="center"><?= $item->getEmailTo(); ?></td>
+                        <td align="center"><?= $item->getSubject(); ?></td>
+                        <td align="center"><?= $item->getMessage(); ?></td>
+                        <td align="center"><?= $item->getStatus() == 1 ? $block->escapeHtml(__("Sent")) : $block->escapeHtml(__("UnSent")); ?></td>
+                        <td align="center"><?= $this->format_date($item->getCreatedTime()); ?></td>
+                        <td align="center"><?= $item->getErrorMessage(); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+        <style>
+            #tableReplylist tr td {
+                font-weight: normal;
+            }
+
+            #tableReplylist td, #tableReplylist th {
+                padding: 5px;
+            }
+
+            #ajax_messages {
+                color: #007bdb;
+            }
+        </style>
+        <div class="table-title" style="padding-top: 40px">
+            <strong><?= $block->escapeHtml(__("Reply Information")); ?></strong>
+        </div>
+        <div class="form_reply">
+            <div id="ajax_messages"></div>
+            <div class="action_form">
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                    <tbody>
+                    <tr>
+                        <td width="30%" style="padding: 10px;"><label for="email_from"><?= $block->escapeHtml(__("Email From")); ?></label>
+                        </td>
+                        <td style="padding: 10px;">
+                            <input type="text" id="email_from" value="<?= $messageModel->getEmailFrom(); ?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" style="padding: 10px;"><label for="email_to"><?=$block->escapeHtml(__("Email To")); ?></label></td>
+                        <td style="padding: 10px;">
+                            <select id="email_to">
+                                <option value=""><?= $block->escapeHtml(__("Select Email")); ?></option>
+                                <?php if ($emails) {
+                                    foreach ($emails as $email) {
+                                        ?>
+                                        <option value="<?= $email; ?>"><?= $email; ?></option>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" style="padding: 10px;"><label for="subject"><?= $block->escapeHtml(__("Subject")); ?></label></td>
+                        <td style="padding: 10px;">
+                            <textarea rows="2" cols="70" id="subject"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="30%" style="padding: 10px;"><label
+                                for="message"><?= $block->escapeHtml(__("Message Content")); ?></label></td>
+                        <td style="padding: 10px;">
+                            <textarea rows="10" cols="70" id="message"></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <a href="javascript:;" class="btn btn-success"
+                               id="btnSendEmail"><?= $block->escapeHtml(__("Send Email")); ?></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <label for="note"><span style="color: red;"><?= $block->escapeHtml(__("Note: You must fill in all fields before submit button Send Email!")) ?></span></label>
+                    </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <input type="hidden" id="form_id" value="<?= $messageModel->getFormId(); ?>">
+                    <input type="hidden" id="message_id" value="<?= $messageModel->getId(); ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function generateReplyListItem(data, tableid) {
+        var html = '<tr>';
+        html += '<td align="center">' + data.email_from + '</td>';
+        html += '<td align="center">' + data.email_to + '</td>';
+        html += '<td align="center">' + data.subject + '</td>';
+        html += '<td align="center">' + data.message + '</td>';
+        html += '<td align="center">' + ((data.status == 1) ? '<?= __("Sent") ?>' : '<?= __("UnSent") ?>') + '</td>';
+        html += '<td align="center">' + data.created_time + '</td>';
+        html += '<td align="center">' + data.error_message + '</td>';
+        html += '</tr>';
+
+        jQuery(tableid + " tbody").append(html);
+    }
+
+    require(['jquery'], function ($) {
+        jQuery(document).ready(function ($) {
+            $(document).on('click', "#btnSendEmail", function () {
+                var email_from = $("#email_from").val();
+                var email_to = $("#email_to").val();
+                var form_id = $("#form_id").val();
+                var message_id = $("#message_id").val();
+                var subject = $("#subject").val();
+                var message = $("#message").val();
+                var action_url = "<?= $this->getReplylistUrl(); ?>";
+                if (email_to && subject && message) {
+                    $("#ajax_messages").html("<?= $block->escapeHtml(__('Reply is sending...')); ?>");
+                    $.ajax({
+                        url: action_url,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: {
+                            email_from: email_from,
+                            email_to: email_to,
+                            subject: subject,
+                            message: message,
+                            form_id: form_id,
+                            message_id: message_id
+                        },
+                        showLoader: true
+
+                    }).done(function (data) {
+                        if (data.status) {
+                            generateReplyListItem(data.data, "#tableReplylist");
+                            $("#ajax_messages").html(data.success);
+                        } else {
+                            $("#ajax_messages").html(data.error);
+                        }
+                        $("#subject").val("");
+                        $("#message").val("");
+                    });
+                }
+            });
+        });
+    });
+</script>

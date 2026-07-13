@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  * Landofcoder
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Landofcoder.com license that is
+  * available through the world-wide-web at this URL:
+  * https://landofcoder.com/terms
+  *
+  * DISCLAIMER
+  *
+  * Do not edit or add to this file if you wish to upgrade this extension to newer
+  * version in the future.
+  *
+  * @category   Landofcoder
+  * @package    Lof_Formbuilder
+  * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+  * @license    https://landofcoder.com/terms
+  -->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+	<widget id="lofformbuilder_form" class="Lof\Formbuilder\Block\Widget\Form">
+		<label translate="true">Lof Formbuilder: Form</label>
+		<description translate="true"></description>
+		<parameters>
+			<parameter name="title" xsi:type="text" visible="true">
+				<label translate="true">Title</label>
+			</parameter>
+            <parameter name="title_color" xsi:type="text" visible="true">
+                <label translate="true">Title Color</label>
+                <description translate="true"><![CDATA[Input color name or color code. Example: #CC0000, white,...]]></description>
+            </parameter>
+            <parameter name="prefix_class" xsi:type="text" visible="true">
+                <label translate="true">Prefix Class</label>
+            </parameter>
+            <parameter name="formid" xsi:type="select" visible="true" source_model="Lof\Formbuilder\Model\Config\Source\Form">
+                <label translate="true">Form</label>
+            </parameter>
+            <parameter name="display_type" xsi:type="select" visible="true" source_model="Lof\Formbuilder\Model\Config\Source\DisplayType">
+                <label translate="true">Display Type</label>
+            </parameter>
+            <parameter name="position" xsi:type="select" visible="true" source_model="Lof\Formbuilder\Model\Config\Source\Position">
+                <label translate="true">Position</label>
+                <depends><parameter name="display_type" value="animation" /></depends>
+            </parameter>
+            <parameter name="icon_color" xsi:type="text" visible="true">
+                <label translate="true">Icon Color</label>
+                <description translate="true"><![CDATA[Input color name or color code. Example: #CC0000, white,...]]></description>
+                <depends><parameter name="display_type" value="animation" /></depends>
+            </parameter>
+            <parameter name="icon_bgcolor" xsi:type="text" visible="true">
+                <label translate="true">Icon Background Color</label>
+                <description translate="true"><![CDATA[Input color name or color code. Example: #CC0000, white,...]]></description>
+                <depends><parameter name="display_type" value="animation" /></depends>
+            </parameter>
+            <parameter name="width" xsi:type="text" visible="true">
+                <label translate="true">Width(px)</label>
+                <depends><parameter name="display_type" value="animation" /></depends>
+            </parameter>
+            <parameter name="button_text" xsi:type="text" visible="true">
+                <label translate="true">Button Text</label>
+                <depends><parameter name="display_type" value="link" /></depends>
+                <value>Click me</value>
+            </parameter>
+            <parameter name="popup_width" xsi:type="text" visible="true">
+                <label translate="true">Popup Width</label>
+                <depends><parameter name="display_type" value="popup" /></depends>
+                <value>600</value>
+            </parameter>
+            <parameter name="popup_height" xsi:type="text" visible="true">
+                <label translate="true">Popup Height</label>
+                <depends><parameter name="display_type" value="popup" /></depends>
+            </parameter>
+            <parameter name="show_after" xsi:type="text" visible="true">
+                <label translate="true">Show after X seconds page is loaded</label>
+                <depends><parameter name="display_type" value="popup" /></depends>
+            </parameter>
+            <parameter name="show_cookietime" xsi:type="text" visible="true">
+                <label translate="true">Show By Cookie</label>
+                <description><![CDATA[Show popup after X minutes. Put 0 to show whenever page is loaded]]></description>
+                <depends><parameter name="display_type" value="popup" /></depends>
+            </parameter>
+            <parameter name="frame_work_css" xsi:type="select" visible="true" source_model="Lof\Formbuilder\Model\Config\Source\Css">
+                <label translate="true">Frame Work Css</label>
+            </parameter>
+            <parameter name="show_text_before" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Text Before Form</label>
+            </parameter>
+            <parameter name="show_text_after" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Text After Form</label>
+            </parameter>
+            <parameter name="block_template" xsi:type="text" visible="true">
+                <label translate="true">Template</label>
+                <description><![CDATA[Input custom module template file path. For example: Lof_Formbuilder::widget/form.phtml. Empty for default]]></description>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="lofformbuilder_list" class="Lof\Formbuilder\Block\Widget\ListMessage">
+        <label translate="true">Lof Formbuilder: Get Form Messages</label>
+        <description translate="true">Get messages from a form</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+            </parameter>
+            <parameter name="prefix_class" xsi:type="text" visible="true">
+                <label translate="true">Prefix Class</label>
+            </parameter>
+            <parameter name="formid" xsi:type="select" visible="true" source_model="Lof\Formbuilder\Model\Config\Source\Form">
+                <label translate="true">Form</label>
+            </parameter>
+            <parameter name="number_item" xsi:type="text" visible="true">
+                <label translate="true">Number Item</label>
+                <value>12</value>
+            </parameter>
+            <parameter name="block_template" xsi:type="text" visible="true">
+                <label translate="true">Custom Template</label>
+                <description translate="true"><![CDATA[Input custom module template file path. For example: <b>Lof_Formbuilder::widget/style1.phtml</b>. Empty for default]]></description>
+            </parameter>
+            <parameter name="item_per_page" xsi:type="text" visible="true">
+                <label translate="true">Number Item Per Page</label>
+            </parameter>
+            <parameter name="grid_pagination" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Grid Pagination</label>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

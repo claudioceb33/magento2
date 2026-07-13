@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">pagebuilder_ai_content_form.pagebuilder_ai_content_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">AI Content Generator</item>
+    </argument>
+    <settings>
+        <namespace>pagebuilder_ai_content_form</namespace>
+    </settings>
+    <dataSource name="pagebuilder_ai_content_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="pagebuilder_ai_content_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    
+    <fieldset name="appearance" sortOrder="10">
+        <settings>
+            <label translate="true">Appearance</label>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+        </settings>
+        
+        <field name="content_type" formElement="select" sortOrder="10">
+            <settings>
+                <label translate="true">Content Type</label>
+                <dataType>text</dataType>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="product_description" xsi:type="array">
+                                <item name="value" xsi:type="string">product_description</item>
+                                <item name="label" xsi:type="string" translate="true">Product Description</item>
+                            </option>
+                            <option name="category_description" xsi:type="array">
+                                <item name="value" xsi:type="string">category_description</item>
+                                <item name="label" xsi:type="string" translate="true">Category Description</item>
+                            </option>
+                            <option name="marketing_copy" xsi:type="array">
+                                <item name="value" xsi:type="string">marketing_copy</item>
+                                <item name="label" xsi:type="string" translate="true">Marketing Copy</item>
+                            </option>
+                            <option name="custom" xsi:type="array">
+                                <item name="value" xsi:type="string">custom</item>
+                                <item name="label" xsi:type="string" translate="true">Custom Prompt</item>
+                            </option>
+                        </options>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        
+        <field name="prompt" formElement="textarea" sortOrder="20">
+            <settings>
+                <label translate="true">Prompt / Instructions</label>
+                <dataType>text</dataType>
+                <notice translate="true">Describe what content you want to generate. Be specific for better results.</notice>
+            </settings>
+        </field>
+        
+        <field name="context" formElement="textarea" sortOrder="30">
+            <settings>
+                <label translate="true">Additional Context (Optional)</label>
+                <dataType>text</dataType>
+                <notice translate="true">Provide product name, category, brand, or other relevant information.</notice>
+            </settings>
+        </field>
+
+        <field name="generated_content" formElement="textarea" sortOrder="50">
+            <settings>
+                <label translate="true">Generated Content</label>
+                <dataType>text</dataType>
+                <notice translate="true">The AI-generated content will appear here.</notice>
+            </settings>
+        </field>
+        
+    </fieldset>
+    
+    <fieldset name="advanced" sortOrder="20">
+        <settings>
+            <label translate="true">Advanced</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+        </settings>
+        
+        <field name="css_classes" formElement="input" sortOrder="10">
+            <settings>
+                <label translate="true">CSS Classes</label>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        
+        <field name="margins_and_padding" formElement="input" sortOrder="20">
+            <settings>
+                <label translate="true">Margins and Padding</label>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+        
+    </fieldset>
+</form>

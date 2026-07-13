@@ -1,0 +1,16 @@
+
+  postgres:
+    image: ${DOCKER_PRIVATE_REGISTRY}/${POSTGRES_DOCKER_IMAGE}
+    env_file: .env
+    ports: 
+      - "${POSTGRES_BINDED_PORT}:5432"
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB}"
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      PGDATA: "${POSTGRES_DATA}"
+    volumes:
+      - warp-volume-db:${POSTGRES_DATA}:delegated
+      - "./.warp/docker/dumps:/dumps"
+    networks:
+      - back

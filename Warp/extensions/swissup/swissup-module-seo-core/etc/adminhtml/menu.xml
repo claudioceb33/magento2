@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Swissup_SeoCore::seocore"
+            title="SEO Suite"
+            module="Swissup_SeoCore"
+            sortOrder="1950"
+            parent="Swissup_Core::swissup"
+            resource="Swissup_SeoCore::seocore"/>
+    </menu>
+</config>

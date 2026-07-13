@@ -1,0 +1,85 @@
+
+.navigation.nav-vertical {
+    .categories {
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        font-weight: 600;
+        padding: 10px;
+        box-sizing: border-box;
+        text-decoration: none;
+        margin-right: 15px;
+        i {
+            margin-right: 7px;
+        }
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+    &.visible .categories{
+        background: #676667 !important;
+    }
+    .menu-link {
+        padding: 0 20px;
+    }
+    @media (min-width: 769px) {
+        background-color: #ffffff;
+        &> ul.list-wrapper {
+            display: none;
+        }
+        &.visible > ul.list-wrapper {
+            display: block;
+        }
+        ul.list-wrapper {
+            position: absolute;
+            background: #fff;
+            box-sizing: border-box;
+            box-shadow: 1px 1px 5px #cccccc ;
+            min-height: 250px;
+            width: 100%;
+            li.level0 {
+                width: 100%;
+                position: initial;
+                a.level-top {
+                    width: 20%;
+                    box-sizing: border-box;
+                }
+                &.active {
+                    a,
+                    a.level-top {
+                        border: none;
+                    }
+                }
+                .ui-menu-icon:after {
+                    content: '\e608';
+                }
+                ul.level0 {
+                    top: 0 !important;
+                    left: 21% !important;
+                    box-shadow: none;
+                    border: none;
+                    width: 79%;
+                    min-height: 250px;
+                }
+                li.level1 {
+                    width: 33%;
+                    display: inline-block;
+                    ul.submenu {
+                        display: block !important;
+                        position: initial !important;
+                        box-shadow: none;
+                        border: none;
+                        border-bottom: 1px solid #dddddd;
+                        li {
+                            text-transform: capitalize;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}

@@ -1,0 +1,35 @@
+"Generate metadata","Generera metadata"
+"Don't add any conditions if template is applied to all products.","Lägg inte till några villkor om mallen tillämpas på alla produkter."
+"Entity Id",Enhets-ID
+"Generated at","Genereras vid"
+"Generation log",Genereringslogg
+"Generate Metadata","Generera metadata"
+"Complete at %1","Slutförs vid %1"
+"%1: items processed - %2","%1: Bearbetade artiklar - %2"
+"Start at %1","Börja på %1"
+"You've deleted template.","Du har tagit bort mallen."
+"We can't find template to delete.","Det går inte att hitta mallen att ta bort."
+"Template with ID %1 no longer exists.","Mall med ID %1 finns inte längre."
+"Metadata Templates",Metadatamallar
+"Edit ""%1""","Redigera %1"
+"Create template","Skapa mall"
+"A total of %1 template(s) have been deleted.","Totalt %1 mallar har tagits bort."
+"A total of %1 template(s) have updated status.","Totalt %1 mallar har uppdaterat status."
+"New Template","Ny mall"
+"This template no longer exists.","Den här mallen finns inte längre."
+"You saved the template.","Du har sparat mallen."
+"Something went wrong while saving the template.","Något gick fel när du sparar mallen."
+"Category Attribute",Kategoriattribut
+"Category ID",Kategori-ID
+"All entities","Alla enheter"
+"There is generated metadata for %1.","Metadata för %1 har genererats."
+Generated,Genereras
+"Value is read only","Värdet är skrivskyddat"
+"Force to use generated metadata","Tvinga fram användning av genererade metadata"
+"Start Time",Starttid
+"Records to process per job","Poster som ska bearbetas per jobb"
+"Metadata Template Information","Information om metadatamall"
+"Generate metadata from templates","Generera metadata från mallar"
+"Are you sure you want to delete selected templates?","Vill du ta bort markerade mallar?"
+"Template for","Mall för"
+"Data Type",Datatyp

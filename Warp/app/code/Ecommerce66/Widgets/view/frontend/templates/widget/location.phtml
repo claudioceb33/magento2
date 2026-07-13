@@ -1,0 +1,16 @@
+<?php
+
+/** @var $block \Ecommerce66\Widgets\Block\Widget\Location */
+?>
+
+<div class="location">
+    <div class="parfu_widget_location">
+   <div> <img class="image_wid_par" src="<?= /* @noEscape */ $block->getDataImage('title_top') ?>" alt=""></div>
+   <div class="store_wid"><p><?= $block->escapeHtml(__('Sucursal:')) ?></p> <p class="wid_location_name"><?= $block->escapeHtml($block->getData('store_name')) ?></p></div>
+        <div class="address_button">
+            <p><?= $block->escapeHtml($block->getData('address_store')) ?></p>
+            <a href="<?= $block->escapeHtml($block->getData('url_maps')) ?>" target="_blank" > <button><?= $block->escapeHtml(__('Ver en mapa')) ?> </a>  </button></a> 
+        </div>
+        <p class="phone_widget"><?= $block->escapeHtml(__('Teléfono:')) ?> <?= $block->escapeHtml($block->getData('phone_store')) ?></p>
+    </div>
+</div>

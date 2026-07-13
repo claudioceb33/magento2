@@ -1,0 +1,61 @@
+{
+    "swissup_seourls_attribute_label": {
+        "column": {
+            "attribute_label_id": true,
+            "attribute_id": true,
+            "store_id": true,
+            "value": true
+        },
+        "index": {
+            "SWISSUP_SEOURLS_ATTRIBUTE_LABEL_ATTRIBUTE_ID_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_SEOURLS_ATTR_LBL_ATTR_ID_EAV_ATTR_ATTR_ID": true,
+            "SWISSUP_SEOURLS_ATTRIBUTE_LABEL_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "swissup_seourls_attribute_value": {
+        "column": {
+            "attribute_value_id": true,
+            "attribute_id": true,
+            "store_id": true,
+            "original_value": true,
+            "url_value": true
+        },
+        "index": {
+            "SWISSUP_SEOURLS_ATTRIBUTE_VALUE_ATTRIBUTE_ID_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_SEOURLS_ATTR_VAL_ATTR_ID_EAV_ATTR_ATTR_ID": true,
+            "SWISSUP_SEOURLS_ATTRIBUTE_VALUE_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "swissup_seourls_category_label": {
+        "column": {
+            "category_label_id": true,
+            "entity_id": true,
+            "store_id": true,
+            "value": true
+        },
+        "index": {
+            "SWISSUP_SEOURLS_CATEGORY_LABEL_ENTITY_ID_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_SEOURLS_CTGR_LBL_ENTT_ID_CAT_CTGR_ENTT_ENTT_ID": true,
+            "SWISSUP_SEOURLS_CATEGORY_LABEL_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "swissup_seourls_attribute_advanced": {
+        "column": {
+            "attribute_id": true,
+            "is_nofollow": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SWISSUP_SEOURLS_ATTR_ADVANCED_ATTR_ID_EAV_ATTR_ATTR_ID": true
+        }
+    }
+}

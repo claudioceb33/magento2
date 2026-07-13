@@ -1,0 +1,30 @@
+"Save Field",保存字段
+"Delete Field",删除栏位
+"Edit Field '%1'","编辑字段 '％1'"
+"New Field",新领域
+"Advanced Field Properties",高级字段属性
+"Show on Storefront",在店面展示
+"Show In Forms",以表格显示
+"Field Properties",字段属性
+"Field Information",现场信息
+"You cannot delete this field.",您不能删除该字段。
+"Field was deleted.",字段已删除。
+"Can't find a field to delete.",找不到要删除的字段。
+"This field no longer exists.",该字段不再存在。
+"You cannot edit this attribute.",您无法编辑此属性。
+"You saved the field.",您保存了该字段。
+"An field with this code already exists.",具有此代码的字段已存在。
+"An field with the same code (%1) already exists.",具有相同代码（％1）的字段已存在。
+"Customer Address Registration",客户地址注册
+"Customer Account Address",客户帐号地址
+"Customer Registration",客户注册
+"Customer Account Edit",客户帐号编辑
+"Admin Checkout",管理员结帐
+"Name must be required.",必须输入姓名。
+"Country must be visible to keep Magento working.",必须保持国家可见才能使Magento正常运转。
+"Use ""Stores > Configuration > General > State"" to change region field status",使用“存储>配置>常规>状态”来更改区域字段状态
+"Use ""Stores > Configuration > General > Country Options"" to change postcode status",使用“商店>配置>常规>国家/地区选项”更改邮政编码状态
+"Email must be required.",必须填写电子邮件。
+"Website_id must be required.",必须输入Website_id。
+"Group_id must be required.",必须为Group_id。
+"Remove website overrides",删除网站替代

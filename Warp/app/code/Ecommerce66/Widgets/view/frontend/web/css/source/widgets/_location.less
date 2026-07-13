@@ -1,0 +1,157 @@
+.location {
+    display: inline-flex;
+    width: 627px;
+    flex-direction: column;
+    padding: 1em;
+}
+
+
+
+.parfu_widget_location {
+    border: 1.5px solid rgba(122, 117, 117, 0.808);
+    padding: 2em;
+    display: grid;
+
+}
+
+
+
+.address_button {
+    display: flex;
+    place-content: space-between;
+    border-top: 1px solid rgba(100, 96, 96, 0.678);
+    border-bottom: 1px solid rgb(100, 96, 96, 0.678);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    height: 80px;
+    align-self: center;
+    align-items: center;
+}
+
+
+.address_button p {
+    width: 50%;
+    white-space: pre-wrap;
+    color: black;
+
+}
+
+.address_button button {
+    background: black;
+    color: white;
+    width: 155px;
+    height: 40px;
+    align-self: center;
+}
+
+.location .phone_widget {
+    color: solid rgba(146, 142, 142, 0.644) !important;
+    padding-top: 10px;
+}
+
+.image_wid_par {
+    width: 100%;
+
+    max-width: 200px;
+}
+
+.store_wid{
+    display: flex;
+    padding-bottom: 15px;
+}
+.store_wid p{
+    font-size: 30px;
+}
+
+.wid_location_name{
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.location .store_wid p{
+    margin-right: 10px !important;
+}
+
+/////////////////////////////
+
+@media (max-width: 1400px) {
+    
+    .location {
+        display: inline-flex;
+        width: 550px;
+        padding: 2em;
+  }
+
+ }
+
+ @media (max-width: 1275px) {
+    
+    .location {
+        display: inline-flex;
+        margin-top: 10px;
+        max-width: 40%;
+  }
+
+  .wid_location_name{
+    line-height: 0.8em;
+  }
+
+ }
+
+
+@media (max-width: 1070px) {
+    .location {
+        display: initial;
+        margin-top: 10px;
+  }
+}
+
+
+
+@media (max-width: 800px) {
+    
+    .location {
+        display: flex;
+        width: auto;
+        flex-direction: column;
+        padding: 1em;
+        max-width: 100%;
+    }
+    .address_button{
+        height: auto;
+    }
+ 
+  }
+
+  @media (max-width: 500px) {
+    
+  
+    .address_button{
+        height: auto;
+        display: block;
+    }
+    
+    .store_wid{
+        display: block;
+    }
+    .wid_location_name{
+        margin-top: 10px;
+    }
+
+    .address_button p{
+        width: 100%;
+    }
+  }
+
+
+  @media (max-width: 280px) {
+    
+  
+    .parfu_widget_location{
+        padding: 15px;
+    }
+    .address_button{
+        display: table-cell;
+    }
+  }

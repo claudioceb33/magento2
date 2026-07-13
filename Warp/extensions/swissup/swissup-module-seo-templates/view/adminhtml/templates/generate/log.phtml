@@ -1,0 +1,14 @@
+<div class="seotemplates-generate-log"></div>
+<script type="text/html" id="generate-log-template">
+    <div class="content" data-bind="foreach: rows">
+        <div data-bind="text: text"></div>
+    </div>
+    <div class="loader" style="position: relative; height: 50px" data-bind="visible: showLoader">
+        <div data-role="spinner" class="admin__data-grid-loading-mask">
+            <div class="spinner" style="left: 50px">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+</script>
