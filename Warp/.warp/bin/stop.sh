@@ -46,11 +46,11 @@ function stop() {
           fi
 
           # stop docker containers in macOS
-          docker-compose -f $DOCKERCOMPOSEFILE $DOCKERACTION
+          warp_compose -f $DOCKERCOMPOSEFILE $DOCKERACTION
         ;;
         Linux)
           # stop docker containers in linux
-          docker-compose -f $DOCKERCOMPOSEFILE $DOCKERACTION
+          warp_compose -f $DOCKERCOMPOSEFILE $DOCKERACTION
         ;;
       esac
     else

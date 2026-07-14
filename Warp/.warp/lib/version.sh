@@ -1,3 +1,3 @@
 #!/bin/bash
 
-WARP_VERSION="2022.07.11"
+WARP_VERSION="2025.12.23"

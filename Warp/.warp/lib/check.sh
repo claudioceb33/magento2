@@ -99,6 +99,14 @@ warp_check_os_mac() {
     esac    
 }
 
+warp_compose() {
+    if docker compose version >/dev/null 2>&1; then
+        docker compose "$@"
+    else
+        docker-compose "$@"
+    fi
+}
+
 #######################################
 # Check if the docker-components are running
 # Globals:
@@ -112,7 +120,7 @@ warp_check_is_running() {
     if [ -f $DOCKERCOMPOSEFILE ]
     then
         #dockerStatusOutput=$(docker-compose -f $DOCKERCOMPOSEFILE ps -q | xargs docker inspect --format='{{ .State.Status }}' | sed 's:^/::g' | grep -i running)
-        dockerStatusOutput=$(docker-compose -f $DOCKERCOMPOSEFILE ps --filter status=running --services)
+        dockerStatusOutput=$(warp_compose -f $DOCKERCOMPOSEFILE ps --filter status=running --services)
         outputSize=${#dockerStatusOutput}
         if [ "$outputSize" -gt 0 ]; then
             echo true
@@ -130,7 +138,7 @@ warp_check_php_is_running() {
         COUNT=0
         while : ; do
             #dockerStatusOutput=$(docker-compose -f $DOCKERCOMPOSEFILE ps -q php | xargs docker inspect --format='{{ .State.Status }}' | sed 's:^/::g' | grep -i running)
-            dockerStatusOutput=$(docker-compose -f $DOCKERCOMPOSEFILE ps -q php)
+            dockerStatusOutput=$(warp_compose -f $DOCKERCOMPOSEFILE ps -q php)
             outputSize=${#dockerStatusOutput}
             if [ "$outputSize" -gt 0 ]; then
                 echo true
@@ -167,7 +175,7 @@ function warp_check_selenium_is_installed() {
 function warp_check_selenium_is_running() {
     if [ -f $DOCKERCOMPOSEFILESELENIUM ]
     then        
-        dockerStatusOutput=$(docker-compose -f $DOCKERCOMPOSEFILE -f $DOCKERCOMPOSEFILESELENIUM ps -q seleniumhub)
+        dockerStatusOutput=$(warp_compose -f $DOCKERCOMPOSEFILE -f $DOCKERCOMPOSEFILESELENIUM ps -q seleniumhub)
         outputSize=${#dockerStatusOutput}
         if [ "$outputSize" -gt 0 ] ; then
             echo true

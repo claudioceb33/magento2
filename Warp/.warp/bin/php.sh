@@ -49,7 +49,7 @@ php_simil_ssh() {
                 warp_message_error "please, first run warp start"
                 exit 1
             fi
-            docker-compose -f $DOCKERCOMPOSEFILE exec -u root php bash
+            warp_compose -f $DOCKERCOMPOSEFILE exec -u root php bash
         elif [[ -z $1 || $1 == "--www-data" ]]; then
             # Check if warp is running:    
             if [ $(warp_check_is_running) = false ]; then
@@ -57,7 +57,7 @@ php_simil_ssh() {
                 warp_message_error "please, first run warp start"
                 exit 1
             fi
-            docker-compose -f $DOCKERCOMPOSEFILE exec -u www-data php bash
+            warp_compose -f $DOCKERCOMPOSEFILE exec -u www-data php bash
         elif [[ $1 == "-h" || $1 == "--help" ]]; then
             php_ssh_help
             exit 0

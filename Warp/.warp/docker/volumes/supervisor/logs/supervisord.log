@@ -1,0 +1,51 @@
+2026-07-13 12:15:36,842 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/dashboard.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/myapp.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/oro.cron.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/oro.data_audit.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/oro.default.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/oro.email.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/oro.image_resize.conf" during parsing
+2026-07-13 12:15:36,842 INFO Included extra file "/etc/supervisor/conf.d/oro.pricing.conf" during parsing
+2026-07-13 12:15:36,843 INFO Included extra file "/etc/supervisor/conf.d/oro.redirect.conf" during parsing
+2026-07-13 12:15:36,843 INFO Included extra file "/etc/supervisor/conf.d/oro.search.conf" during parsing
+2026-07-13 12:15:36,843 INFO Included extra file "/etc/supervisor/conf.d/oro.service_jobs.conf" during parsing
+2026-07-13 12:15:36,843 INFO Included extra file "/etc/supervisor/conf.d/oro.websocket.conf" during parsing
+2026-07-13 12:15:38,585 INFO RPC interface 'supervisor' initialized
+2026-07-13 12:15:38,585 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2026-07-13 12:15:38,588 INFO daemonizing the supervisord process
+2026-07-13 12:15:38,589 INFO supervisord started with pid 25
+2026-07-13 14:51:45,618 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/dashboard.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/myapp.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.cron.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.data_audit.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.default.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.email.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.image_resize.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.pricing.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.redirect.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.search.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.service_jobs.conf" during parsing
+2026-07-13 14:51:45,618 INFO Included extra file "/etc/supervisor/conf.d/oro.websocket.conf" during parsing
+2026-07-13 14:51:46,151 INFO RPC interface 'supervisor' initialized
+2026-07-13 14:51:46,151 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2026-07-13 14:51:46,156 INFO daemonizing the supervisord process
+2026-07-13 14:51:46,157 INFO supervisord started with pid 21
+2026-07-14 12:08:40,424 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/dashboard.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/myapp.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.cron.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.data_audit.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.default.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.email.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.image_resize.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.pricing.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.redirect.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.search.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.service_jobs.conf" during parsing
+2026-07-14 12:08:40,454 INFO Included extra file "/etc/supervisor/conf.d/oro.websocket.conf" during parsing
+2026-07-14 12:08:40,801 INFO RPC interface 'supervisor' initialized
+2026-07-14 12:08:40,801 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2026-07-14 12:08:40,802 INFO daemonizing the supervisord process
+2026-07-14 12:08:40,803 INFO supervisord started with pid 24

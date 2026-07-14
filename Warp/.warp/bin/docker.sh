@@ -19,7 +19,7 @@ function docker_command()
         exit 1;
     fi
 
-    docker-compose -f $DOCKERCOMPOSEFILE $*
+    warp_compose -f $DOCKERCOMPOSEFILE $*
 }
 
 function docker_main()

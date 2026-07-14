@@ -80,13 +80,13 @@ function magento_command()
     if [ "$1" = "--root" ]
     then
         shift 1
-        docker-compose -f $DOCKERCOMPOSEFILE exec -uroot php bash -c "php -dmemory_limit=-1 $MAGENTOBIN $*"
+        warp_compose -f $DOCKERCOMPOSEFILE exec -uroot php bash -c "php -dmemory_limit=-1 $MAGENTOBIN $*"
     elif [ "$1" = "-T" ] ; then
         shift 1
-        docker-compose -f $DOCKERCOMPOSEFILE exec -T php bash -c "php -dmemory_limit=-1 $MAGENTOBIN $*"
+        warp_compose -f $DOCKERCOMPOSEFILE exec -T php bash -c "php -dmemory_limit=-1 $MAGENTOBIN $*"
     else
 
-        docker-compose -f $DOCKERCOMPOSEFILE exec php bash -c "php -dmemory_limit=-1 $MAGENTOBIN $*"
+        warp_compose -f $DOCKERCOMPOSEFILE exec php bash -c "php -dmemory_limit=-1 $MAGENTOBIN $*"
     fi
 }
 
@@ -118,7 +118,7 @@ function magento_command_tools()
 
     shift 1;
     
-    docker-compose -f $DOCKERCOMPOSEFILE exec php bash -c "[ -f $TOOLS_COMMAND ] && $TOOLS_COMMAND $* || echo \"not found binary $TOOLS_COMMAND\""
+    warp_compose -f $DOCKERCOMPOSEFILE exec php bash -c "[ -f $TOOLS_COMMAND ] && $TOOLS_COMMAND $* || echo \"not found binary $TOOLS_COMMAND\""
 }
 
 function magento_install()

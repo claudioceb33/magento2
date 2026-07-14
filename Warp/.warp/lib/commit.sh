@@ -1,3 +1,3 @@
 #!/bin/bash
 
-WARP_COMMIT="06cf460"
+WARP_COMMIT="ef28fb3"

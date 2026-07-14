@@ -19,10 +19,10 @@ function copy_ssh_id() {
   fi;
 
   if [ -f $PATH_KEY_PAIR ] ; then
-    docker-compose -f $DOCKERCOMPOSEFILE exec php bash -c "mkdir -p /var/www/.ssh/"
-    docker cp $PATH_KEY_PAIR "$(docker-compose -f $DOCKERCOMPOSEFILE ps -q php)":/var/www/.ssh/id_rsa
-    docker-compose -f $DOCKERCOMPOSEFILE exec --user=root php bash -c "chown -R www-data:www-data /var/www/.ssh/id_rsa"
-    docker-compose -f $DOCKERCOMPOSEFILE exec --user=root php bash -c "chmod 400 /var/www/.ssh/id_rsa"
+    warp_compose -f $DOCKERCOMPOSEFILE exec php bash -c "mkdir -p /var/www/.ssh/"
+    docker cp $PATH_KEY_PAIR "$(warp_compose -f $DOCKERCOMPOSEFILE ps -q php)":/var/www/.ssh/id_rsa
+    warp_compose -f $DOCKERCOMPOSEFILE exec --user=root php bash -c "chown -R www-data:www-data /var/www/.ssh/id_rsa"
+    warp_compose -f $DOCKERCOMPOSEFILE exec --user=root php bash -c "chmod 400 /var/www/.ssh/id_rsa"
   fi;
 }
 
@@ -49,9 +49,9 @@ function composer() {
 
     if [ "$1" = "-T" ]; then
       shift 1
-      docker-compose -f $DOCKERCOMPOSEFILE exec -T php bash -c "php -dmemory_limit=-1 /usr/local/bin/composer $*"
+      warp_compose -f $DOCKERCOMPOSEFILE exec -T php bash -c "php -dmemory_limit=-1 /usr/local/bin/composer $*"
     else
-      docker-compose -f $DOCKERCOMPOSEFILE exec php bash -c "php -dmemory_limit=-1 /usr/local/bin/composer $*"
+      warp_compose -f $DOCKERCOMPOSEFILE exec php bash -c "php -dmemory_limit=-1 /usr/local/bin/composer $*"
     fi;
   fi;
 }

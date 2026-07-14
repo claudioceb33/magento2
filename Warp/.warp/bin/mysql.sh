@@ -102,7 +102,7 @@ function mysql_update_db()
         # Exit status 1 means string was not found
         if [ $? = 0 ] || [ -f "$HOME/.aws/credentials" ]
         then
-            
+
             # there are two versions of the AWS client in our infrastructure,
             # this get-login help command only works on the old version, so if it works, run the old one.
             echo "Logging into ECR"

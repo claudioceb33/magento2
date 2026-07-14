@@ -68,12 +68,12 @@ function start() {
         if [ ! -z $CUSTOM_YML_FILE ] ; then
           check_ES_version
           # start docker with custom yml file
-          docker-compose -f $DOCKERCOMPOSEFILE -f $DOCKERCOMPOSEFILEMAC -f $CUSTOM_YML_FILE up --remove-orphans -d
+          warp_compose -f $DOCKERCOMPOSEFILE -f $DOCKERCOMPOSEFILEMAC -f $CUSTOM_YML_FILE up --remove-orphans -d
           check_PHP_Image
         else
           check_ES_version
           # start docker containers in macOS
-          docker-compose -f $DOCKERCOMPOSEFILE -f $DOCKERCOMPOSEFILEMAC up --remove-orphans -d
+          warp_compose -f $DOCKERCOMPOSEFILE -f $DOCKERCOMPOSEFILEMAC up --remove-orphans -d
           check_PHP_Image
         fi
       ;;
@@ -81,12 +81,12 @@ function start() {
         if [ ! -z $CUSTOM_YML_FILE ] ; then
           check_ES_version
           # start docker with custom yml file
-          docker-compose -f $DOCKERCOMPOSEFILE -f $CUSTOM_YML_FILE up --remove-orphans -d
+          warp_compose -f $DOCKERCOMPOSEFILE -f $CUSTOM_YML_FILE up --remove-orphans -d
           check_PHP_Image
         else
           check_ES_version
           # start docker containers in linux
-          docker-compose -f $DOCKERCOMPOSEFILE up --remove-orphans -d
+          warp_compose -f $DOCKERCOMPOSEFILE up --remove-orphans -d
           check_PHP_Image
         fi
       ;;

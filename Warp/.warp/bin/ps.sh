@@ -20,7 +20,7 @@ function ps_command()
         exit 1;
     fi
 
-    docker-compose -f $DOCKERCOMPOSEFILE ps
+    warp_compose -f $DOCKERCOMPOSEFILE ps
 }
 
 function ps_main()
