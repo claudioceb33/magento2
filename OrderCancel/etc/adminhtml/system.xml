@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="checkout">
+            <group id="options">
+                <field id="payments" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Medios de pagos cancelados automaticamente</label>
+                    <frontend_model>Ceb\OrderCancel\Block\Adminhtml\System\Form\Field\Payments</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>Por default solo Mercadopago CheckoutPro.</comment>
+                </field>
+                <field id="cancel_order_from" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cancelar ordenes desde N horas atras</label>
+                    <validate>validate-zero-or-greater validate-digits</validate>
+                </field>
+                <field id="cancel_order_to" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cancelar ordenes hasta N dias atras</label>
+                    <validate>validate-zero-or-greater validate-digits</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

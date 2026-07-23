@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <checkout>
+            <options>
+                <payments>{"_1764767990147_147":{"payment_method":"mercadopago_adbpayment_checkout_pro"}}</payments>
+                <cancel_order_from>3</cancel_order_from>
+                <cancel_order_to>30</cancel_order_to>
+            </options>
+        </checkout>
+    </default>
+</config>
