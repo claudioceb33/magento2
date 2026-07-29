@@ -1,0 +1,44 @@
+
+<div class="talla-boton-container">
+    <a id="size-chart" href="#" data-mage-init='{"myjs": {}}' alt="Tabla de talles">
+        <i class="fas fa-tshirt"></i>
+        <span>Tabla de tallas</span>
+    </a>
+</div>
+
+<div data-role="content" class="product attribute size-chart tab-info group-1" id="imagen-tabla-talla">
+    <div id="popup-modal-size-chart" class="modal-size-chart">
+        <image src=".." alt="" />
+    </div>
+</div>
+
+<script>
+require([
+    'jquery',
+    'popupUi'
+], function($, modal) {
+
+    var options_size_chart = {
+        type: 'popup',
+        responsive: true,
+        innerScroll: true,
+        modalClass:'popup-size-chart',
+        buttons: [{
+            class: 'mymodal1',
+            click: function () {
+                this.closeModal();
+            }
+        }]
+    };
+    
+    $(document).ready(function(){
+        if ($("#popup-modal-size-chart").length != 0) 
+        {
+            var popup = modal(options_size_chart, $("#popup-modal-size-chart"));
+            $("#size-chart").on('click',function(){
+                $("#popup-modal-size-chart").modal("openModal");
+            });
+        }
+    });
+});
+</script>
