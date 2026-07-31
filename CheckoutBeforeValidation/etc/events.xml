@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    
+    <!--Observer cuando se entra al checkout index index-->
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="ceb_modulename_controller_action_predispatch_checkout_index_index"
+            instance="Ceb\CheckoutBeforeValidation\Observer\ControllerActionPredispatchCheckoutIndexIndex" />
+    </event>
+
+</config>
