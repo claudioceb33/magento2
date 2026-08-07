@@ -1,0 +1,23 @@
+{
+    "quote": {
+        "column": {
+            "customer_tax_situation": true,
+            "customer_cuit": true,
+            "customer_company": true
+        }
+    },
+    "sales_order": {
+        "column": {
+            "customer_tax_situation": true,
+            "customer_cuit": true,
+            "customer_company": true
+        }
+    },
+    "sales_order_grid": {
+        "column": {
+            "customer_tax_situation": true,
+            "customer_cuit": true,
+            "customer_company": true
+        }
+    }
+}

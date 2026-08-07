@@ -1,0 +1,8 @@
+<div class="fieldset ceb-invoicea-fields" data-bind="visible: visible">
+    <div class="step-title" translate="'Datos para solicitar Factura A'" data-role="title"></div>
+    <div class="fieldset" data-role="content">
+        <each args="data: elems, as: 'element'">
+            <render if="hasTemplate()"></render>
+        </each>
+    </div>
+</div>
