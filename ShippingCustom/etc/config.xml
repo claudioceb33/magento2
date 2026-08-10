@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <carriers>
+            <shipping_ttp>
+                <active>0</active>
+                <title>Shipping Custom</title>
+                <name>Shipping Custom</name>
+                <description>Shipping Custom</description>
+                <message_product_not_available>Uno de sus ítems no es elegible para envío gratis</message_product_not_available>
+                <showmethod>0</showmethod>
+                <model>Ceb\ShippingCustom\Model\Carrier\ShippingCustom</model>
+                <sallowspecific>0</sallowspecific>
+                <max_package_weight>100</max_package_weight>
+                <sort_order>5</sort_order>
+            </shipping_ttp>
+        </carriers>
+    </default>
+</config>
