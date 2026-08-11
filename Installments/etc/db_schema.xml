@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="ceb_installments_installment" resource="default" engine="innodb" comment="ceb_installments_installment Table">
+		<column xsi:type="int" name="installment_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <column name="name"             nullable="true" xsi:type="varchar"  comment="Installment name or title"/>
+        <column name="installments"     nullable="true" xsi:type="smallint" comment="Installment qty" default="1"/>
+        <column name="rate"             nullable="true" xsi:type="float"    comment="installment rate" default="1"/>
+        <column name="disclaimer"       nullable="true" xsi:type="varchar"  comment="Installment disclaimer"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="installment_id"/>
+		</constraint>
+	</table>
+</schema>

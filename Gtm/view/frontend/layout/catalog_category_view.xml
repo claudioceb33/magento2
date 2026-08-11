@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceContainer name="content">
+            <!-- Bloque general del dataLayer -->
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ceb.gtm.datalayer.data"
+                   template="Ceb_Gtm::event/datalayer.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Ceb\Gtm\ViewModel\DataLayer</argument>
+                    <argument name="event_type" xsi:type="string">view_item_list</argument>
+                </arguments>
+            </block>
+
+            <!-- Bloque específico para el evento view_item_list -->
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ceb.gtm.datalayer.itemlist"
+                   template="Ceb_Gtm::event/view_item_list.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Ceb\Gtm\ViewModel\ProductList</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

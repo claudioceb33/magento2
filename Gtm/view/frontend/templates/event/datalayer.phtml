@@ -1,0 +1,37 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Ceb\Gtm\ViewModel\DataLayer $vm */
+$vm = $block->getViewModel();
+$eventType = $block->getData('event_type');
+$eventData = null;
+
+switch ($eventType) {
+    case 'view_item':
+        $eventData = $vm->getViewItemData();
+        break;
+    case 'purchase':
+        $eventData = $vm->getPurchaseData();
+        break;
+    case 'begin_checkout':
+        $eventData = $vm->getBeginCheckoutData();
+        break;
+    case 'view_item_list':
+        $eventData = $vm->getViewItemListData();
+        break;
+    case 'cms':
+        $eventData = $vm->getPageViewData();
+        break;
+    default:
+        $eventData = null;
+}
+
+if (!$eventData) return;
+?>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Ceb_Gtm/js/datalayer": <?= /* @noEscape */ json_encode($eventData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>
+    }
+}
+</script>

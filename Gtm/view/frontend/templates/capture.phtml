@@ -1,0 +1,16 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Ceb\Gtm\ViewModel\GtmData $vm */
+$vm = $block->getViewModel();
+$measurementId = $vm->getMeasurementId(); // I need to add this to ViewModel
+if (!$measurementId) return;
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "gaCapture": {
+            "measurementId": "<?= /* @noEscape */ $measurementId ?>"
+        }
+    }
+}
+</script>

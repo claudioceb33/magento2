@@ -1,0 +1,33 @@
+
+.ceb-theme{
+    .products-grid, .products-carousel{
+        .widget-product-grid{
+            .qty-field-wrapper {
+                max-width: 100%;
+            }
+        }
+        .qty-field-wrapper {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+           button{
+               height: 25px;
+               padding: 0 7px;
+               margin: 5px;
+               line-height: 0px;
+           }
+           input.qty{
+                height: 25px;
+                text-align: center;
+                max-width: 25%;
+            }
+        }
+    }
+    &.catalog-product-view {
+        .box-tocart .field.qty {
+            display: none !important;
+        }
+    }
+}

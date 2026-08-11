@@ -1,0 +1,27 @@
+<?php
+/**
+ * @var \Ceb\Installments\Block\Product\Listing\Installments $block
+ */
+$product = $block->getProduct();
+$installmentData = $block->getInstallmentData();
+?>
+<?php if ($product && $block->canRender()): ?>
+    <div class="product-installments"
+         data-mage-init='{"pinstallments":{}}'
+         data-pid="<?= $block->escapeHtmlAttr($product->getId()) ?>"
+         data-installments="<?= $block->escapeHtmlAttr((int)$installmentData['installments']) ?>"
+         data-rate="<?= $block->escapeHtmlAttr((float)$installmentData['rate']) ?>"
+         data-disclaimer="<?= $block->escapeHtmlAttr((string)$installmentData['disclaimer']) ?>">
+        <span class="qty"><?= $block->escapeHtml((int)$installmentData['installments']) ?></span>
+        <span class="msg interest"><?= $block->escapeHtml(__('cuotas de')) ?></span>
+        <span class="amount"></span>
+        <span class="msg interest-free <?= ((float)$installmentData['rate'] === 1.0) ? '' : 'hidden' ?>">
+            <?= $block->escapeHtml(__('sin interes')) ?>
+        </span>
+        <span class="disclaimer-mark <?= ((string)$installmentData['disclaimer'] !== '') ? '' : 'hidden' ?>">(*)</span>
+        <input type="text" class="swatch-price" value="0" style="float:left;position:absolute;left:-999999px;" />
+        <span class="disclaimer <?= ((string)$installmentData['disclaimer'] !== '') ? '' : 'hidden' ?>">
+            <?= $block->escapeHtml((string)$installmentData['disclaimer']) ?>
+        </span>
+    </div>
+<?php endif; ?>

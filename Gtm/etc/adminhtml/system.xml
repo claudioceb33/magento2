@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="ceb_gtm" translate="label" sortOrder="800" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Google Tag Manager</label>
+            <tab>ceb</tab>
+            <resource>Ceb_Gtm::config</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable GTM (Frontend)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="gtm_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GTM Container ID</label>
+                    <comment>Example: GTM-XXXXXX</comment>
+                </field>
+                <field id="brand_attribute" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand Attribute</label>
+                    <comment>Select the product attribute to use as item_brand in GTM events</comment>
+                    <source_model>Ceb\Gtm\Model\Config\Source\BrandAttribute</source_model>
+                </field>
+                <field id="category_attribute" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Attribute</label>
+                    <comment>Select the product attribute to use as item_category in GTM events</comment>
+                    <source_model>Ceb\Gtm\Model\Config\Source\CategoryAttribute</source_model>
+                </field>
+            </group>
+            <group id="server_side" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>GA4 Measurement Protocol (Server-Side Fallback)</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Server-Side Fallback</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="measurement_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GA4 Measurement ID</label>
+                    <comment>Example: G-XXXXXX. Found in Data Streams.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="api_secret" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Secret</label>
+                    <comment>Generated in Data Stream > Measurement Protocol API secrets.</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="debug_mode" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Debug Mode</label>
+                    <comment>If yes, events will show up in GA4 DebugView.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

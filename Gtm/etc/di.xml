@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Ceb\Gtm\ViewModel\DataLayer">
+        <arguments>
+            <argument name="gtmHelper" xsi:type="object">Ceb\Gtm\Helper\Data</argument>
+        </arguments>
+    </type>
+
+    <type name="Ceb\Gtm\ViewModel\ProductList">
+        <arguments>
+            <argument name="gtmHelper" xsi:type="object">Ceb\Gtm\Helper\Data</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement">
+        <plugin name="ceb_gtm_link_order" type="Ceb\Gtm\Plugin\Quote\LinkOrderToGaData" />
+        <arguments>
+            <argument name="logger" xsi:type="object">CebGtmGa4Logger</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="CebGtmGa4Logger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">ceb_gtm_ga4</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">CebGtmGa4LogHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CebGtmGa4LogHandler" type="Magento\Framework\Logger\Handler\Base">
+        <arguments>
+            <argument name="fileName" xsi:type="string">/var/log/ceb_gtm_ga4_fallback.log</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Ceb\Gtm\Cron\SendPurchases">
+        <arguments>
+            <argument name="logger" xsi:type="object">CebGtmGa4Logger</argument>
+        </arguments>
+    </type>
+
+    <type name="Ceb\Gtm\Model\GA4\MeasurementProtocol">
+        <arguments>
+            <argument name="logger" xsi:type="object">CebGtmGa4Logger</argument>
+        </arguments>
+    </type>
+</config>

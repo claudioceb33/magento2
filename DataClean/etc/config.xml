@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<dbclean>
+			<log_tables>
+                <enabled>0</enabled>
+                <retention_days>30</retention_days>
+                <cron_schedule>0 1 * * *</cron_schedule>
+                <to_clean>mageplaza_smtp_log,nosisintegration_queue</to_clean>
+                <to_truncate>amasty_amrules_purchase_history_index</to_truncate>
+			</log_tables>
+		</dbclean>
+	</default>
+</config>

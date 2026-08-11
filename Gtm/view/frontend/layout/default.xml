@@ -1,0 +1,35 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ceb.gtm.noscript"
+                   template="Ceb_Gtm::noscript.phtml"
+                   ifconfig="ceb_gtm/general/enabled">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Ceb\Gtm\ViewModel\GtmData</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="head.additional">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ceb.gtm.script"
+                   template="Ceb_Gtm::script.phtml"
+                   ifconfig="ceb_gtm/general/enabled">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Ceb\Gtm\ViewModel\GtmData</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="ceb.gtm.capture"
+                   template="Ceb_Gtm::capture.phtml"
+                   ifconfig="ceb_gtm/server_side/enabled">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Ceb\Gtm\ViewModel\GtmData</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

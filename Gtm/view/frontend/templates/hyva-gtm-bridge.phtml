@@ -1,0 +1,470 @@
+<?php
+declare(strict_types=1);
+?>
+<script>
+/**
+ * GTM Hyva Bridge
+ * Hyva/Alpine-friendly add_to_cart tracking without jQuery/RequireJS dependencies.
+ */
+(function () {
+    'use strict';
+
+    if (window.__gtmHyvaBridgeInitialized) {
+        return;
+    }
+    window.__gtmHyvaBridgeInitialized = true;
+
+    let pendingSubmission = null;
+    let submissionSequence = 0;
+    let lastEventKey = null;
+    let lastEventAt = 0;
+    let lastVariant = null;
+    const variantBySimpleId = {};
+    const variantByProductId = {};
+    let lastPrivateContentData = null;
+
+    function isDefined(value) {
+        return value !== undefined && value !== null && value !== '';
+    }
+
+    function cleanObject(object) {
+        return Object.fromEntries(
+            Object.entries(object).filter(function (entry) {
+                return isDefined(entry[1]);
+            })
+        );
+    }
+
+    function normalizePrice(value) {
+        const amount = parseFloat(value);
+        return Number.isFinite(amount) ? amount : null;
+    }
+
+    function normalizeDisplayedPrice(value) {
+        const rawPrice = String(value || '').replace(/[^0-9,.-]/g, '');
+        if (!rawPrice) {
+            return null;
+        }
+
+        if (rawPrice.indexOf('.') > -1 && rawPrice.indexOf(',') > -1) {
+            return normalizePrice(rawPrice.replace(/\./g, '').replace(',', '.'));
+        }
+
+        if (/^\d{1,3}(\.\d{3})+$/.test(rawPrice)) {
+            return normalizePrice(rawPrice.replace(/\./g, ''));
+        }
+
+        if (/^\d{1,3}(,\d{3})+$/.test(rawPrice)) {
+            return normalizePrice(rawPrice.replace(/,/g, ''));
+        }
+
+        return normalizePrice(rawPrice.replace(',', '.'));
+    }
+
+    function getNodeText(node) {
+        return node && node.textContent ? node.textContent.trim() : null;
+    }
+
+    function getElementAttribute(node, attributeName) {
+        if (!node || node.nodeType !== 1 || typeof node.getAttribute !== 'function') {
+            return null;
+        }
+
+        return node.getAttribute(attributeName);
+    }
+
+    function getFormContext(form) {
+        return form.id === 'product_addtocart_form' ? 'pdp' : 'listing';
+    }
+
+    function getProductRoot(form) {
+        return form.closest('.product-item-info')
+            || form.closest('li.item.product')
+            || form.closest('.product-item')
+            || form.closest('[data-product-id]')
+            || form.closest('.product-info-main')
+            || form;
+    }
+
+    function getPriceFromDom(root) {
+        const priceWrapper = root.querySelector(
+            '.price-final_price .price-wrapper[data-price-amount], ' +
+            '[data-price-type="finalPrice"] .price-wrapper[data-price-amount], ' +
+            '.special-price .price-wrapper[data-price-amount], ' +
+            '.price-wrapper[data-price-amount]'
+        );
+
+        const priceTextEl = root.querySelector(
+            '.price-final_price .price, [data-price-type="finalPrice"] .price, .special-price .price, .price'
+        );
+        const priceFromText = priceTextEl ? normalizeDisplayedPrice(priceTextEl.textContent || '') : null;
+
+        if (priceWrapper) {
+            const priceFromAttribute = normalizePrice(priceWrapper.getAttribute('data-price-amount'));
+
+            if (priceFromText !== null && priceFromText >= 1000 && priceFromAttribute !== null && priceFromAttribute < 1000) {
+                return priceFromText;
+            }
+
+            return priceFromAttribute !== null ? priceFromAttribute : priceFromText;
+        }
+
+        return priceFromText;
+    }
+
+    function createSubmissionSnapshot(form) {
+        const selectedSimpleInput = form.querySelector('[name="selected_configurable_option"]');
+        const selectedSimpleId = selectedSimpleInput ? (selectedSimpleInput.value || '').trim() : '';
+        const productIdFromInput = form.querySelector('input[name="product"]') ? form.querySelector('input[name="product"]').value : null;
+        const qtyInput = form.querySelector('input[name="qty"]');
+        const quantity = parseFloat(qtyInput ? qtyInput.value : '1') || 1;
+        const submitId = [
+            'gtm-hyva',
+            Date.now(),
+            ++submissionSequence
+        ].join('-');
+        const snapshotVariant = selectedSimpleId && variantBySimpleId[selectedSimpleId]
+            ? variantBySimpleId[selectedSimpleId]
+            : (productIdFromInput && variantByProductId[String(productIdFromInput)]
+                ? variantByProductId[String(productIdFromInput)]
+                : null);
+
+        form.dataset.gtmHyvaSubmitId = submitId;
+
+        return {
+            id: submitId,
+            form: form,
+            context: getFormContext(form),
+            selectedSimpleId: selectedSimpleId,
+            productId: productIdFromInput,
+            quantity: quantity,
+            variant: snapshotVariant,
+            isTracking: false,
+            isResolved: false,
+            fallbackTimerId: null
+        };
+    }
+
+    function buildItemData(form, eventDetail, submission) {
+        const root = getProductRoot(form);
+
+        const selectedSimpleInput = form.querySelector('[name="selected_configurable_option"]');
+        const selectedSimpleId = submission && isDefined(submission.selectedSimpleId)
+            ? String(submission.selectedSimpleId)
+            : (selectedSimpleInput ? (selectedSimpleInput.value || '').trim() : '');
+
+        const skuFromDataAttr = root.querySelector('[data-product-sku]')
+            ? root.querySelector('[data-product-sku]').getAttribute('data-product-sku')
+            : null;
+        const skuFromInput = form.querySelector('input[name="sku"]') ? form.querySelector('input[name="sku"]').value : null;
+        const productIdFromInput = submission && isDefined(submission.productId)
+            ? String(submission.productId)
+            : (form.querySelector('input[name="product"]') ? form.querySelector('input[name="product"]').value : null);
+
+        const qtyInput = form.querySelector('input[name="qty"]');
+        const quantity = submission && Number.isFinite(Number(submission.quantity))
+            ? Number(submission.quantity)
+            : (parseFloat(qtyInput ? qtyInput.value : '1') || 1);
+
+        const nameEl = root.querySelector('.product-item-name a, .product-item-name .product-item-link, .page-title .base');
+        const brandEl = root.querySelector('.product-item-brand a, .product.attribute.brand a, [data-product-brand]');
+        const categoryEl = root.querySelector('.product-item-category a, .product-item-category, [data-product-category]');
+        const breadcrumbCategoryEl = document.querySelector('.breadcrumbs .item:not(.product):last-child a, .breadcrumbs .item:not(.product):last-child strong');
+        const pageTitleEl = document.querySelector('.page-title .base');
+        const brandFromDataAttr = getElementAttribute(root, 'data-product-brand') || getElementAttribute(form, 'data-product-brand') || null;
+        const categoryFromDataAttr = getElementAttribute(root, 'data-product-category') || getElementAttribute(form, 'data-product-category') || null;
+        const fallbackNameMeta = document.querySelector('meta[property="og:title"]');
+        const fallbackBrandMeta = document.querySelector('meta[property="product:brand"], meta[name="product:brand"]');
+        const fallbackCategoryMeta = document.querySelector('meta[property="product:category"], meta[name="product:category"]');
+
+        const eventSnapshot = eventDetail && eventDetail.submitSnapshot && typeof eventDetail.submitSnapshot === 'object'
+            ? eventDetail.submitSnapshot
+            : null;
+        const eventVariant = eventSnapshot && eventSnapshot.variant && typeof eventSnapshot.variant === 'object'
+            ? eventSnapshot.variant
+            : null;
+
+        const selectedVariant = eventVariant
+            || (submission && submission.variant
+            ? submission.variant
+            : (selectedSimpleId && variantBySimpleId[selectedSimpleId]
+            ? variantBySimpleId[selectedSimpleId]
+            : null));
+        const productVariant = eventDetail.productId && variantByProductId[String(eventDetail.productId)]
+            ? variantByProductId[String(eventDetail.productId)]
+            : null;
+
+        // For configurables with an explicit selected simple, avoid falling back to stale global variant state.
+        const fallbackVariant = selectedSimpleId ? null : (productVariant || lastVariant);
+        const resolvedVariant = selectedVariant || fallbackVariant;
+        const resolvedVariantSku = resolvedVariant && isDefined(resolvedVariant.sku) ? String(resolvedVariant.sku) : null;
+        const resolvedVariantName = resolvedVariant && isDefined(resolvedVariant.name) ? String(resolvedVariant.name) : null;
+        const resolvedVariantPrice = resolvedVariant && Number.isFinite(Number(resolvedVariant.price))
+            ? Number(resolvedVariant.price)
+            : null;
+
+        const itemId = resolvedVariantSku || selectedSimpleId || skuFromInput || skuFromDataAttr || productIdFromInput || null;
+        const priceFromDom = getPriceFromDom(root);
+        const price = selectedSimpleId
+            ? (resolvedVariantPrice !== null && resolvedVariantPrice > 0
+                ? resolvedVariantPrice
+                : (priceFromDom !== null && priceFromDom > 0 ? priceFromDom : null))
+            : (priceFromDom !== null && priceFromDom > 0
+                ? priceFromDom
+                : (resolvedVariantPrice !== null && resolvedVariantPrice > 0 ? resolvedVariantPrice : null));
+
+        return {
+            item_id: itemId,
+            item_name: resolvedVariantName || (nameEl ? nameEl.textContent.trim() : (fallbackNameMeta ? fallbackNameMeta.getAttribute('content') : null)),
+            item_brand: getNodeText(brandEl) || brandFromDataAttr || (fallbackBrandMeta ? fallbackBrandMeta.getAttribute('content') : null),
+            item_category: getNodeText(categoryEl)
+                || categoryFromDataAttr
+                || getNodeText(breadcrumbCategoryEl)
+                || getNodeText(pageTitleEl)
+                || (fallbackCategoryMeta ? fallbackCategoryMeta.getAttribute('content') : null),
+            price: price,
+            quantity: quantity,
+            _productId: productIdFromInput || eventDetail.productId || null,
+            _rootProductId: getElementAttribute(root, 'data-product-id') || null
+        };
+    }
+
+    function getCartItemFromPrivateContent(itemData) {
+        const cart = lastPrivateContentData && lastPrivateContentData.cart ? lastPrivateContentData.cart : null;
+        const items = cart && Array.isArray(cart.items) ? cart.items : [];
+
+        if (!items.length) {
+            return null;
+        }
+
+        const productId = itemData._productId ? String(itemData._productId) : null;
+        const itemId = itemData.item_id ? String(itemData.item_id) : null;
+
+        // Prefer exact SKU match and take the latest matching item.
+        for (let i = items.length - 1; i >= 0; i -= 1) {
+            const item = items[i];
+            const cartSku = isDefined(item.product_sku) ? String(item.product_sku) : null;
+            if (itemId && cartSku && itemId === cartSku) {
+                return item;
+            }
+        }
+
+        // Fallback to product_id (parent product in configurables), also using the latest match.
+        for (let i = items.length - 1; i >= 0; i -= 1) {
+            const item = items[i];
+            const cartProductId = isDefined(item.product_id) ? String(item.product_id) : null;
+            if (productId && cartProductId && productId === cartProductId) {
+                return item;
+            }
+        }
+
+        return items.find(function (item) {
+            const cartProductId = isDefined(item.product_id) ? String(item.product_id) : null;
+            const cartSku = isDefined(item.product_sku) ? String(item.product_sku) : null;
+
+            if (productId && cartProductId && productId === cartProductId) {
+                return true;
+            }
+
+            if (itemId && cartSku && itemId === cartSku) {
+                return true;
+            }
+
+            return false;
+        }) || null;
+    }
+
+    function enrichItemDataFromPrivateContent(itemData) {
+        const cartItem = getCartItemFromPrivateContent(itemData);
+        if (!cartItem) {
+            return itemData;
+        }
+
+        const priceFromSection = normalizePrice(cartItem.product_price_value);
+        const nameFromSection = isDefined(cartItem.product_name) ? String(cartItem.product_name) : null;
+        const brandFromSection = isDefined(cartItem.product_brand) ? String(cartItem.product_brand) : null;
+        const categoryFromSection = isDefined(cartItem.product_category) ? String(cartItem.product_category) : null;
+        return {
+            item_id: itemData.item_id,
+            item_name: itemData.item_name || nameFromSection,
+            item_brand: itemData.item_brand || brandFromSection,
+            item_category: itemData.item_category || categoryFromSection,
+            // Keep variant/DOM price as source of truth; section-data is fallback only.
+            price: itemData.price !== null ? itemData.price : priceFromSection,
+            quantity: itemData.quantity,
+            _productId: itemData._productId
+        };
+    }
+
+    function pushAddToCart(itemData, submissionId, source) {
+        if (!itemData.item_id) {
+            return false;
+        }
+
+        const eventKey = [
+            submissionId || '',
+            itemData.item_id,
+            itemData.quantity,
+            itemData.price !== null ? itemData.price : '',
+            itemData._productId || ''
+        ].join('|');
+
+        const now = Date.now();
+        if (lastEventKey === eventKey && now - lastEventAt < 900) {
+            return false;
+        }
+        lastEventKey = eventKey;
+        lastEventAt = now;
+
+        const cleanItem = cleanObject({
+            item_id: itemData.item_id,
+            item_name: itemData.item_name,
+            item_brand: itemData.item_brand,
+            item_category: itemData.item_category,
+            price: itemData.price,
+            quantity: itemData.quantity
+        });
+
+        const ecommercePayload = cleanObject({
+            currency: window.CebGtmCurrency || 'ARS',
+            value: itemData.price !== null ? (itemData.price * itemData.quantity) : null,
+            items: [cleanItem]
+        });
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ ecommerce: null });
+        window.dataLayer.push({
+            event: 'add_to_cart',
+            ecommerce: ecommercePayload
+        });
+
+        return true;
+    }
+
+    function trackPendingSubmission(eventDetail, source) {
+        if (!pendingSubmission || !pendingSubmission.form) {
+            return;
+        }
+
+        const eventSubmitId = eventDetail && isDefined(eventDetail.submitId) ? String(eventDetail.submitId) : null;
+        if (eventSubmitId && String(pendingSubmission.id) !== eventSubmitId) {
+            return;
+        }
+
+        if (pendingSubmission.isResolved || pendingSubmission.isTracking) {
+            return;
+        }
+
+        if (eventDetail && isDefined(eventDetail.productId) && isDefined(pendingSubmission.productId)) {
+            if (String(eventDetail.productId) !== String(pendingSubmission.productId)) {
+                return;
+            }
+        }
+
+        const submitSnapshot = eventDetail && eventDetail.submitSnapshot && typeof eventDetail.submitSnapshot === 'object'
+            ? eventDetail.submitSnapshot
+            : null;
+        if (submitSnapshot) {
+            if (isDefined(submitSnapshot.simpleId)) {
+                pendingSubmission.selectedSimpleId = String(submitSnapshot.simpleId || '');
+            }
+            if (Number.isFinite(Number(submitSnapshot.quantity))) {
+                pendingSubmission.quantity = Number(submitSnapshot.quantity);
+            }
+            if (submitSnapshot.variant && typeof submitSnapshot.variant === 'object') {
+                pendingSubmission.variant = submitSnapshot.variant;
+            }
+        }
+
+        pendingSubmission.isTracking = true;
+
+        const itemData = buildItemData(pendingSubmission.form, eventDetail || {}, pendingSubmission);
+        const enrichedItemData = enrichItemDataFromPrivateContent(itemData);
+        const pushed = pushAddToCart(enrichedItemData, pendingSubmission.id, source);
+
+        if (pushed) {
+            pendingSubmission.isResolved = true;
+            if (pendingSubmission.fallbackTimerId) {
+                window.clearTimeout(pendingSubmission.fallbackTimerId);
+            }
+            pendingSubmission = null;
+            return;
+        }
+
+        if (pendingSubmission) {
+            pendingSubmission.isTracking = false;
+        }
+    }
+
+    document.addEventListener('submit', function (event) {
+        const form = event.target;
+        if (!(form instanceof HTMLFormElement)) {
+            return;
+        }
+
+        const hasProductInput = !!form.querySelector('input[name="product"]');
+        const isAddToCartForm = hasProductInput || form.id === 'product_addtocart_form';
+        if (!isAddToCartForm) {
+            return;
+        }
+
+        pendingSubmission = createSubmissionSnapshot(form);
+    }, true);
+
+    window.addEventListener('private-content-loaded', function (event) {
+        const detail = event && event.detail ? event.detail : null;
+        const data = detail && detail.data ? detail.data : null;
+        if (data) {
+            lastPrivateContentData = data;
+        }
+    }, true);
+
+    window.addEventListener('ceb-configurable-selection-changed', function (event) {
+        const detail = event.detail || {};
+        if (detail.variant && typeof detail.variant === 'object') {
+            lastVariant = detail.variant;
+
+            const variantSimpleId = isDefined(detail.variant.simpleId) ? String(detail.variant.simpleId) : (isDefined(detail.simpleId) ? String(detail.simpleId) : null);
+            if (variantSimpleId) {
+                variantBySimpleId[variantSimpleId] = detail.variant;
+            }
+
+            const variantProductId = isDefined(detail.productId) ? String(detail.productId) : null;
+            if (variantProductId) {
+                variantByProductId[variantProductId] = detail.variant;
+            }
+        }
+    });
+
+    window.addEventListener('ceb-pdp-addtocart-loading', function (event) {
+        const detail = event.detail || {};
+        const submitSnapshot = detail.submitSnapshot && typeof detail.submitSnapshot === 'object'
+            ? detail.submitSnapshot
+            : null;
+        const eventSubmitId = detail.submitId || (submitSnapshot ? submitSnapshot.submitId : null);
+
+        if (eventSubmitId && pendingSubmission && String(pendingSubmission.id) !== String(eventSubmitId)) {
+            return;
+        }
+
+        if (pendingSubmission && submitSnapshot) {
+            if (isDefined(submitSnapshot.simpleId)) {
+                pendingSubmission.selectedSimpleId = String(submitSnapshot.simpleId || '');
+            }
+            if (Number.isFinite(Number(submitSnapshot.quantity))) {
+                pendingSubmission.quantity = Number(submitSnapshot.quantity);
+            }
+            if (submitSnapshot.variant && typeof submitSnapshot.variant === 'object') {
+                pendingSubmission.variant = submitSnapshot.variant;
+            }
+        }
+
+    });
+
+    window.addEventListener('ceb-addtocart-success', function (event) {
+        const detail = event.detail || {};
+        trackPendingSubmission(detail, detail.source || 'success');
+    });
+
+})();
+</script>

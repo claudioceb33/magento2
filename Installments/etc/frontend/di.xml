@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="ceb_installments_product_listing_installments"
+                type="Ceb\Installments\Plugin\Catalog\Block\Product\AbstractProductPlugin"
+                sortOrder="20"/>
+    </type>
+</config>

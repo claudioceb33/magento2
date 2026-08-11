@@ -1,0 +1,15 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Ceb\Gtm\ViewModel\GtmData $gtm */
+$gtm = $block->getViewModel();
+$gtmId = $gtm->getGtmId();
+if (!$gtmId) return;
+?>
+<script src="https://www.googletagmanager.com/gtm.js?id=<?= /* @noEscape */ $gtmId ?>" async></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+</script>

@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+        <add id="Ceb_Installments::menu"
+             title="Product Installments"
+             module="Ceb_Installments"
+             sortOrder="99"
+             parent="Ceb_Core::top_level"
+             resource="Ceb_Installments::menu"/>
+
+		<add id="Ceb_Installments::ceb_installments_installment"
+             title="Installments Manager"
+             module="Ceb_Installments"
+             sortOrder="9999"
+             resource="Magento_Backend::content"
+             parent="Ceb_Installments::menu"
+             action="ceb_installments/installment/index"/>
+	</menu>
+</config>
