@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
-    <!--Se puede ejecutar el cron con: warp magento run:cron -group="default"-->
-    <group id="my_group">
-        <job name="modulename_custom_job_3" instance="Ceb\ModuleName\Cron\Queue\Publisher" method="process">
-            <config_path>cron/configuration/queue_publisher_scheduled</config_path>
-        </job>
-    </group>
-</config>
