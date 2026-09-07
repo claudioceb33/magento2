@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+
+    <default>
+        <ceb_erp_stock_sync>
+            <general>
+                <enabled>0</enabled>
+                <mode>mock</mode>
+                <dry_run>1</dry_run>
+            </general>
+
+            <schedule>
+                <cron_expression>*/5 * * * *</cron_expression>
+            </schedule>
+
+            <processing>
+                <erp_page_size>200</erp_page_size>
+                <batch_size>100</batch_size>
+                <request_timeout>10</request_timeout>
+                <max_retries>3</max_retries>
+                <retry_delay>2</retry_delay>
+            </processing>
+
+            <inventory>
+                <source_code>default</source_code>
+            </inventory>
+        </ceb_erp_stock_sync>
+    </default>
+
+</config>

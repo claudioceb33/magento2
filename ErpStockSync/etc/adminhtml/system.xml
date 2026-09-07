@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+
+    <system>
+
+        <section id="ceb_erp_stock_sync"
+                 translate="label"
+                 sortOrder="900"
+                 showInDefault="1"
+                 showInWebsite="0"
+                 showInStore="0">
+
+            <label>ERP Stock Sync</label>
+
+            <tab>catalog</tab>
+
+            <resource>Ceb_ErpStockSync::config</resource>
+
+            <group id="general"
+                   translate="label"
+                   sortOrder="10"
+                   showInDefault="1">
+
+                <label>General</label>
+
+                <field id="enabled"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1">
+
+                    <label>Enabled</label>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+                <field id="mode"
+                       translate="label"
+                       type="select"
+                       sortOrder="20"
+                       showInDefault="1">
+
+                    <label>ERP Mode</label>
+
+                    <source_model>Ceb\ErpStockSync\Model\Config\Source\Mode</source_model>
+
+                </field>
+
+                <field id="dry_run"
+                       translate="label"
+                       type="select"
+                       sortOrder="30"
+                       showInDefault="1">
+
+                    <label>Dry Run</label>
+
+                    <comment>
+                        Process ERP data without modifying Magento inventory.
+                    </comment>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+
+                </field>
+
+            </group>
+
+            <group id="schedule"
+                   translate="label"
+                   sortOrder="20"
+                   showInDefault="1">
+
+                <label>Schedule</label>
+
+                <field id="cron_expression"
+                       translate="label comment"
+                       type="text"
+                       sortOrder="10"
+                       showInDefault="1">
+
+                    <label>Cron Expression</label>
+
+                    <comment>
+                        Example: */5 * * * * runs every five minutes.
+                    </comment>
+
+                </field>
+
+            </group>
+
+            <group id="processing"
+                   translate="label"
+                   sortOrder="30"
+                   showInDefault="1">
+
+                <label>Processing</label>
+
+                <field id="erp_page_size"
+                       translate="label"
+                       type="text"
+                       sortOrder="10"
+                       showInDefault="1">
+
+                    <label>ERP Page Size</label>
+
+                    <validate>validate-number validate-greater-than-zero</validate>
+
+                </field>
+
+                <field id="batch_size"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1">
+
+                    <label>Magento Batch Size</label>
+
+                    <validate>validate-number validate-greater-than-zero</validate>
+
+                </field>
+
+                <field id="request_timeout"
+                       translate="label"
+                       type="text"
+                       sortOrder="30"
+                       showInDefault="1">
+
+                    <label>Request Timeout (seconds)</label>
+
+                    <validate>validate-number validate-greater-than-zero</validate>
+
+                </field>
+
+                <field id="max_retries"
+                       translate="label"
+                       type="text"
+                       sortOrder="40"
+                       showInDefault="1">
+
+                    <label>Maximum Retries</label>
+
+                    <validate>validate-number validate-zero-or-greater</validate>
+
+                </field>
+
+                <field id="retry_delay"
+                       translate="label"
+                       type="text"
+                       sortOrder="50"
+                       showInDefault="1">
+
+                    <label>Retry Delay (seconds)</label>
+
+                    <validate>validate-number validate-zero-or-greater</validate>
+
+                </field>
+
+            </group>
+
+            <group id="inventory"
+                   translate="label"
+                   sortOrder="40"
+                   showInDefault="1">
+
+                <label>Inventory</label>
+
+                <field id="source_code"
+                       translate="label"
+                       type="text"
+                       sortOrder="10"
+                       showInDefault="1">
+
+                    <label>Source Code</label>
+
+                    <comment>
+                        MSI source where ERP stock will be synchronized.
+                    </comment>
+
+                </field>
+
+            </group>
+
+        </section>
+
+    </system>
+
+</config>
