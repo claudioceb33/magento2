@@ -1,7 +1,6 @@
 # Ejemplos Magento 2 — Ceb
 
-Colección de módulos y fragmentos didácticos. `Warp/` queda fuera de la
-estandarización y de los comandos de validación de este repositorio.
+Colección de módulos y fragmentos con fines didácticos.
 
 ## Convenciones
 
@@ -35,30 +34,9 @@ PHP_BIN=php8.1 python3 scripts/check.py
 phpcs --standard=phpcs.xml.dist
 phpcbf --standard=phpcs.xml.dist
 ```
-
 El script comprueba sintaxis PHP/PHTML y JavaScript, XML bien formado, estilo y
 regresiones de escape en las plantillas GTM. No instala módulos ni modifica la
 base de datos. La comprobación XML no valida contra los XSD de Magento.
 
-## Alcance y uso
-
-Copiar cada módulo a `app/code/Ceb/<Nombre>` en una instalación de desarrollo,
-revisar sus dependencias y ejecutar allí las validaciones de integración.
-Los cambios de constructor requieren regenerar el código de DI. No se ha
-validado `setup:di:compile` ni el comportamiento de checkout, crons o administración
-en una tienda Magento durante esta estandarización.
-
-Algunos directorios son fragmentos que todavía necesitan adaptación:
-
-- `ConsoleCommand`: falta registro y configuración DI; el namespace no coincide
-  con la ubicación del archivo. Incluye un error aleatorio didáctico y otro
-  ejemplo de ejecución que usa una dependencia sin declarar.
-- `ImportTableData`: falta registro; usa el namespace `Ceb_ImportCustomAttribute`
-  y la tabla de ejemplo `table_name`. Adaptar antes de ejecutar el patch.
-- `Advanced`: se normalizó el formato del archivo existente, que estaba sin
-  seguimiento en Git. Su clase, namespace y ruta no coinciden; contiene
-  dependencias y valores sin definir. No es todavía un helper utilizable.
-
 ShippingCustom, OrderCancel y otros ejemplos dependen de extensiones o atributos
-específicos. Revisar esas dependencias antes de habilitarlos. Esta normalización
-no certifica que todos los ejemplos estén listos para producción.
+específicos.
