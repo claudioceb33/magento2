@@ -7,11 +7,12 @@ use Magento\Sales\Model\Order;
 
 class OrderHandlerStatePlugin
 {
-    const STATE_PAYMENT_REVIEW = 'payment_review';
-    const STATUS_PAYMENT_REVIEW = 'payment_review';
+    public const STATE_PAYMENT_REVIEW = 'payment_review';
+    public const STATUS_PAYMENT_REVIEW = 'payment_review';
 
     /**
-     * Plugin method to intersect the status change, whenever a order with virtual products (that cannot be changed) is set to complete instead of processing.
+     * Plugin method to intersect the status change, whenever a order with virtual products (that cannot be
+     * changed) is set to complete instead of processing.
      *
      * @param State $subject
      * @param callable $proceed
@@ -26,8 +27,9 @@ class OrderHandlerStatePlugin
         $statusSet = $isGiftCardVirtual = false;
 
         foreach ($order->getAllVisibleItems() as $item) {
-            if ($item->getProductType() == 'amgiftcard' && $item->getIsVirtual() == 1)
+            if ($item->getProductType() == 'amgiftcard' && $item->getIsVirtual() == 1) {
                 $isGiftCardVirtual = true;
+            }
         }
 
         if ($isGiftCardVirtual) {
@@ -44,7 +46,8 @@ class OrderHandlerStatePlugin
     }
 
     /**
-     * In case when order cannot be shipped (because items are all virtual products), set status and state to configured values in ConfigHelper
+     * In case when order cannot be shipped (because items are all virtual products), set status and state
+     * to configured values in ConfigHelper
      *
      * @param Order $order
      * @param $currentState
@@ -53,7 +56,6 @@ class OrderHandlerStatePlugin
     private function replaceStatusChangeForVirtualOrders(Order $order, $currentState)
     {
         if ($currentState == Order::STATE_COMPLETE) {
-
             $newState = self::STATE_PAYMENT_REVIEW;
             $newStatus = self::STATUS_PAYMENT_REVIEW;
 
@@ -78,7 +80,12 @@ class OrderHandlerStatePlugin
 
         if ($oldStatus != $newStatus) {
             $order->addCommentToStatusHistory(
-                __("Update of Order-Status: %1 > %2", $this->getStatusLabel($order, $oldStatus), $this->getStatusLabel($order, $newStatus)));
+                __(
+                    "Update of Order-Status: %1 > %2",
+                    $this->getStatusLabel($order, $oldStatus),
+                    $this->getStatusLabel($order, $newStatus)
+                )
+            );
         }
     }
 
@@ -96,5 +103,4 @@ class OrderHandlerStatePlugin
         }
         return $statusCode;
     }
-
 }

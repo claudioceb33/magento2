@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\OrderCancel\Model\Config\Source;
 
 class ActiveMethods
@@ -36,11 +37,11 @@ class ActiveMethods
      */
     public function toOptionArray()
     {
-        $methods = [['value'=>'', 'label'=>'']];
+        $methods = [['value' => '', 'label' => '']];
         $payments = $this->_getPaymentMethods();
 
         foreach ($payments as $paymentCode => $paymentModel) {
-            $paymentTitle = $this->scopeConfig->getValue('payment/'.$paymentCode.'/title');
+            $paymentTitle = $this->scopeConfig->getValue('payment/' . $paymentCode . '/title');
             $methods[$paymentCode] = [
                 'label'   => $paymentTitle,
                 'value' => $paymentCode

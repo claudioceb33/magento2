@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\ImportCustomAttribute\Setup\Patch\Data;
 
 use Magento\Framework\Setup\Patch\DataPatchInterface;
@@ -109,9 +110,10 @@ class ImportTableData implements DataPatchInterface
 
         $this->setup->getConnection()->startSetup();
 
-        while (false !== ($csvLine = $stream->readCsv()))
-        {
-            if (empty($csvLine)) continue;
+        while (false !== ($csvLine = $stream->readCsv())) {
+            if (empty($csvLine)) {
+                continue;
+            }
             $row = $this->getImportRowTable($csvLine);
             if ($row !== false) {
                 $importData[] = $row;

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\CartQty\Helper;
@@ -10,7 +11,6 @@ use Magento\Framework\Serialize\Serializer\Json;
 
 class Data extends AbstractHelper
 {
-
     protected const CONFIG_PLP = 'themeceb/settings_plp/';
     protected const QTY_INPUT   = 'qty_box';
 

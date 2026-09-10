@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\AdminGrid\Ui\Component\Category\Listing\Column;
 
 use Magento\Framework\View\Element\UiComponentFactory;

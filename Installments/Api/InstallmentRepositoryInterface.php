@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Api;
@@ -7,7 +8,6 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 
 interface InstallmentRepositoryInterface
 {
-
     /**
      * Save Installment
      * @param \Ceb\Installments\Api\Data\InstallmentInterface $installment
@@ -55,4 +55,3 @@ interface InstallmentRepositoryInterface
      */
     public function deleteById($installmentId);
 }
-

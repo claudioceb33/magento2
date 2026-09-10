@@ -1,6 +1,7 @@
 <?php
+
 namespace Ceb\ShippingMethodManagement\Plugin\Model;
- 
+
 class ShippingMethodManagement
 {
     public function afterEstimateByAddress($shippingMethodManagement, $output)
@@ -12,7 +13,7 @@ class ShippingMethodManagement
     {
         return $this->filterOutput($output);
     }
- 
+
     public function afterEstimateByAddressId($shippingMethodManagement, $output)
     {
         return $this->filterOutput($output);

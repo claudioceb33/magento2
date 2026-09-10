@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Model;
@@ -8,7 +9,6 @@ use Magento\Framework\Model\AbstractModel;
 
 class Installment extends AbstractModel implements InstallmentInterface
 {
-
     /**
      * @inheritDoc
      */
@@ -97,4 +97,3 @@ class Installment extends AbstractModel implements InstallmentInterface
         return $this->setData(self::DISCLAIMER, $value);
     }
 }
-

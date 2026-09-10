@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Cron;
 
 use Magento\Sales\Api\OrderRepositoryInterface;
@@ -162,7 +163,7 @@ class SendPurchases
 
     /**
      * Purge old records to keep the table clean
-     * 
+     *
      * @param string $dateLimit
      */
     protected function cleanup(string $dateLimit)

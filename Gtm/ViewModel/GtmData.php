@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;

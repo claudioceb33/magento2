@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\AdminGrid\Ui\DataCeb\Category\Listing;
 
 use Magento\Framework\View\Element\UiComponent\DataCeb\SearchResult;

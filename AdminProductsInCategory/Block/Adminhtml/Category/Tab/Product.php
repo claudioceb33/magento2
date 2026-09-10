@@ -4,7 +4,6 @@ namespace Ceb\AdminProductsInCategory\Block\Adminhtml\Category\Tab;
 
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
 use Magento\Catalog\Model\Product\Visibility;
-use Magento\Framework\App\ObjectManager;
 use Magento\Eav\Model\Config;
 
 class Product extends \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
@@ -24,13 +23,13 @@ class Product extends \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
         \Magento\Backend\Helper\Data $backendHelper,
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \Magento\Framework\Registry $coreRegistry,
+        Config $eavConfig,
+        Visibility $visibility,
         array $data = [],
-        Visibility $visibility = null,
-        Status $status = null,
-        Config $eavConfig)
-    {
+        Status $status = null
+    ) {
         $this->eavConfig = $eavConfig;
-        $this->visibility = $visibility ?: ObjectManager::getInstance()->get(Visibility::class);
+        $this->visibility = $visibility;
         parent::__construct($context, $backendHelper, $productFactory, $coreRegistry, $data, $visibility, $status);
     }
 
@@ -38,12 +37,12 @@ class Product extends \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
      * Set collection object
      *
      * @param \Magento\Framework\Data\Collection $collection
-     * @return void
+     * @return $this
      */
     public function setCollection($collection)
     {
         $collection->addAttributeToSelect('custom');
-        parent::setCollection($collection);
+        return parent::setCollection($collection);
     }
 
     /**
@@ -51,8 +50,9 @@ class Product extends \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
      */
     protected function _prepareColumns()
     {
+        parent::_prepareColumns();
         $attribute = $this->eavConfig->getAttribute('catalog_product', 'custom');
-        if ($attribute) {
+        if ($attribute && $attribute->getId() && $attribute->usesSource()) {
             $vals = $attribute->getSource()->getAllOptions();
             $arr = [];
             foreach ($vals as $option) {
@@ -60,7 +60,6 @@ class Product extends \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
                     $arr[$option['value']] = $option['label'];
                 }
             }
-            parent::_prepareColumns();
             $this->addColumnAfter('custom', array(
                 'header' => __('Custom'),
                 'index' => 'custom',
@@ -69,7 +68,8 @@ class Product extends \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
             ), 'sku');
 
             $this->sortColumnsByOrder();
-            return $this;
         }
+
+        return $this;
     }
 }

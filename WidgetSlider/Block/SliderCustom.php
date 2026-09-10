@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\WidgetSlider\Block;
 
 use Magento\Framework\View\Element\Template;

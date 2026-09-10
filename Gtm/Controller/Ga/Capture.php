@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Controller\Ga;
 
 use Magento\Framework\App\Action\Action;
@@ -14,16 +15,16 @@ class Capture extends Action
 {
     /** @var JsonFactory */
     protected $resultJsonFactory;
-    
+
     /** @var CheckoutSession */
     protected $checkoutSession;
-    
+
     /** @var GaDataFactory */
     protected $gaDataFactory;
-    
+
     /** @var GaDataResource */
     protected $gaDataResource;
-    
+
     /** @var GtmHelper */
     protected $gtmHelper;
 
@@ -46,7 +47,7 @@ class Capture extends Action
     public function execute()
     {
         $result = $this->resultJsonFactory->create();
-        
+
         if (!$this->gtmHelper->isServerSideEnabled()) {
             return $result->setData(['success' => false, 'message' => 'Server-side disabled']);
         }
@@ -62,16 +63,16 @@ class Capture extends Action
         try {
             $model = $this->gaDataFactory->create();
             $this->gaDataResource->load($model, $quoteId, 'quote_id');
-            
+
             $model->setQuoteId($quoteId);
             $model->setClientId($clientId);
             $model->setSessionId($sessionId);
             if (!$model->getStatus() || $model->getStatus() === GaDataModel::STATUS_PENDING) {
                 $model->setStatus(GaDataModel::STATUS_PENDING);
             }
-            
+
             $this->gaDataResource->save($model);
-            
+
             return $result->setData(['success' => true]);
         } catch (\Exception $e) {
             return $result->setData(['success' => false, 'message' => $e->getMessage()]);

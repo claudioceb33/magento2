@@ -25,8 +25,7 @@ class ProductInstallments extends AbstractSource implements \Magento\Framework\D
     public function __construct(
         InstallmentRepository $installmentRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder
-    )
-    {
+    ) {
         $this->installmentRepository = $installmentRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }

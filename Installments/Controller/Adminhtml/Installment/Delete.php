@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Controller\Adminhtml\Installment;
 
 class Delete extends \Ceb\Installments\Controller\Adminhtml\Installment
 {
-
     /**
      * Delete action
      *
@@ -20,9 +20,9 @@ class Delete extends \Ceb\Installments\Controller\Adminhtml\Installment
         if ($id) {
             try {
                 // init model and delete
-                $model = $this->_objectManager->create(\Ceb\Installments\Model\Installment::class);
-                $model->load($id);
-                $model->delete();
+                $model = $this->installmentFactory->create();
+                $this->installmentResource->load($model, $id);
+                $this->installmentResource->delete($model);
                 // display success message
                 $this->messageManager->addSuccessMessage(__('You deleted the Installment.'));
                 // go to grid
@@ -40,4 +40,3 @@ class Delete extends \Ceb\Installments\Controller\Adminhtml\Installment
         return $resultRedirect->setPath('*/*/');
     }
 }
-

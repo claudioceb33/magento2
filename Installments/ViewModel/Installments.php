@@ -113,10 +113,13 @@ class Installments implements ArgumentInterface
     public function getCurrentCurrencySymbol()
     {
         return $this->currency->getCurrencySymbol();
-    } 
+    }
 
-    public function getAmount($price, $rate, $qty) {
-        if ($qty == 0) return '';
+    public function getAmount($price, $rate, $qty)
+    {
+        if ($qty == 0) {
+            return '';
+        }
         $amount = ($price * $rate) / $qty;
         $amount = number_format($amount, 0, '', '.');
         $currencySymbol = $this->getCurrentCurrencySymbol();

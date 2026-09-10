@@ -39,7 +39,7 @@ use Ceb\ShippingCustom\Helper\Data as Helper;
  */
 class ShippingCustom extends AbstractCarrierOnline implements CarrierInterface
 {
-    const CARRIER_CODE = 'shipping_custom';
+    public const CARRIER_CODE = 'shipping_custom';
 
     /**
      * @var string
@@ -125,12 +125,11 @@ class ShippingCustom extends AbstractCarrierOnline implements CarrierInterface
         StockRegistryInterface $stockRegistry,
         RequestInterface $request,
         Citiescollection $citiesCollection,
-        array $data = [],
         Registry $registry,
         Session $checkoutSession,
-        Helper $helper
-    )
-    {
+        Helper $helper,
+        array $data = []
+    ) {
         $this->rateResultFactory = $rateFactory;
         $this->rateMethodFactory = $rateMethodFactory;
         $this->request           = $request;
@@ -208,7 +207,9 @@ class ShippingCustom extends AbstractCarrierOnline implements CarrierInterface
      */
     public function collectRates(RateRequest $request)
     {
-        if (!$this->getConfigFlag('active')) return false;
+        if (!$this->getConfigFlag('active')) {
+            return false;
+        }
 
         $quote = $this->checkoutSession->getQuote();
         $quote->setData("not_available_item", 0);
@@ -225,20 +226,25 @@ class ShippingCustom extends AbstractCarrierOnline implements CarrierInterface
         $city = strtolower($request->getDestCity());
         $freeShippingCart = true;
 
-        foreach($request->getAllItems() as $item)
-        {
+        foreach ($request->getAllItems() as $item) {
             $freeShippingItem = false;
 
-            if($item->getProductType() == 'configurable')
+            if ($item->getProductType() == 'configurable') {
                 continue;
+            }
 
             $product = $item->getProduct();
 
-            if($item->getParentItem())
+            if ($item->getParentItem()) {
                 $item = $item->getParentItem();
+            }
 
-            $freeCity = (boolean) $product->getResource()
-                ->getAttributeRawValue($product->getId(), 'free_shipping_city', $product->getStoreId()) * $item->getQty();
+            $freeCity = (bool) $product->getResource()
+                ->getAttributeRawValue(
+                    $product->getId(),
+                    'free_shipping_city',
+                    $product->getStoreId()
+                ) * $item->getQty();
 
             if ($freeCity) {
                 $freeShippingItem = true;
@@ -270,7 +276,7 @@ class ShippingCustom extends AbstractCarrierOnline implements CarrierInterface
                 $quote->setData("not_available_item", 0);
             }
         }
-        
+
         return $result;
     }
 

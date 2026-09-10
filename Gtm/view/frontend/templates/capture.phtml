@@ -2,14 +2,16 @@
 /** @var \Magento\Framework\View\Element\Template $block */
 /** @var \Ceb\Gtm\ViewModel\GtmData $vm */
 $vm = $block->getViewModel();
-$measurementId = $vm->getMeasurementId(); // I need to add this to ViewModel
-if (!$measurementId) return;
+$measurementId = $vm->getMeasurementId();
+if (!$measurementId) {
+    return;
+}
 ?>
 <script type="text/x-magento-init">
 {
     "*": {
         "gaCapture": {
-            "measurementId": "<?= /* @noEscape */ $measurementId ?>"
+            "measurementId": <?= /* @noEscape */ json_encode($measurementId, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>
         }
     }
 }

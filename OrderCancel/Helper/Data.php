@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\OrderCancel\Helper;
@@ -14,10 +15,10 @@ use Magento\Payment\Model\Method\Logger;
 
 class Data
 {
-    const MP_ENDPOINT_API = 'https://api.mercadopago.com';
-    const CONFIG_PAYMENTS = 'checkout/options/payments';
-    const CONFIG_HOURS = 'checkout/options/cancel_order_from';
-    const CONFIG_DAYS = 'checkout/options/cancel_order_to';
+    public const MP_ENDPOINT_API = 'https://api.mercadopago.com';
+    public const CONFIG_PAYMENTS = 'checkout/options/payments';
+    public const CONFIG_HOURS = 'checkout/options/cancel_order_from';
+    public const CONFIG_DAYS = 'checkout/options/cancel_order_to';
 
     /**
      * @var ScopeConfigInterface
@@ -50,22 +51,30 @@ class Data
         $this->logger = $logger;
     }
 
-    public function getConfigHoursFrom() {
+    public function getConfigHoursFrom()
+    {
         $result = $this->scopeConfig->getValue(self::CONFIG_HOURS, ScopeInterface::SCOPE_STORE);
-        if (empty($result)) $result = 3;
+        if (empty($result)) {
+            $result = 3;
+        }
         return $result;
     }
 
-    public function getConfigDaysTo() {
+    public function getConfigDaysTo()
+    {
         $result = $this->scopeConfig->getValue(self::CONFIG_DAYS, ScopeInterface::SCOPE_STORE);
-        if (empty($result)) $result = 30;
+        if (empty($result)) {
+            $result = 30;
+        }
         return $result;
     }
 
     public function getPaymentsSelects()
     {
         $payments = $this->scopeConfig->getValue(self::CONFIG_PAYMENTS, ScopeInterface::SCOPE_STORE);
-        if (empty($payments)) return [];
+        if (empty($payments)) {
+            return [];
+        }
         $payments = json_decode($payments);
         $paymentsArr = [];
         foreach ($payments as $payment) {
@@ -81,11 +90,13 @@ class Data
      *
      * @return string
      */
-    public function getMpApiUrl() {
+    public function getMpApiUrl()
+    {
         return self::MP_ENDPOINT_API;
     }
 
-    public function getMpPaymentStatus(?int $storeId = null, $incrementId = null) {
+    public function getMpPaymentStatus(?int $storeId = null, $incrementId = null)
+    {
 
         return [
             'success'    => true,
@@ -132,5 +143,4 @@ class Data
         }
         */
     }
-
 }

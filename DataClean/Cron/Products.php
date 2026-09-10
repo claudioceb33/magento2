@@ -103,7 +103,7 @@ class Products
 
         $this->appState->emulateAreaCode(
             \Magento\Framework\App\Area::AREA_GLOBAL,
-            function ()  {
+            function () {
                 $this->registry->register('isSecureArea', true);
                 $this->deleteOldProducts();
                 //$this->deleteOldProducts('configurable');

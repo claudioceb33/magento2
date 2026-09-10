@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\InvoiceA\Block;
 
 class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcessorInterface
@@ -112,4 +113,3 @@ class LayoutProcessor implements \Magento\Checkout\Block\Checkout\LayoutProcesso
         ];
     }
 }
-

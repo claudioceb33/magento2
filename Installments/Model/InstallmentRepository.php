@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Model;
@@ -16,7 +17,6 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 class InstallmentRepository implements InstallmentRepositoryInterface
 {
-
     /**
      * @var ResourceInstallment
      */
@@ -100,17 +100,17 @@ class InstallmentRepository implements InstallmentRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->installmentCollectionFactory->create();
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model;
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -142,4 +142,3 @@ class InstallmentRepository implements InstallmentRepositoryInterface
         return $this->delete($this->get($installmentId));
     }
 }
-

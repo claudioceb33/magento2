@@ -6,7 +6,6 @@ namespace Ceb\ViewModelCustom\Model\Service;
 
 class TopicCatalog
 {
-
     /**
      * @var string
      */

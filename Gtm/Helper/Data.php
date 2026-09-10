@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
@@ -7,14 +8,14 @@ use Magento\Store\Model\ScopeInterface;
 
 class Data extends AbstractHelper
 {
-    const XML_PATH_ENABLED = 'ceb_gtm/general/enabled';
-    const XML_PATH_GTM_ID = 'ceb_gtm/general/gtm_id';
-    const XML_PATH_BRAND_ATTRIBUTE = 'ceb_gtm/general/brand_attribute';
-    const XML_PATH_CATEGORY_ATTRIBUTE = 'ceb_gtm/general/category_attribute';
-    const XML_PATH_SERVER_SIDE_ENABLED = 'ceb_gtm/server_side/enabled';
-    const XML_PATH_MEASUREMENT_ID = 'ceb_gtm/server_side/measurement_id';
-    const XML_PATH_API_SECRET = 'ceb_gtm/server_side/api_secret';
-    const XML_PATH_DEBUG_MODE = 'ceb_gtm/server_side/debug_mode';
+    public const XML_PATH_ENABLED = 'ceb_gtm/general/enabled';
+    public const XML_PATH_GTM_ID = 'ceb_gtm/general/gtm_id';
+    public const XML_PATH_BRAND_ATTRIBUTE = 'ceb_gtm/general/brand_attribute';
+    public const XML_PATH_CATEGORY_ATTRIBUTE = 'ceb_gtm/general/category_attribute';
+    public const XML_PATH_SERVER_SIDE_ENABLED = 'ceb_gtm/server_side/enabled';
+    public const XML_PATH_MEASUREMENT_ID = 'ceb_gtm/server_side/measurement_id';
+    public const XML_PATH_API_SECRET = 'ceb_gtm/server_side/api_secret';
+    public const XML_PATH_DEBUG_MODE = 'ceb_gtm/server_side/debug_mode';
 
     /**
      * @var array
@@ -133,7 +134,7 @@ class Data extends AbstractHelper
 
     /**
      * Get brand value from product
-     * 
+     *
      * @param \Magento\Catalog\Model\Product $product
      * @return string|null
      */
@@ -158,7 +159,7 @@ class Data extends AbstractHelper
 
     /**
      * Get category value from product
-     * 
+     *
      * @param \Magento\Catalog\Model\Product $product
      * @return string|null
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
@@ -210,7 +211,7 @@ class Data extends AbstractHelper
 
     /**
      * Extract attribute value (handles select/multiselect text fallback)
-     * 
+     *
      * @param \Magento\Catalog\Model\Product $product
      * @param string $attributeCode
      * @return mixed
@@ -238,7 +239,7 @@ class Data extends AbstractHelper
 
     /**
      * Fallback to reading the category name from the repository
-     * 
+     *
      * @param \Magento\Catalog\Model\Product $product
      * @return string
      */

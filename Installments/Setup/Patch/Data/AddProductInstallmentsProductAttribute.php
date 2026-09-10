@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Setup\Patch\Data;
@@ -12,7 +13,6 @@ use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
 class AddProductInstallmentsProductAttribute implements DataPatchInterface, PatchRevertableInterface
 {
-
     /**
      * @var ModuleDataSetupInterface
      */
@@ -102,8 +102,7 @@ class AddProductInstallmentsProductAttribute implements DataPatchInterface, Patc
     public static function getDependencies()
     {
         return [
-        
+
         ];
     }
 }
-

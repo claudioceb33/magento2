@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Block\Adminhtml\Installment\Edit;
@@ -7,7 +8,6 @@ use Magento\Backend\Block\Widget\Context;
 
 abstract class GenericButton
 {
-
     protected $context;
 
     /**
@@ -40,4 +40,3 @@ abstract class GenericButton
         return $this->context->getUrlBuilder()->getUrl($route, $params);
     }
 }
-

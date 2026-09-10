@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\InvoiceA\Observer;
 
 use Magento\Framework\DataObject\Copy;
@@ -9,7 +10,6 @@ use Magento\Sales\Model\Order;
 
 class SaveOrderBeforeSalesModelQuoteObserver implements ObserverInterface
 {
-
     /**
      * List of attributes that should be added to an order.
      *

@@ -1,16 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Api\Data;
 
 interface InstallmentInterface
 {
-
-    const INSTALLMENT_ID = 'installment_id';
-    const NAME           = 'name';
-    const INSTALLMENTS   = 'installments';
-    const RATE           = 'rate';
-    const DISCLAIMER     = 'disclaimer';
+    public const INSTALLMENT_ID = 'installment_id';
+    public const NAME           = 'name';
+    public const INSTALLMENTS   = 'installments';
+    public const RATE           = 'rate';
+    public const DISCLAIMER     = 'disclaimer';
 
     /**
      * Get installment_id
@@ -77,4 +77,3 @@ interface InstallmentInterface
      */
     public function setDisclaimer($value);
 }
-

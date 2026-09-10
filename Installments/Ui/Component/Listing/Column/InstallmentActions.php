@@ -1,14 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Ui\Component\Listing\Column;
 
 class InstallmentActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
-    const URL_PATH_EDIT = 'ceb_installments/installment/edit';
-    const URL_PATH_DELETE = 'ceb_installments/installment/delete';
-    const URL_PATH_DETAILS = 'ceb_installments/installment/details';
+    public const URL_PATH_EDIT = 'ceb_installments/installment/edit';
+    public const URL_PATH_DELETE = 'ceb_installments/installment/delete';
+    public const URL_PATH_DETAILS = 'ceb_installments/installment/details';
     protected $urlBuilder;
 
     /**
@@ -67,8 +67,7 @@ class InstallmentActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }
-

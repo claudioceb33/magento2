@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Model\ResourceModel\Installment;
@@ -7,7 +8,6 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Collection extends AbstractCollection
 {
-
     /**
      * @inheritDoc
      */
@@ -24,4 +24,3 @@ class Collection extends AbstractCollection
         );
     }
 }
-

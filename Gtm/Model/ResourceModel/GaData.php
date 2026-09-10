@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;

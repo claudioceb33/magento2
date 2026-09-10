@@ -10,7 +10,6 @@ use Magento\Catalog\Block\Product\ProductList\Item\Block;
  */
 class CustomQty extends Block
 {
-
     /**
      * @inheritDoc
      */

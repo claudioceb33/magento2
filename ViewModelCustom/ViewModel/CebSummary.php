@@ -10,7 +10,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 class CebSummary implements ArgumentInterface
 {
     /**
-     * 
+     *
      */
     private $cebDemo;
 

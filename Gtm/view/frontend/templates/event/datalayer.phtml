@@ -31,7 +31,7 @@ if (!$eventData) return;
 <script type="text/x-magento-init">
 {
     "*": {
-        "Ceb_Gtm/js/datalayer": <?= /* @noEscape */ json_encode($eventData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>
+        "Ceb_Gtm/js/datalayer": <?= /* @noEscape */ json_encode($eventData, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) ?>
     }
 }
 </script>

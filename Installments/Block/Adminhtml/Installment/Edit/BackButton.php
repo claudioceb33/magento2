@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Block\Adminhtml\Installment\Edit;
@@ -7,7 +8,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class BackButton extends GenericButton implements ButtonProviderInterface
 {
-
     /**
      * @return array
      */
@@ -31,4 +31,3 @@ class BackButton extends GenericButton implements ButtonProviderInterface
         return $this->getUrl('*/*/');
     }
 }
-

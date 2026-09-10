@@ -3,13 +3,13 @@
 $product = $block->getProduct();
 ?>
 <?php if ($product && $product->isSaleable()): ?>
-    <div class="qty-field-wrapper qty-<?= $block->escapeJs($product->getId()) ?>" data-product="<?= $block->escapeJs($product->getId()) ?>" data-mage-init='{"customQty": {"pid": "<?= $block->escapeJs($product->getId()) ?>"}}'>
+    <div class="qty-field-wrapper qty-<?= $block->escapeHtmlAttr($product->getId()) ?>" data-product="<?= $block->escapeHtmlAttr($product->getId()) ?>" data-mage-init='{"customQty": {"pid": "<?= $block->escapeHtmlAttr($product->getId()) ?>"}}'>
 
         <span>
-              <button type="button" id="1-dec" class="decreaseQty">
+              <button type="button" aria-label="<?= $block->escapeHtmlAttr(__('Decrease quantity')) ?>" class="decreaseQty">
               <i class="fas fa-minus"></i></button>
           </span>
-        <input id="cart-<?= $block->escapeJs($product->getId()) ?>-qty"
+        <input id="cart-<?= $block->escapeHtmlAttr($product->getId()) ?>-qty"
                name="qty"
                data-cart-item-id="1"
                value="1"
@@ -18,13 +18,13 @@ $product = $block->getProduct();
                step="1"
                min="1"
                max="9999"
-               title="<?= $block->escapeJs($product->getId()) ?>"
+               title="<?= $block->escapeHtmlAttr($product->getId()) ?>"
                class="input-text qty"
                data-validate="{required:true,'validate-greater-than-zero':true}"
                data-role="cart-item-qty"/>
 
         <span>
-            <button type="button" id="1-upt" class="increaseQty"><i class="fas fa-plus"></i></button>
+            <button type="button" aria-label="<?= $block->escapeHtmlAttr(__('Increase quantity')) ?>" class="increaseQty"><i class="fas fa-plus"></i></button>
         </span>
     </div>
 <?php endif; ?>

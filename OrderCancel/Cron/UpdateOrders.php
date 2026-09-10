@@ -4,7 +4,7 @@ namespace Ceb\OrderCancel\Cron;
 
 use Ceb\OrderCancel\Helper\Data;
 use Magento\Framework\App\ResourceConnection;
-use Magento\Payment\Model\Method\Logger;
+use Psr\Log\LoggerInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 use MercadoPago\AdbPayment\Gateway\Config\ConfigCheckoutPro;
@@ -17,6 +17,9 @@ use Magento\Framework\DB\Transaction;
  */
 class UpdateOrders
 {
+    /** @var LoggerInterface */
+    private $logger;
+
     /**
      * @var ConfigCheckoutPro
      */
@@ -59,9 +62,10 @@ class UpdateOrders
      * @param CollectionFactory $collectionFactory
      * @param ResourceConnection $resource
      * @param Data $data
-     * @param InvoiceService $invoiceService;
+     * @param InvoiceService $invoiceService
      * @param InvoiceSender $invoiceSender
      * @param Transaction $transaction
+     * @param LoggerInterface $logger
      */
     public function __construct(
         ConfigCheckoutPro $configCheckoutPro,
@@ -70,7 +74,8 @@ class UpdateOrders
         Data $data,
         InvoiceService $invoiceService,
         InvoiceSender $invoiceSender,
-        Transaction $transaction
+        Transaction $transaction,
+        LoggerInterface $logger
     ) {
         $this->configCheckoutPro = $configCheckoutPro;
         $this->collectionFactory = $collectionFactory;
@@ -79,6 +84,7 @@ class UpdateOrders
         $this->invoiceService = $invoiceService;
         $this->invoiceSender = $invoiceSender;
         $this->transaction = $transaction;
+        $this->logger = $logger;
     }
 
     /**
@@ -102,9 +108,7 @@ class UpdateOrders
      */
     public function execute()
     {
-        $writer = new \Zend_Log_Writer_Stream(BP . '/var/log/cron_update_orders.log');
-        $logger = new \Zend_Log();
-        $logger->addWriter($writer);
+        $logger = $this->logger;
 
         $hoursFrom = $this->data->getConfigHoursFrom();
         $hoursFrom *= 60;
@@ -124,7 +128,8 @@ class UpdateOrders
             ->where('sop.method IN (?)', $paymentsConfig);
 
         $ordersToCancel->getSelect()
-            ->where("TIMESTAMPDIFF(MINUTE, main_table.created_at, NOW()) >= $hoursFrom AND DATEDIFF(NOW(),main_table.created_at) <= $daysTo");
+            ->where('TIMESTAMPDIFF(MINUTE, main_table.created_at, NOW()) >= ?', (int) $hoursFrom)
+            ->where('DATEDIFF(NOW(), main_table.created_at) <= ?', (int) $daysTo);
 
         foreach ($ordersToCancel as $order) {
             $storeId = $order->getStoreId();
@@ -134,9 +139,15 @@ class UpdateOrders
             if ($order->getPayment()->getMethod() == ConfigCheckoutPro::METHOD) {
                 $rejected = false;
                 $results = $this->data->getMpPaymentStatus($storeId, $incrementId);
-                if (isset($results['response']['results'][0]['status']) && $results['response']['results'][0]['status'] == 'rejected') {
+                if (
+                    isset($results['response']['results'][0]['status'])
+                    && $results['response']['results'][0]['status'] == 'rejected'
+                ) {
                     $rejected = true;
-                } elseif (isset($results['response']['paging']['total']) && $results['response']['paging']['total'] == 0) {
+                } elseif (
+                    isset($results['response']['paging']['total'])
+                    && $results['response']['paging']['total'] == 0
+                ) {
                     $rejected = true;
                 }
             } elseif ($this->isMobbexOrder($order)) {
@@ -169,7 +180,8 @@ class UpdateOrders
             ->where('sop.method = ?', ConfigCheckoutPro::METHOD);
 
         $ordersToProcessing->getSelect()
-            ->where("TIMESTAMPDIFF(MINUTE, main_table.created_at, NOW()) >= $hoursFrom AND DATEDIFF(NOW(),main_table.created_at) <= $daysTo");
+            ->where('TIMESTAMPDIFF(MINUTE, main_table.created_at, NOW()) >= ?', (int) $hoursFrom)
+            ->where('DATEDIFF(NOW(), main_table.created_at) <= ?', (int) $daysTo);
 
         try {
             foreach ($ordersToProcessing as $order) {
@@ -178,7 +190,10 @@ class UpdateOrders
 
                 $results = $this->data->getMpPaymentStatus($storeId, $incrementId);
 
-                if (isset($results['response']['results'][0]['status']) && $results['response']['results'][0]['status'] == 'approved') {
+                if (
+                    isset($results['response']['results'][0]['status'])
+                    && $results['response']['results'][0]['status'] == 'approved'
+                ) {
                     $this->moveOrderToProcessing($order);
                 }
 
@@ -201,7 +216,8 @@ class UpdateOrders
             ->where('sop.method = ?', 'sugapay');
 
         $mobbexOrders->getSelect()
-            ->where("TIMESTAMPDIFF(MINUTE, main_table.created_at, NOW()) >= $hoursFrom AND DATEDIFF(NOW(),main_table.created_at) <= $daysTo");
+            ->where('TIMESTAMPDIFF(MINUTE, main_table.created_at, NOW()) >= ?', (int) $hoursFrom)
+            ->where('DATEDIFF(NOW(), main_table.created_at) <= ?', (int) $daysTo);
         try {
             foreach ($mobbexOrders as $order) {
                 $statusCode = $this->getMobbexStatusCode($order);

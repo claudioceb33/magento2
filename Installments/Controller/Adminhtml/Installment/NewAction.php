@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Controller\Adminhtml\Installment;
 
 class NewAction extends \Ceb\Installments\Controller\Adminhtml\Installment
 {
-
     protected $resultForwardFactory;
 
     /**
@@ -34,4 +34,3 @@ class NewAction extends \Ceb\Installments\Controller\Adminhtml\Installment
         return $resultForward->forward('edit');
     }
 }
-

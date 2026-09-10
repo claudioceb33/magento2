@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Controller\Adminhtml\Installment;
 
 class Index extends \Magento\Backend\App\Action
 {
+    public const ADMIN_RESOURCE = 'Ceb_Installments::top_level';
 
     protected $resultPageFactory;
 
@@ -34,4 +36,3 @@ class Index extends \Magento\Backend\App\Action
             return $resultPage;
     }
 }
-

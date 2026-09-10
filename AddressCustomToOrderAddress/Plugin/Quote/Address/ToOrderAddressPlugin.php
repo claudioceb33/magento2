@@ -32,7 +32,7 @@ class ToOrderAddressPlugin
         \Magento\Quote\Model\Quote\Address\ToOrderAddress $subject,
         $interceptedOutput
     ) {
-        if($interceptedOutput->getAddressType()=='shipping') {
+        if ($interceptedOutput->getAddressType() == 'shipping') {
             $shippingAddress = $this->cart->getQuote()->getShippingAddress();
 
             $interceptedOutput->setDni($shippingAddress->getDni());

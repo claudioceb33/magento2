@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -99,7 +100,7 @@ class DataLayer implements ArgumentInterface
             $item['item_category'] = $category;
         }
 
-        if($variant) {
+        if ($variant) {
             $item['item_variant'] = $variant;
         }
 
@@ -191,8 +192,10 @@ class DataLayer implements ArgumentInterface
         foreach ($quote->getAllVisibleItems() as $item) {
             $product = $item->getProduct();
 
-            if ($product->getPrice() < 1) continue;
-            
+            if ($product->getPrice() < 1) {
+                continue;
+            }
+
             $itemData = [
                 'item_id' => $item->getSku(),
                 'item_name' => $product->getName(),

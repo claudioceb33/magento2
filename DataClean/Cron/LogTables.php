@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\DataClean\Cron;
 
 use Psr\Log\LoggerInterface;
@@ -66,7 +67,7 @@ class LogTables
             'dbclean/log_tables/to_clean',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
-        $logTables = explode(',',$logTables);
+        $logTables = explode(',', $logTables);
 
         $connection = $this->resource->getConnection();
 
@@ -94,7 +95,7 @@ class LogTables
             'dbclean/log_tables/to_truncate',
             \Magento\Store\Model\ScopeInterface::SCOPE_STORE
         );
-        $truncateTables = explode(',',$truncateTables);
+        $truncateTables = explode(',', $truncateTables);
 
         foreach ($truncateTables as $truncateTable) {
             $tableName = $this->resource->getTableName($truncateTable);

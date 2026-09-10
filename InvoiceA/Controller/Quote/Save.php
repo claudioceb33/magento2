@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\InvoiceA\Controller\Quote;
 
 use Magento\Framework\Exception\NoSuchEntityException;

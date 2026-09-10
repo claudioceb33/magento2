@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\ErpStockSync\Model\Erp;
@@ -31,7 +32,6 @@ class MockErpStockClient implements ErpStockClientInterface
             );
 
             foreach ($products as $product) {
-
                 $sku = $product->getSku();
 
                 if (((int)$product->getId() % 25) === 0) {

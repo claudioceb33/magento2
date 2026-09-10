@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Model\ResourceModel\GaData;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;

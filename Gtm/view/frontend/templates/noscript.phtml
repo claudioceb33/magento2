@@ -3,10 +3,12 @@
 /** @var \Ceb\Gtm\ViewModel\GtmData $gtm */
 $gtm = $block->getViewModel();
 $gtmId = $gtm->getGtmId();
-if (!$gtmId) return;
+if (!$gtmId) {
+    return;
+}
 ?>
 
 <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=<?= /* @noEscape */ $gtmId ?>"
+    <iframe src="https://www.googletagmanager.com/ns.html?id=<?= $block->escapeHtmlAttr(rawurlencode((string) $gtmId)) ?>"
             height="0" width="0" style="display:none;visibility:hidden"></iframe>
 </noscript>

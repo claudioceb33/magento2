@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\ShippingCustom\Setup\Patch\Data;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -11,7 +12,7 @@ use Magento\Catalog\Model\Config;
 
 class CreateAttributesProduct implements DataPatchInterface
 {
-    const ATTRIBUTE_GROUP = 'General';
+    public const ATTRIBUTE_GROUP = 'General';
 
     /** @var ModuleDataSetupInterface */
     protected $setup;
@@ -20,7 +21,7 @@ class CreateAttributesProduct implements DataPatchInterface
     protected $eavSetupFactory;
 
     /**
-     * @var AttributeManagementInterface 
+     * @var AttributeManagementInterface
      */
     protected $attributeManagement;
 
@@ -43,7 +44,7 @@ class CreateAttributesProduct implements DataPatchInterface
 
     public function apply()
     {
-    
+
         /** @var EavSetup $eavSetup */
         $eavSetup = $this->eavSetupFactory->create(['setup' => $this->setup]);
         $entityTypeId = $eavSetup->getEntityTypeId(\Magento\Catalog\Model\Product::ENTITY);
@@ -63,9 +64,9 @@ class CreateAttributesProduct implements DataPatchInterface
             ]
         ];
 
-        foreach ($attributesInfo as $key => $attribute){
+        foreach ($attributesInfo as $key => $attribute) {
             $attributeSet = $attribute['attribute_set'];
-            if(is_array($attributeSet)) {
+            if (is_array($attributeSet)) {
                 foreach ($attributeSet as $productAttribute) {
                     $AttributeSet = $productAttribute;
                     $this->createAttribute($eavSetup, $key, $attributeSet, $attribute);
@@ -97,7 +98,9 @@ class CreateAttributesProduct implements DataPatchInterface
             [
                 'attribute_set' => $attributeSet,
                 'type' => $attribute['type'],
-                'backend' => isset($attribute['option'])?'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend':'',
+                'backend' => isset($attribute['option'])
+                    ? \Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend::class
+                    : '',
                 'label' => $attribute['label'],
                 'input' => $attribute['input'],
                 'option' => $attribute['option'],
@@ -121,14 +124,16 @@ class CreateAttributesProduct implements DataPatchInterface
     /**
      * @return array|string[]
      */
-    public static function getDependencies() {
+    public static function getDependencies()
+    {
         return [];
     }
 
     /**
      * @return array|string[]
      */
-    public function getAliases() {
+    public function getAliases()
+    {
         return [];
     }
 }

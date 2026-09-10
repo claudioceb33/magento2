@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;

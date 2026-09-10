@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Model;
 
 use Magento\Framework\Model\AbstractModel;

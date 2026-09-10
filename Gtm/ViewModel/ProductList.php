@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\ViewModel;
 
 use Ceb\Gtm\Helper\Data as GtmHelper;

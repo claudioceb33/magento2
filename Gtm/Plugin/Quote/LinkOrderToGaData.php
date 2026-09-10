@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\Gtm\Plugin\Quote;
 
 use Magento\Quote\Model\QuoteManagement;
@@ -14,10 +15,10 @@ class LinkOrderToGaData
 {
     /** @var GaDataFactory */
     protected $gaDataFactory;
-    
+
     /** @var GaDataResource */
     protected $gaDataResource;
-    
+
     /** @var GtmHelper */
     protected $gtmHelper;
 

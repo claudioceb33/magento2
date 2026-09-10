@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Model\ResourceModel;
@@ -7,7 +8,6 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class Installment extends AbstractDb
 {
-
     /**
      * @inheritDoc
      */
@@ -16,4 +16,3 @@ class Installment extends AbstractDb
         $this->_init('ceb_installments_installment', 'installment_id');
     }
 }
-

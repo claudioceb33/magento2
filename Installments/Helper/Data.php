@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Helper;
@@ -42,4 +43,3 @@ class Data extends AbstractHelper
         return $installment;
     }
 }
-

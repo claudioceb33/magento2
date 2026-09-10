@@ -56,9 +56,9 @@ class Data extends AbstractHelper
      * @return string
      * @throws NoSuchEntityException
      */
-    public function getStoreUrl($path,$params)
+    public function getStoreUrl($path, $params)
     {
-        return $this->storeManagerInterface->getStore()->getUrl($path,$params);
+        return $this->storeManagerInterface->getStore()->getUrl($path, $params);
     }
 
     /**
@@ -66,7 +66,10 @@ class Data extends AbstractHelper
      */
     public function getMaxWeight()
     {
-        return (float)$this->scopeConfig->getValue("carriers/shipping_custom/max_package_weight", ScopeInterface::SCOPE_STORE);
+        return (float)$this->scopeConfig->getValue(
+            "carriers/shipping_custom/max_package_weight",
+            ScopeInterface::SCOPE_STORE
+        );
     }
 
     /**
@@ -74,7 +77,9 @@ class Data extends AbstractHelper
      */
     public function getMessageProductNotAvailableFreeShipping()
     {
-        return $this->scopeConfig->getValue("carriers/shipping_custom/message_product_not_available", ScopeInterface::SCOPE_STORE);
+        return $this->scopeConfig->getValue(
+            "carriers/shipping_custom/message_product_not_available",
+            ScopeInterface::SCOPE_STORE
+        );
     }
 }
-

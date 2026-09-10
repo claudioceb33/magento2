@@ -1,6 +1,6 @@
 <?php
-namespace Ceb\CheckoutLayoutProcessor\Plugin\Checkout;
 
+namespace Ceb\CheckoutLayoutProcessor\Plugin\Checkout;
 
 class LayoutProcessorPlugin
 {
@@ -42,7 +42,7 @@ class LayoutProcessorPlugin
      */
     public function afterProcess(
         \Magento\Checkout\Block\Checkout\LayoutProcessor $subject,
-        array  $jsLayout
+        array $jsLayout
     ) {
         $attributesConfig = [
             'field_custom' => [
@@ -70,40 +70,34 @@ class LayoutProcessorPlugin
             ]
         ];
 
-        $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['shipping-address-fieldset']['children']['telephone']['validation']['required-entry'] = false;
+        $steps = &$jsLayout['components']['checkout']['children']['steps']['children'];
+        $shippingFields = &$steps['shipping-step']['children']['shippingAddress']['children']
+            ['shipping-address-fieldset']['children'];
+        $shippingFields['telephone']['validation']['required-entry'] = false;
 
         foreach ($attributesConfig as $attributeCode => $attributeValue) {
-            if (isset($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']
-                ['payment']['children']['payments-list']['children']))
-            {
-                foreach ($jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']['payment']['children']['payments-list']['children'] as $key => $payment)
-                {
-                    $paymentCode = 'billingAddress'.str_replace('-form','',$key);
+            if (isset($steps['billing-step']['children']['payment']['children']['payments-list']['children'])) {
+                $payments = &$steps['billing-step']['children']['payment']['children']['payments-list']['children'];
+                foreach ($payments as $key => $payment) {
+                    $paymentCode = 'billingAddress' . str_replace('-form', '', $key);
                     $attributeValue['config']['customScope'] = $paymentCode . '.custom_attributes';
                     $attributeValue['dataScope'] = $paymentCode . '.custom_attributes.' . $attributeCode;
-                    $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']['payment']['children']['payments-list']['children'][$key]['children']['form-fields']['children'][$attributeCode] = $attributeValue;
-                    $jsLayout['components']['checkout']['children']['steps']['children']['billing-step']['children']['payment']['children']['payments-list']['children'][$key]['dataScopePrefix'] = 'billingAddress'. $attributeCode;
+                    $payments[$key]['children']['form-fields']['children'][$attributeCode] = $attributeValue;
+                    $payments[$key]['dataScopePrefix'] = 'billingAddress' . $attributeCode;
                 }
+                unset($payments);
             }
-            if (isset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['shipping-address-fieldset'])
-            ) {
-                $attributeValue['config']['customScope'] = 'shippingAddress.custom_attributes';
-                $attributeValue['dataScope'] = 'shippingAddress.custom_attributes.' . $attributeCode;
-                $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['shipping-address-fieldset']['children'][$attributeCode] = $attributeValue;
-            }
+
+            $attributeValue['config']['customScope'] = 'shippingAddress.custom_attributes';
+            $attributeValue['dataScope'] = 'shippingAddress.custom_attributes.' . $attributeCode;
+            $shippingFields[$attributeCode] = $attributeValue;
         }
 
-        if(!isset($jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['shipping-address-fieldset']['children']['celular']['children'][0]['tooltip'])){
-            $jsLayout['components']['checkout']['children']['steps']['children']['shipping-step']['children']['shippingAddress']['children']['shipping-address-fieldset']['children']['celular']['tooltip'] = ['description'=> 'Para preguntas de entrega.'];
+        if (!isset($shippingFields['celular']['children'][0]['tooltip'])) {
+            $shippingFields['celular']['tooltip'] = ['description' => 'Para preguntas de entrega.'];
         }
 
-        $customPayment = false;
-        if(isset($result['components']['checkout']['children']['steps']['children']
-            ['billing-step']['children']['payment']['children']['payments-list']
-            ['children']['custom_payment-form']['children']['form-fields']['children']))
-        {
-            $customPayment = true;
-        }
+        unset($shippingFields, $steps);
 
         return $jsLayout;
     }

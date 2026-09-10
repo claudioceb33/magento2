@@ -2,11 +2,10 @@
 
 namespace Ceb\DataClean\Model\Config\Source;
 
-use \Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Data\OptionSourceInterface;
 
 class CronInterval implements OptionSourceInterface
 {
-
     /**
      * @return array
      */

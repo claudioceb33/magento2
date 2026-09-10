@@ -4,7 +4,6 @@ namespace Ceb\ShippingMethodManagement\Plugin;
 
 class GetAllRates
 {
-
     public function afterGetAllRates($subject, $result)
     {
         foreach ($result as $key => $rate) {

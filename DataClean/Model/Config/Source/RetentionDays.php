@@ -1,4 +1,5 @@
 <?php
+
 namespace Ceb\DataClean\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;

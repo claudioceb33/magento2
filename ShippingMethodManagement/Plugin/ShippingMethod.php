@@ -1,33 +1,34 @@
-<?php 
+<?php
+
 namespace Ceb\ShippingMethodManagement\Plugin;
 
 class ShippingMethod
-{    
+{
     public $code = [];
-    
+
     public function beforeAppend($subject, $result)
-    { 
-        if (!$result instanceof \Magento\Quote\Model\Quote\Address\RateResult\Method) {    
-            return [$result]; 
-        } 
+    {
+        if (!$result instanceof \Magento\Quote\Model\Quote\Address\RateResult\Method) {
+            return [$result];
+        }
 
         $this->getShipCode($result);
 
 
-        if ($this->isMethodRestricted($result)) { 
-            try{
+        if ($this->isMethodRestricted($result)) {
+            try {
                 $result->setIsDisabled(true);
-            } catch(Exception $e) {
+            } catch (Exception $e) {
                 $result->setIsDisabled(true);
             }
         }
 
-        return [$result]; 
+        return [$result];
     }
-    
+
     public function getShipCode($shippingModel)
     {
-        $this->code[] = $shippingModel->getCarrier(); 
+        $this->code[] = $shippingModel->getCarrier();
     }
 
     /**
@@ -38,16 +39,16 @@ class ShippingMethod
         $carrier = $shippingModel->getCarrier();
         $code = $shippingModel->getMethod();
 
-        if(in_array($carrier, $this->code) && $carrier == 'carrier') {
+        if (in_array($carrier, $this->code) && $carrier == 'carrier') {
             return false;
         }
 
-        if(in_array($code, $this->code) && $code == 'method') {
+        if (in_array($code, $this->code) && $code == 'method') {
             return false;
         }
 
-        
 
-        return true; 
+
+        return true;
     }
 }

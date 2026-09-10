@@ -14,8 +14,8 @@ class SomeCommand extends Command
 {
     private const NAME = 'name';
 
-    public function __construct(
-    ) {
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -41,38 +41,38 @@ class SomeCommand extends Command
      *
      * @return int
      */
-     protected function execute(InputInterface $input, OutputInterface $output): int
-     {
-         $exitCode = 0;
-         
-         if ($name = $input->getOption(self::NAME)) {
-             $output->writeln('<info>Provided name is `' . $name . '`</info>');
-         }
+    protected function execute(InputInterface $input, OutputInterface $output): int
+    {
+        $exitCode = 0;
 
-         $output->writeln('<info>Success message</info>');
-         $output->writeln('<comment>Some comment</comment>');
+        if ($name = $input->getOption(self::NAME)) {
+            $output->writeln('<info>Provided name is `' . $name . '`</info>');
+        }
 
-         try {
-             if (rand(0, 1)) {
+        $output->writeln('<info>Success message</info>');
+        $output->writeln('<comment>Some comment</comment>');
+
+        try {
+            if (rand(0, 1)) {
                 throw new LocalizedException(__('An error occurred.'));
-             }
-         } catch (LocalizedException $e) {
-             $output->writeln(sprintf(
-                 '<error>%s</error>',
-                 $e->getMessage()
-             ));
-             $exitCode = 1;
-         }
-         
-         return $exitCode;
+            }
+        } catch (LocalizedException $e) {
+            $output->writeln(sprintf(
+                '<error>%s</error>',
+                $e->getMessage()
+            ));
+            $exitCode = 1;
+        }
+
+        return $exitCode;
     }
 
     /**
      * Execute command: php bin/magento customshipping:shipment:shiporder
-     * 
+     *
      * @param InputInterface $input
      * @param OutputInterface $output
-     * 
+     *
      */
     protected function configureTwo()
     {
@@ -96,8 +96,7 @@ class SomeCommand extends Command
         try {
             $output->writeln('Init createShipment()');
             /*..Procedure..*/
-        }
-        catch(\Exception $ex) {
+        } catch (\Exception $ex) {
             $output->writeln('Hubo un error al ejecutar el proceso: ' . $ex->getMessage());
         }
     }

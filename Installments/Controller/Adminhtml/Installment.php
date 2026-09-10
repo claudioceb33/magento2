@@ -1,10 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Controller\Adminhtml;
 
 abstract class Installment extends \Magento\Backend\App\Action
 {
+    /** @var \Ceb\Installments\Model\InstallmentFactory */
+    protected $installmentFactory;
+
+    /** @var \Ceb\Installments\Model\ResourceModel\Installment */
+    protected $installmentResource;
 
     public const ADMIN_RESOURCE = 'Ceb_Installments::top_level';
     protected $_coreRegistry;
@@ -12,11 +18,17 @@ abstract class Installment extends \Magento\Backend\App\Action
     /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\Registry $coreRegistry
+     * @param \Ceb\Installments\Model\InstallmentFactory $installmentFactory
+     * @param \Ceb\Installments\Model\ResourceModel\Installment $installmentResource
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\Registry $coreRegistry
+        \Magento\Framework\Registry $coreRegistry,
+        \Ceb\Installments\Model\InstallmentFactory $installmentFactory,
+        \Ceb\Installments\Model\ResourceModel\Installment $installmentResource
     ) {
+        $this->installmentFactory = $installmentFactory;
+        $this->installmentResource = $installmentResource;
         $this->_coreRegistry = $coreRegistry;
         parent::__construct($context);
     }
@@ -35,4 +47,3 @@ abstract class Installment extends \Magento\Backend\App\Action
         return $resultPage;
     }
 }
-

@@ -1,11 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Ceb\Installments\Api\Data;
 
 interface InstallmentSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
 {
-
     /**
      * Get Installment list.
      * @return \Ceb\Installments\Api\Data\InstallmentInterface[]
@@ -19,4 +19,3 @@ interface InstallmentSearchResultsInterface extends \Magento\Framework\Api\Searc
      */
     public function setItems(array $items);
 }
-
